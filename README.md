@@ -1,4 +1,4 @@
 Jglm
 ====
 
-Java OpenGL Mathematics
+Java porting of the GLM (OpenGL Mathematics)
