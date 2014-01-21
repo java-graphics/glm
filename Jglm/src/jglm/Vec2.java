@@ -60,6 +60,11 @@ public class Vec2 extends Vec {
 
         return new Vec2(x - vec2.x, y - vec2.y);
     }
+    
+    public Vec2 minus(Vec2i vec2) {
+
+        return new Vec2(x - vec2.x, y - vec2.y);
+    }
 
     public Vec2 negated() {
 

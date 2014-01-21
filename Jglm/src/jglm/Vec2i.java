@@ -20,15 +20,15 @@ public class Vec2i extends Veci {
     }
 
     public Vec2i(int[] floatArray) {
-        
+
         vector = floatArray;
-        
+
         x = vector[0];
         y = vector[1];
     }
 
     public Vec2i(int x, int y) {
-
+        
         this.x = x;
         this.y = y;
         vector = new int[]{x, y};
@@ -47,8 +47,18 @@ public class Vec2i extends Veci {
     }
 
     public Vec2i minus(Vec2i vec2i) {
-
+        
         return new Vec2i(x - vec2i.x, y - vec2i.y);
+    }
+
+    public Vec2i times(int scalar) {
+
+        return new Vec2i(x * scalar, y * scalar);
+    }
+
+    public Vec2 times(float scalar) {
+
+        return new Vec2(x * scalar, y * scalar);
     }
 
     public Vec2i negated() {
@@ -63,9 +73,9 @@ public class Vec2i extends Veci {
     public void print(String title) {
         System.out.println(title + " (" + x + ", " + y + ")");
     }
-    
-    public int[] toIntArray(){
-        
+
+    public int[] toIntArray() {
+
         return new int[]{x, y};
     }
 }
