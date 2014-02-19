@@ -4,6 +4,8 @@
  */
 package jglm;
 
+import de.fruitfly.ovr.HMDInfo;
+
 /**
  *
  * @author gbarbieri
@@ -36,7 +38,6 @@ public class Jglm {
 ////
 ////        return new float[]{vec3[0] / length, vec3[1] / length, vec3[2] / length};
 //    }
-
     public static float clamp(float value, float min, float max) {
 
         if (value < min) {
@@ -102,7 +103,6 @@ public class Jglm {
 
 //        matrices.set(matrices.size() - 1, perspectiveMatrix);
 //        setTop(top().mult(perspectiveMatrix));
-
         return perspectiveMatrix;
     }
 
@@ -120,7 +120,6 @@ public class Jglm {
 
 //        matrices.set(matrices.size() - 1, perspectiveMatrix);
 //        setTop(top().mult(perspectiveMatrix));
-
         return perspectiveMatrix;
     }
 
@@ -159,11 +158,11 @@ public class Jglm {
         tmp.y = (tmp.y - viewport.y) / viewport.w;
         tmp = tmp.mult(2);
         tmp = tmp.minus(1);
-        
+
         Vec4 obj = inverse.mult(tmp);
 
         obj = obj.divide(obj.w);
-        
+
         return new Vec3(obj);
     }
 
@@ -171,11 +170,75 @@ public class Jglm {
 
         return (v0.x * v1.x + v0.y * v1.y + v0.z * v1.z + v0.w * v1.w);
     }
-    
+
     public static float calculateFrustumScale(float fFovDeg) {
 
 //        float degToRad = (float) (Math.PI * 2.0f / 360.0f);
         float fFovRad = (float) Math.toRadians(fFovDeg);
         return (float) (1.0f / Math.tan(fFovRad / 2.0f));
+    }
+
+    public static Mat4 leftPerspectiveRH(float yFov, float aspect, float zNear, float zFar, HMDInfo hmd) {
+
+        Mat4 projectionCenter = perspectiveRH(yFov, aspect, zNear, zFar);
+
+        Mat4 H = new Mat4(1f);
+
+        H.c3.x = projectionCenterOffset(hmd);
+
+        return H.mult(projectionCenter);
+    }
+
+    public static Mat4 rightPerspectiveRH(float yFov, float aspect, float zNear, float zFar, HMDInfo hmd) {
+
+        Mat4 projectionCenter = perspectiveRH(yFov, aspect, zNear, zFar);
+
+        Mat4 H = new Mat4(1f);
+
+        H.c3.x = -projectionCenterOffset(hmd);
+
+        return H.mult(projectionCenter);
+    }
+
+    public static Mat4 leftView(Mat4 viewMatrix, HMDInfo hmd) {
+
+        Mat4 shift = new Mat4(1f);
+
+        shift.c3.x = hmd.InterpupillaryDistance / 2;
+
+        return shift.mult(viewMatrix);
+    }
+
+    public static Mat4 rightView(Mat4 viewMatrix, HMDInfo hmd) {
+
+        Mat4 shift = new Mat4(1f);
+
+        shift.c3.x = -hmd.InterpupillaryDistance / 2;
+
+        return shift.mult(viewMatrix);
+    }
+
+    private static float projectionCenterOffset(HMDInfo hmdInfo) {
+
+        float viewCenter = hmdInfo.HScreenSize * 0.25f;
+
+        float eyeProjectionShift = viewCenter - hmdInfo.LensSeparationDistance * 0.5f;
+
+        return 1 * (4f * eyeProjectionShift / hmdInfo.HScreenSize);
+    }
+
+    private static Mat4 perspectiveRH(float yFov, float aspect, float zNear, float zFar) {
+
+        float frustumScale = calculateFrustumScale(yFov);
+
+        Mat4 perspectiveRH = new Mat4(0);
+
+        perspectiveRH.c0.x = 1 / (aspect * frustumScale);
+        perspectiveRH.c1.y = 1 / frustumScale;
+        perspectiveRH.c2.z = zFar / (zNear - zFar);
+        perspectiveRH.c2.w = -1;
+        perspectiveRH.c3.z = zFar * zNear / (zNear - zFar);
+
+        return perspectiveRH;
     }
 }
