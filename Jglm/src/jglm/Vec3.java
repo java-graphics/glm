@@ -39,13 +39,18 @@ public class Vec3 extends Vec {
         y = vector[1];
         z = vector[2];
     }
-    
-    public Vec3(Vec4 vec4){
-        
+
+    public Vec3(Vec4 vec4) {
+
         x = vec4.x;
         y = vec4.y;
         z = vec4.z;
         vector = new float[]{x, y, z};
+    }
+
+    public Vec3 getMiddlePoint(Vec3 p1, Vec3 p2) {
+
+        return new Vec3((p1.x + p2.x) / 2, (p1.y + p2.y) / 2, (p1.z + p2.z) / 2);
     }
 
     public Vec3 normalize() {
@@ -61,9 +66,9 @@ public class Vec3 extends Vec {
     }
 
     public Vec3 times(Quat quat) {
-        
+
         Quat inverse = quat.conjugate();
-        
+
         return inverse.mult(this);
     }
 
@@ -88,7 +93,7 @@ public class Vec3 extends Vec {
     }
 
     public float length() {
-        
+
         return (float) Math.sqrt(x * x + y * y + z * z);
     }
 
@@ -99,9 +104,9 @@ public class Vec3 extends Vec {
     public void print(String title) {
         System.out.println(title + " (" + x + ", " + y + ", " + z + ")");
     }
-    
-    public float[] toFloatArray(){
-        
+
+    public float[] toFloatArray() {
+
         return new float[]{x, y, z};
     }
 }
