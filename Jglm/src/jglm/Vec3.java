@@ -39,9 +39,9 @@ public class Vec3 extends Vec {
         y = vector[1];
         z = vector[2];
     }
-    
-    public Vec3(Vec4 vec4){
-        
+
+    public Vec3(Vec4 vec4) {
+
         x = vec4.x;
         y = vec4.y;
         z = vec4.z;
@@ -55,15 +55,20 @@ public class Vec3 extends Vec {
         return new Vec3(x / length, y / length, z / length);
     }
 
+    public Vec3 dot(Vec3 vec3) {
+
+        return new Vec3(x * vec3.x, y * vec3.y, z * vec3.z);
+    }
+
     public Vec3 times(float scalar) {
 
         return new Vec3(x * scalar, y * scalar, z * scalar);
     }
 
     public Vec3 times(Quat quat) {
-        
+
         Quat inverse = quat.conjugate();
-        
+
         return inverse.mult(this);
     }
 
@@ -88,7 +93,7 @@ public class Vec3 extends Vec {
     }
 
     public float length() {
-        
+
         return (float) Math.sqrt(x * x + y * y + z * z);
     }
 
@@ -99,9 +104,9 @@ public class Vec3 extends Vec {
     public void print(String title) {
         System.out.println(title + " (" + x + ", " + y + ", " + z + ")");
     }
-    
-    public float[] toFloatArray(){
-        
+
+    public float[] toFloatArray() {
+
         return new float[]{x, y, z};
     }
 }
