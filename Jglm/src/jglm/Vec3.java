@@ -60,10 +60,10 @@ public class Vec3 extends Vec {
         return new Vec3(x / length, y / length, z / length);
     }
 
-    public Vec3 dot(Vec3 vec3) {
+    public float dot(Vec3 vec3) {
 
-        return new Vec3(x * vec3.x, y * vec3.y, z * vec3.z);
-    } 
+        return (x * vec3.x + y * vec3.y + z * vec3.z);
+    }
 
     public Vec3 times(float scalar) {
 
