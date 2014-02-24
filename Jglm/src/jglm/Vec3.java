@@ -48,6 +48,11 @@ public class Vec3 extends Vec {
         vector = new float[]{x, y, z};
     }
 
+    public static Vec3 getMiddlePoint(Vec3 p1, Vec3 p2) {
+
+        return new Vec3((p1.x + p2.x) / 2, (p1.y + p2.y) / 2, (p1.z + p2.z) / 2);
+    }
+
     public Vec3 normalize() {
 
         float length = ((float) Math.sqrt(x * x + y * y + z * z));

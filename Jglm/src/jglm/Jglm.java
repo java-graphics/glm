@@ -4,8 +4,6 @@
  */
 package jglm;
 
-import de.fruitfly.ovr.HMDInfo;
-
 /**
  *
  * @author gbarbieri
@@ -178,54 +176,54 @@ public class Jglm {
         return (float) (1.0f / Math.tan(fFovRad / 2.0f));
     }
 
-    public static Mat4 leftPerspectiveRH(float yFov, float aspect, float zNear, float zFar, HMDInfo hmd) {
-
-        Mat4 projectionCenter = perspectiveRH(yFov, aspect, zNear, zFar);
-
-        Mat4 H = new Mat4(1f);
-
-        H.c3.x = projectionCenterOffset(hmd);
-
-        return H.mult(projectionCenter);
-    }
-
-    public static Mat4 rightPerspectiveRH(float yFov, float aspect, float zNear, float zFar, HMDInfo hmd) {
-
-        Mat4 projectionCenter = perspectiveRH(yFov, aspect, zNear, zFar);
-
-        Mat4 H = new Mat4(1f);
-
-        H.c3.x = -projectionCenterOffset(hmd);
-
-        return H.mult(projectionCenter);
-    }
-
-    public static Mat4 leftView(Mat4 viewMatrix, HMDInfo hmd) {
-
-        Mat4 shift = new Mat4(1f);
-
-        shift.c3.x = hmd.InterpupillaryDistance / 2;
-
-        return shift.mult(viewMatrix);
-    }
-
-    public static Mat4 rightView(Mat4 viewMatrix, HMDInfo hmd) {
-
-        Mat4 shift = new Mat4(1f);
-
-        shift.c3.x = -hmd.InterpupillaryDistance / 2;
-
-        return shift.mult(viewMatrix);
-    }
-
-    private static float projectionCenterOffset(HMDInfo hmdInfo) {
-
-        float viewCenter = hmdInfo.HScreenSize * 0.25f;
-
-        float eyeProjectionShift = viewCenter - hmdInfo.LensSeparationDistance * 0.5f;
-
-        return 1 * (4f * eyeProjectionShift / hmdInfo.HScreenSize);
-    }
+//    public static Mat4 leftPerspectiveRH(float yFov, float aspect, float zNear, float zFar, HMDInfo hmd) {
+//
+//        Mat4 projectionCenter = perspectiveRH(yFov, aspect, zNear, zFar);
+//
+//        Mat4 H = new Mat4(1f);
+//
+//        H.c3.x = projectionCenterOffset(hmd);
+//
+//        return H.mult(projectionCenter);
+//    }
+//
+//    public static Mat4 rightPerspectiveRH(float yFov, float aspect, float zNear, float zFar, HMDInfo hmd) {
+//
+//        Mat4 projectionCenter = perspectiveRH(yFov, aspect, zNear, zFar);
+//
+//        Mat4 H = new Mat4(1f);
+//
+//        H.c3.x = -projectionCenterOffset(hmd);
+//
+//        return H.mult(projectionCenter);
+//    }
+//
+//    public static Mat4 leftView(Mat4 viewMatrix, HMDInfo hmd) {
+//
+//        Mat4 shift = new Mat4(1f);
+//
+//        shift.c3.x = hmd.InterpupillaryDistance / 2;
+//
+//        return shift.mult(viewMatrix);
+//    }
+//
+//    public static Mat4 rightView(Mat4 viewMatrix, HMDInfo hmd) {
+//
+//        Mat4 shift = new Mat4(1f);
+//
+//        shift.c3.x = -hmd.InterpupillaryDistance / 2;
+//
+//        return shift.mult(viewMatrix);
+//    }
+//
+//    private static float projectionCenterOffset(HMDInfo hmdInfo) {
+//
+//        float viewCenter = hmdInfo.HScreenSize * 0.25f;
+//
+//        float eyeProjectionShift = viewCenter - hmdInfo.LensSeparationDistance * 0.5f;
+//
+//        return 1 * (4f * eyeProjectionShift / hmdInfo.HScreenSize);
+//    }
 
     private static Mat4 perspectiveRH(float yFov, float aspect, float zNear, float zFar) {
 
