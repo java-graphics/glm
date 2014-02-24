@@ -63,7 +63,7 @@ public class Vec3 extends Vec {
     public Vec3 dot(Vec3 vec3) {
 
         return new Vec3(x * vec3.x, y * vec3.y, z * vec3.z);
-    }
+    } 
 
     public Vec3 times(float scalar) {
 
