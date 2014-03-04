@@ -1,17 +1,17 @@
 /**
  * Copyright 2010 JogAmp Community. All rights reserved.
- * 
-* Redistribution and use in source and binary forms, with or without
+ *
+ * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions are met:
- * 
-* 1. Redistributions of source code must retain the above copyright notice,
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
  * this list of conditions and the following disclaimer.
- * 
-* 2. Redistributions in binary form must reproduce the above copyright notice,
+ *
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
  * this list of conditions and the following disclaimer in the documentation
  * and/or other materials provided with the distribution.
- * 
-* THIS SOFTWARE IS PROVIDED BY JogAmp Community ``AS IS'' AND ANY EXPRESS OR
+ *
+ * THIS SOFTWARE IS PROVIDED BY JogAmp Community ``AS IS'' AND ANY EXPRESS OR
  * IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF
  * MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO
  * EVENT SHALL JogAmp Community OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
@@ -21,8 +21,8 @@
  * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- * 
-* The views and conclusions contained in the software and documentation are
+ *
+ * The views and conclusions contained in the software and documentation are
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of JogAmp Community.
  */
@@ -30,7 +30,7 @@ package jglm;
 
 public class Quat {
 
-    protected float x, y, z, w;
+    public float x, y, z, w;
 
     public Quat() {
     }
@@ -155,6 +155,58 @@ public class Quat {
         return out;
     }
 
+    public static Quat getQuatBetweenVecs(Vec3 v1, Vec3 v2) {
+
+        Vec3 cross = v1.crossProduct(v2);
+
+        Quat quat = new Quat();
+
+        quat.x = cross.x;
+        quat.y = cross.y;
+        quat.z = cross.z;
+
+//        quat.w = (float) (Math.sqrt(Math.pow(v1.length(), 2) * Math.pow(v2.length(), 2)) + v1.dot(v2));
+        quat.w = (float) (v1.length() * v2.length() + v1.dot(v2));
+
+        return quat;
+    }
+
+    public static Quat getQuatBetweenVecs1(Vec3 a, Vec3 b) {
+
+        Vec3 tmp;
+        Vec3 xUnit = new Vec3(1f, 0f, 0f);
+        Vec3 yUnit = new Vec3(0f, 1f, 0f);
+        Quat quat;
+
+        float dot = a.dot(b);
+        
+        if (dot < -0.999999) {
+//            System.out.println("1");
+            tmp = xUnit.crossProduct(a);
+
+            if (tmp.length() < 0.000001) {
+
+                tmp = yUnit.crossProduct(a);
+            }
+            tmp.normalize();
+
+            quat = Jglm.angleAxis(180, tmp);
+
+        } else if (dot > 0.999999) {
+//            System.out.println("2");
+            quat = new Quat(0f, 0f, 0f, 1f);
+
+        } else {
+//            System.out.println("3");
+            tmp = a.crossProduct(b);
+
+            quat = new Quat(tmp.x, tmp.y, tmp.z, 1 + dot);
+
+            quat.normalize();
+        }
+        return quat;
+    }
+
     public float getW() {
         return w;
     }
@@ -234,7 +286,6 @@ public class Quat {
 //        result.x = w * q.z + q.w * z + y * q.z - z * q.y;
 //        result.y = w * q.x + q.w * x + z * q.x - x * q.z;
 //        result.z = w * q.y + q.w * y + x * q.y - y * q.x;
-
         result.x = w * q.x + x * q.w + y * q.z - z * q.y;
 
         result.y = w * q.y + y * q.w + z * q.x - x * q.z;
@@ -243,7 +294,6 @@ public class Quat {
 //        System.out.println("result.y = "+result.y);
 //        result.y+=(-x*q.z);
 //        System.out.println("result.y = "+result.y);
-
         result.z = w * q.z + z * q.w + x * q.y - y * q.x;
 
         result.w = w * q.w - (x * q.x + y * q.y + z * q.z);
@@ -255,6 +305,7 @@ public class Quat {
      * Multiply a quaternion by a constant
      *
      * @param n a float constant
+     * @return
      */
     public Quat mult(float n) {
 
@@ -311,7 +362,6 @@ public class Quat {
 //        x = -x / norm;
 //        y = -y / norm;
 //        z = -z / norm;
-
         return new Quat(-x / norm, -y / norm, -z / norm, w / norm);
     }
 

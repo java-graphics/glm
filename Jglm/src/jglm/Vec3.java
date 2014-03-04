@@ -70,11 +70,51 @@ public class Vec3 extends Vec {
         return new Vec3(x * scalar, y * scalar, z * scalar);
     }
 
+    /**
+     * Not traditional way. This is supposed to be around 35% faster.
+     * http://molecularmusings.wordpress.com/2013/05/24/a-faster-quaternion-vector-multiplication/
+     *
+     * @param quat
+     * @return
+     */
     public Vec3 times(Quat quat) {
 
-        Quat inverse = quat.conjugate();
+//        Quat inverse = quat.conjugate();
+//
+//        return inverse.mult(this);
+        Vec3 q = new Vec3(quat.x, quat.y, quat.z);
 
-        return inverse.mult(this);
+        Vec3 t = (q).crossProduct(this);
+
+        t = t.times(2);
+
+        t = t.times(quat.w).plus(q.crossProduct(t));
+
+        Vec3 v = t.plus(this);
+
+        return v;
+
+//        return quat.m
+    }
+
+    public Vec3 transformQuat(Quat quat) {
+
+        Vec3 result = new Vec3();
+
+        Quat i = new Quat();
+
+        // calculate quat * vec
+        i.x = quat.w * x + quat.y * z - quat.z * y;
+        i.y = quat.w * y + quat.z * x - quat.x * z;
+        i.z = quat.w * z + quat.x * y - quat.y * x;
+        i.w = -quat.x * x - quat.y * y - quat.z * z;
+
+        // calculate result * inverse quat
+        result.x = i.x * quat.w + i.w * -quat.x + i.y * -quat.z - i.z * -quat.y;
+        result.y = i.y * quat.w + i.w * -quat.y + i.z * -quat.x - i.x * -quat.z;
+        result.z = i.z * quat.w + i.w * -quat.z + i.x * -quat.y - i.y * -quat.x;
+
+        return result;
     }
 
     public Vec3 plus(Vec3 vec3) {
