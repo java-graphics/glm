@@ -154,4 +154,9 @@ public class Vec3 extends Vec {
 
         return new float[]{x, y, z};
     }
+
+    public float getDistance(Vec3 v) {
+
+        return (float) Math.sqrt(Math.pow(x - v.x, 2) + Math.pow(y - v.y, 2) + Math.pow(z - v.z, 2));
+    }
 }
