@@ -71,8 +71,13 @@ public class Vec3 extends Vec {
     }
 
     /**
-     * Not traditional way. This is supposed to be around 35% faster.
+     * Not traditional way.
+     * v' = q * v * conjugate(q)
+     *
+     * This is supposed to be around 35% faster.
      * http://molecularmusings.wordpress.com/2013/05/24/a-faster-quaternion-vector-multiplication/
+     * t = 2 * cross(q.xyz, v)
+     * v' = v + q.w * t + cross(q.xyz, t)
      *
      * @param quat
      * @return
