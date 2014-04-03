@@ -16,7 +16,7 @@ public class Vec4 extends Vec {
     public float w;
 
     public Vec4() {
-        
+
         super();
     }
 
@@ -27,7 +27,7 @@ public class Vec4 extends Vec {
         z = vector[2];
         w = vector[3];
     }
-    
+
     public Vec4(float value) {
         vector = new float[]{value, value, value, value};
         x = vector[0];
@@ -35,14 +35,14 @@ public class Vec4 extends Vec {
         z = vector[2];
         w = vector[3];
     }
-    
-     public Vec4(int[] floatArray) {
-        
+
+    public Vec4(int[] floatArray) {
+
         x = floatArray[0];
         y = floatArray[1];
         z = floatArray[2];
         w = floatArray[3];
-        
+
         vector = new float[]{x, y, z, w};
     }
 
@@ -68,6 +68,11 @@ public class Vec4 extends Vec {
         this.z = z;
         this.w = w;
         vector = new float[]{this.x, this.y, this.z, this.w};
+    }
+
+    public float length() {
+
+        return (float) Math.sqrt(x * x + y * y + z * z + w * w);
     }
 
     public void print() {
@@ -107,9 +112,9 @@ public class Vec4 extends Vec {
 
         return new Vec4(x / scalar, y / scalar, z / scalar, w / scalar);
     }
-    
-    public float[] toFloatArray(){
-        
+
+    public float[] toFloatArray() {
+
         return new float[]{x, y, z, w};
     }
 }
