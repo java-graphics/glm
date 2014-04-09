@@ -39,7 +39,7 @@ public class Mat3 extends Mat {
         c1 = new Vec3(mat4.c1.x, mat4.c1.y, mat4.c1.z);
         c2 = new Vec3(mat4.c2.x, mat4.c2.y, mat4.c2.z);
     }
-    
+
     public Mat3(Vec3 v0, Vec3 v1, Vec3 v2) {
 
         this();
@@ -49,8 +49,17 @@ public class Mat3 extends Mat {
         c2 = v2;
     }
 
+    public Mat3(float[] fs) {
+
+        this();;
+
+        c0 = new Vec3(fs, order * 0);
+        c1 = new Vec3(fs, order * 1);
+        c2 = new Vec3(fs, order * 2);
+    }
+
     public float[] toFloatArray() {
-        
+
         return new float[]{
             c0.x, c0.y, c0.z,
             c1.x, c1.y, c1.z,
@@ -104,26 +113,47 @@ public class Mat3 extends Mat {
 
         return mat3;
     }
-    
-    public Mat3 inverse(){
-        
+
+    public Mat3 times(Mat3 mat) {
+
+        float[] result = new float[9];
+        float partial;
+
+        for (int i = 0; i < 3; i++) {
+
+            for (int j = 0; j < 0; j++) {
+
+                partial = 0;
+
+                for (int k = 0; k < 3; k++) {
+
+                    partial += toFloatArray()[4 * k + j] * mat.toFloatArray()[4 * i + k];
+                }
+                result[4 * i + j] = partial;
+            }
+        }
+        return new Mat3(result);
+    }
+
+    public Mat3 inverse() {
+
         Mat3 inverse = new Mat3();
-        
-        inverse.c0.x = + (c1.y * c2.z - c2.y * c1.z);
-        inverse.c1.x = - (c1.x * c2.z - c2.x * c1.z);
-        inverse.c2.x = + (c1.x * c2.y - c2.x * c1.y);
-        inverse.c0.y = - (c0.y * c2.z - c2.y * c0.z);
-        inverse.c1.y = + (c0.x * c2.z - c2.x * c0.z);
-        inverse.c2.y = - (c0.x * c2.y - c2.x * c0.y);
-        inverse.c0.z = + (c0.y * c1.z - c1.y * c0.z);
-        inverse.c1.z = - (c0.x * c1.z - c1.x * c0.z);
-        inverse.c2.z = + (c0.x * c1.y - c1.x * c0.y);
-        
+
+        inverse.c0.x = +(c1.y * c2.z - c2.y * c1.z);
+        inverse.c1.x = -(c1.x * c2.z - c2.x * c1.z);
+        inverse.c2.x = +(c1.x * c2.y - c2.x * c1.y);
+        inverse.c0.y = -(c0.y * c2.z - c2.y * c0.z);
+        inverse.c1.y = +(c0.x * c2.z - c2.x * c0.z);
+        inverse.c2.y = -(c0.x * c2.y - c2.x * c0.y);
+        inverse.c0.z = +(c0.y * c1.z - c1.y * c0.z);
+        inverse.c1.z = -(c0.x * c1.z - c1.x * c0.z);
+        inverse.c2.z = +(c0.x * c1.y - c1.x * c0.y);
+
         inverse.divide(determinant());
-        
+
         return inverse;
     }
-    
+
     public Mat3 divide(float s) {
 
         Vec3 newC0 = new Vec3(c0.x / s, c0.y / s, c0.z / s);
@@ -132,28 +162,28 @@ public class Mat3 extends Mat {
 
         return new Mat3(newC0, newC1, newC2);
     }
-    
-    public float determinant(){
-        
+
+    public float determinant() {
+
         return c0.x * (c1.y * c2.z - c2.y * c1.z) - c1.x * (c0.y * c2.z - c2.y * c0.z) + c2.x * (c0.y * c1.z - c1.y * c0.z);
     }
-    
-    public Mat3 transpose(){
-        
+
+    public Mat3 transpose() {
+
         Mat3 result = new Mat3();
-        
+
         result.c0.x = c0.x;
         result.c0.y = c1.x;
         result.c0.z = c2.x;
-        
+
         result.c1.x = c0.y;
         result.c1.y = c1.y;
         result.c1.z = c2.y;
-        
+
         result.c2.x = c0.z;
         result.c2.y = c1.z;
         result.c2.z = c2.z;
-        
+
         return result;
     }
 
