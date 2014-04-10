@@ -121,15 +121,15 @@ public class Mat3 extends Mat {
 
         for (int i = 0; i < 3; i++) {
 
-            for (int j = 0; j < 0; j++) {
+            for (int j = 0; j < 3; j++) {
 
                 partial = 0;
 
                 for (int k = 0; k < 3; k++) {
 
-                    partial += toFloatArray()[4 * k + j] * mat.toFloatArray()[4 * i + k];
+                    partial += toFloatArray()[3 * k + j] * mat.toFloatArray()[3 * i + k];
                 }
-                result[4 * i + j] = partial;
+                result[3 * i + j] = partial;
             }
         }
         return new Mat3(result);
