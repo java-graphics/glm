@@ -164,4 +164,18 @@ public class Vec3 extends Vec {
 
         return (float) Math.sqrt(Math.pow(x - v.x, 2) + Math.pow(y - v.y, 2) + Math.pow(z - v.z, 2));
     }
+
+    public boolean isEqual(Vec3 second) {
+
+        boolean equal = true;
+
+        for (int i = 0; i < 3; i++) {
+
+            if (toFloatArray()[i] != second.toFloatArray()[i]) {
+
+                equal = false;
+            }
+        }
+        return equal;
+    }
 }
