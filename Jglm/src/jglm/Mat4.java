@@ -52,7 +52,6 @@ public class Mat4 extends Mat {
 //                matrix[j + i * order] = mat3.toFloatArray()[j + i * mat3.order];
 //            }
 //        }
-
         c0 = new Vec4(mat3.c0, 0.0f);
         c1 = new Vec4(mat3.c1, 0.0f);
         c2 = new Vec4(mat3.c2, 0.0f);
@@ -101,7 +100,6 @@ public class Mat4 extends Mat {
 //        print();
 //        System.out.println("second: ");
 //        second.print();
-
         for (int i = 0; i < order; i++) {
 //            System.out.println("i: " + i);
             for (int j = 0; j < order; j++) {
@@ -209,7 +207,6 @@ public class Mat4 extends Mat {
 //
 //            w = (c0.y + c1.x) / s;
 //        }
-
         trace = c0.x + c1.y + c2.z + 1;
 
         if (trace > 0) {
@@ -261,7 +258,6 @@ public class Mat4 extends Mat {
             w = (c1.x + c0.y) / s;
         }
 
-
         Quat quat = new Quat(x, y, z, w);
 
         quat.normalize();
@@ -290,6 +286,20 @@ public class Mat4 extends Mat {
         translationMat.c3 = new Vec4(cameraPt.negated(), 1.0f);
 
         return rotationMat.mult(translationMat);
+    }
+
+    public boolean isEqual(Mat4 second) {
+
+        boolean equal = true;
+
+        for (int i = 0; i < toFloatArray().length; i++) {
+
+            if (toFloatArray()[i] != second.toFloatArray()[i]) {
+
+                equal = false;
+            }
+        }
+        return equal;
     }
 
     public void print() {
@@ -463,19 +473,15 @@ public class Mat4 extends Mat {
 //        inv1.print("inv1");
 //        inv2.print("inv2");
 //        inv3.print("inv3");
-
         Mat4 inverse = new Mat4(inv0, inv1, inv2, inv3);
 
 //        inverse.print("inverse");
-
         Vec4 row0 = new Vec4(inverse.c0.x, inverse.c1.x, inverse.c2.x, inverse.c3.x);
 
 //        row0.print("row0");
-
         float determinant = Jglm.dot(c0, row0);
 
 //        System.out.println("det: "+determinant);
-
         return inverse.divide(determinant);
     }
 

@@ -134,6 +134,25 @@ public class Mat3 extends Mat {
         }
         return new Mat3(result);
     }
+    
+    public Vec3 mult(Vec3 second) {
+
+        float[] result = new float[3];
+        float partial;
+
+        for (int i = 0; i < order; i++) {
+
+            partial = 0;
+
+            for (int j = 0; j < order; j++) {
+
+                partial += toFloatArray()[3 * j + i] * second.toFloatArray()[j];
+            }
+            result[i] = partial;
+        }
+
+        return new Vec3(result);
+    }
 
     public Mat3 inverse() {
 
