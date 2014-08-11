@@ -265,6 +265,59 @@ public class Mat4 extends Mat {
         return quat;
     }
 
+    public static Mat4 translate(Vec3 translation) {
+
+        Mat4 translationMat = new Mat4(1.0f);
+        translationMat.c3 = new Vec4(translation, 1.0f);
+        
+        return translationMat;
+    }
+    
+    public static Mat4 rotationX(float angle) {
+        
+        float sina = (float) Math.sin(angle);
+        float cosa = (float) Math.cos(angle);
+        
+        Mat4 result = new Mat4(1f);
+        
+        result.c1.y = cosa;
+        result.c1.z = sina;
+        result.c2.y = -sina;
+        result.c2.z = cosa;
+        
+        return result;
+    }
+    
+    public static Mat4 rotationY(float angle) {
+        
+        float sina = (float) Math.sin(angle);
+        float cosa = (float) Math.cos(angle);
+        
+        Mat4 result = new Mat4(1f);
+        
+        result.c0.x = cosa;
+        result.c0.z = -sina;
+        result.c2.x = sina;
+        result.c2.z = cosa;
+        
+        return result;
+    }
+    
+    public static Mat4 rotationZ(float angle) {
+        
+        float sina = (float) Math.sin(angle);
+        float cosa = (float) Math.cos(angle);
+        
+        Mat4 result = new Mat4(1f);
+        
+        result.c0.x = cosa;
+        result.c0.y = sina;
+        result.c1.x = -sina;
+        result.c1.y = cosa;
+        
+        return result;
+    }
+
     public static Mat4 CalcLookAtMatrix(Vec3 cameraPt, Vec3 lookPt, Vec3 upPt) {
 
         Vec3 lookDir = lookPt.minus(cameraPt);
