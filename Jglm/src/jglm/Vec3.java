@@ -70,6 +70,18 @@ public class Vec3 extends Vec {
         return new Vec3(x * scalar, y * scalar, z * scalar);
     }
 
+    public static Vec3 mix(Vec3 start, Vec3 end, float lerp) {
+        
+        Vec3 result = end.minus(start);
+        
+        result = result.times(lerp);
+        
+        result = start.plus(result);
+        
+//        return (start + lerp * (end - start));
+        return result;
+    }
+    
     /**
      * Not traditional way.
      * v' = q * v * conjugate(q)
