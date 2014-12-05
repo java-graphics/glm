@@ -70,6 +70,11 @@ public class Vec4 extends Vec {
         vector = new float[]{this.x, this.y, this.z, this.w};
     }
 
+    public Vec4 normalize() {
+
+        return new Vec4(x / length(), y / length(), z / length(), w / length());
+    }
+
     public float length() {
 
         return (float) Math.sqrt(x * x + y * y + z * z + w * w);
