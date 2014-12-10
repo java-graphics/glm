@@ -107,7 +107,7 @@ public class Mat4 extends Mat {
                 partial = 0;
 
                 for (int k = 0; k < order; k++) {
-                    partial += toFloatArray()[4 * k + j] * second.toFloatArray()[4 * i + k];
+                    partial += second.toFloatArray()[4 * k + j] * toFloatArray()[4 * i + k];
 //                    System.out.println("k: " + k + " first: " + this.toFloatArray()[4 * k + j] + " second: " + second.toFloatArray()[4 * i + k] + " = "
 //                            + (this.toFloatArray()[4 * k + j] * second.toFloatArray()[4 * i + k]) + " partial: " + partial);
                 }
