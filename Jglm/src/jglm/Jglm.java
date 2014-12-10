@@ -145,24 +145,24 @@ public class Jglm {
         return orthographic(left, right, bottom, top, -1.0f, 1.0f);
     }
 
-//    public static Vec3 unProject(Vec3 window, Mat4 modelview, Mat4 projection, Vec4 viewport) {
-//
-//        Mat4 pm = projection.mult(modelview);
-//
-//        Mat4 inverse = pm.inverse();
-//
-//        Vec4 tmp = new Vec4(window, 1.0f);
-//        tmp.x = (tmp.x - viewport.x) / viewport.z;
-//        tmp.y = (tmp.y - viewport.y) / viewport.w;
-//        tmp = tmp.mult(2);
-//        tmp = tmp.minus(1);
-//
-//        Vec4 obj = inverse.mult(tmp);
-//
-//        obj = obj.divide(obj.w);
-//
-//        return new Vec3(obj);
-//    }
+    public static Vec3 unProject(Vec3 window, Mat4 modelview, Mat4 projection, Vec4 viewport) {
+
+        Mat4 pm = projection.mult(modelview);
+
+        Mat4 inverse = pm.inverse();
+
+        Vec4 tmp = new Vec4(window, 1.0f);
+        tmp.x = (tmp.x - viewport.x) / viewport.z;
+        tmp.y = (tmp.y - viewport.y) / viewport.w;
+        tmp = tmp.mult(2);
+        tmp = tmp.minus(1);
+
+        Vec4 obj = inverse.mult(tmp);
+
+        obj = obj.divide(obj.w);
+
+        return new Vec3(obj);
+    }
 
     public static float dot(Vec4 v0, Vec4 v1) {
 
