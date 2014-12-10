@@ -58,6 +58,10 @@ public class Mat4 extends Mat {
         c3 = new Vec4(new Vec3(), 1.0f);
     }
 
+    /**
+     * Column-major order.
+     * @param floatArray 
+     */
     public Mat4(float[] floatArray) {
 
         order = 4;
@@ -107,7 +111,7 @@ public class Mat4 extends Mat {
                 partial = 0;
 
                 for (int k = 0; k < order; k++) {
-                    partial += second.toFloatArray()[4 * k + j] * toFloatArray()[4 * i + k];
+                    partial += toFloatArray()[4 * k + j] * second.toFloatArray()[4 * i + k];
 //                    System.out.println("k: " + k + " first: " + this.toFloatArray()[4 * k + j] + " second: " + second.toFloatArray()[4 * i + k] + " = "
 //                            + (this.toFloatArray()[4 * k + j] * second.toFloatArray()[4 * i + k]) + " partial: " + partial);
                 }
