@@ -56,8 +56,8 @@ public class Vec3 extends Vec {
     public Vec3 normalize() {
 
         float length = ((float) Math.sqrt(x * x + y * y + z * z));
-
-        return new Vec3(x / length, y / length, z / length);
+        
+        return length != 0 ? new Vec3(x / length, y / length, z / length) : new Vec3();
     }
 
     public float dot(Vec3 vec3) {
