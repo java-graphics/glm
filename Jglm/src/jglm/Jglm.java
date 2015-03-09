@@ -77,7 +77,7 @@ public class Jglm {
 
         float s = (float) Math.sin(a * 0.5f);
 
-        axis.normalize();
+        axis = axis.normalize();
 
         result.x = axis.x * s;
         result.y = axis.y * s;

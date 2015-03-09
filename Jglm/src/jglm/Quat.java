@@ -276,6 +276,7 @@ public class Quat {
      * Multiply this quaternion by the param quaternion
      *
      * @param q a quaternion to multiply with
+     * @return 
      */
     public Quat mult(Quat q) {
 
@@ -353,6 +354,7 @@ public class Quat {
 
     /**
      * Invert the quaternion If rotational, will produce a the inverse rotation
+     * @return 
      */
     public Quat conjugate() {
 
