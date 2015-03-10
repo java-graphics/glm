@@ -60,7 +60,8 @@ public class Mat4 extends Mat {
 
     /**
      * Column-major order.
-     * @param floatArray 
+     *
+     * @param floatArray
      */
     public Mat4(float[] floatArray) {
 
@@ -154,114 +155,58 @@ public class Mat4 extends Mat {
 
     public Quat toQuaternion() {
 
-        float trace;
-        float s;
-        float x;
-        float y;
-        float z;
-        float w;
+        float trace, s, x, y, z, w;
 
-//        trace = c0.x + c1.y + c2.z + 1;
-//
-//        if (trace > 0) {
-//
-//            s = 0.5f / (float) Math.sqrt(trace);
-//
-//            x = (c2.y - c1.z) * s;
-//
-//            y = (c0.z - c2.x) * s;
-//
-//            z = (c1.x - c0.y) * s;
-//
-//            w = 0.25f / s;
-//
-//        } else if (c0.x > c1.y && c0.x > c2.z) {
-//
-//            s = (float) Math.sqrt(1.0f + c0.x - c1.y - c2.z) * 2;
-//
-//            x = 0.5f / s;
-//
-//            y = (c0.y + c1.x) / s;
-//
-//            z = (c0.z + c2.x) / s;
-//
-//            w = (c1.z + c2.y) / s;
-//
-//        } else if (c1.y > c2.z) {
-//
-//            s = (float) Math.sqrt(1.0f + c1.y - c0.x - c2.z) * 2;
-//
-//            x = (c0.y + c1.x) / s;
-//
-//            y = 0.5f / s;
-//
-//            z = (c1.z + c2.y) / s;
-//
-//            w = (c0.z + c2.x) / s;
-//
-//        } else {
-//
-//            s = (float) Math.sqrt(1.0f + c2.z - c0.x - c1.y) * 2;
-//
-//            x = (c0.z + c2.x) / s;
-//
-//            y = (c1.z + c2.y) / s;
-//
-//            z = 0.5f / s;
-//
-//            w = (c0.y + c1.x) / s;
-//        }
-        trace = c0.x + c1.y + c2.z + 1;
+        trace = c0.x + c1.y + c2.z;
 
         if (trace > 0) {
 
-            s = 0.5f / (float) Math.sqrt(trace);
+            s = (float) (Math.sqrt(trace + 1) * 2);
 
-            x = (c1.z - c2.y) * s;
+            x = (c1.z - c2.y) / s;
 
-            y = (c2.x - c0.z) * s;
+            y = (c2.x - c0.z) / s;
 
-            z = (c0.y - c1.x) * s;
+            z = (c0.y - c1.x) / s;
 
-            w = 0.25f / s;
+            w = 0.25f * s;
 
-        } else if (c0.x > c1.y && c0.x > c2.z) {
+        } else if ((c0.x > c1.y) && (c0.x > c2.z)) {
 
-            s = (float) Math.sqrt(1.0f + c0.x - c1.y - c2.z) * 2;
+            s = (float) (Math.sqrt(1.0f + c0.x - c1.y - c2.z) * 2);
 
-            x = 0.5f / s;
+            x = 0.25f * s;
 
             y = (c1.x + c0.y) / s;
 
             z = (c2.x + c0.z) / s;
 
-            w = (c2.y + c1.z) / s;
+            w = (c1.z - c2.y) / s;
 
         } else if (c1.y > c2.z) {
 
-            s = (float) Math.sqrt(1.0f + c1.y - c0.x - c2.z) * 2;
+            s = (float) (Math.sqrt(1.0f + c1.y - c0.x - c2.z) * 2);
 
             x = (c1.x + c0.y) / s;
 
-            y = 0.5f / s;
+            y = 0.25f * s;
 
             z = (c2.y + c1.z) / s;
 
-            w = (c2.x + c0.z) / s;
+            w = (c2.x - c0.z) / s;
 
         } else {
 
-            s = (float) Math.sqrt(1.0f + c2.z - c0.x - c1.y) * 2;
+            s = (float) (Math.sqrt(1.0f + c2.z - c0.x - c1.y) * 2);
 
             x = (c2.x + c0.z) / s;
 
             y = (c2.y + c1.z) / s;
 
-            z = 0.5f / s;
+            z = 0.25f * s;
 
-            w = (c1.x + c0.y) / s;
+            w = (c0.y - c1.x) / s;
         }
-
         Quat quat = new Quat(x, y, z, w);
 
         quat.normalize();
@@ -273,52 +218,52 @@ public class Mat4 extends Mat {
 
         Mat4 translationMat = new Mat4(1.0f);
         translationMat.c3 = new Vec4(translation, 1.0f);
-        
+
         return translationMat;
     }
-    
+
     public static Mat4 rotationX(float angle) {
-        
+
         float sina = (float) Math.sin(angle);
         float cosa = (float) Math.cos(angle);
-        
+
         Mat4 result = new Mat4(1f);
-        
+
         result.c1.y = cosa;
         result.c1.z = sina;
         result.c2.y = -sina;
         result.c2.z = cosa;
-        
+
         return result;
     }
-    
+
     public static Mat4 rotationY(float angle) {
-        
+
         float sina = (float) Math.sin(angle);
         float cosa = (float) Math.cos(angle);
-        
+
         Mat4 result = new Mat4(1f);
-        
+
         result.c0.x = cosa;
         result.c0.z = -sina;
         result.c2.x = sina;
         result.c2.z = cosa;
-        
+
         return result;
     }
-    
+
     public static Mat4 rotationZ(float angle) {
-        
+
         float sina = (float) Math.sin(angle);
         float cosa = (float) Math.cos(angle);
-        
+
         Mat4 result = new Mat4(1f);
-        
+
         result.c0.x = cosa;
         result.c0.y = sina;
         result.c1.x = -sina;
         result.c1.y = cosa;
-        
+
         return result;
     }
 
