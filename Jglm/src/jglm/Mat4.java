@@ -207,8 +207,9 @@ public class Mat4 extends Mat {
 
             w = (c0.y - c1.x) / s;
         }
-        Quat quat = new Quat(x, y, z, w);
 
+        Quat quat = new Quat((float) x, (float) y, (float) z, (float) w);
+        
         quat.normalize();
 
         return quat;
