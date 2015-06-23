@@ -83,6 +83,16 @@ public class Mat4 extends Mat {
         c3 = v3;
     }
 
+    public Mat4(Vec4 diag) {
+
+        this();
+
+        c0.x = diag.x;
+        c1.y = diag.y;
+        c2.z = diag.z;
+        c3.w = diag.w;
+    }
+
     public float[] toFloatArray() {
         return new float[]{
             c0.x, c0.y, c0.z, c0.w,
@@ -209,7 +219,7 @@ public class Mat4 extends Mat {
         }
 
         Quat quat = new Quat((float) x, (float) y, (float) z, (float) w);
-        
+
         quat.normalize();
 
         return quat;

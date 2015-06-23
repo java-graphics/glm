@@ -51,7 +51,7 @@ public class Mat3 extends Mat {
 
     public Mat3(float[] fs) {
 
-        this();;
+        this();
 
         c0 = new Vec3(fs, order * 0);
         c1 = new Vec3(fs, order * 1);
