@@ -31,6 +31,22 @@ public class Vec3 extends Vec {
         this.z = z;
         vector = new float[]{x, y, z};
     }
+    
+    public Vec3(float f) {
+
+        x = f;
+        y = f;
+        z = f;
+        vector = new float[]{f, f, f};
+    }
+    
+    public Vec3(Vec3 v) {
+
+        x = v.x;
+        y = v.y;
+        z = v.z;
+        vector = new float[]{x, y, z};
+    }
 
     public Vec3(float[] floatArray, int i) {
 
