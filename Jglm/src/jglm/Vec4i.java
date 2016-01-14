@@ -103,8 +103,8 @@ public class Vec4i extends Veci {
 //        return new Vec4(x / scalar, y / scalar, z / scalar, w / scalar);
 //    }
 //
-//    public float[] toFloatArray() {
-//
-//        return new float[]{x, y, z, w};
-//    }
+    public float[] toFloatArray() {
+
+        return new float[]{x, y, z, w};
+    }
 }
