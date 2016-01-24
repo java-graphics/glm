@@ -93,6 +93,14 @@ public class Mat4 extends Mat {
         c3.w = diag.w;
     }
 
+//    public void rotationYawPitchRoll(float yaw, float pitch, float roll) {
+//
+//        if (yaw != 0) {
+//         
+//            rotationX(roll)
+//        }
+//    }
+
     public float[] toFloatArray() {
         return new float[]{
             c0.x, c0.y, c0.z, c0.w,
@@ -218,7 +226,7 @@ public class Mat4 extends Mat {
             w = (c0.y - c1.x) / s;
         }
 
-        Quat quat = new Quat((float) x, (float) y, (float) z, (float) w);
+        Quat quat = new Quat(x, y, z, w);
 
         quat.normalize();
 
