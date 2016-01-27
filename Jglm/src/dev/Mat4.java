@@ -6,6 +6,8 @@
 package dev;
 
 import java.io.PrintStream;
+import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 
 /**
  *
@@ -37,6 +39,25 @@ public class Mat4 {
         m33 = 1.0f;
     }
 
+    public Mat4(Mat4 m) {
+        m00 = m.m00;
+        m01 = m.m01;
+        m02 = m.m02;
+        m03 = m.m03;
+        m10 = m.m10;
+        m11 = m.m11;
+        m12 = m.m12;
+        m13 = m.m13;
+        m20 = m.m20;
+        m21 = m.m21;
+        m22 = m.m22;
+        m23 = m.m23;
+        m30 = m.m30;
+        m31 = m.m31;
+        m32 = m.m32;
+        m33 = m.m33;
+    }
+
     public Mat4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13,
             float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33) {
         this.m00 = m00;
@@ -57,47 +78,177 @@ public class Mat4 {
         this.m33 = m33;
     }
 
-    public Mat4 mulPerspective_(float fovy, float aspect, float zNear, float zFar) {
-        return mulPerspective(fovy, aspect, zNear, zFar, new Mat4());
+    public Mat4 identity() {
+        m00 = 1.0f;
+        m01 = 0.0f;
+        m02 = 0.0f;
+        m03 = 0.0f;
+        m10 = 0.0f;
+        m11 = 1.0f;
+        m12 = 0.0f;
+        m13 = 0.0f;
+        m20 = 0.0f;
+        m21 = 0.0f;
+        m22 = 1.0f;
+        m23 = 0.0f;
+        m30 = 0.0f;
+        m31 = 0.0f;
+        m32 = 0.0f;
+        m33 = 1.0f;
+        return this;
     }
 
-    public Mat4 mulPerspective(float fovy, float aspect, float zNear, float zFar, Mat4 res) {
-        float h = (float) Math.tan(fovy * 0.5f) * zNear;
-        float w = h * aspect;
-
-        // calculate right matrix elements
-        float rm00 = zNear / w;
-        float rm11 = zNear / h;
-        float rm22 = -(zFar + zNear) / (zFar - zNear);
-        float rm32 = -2.0f * zFar * zNear / (zFar - zNear);
-
-        // perform optimized matrix multiplication
-        float nm20 = m20 * rm22 - m30;
-        float nm21 = m21 * rm22 - m31;
-        float nm22 = m22 * rm22 - m32;
-        float nm23 = m23 * rm22 - m33;
-        res.m00 = m00 * rm00;
-        res.m01 = m01 * rm00;
-        res.m02 = m02 * rm00;
-        res.m03 = m03 * rm00;
-        res.m10 = m10 * rm11;
-        res.m11 = m11 * rm11;
-        res.m12 = m12 * rm11;
-        res.m13 = m13 * rm11;
-        res.m30 = m20 * rm32;
-        res.m31 = m21 * rm32;
-        res.m32 = m22 * rm32;
-        res.m33 = m23 * rm32;
-        res.m20 = nm20;
-        res.m21 = nm21;
-        res.m22 = nm22;
-        res.m23 = nm23;
-
-        return res;
+    public Mat4 mul(Mat4 right) {
+        return mul(right, this);
     }
 
-    public static Mat4 perspective_(float fovy, float aspect, float zNear, float zFar) {
-        return perspective(fovy, aspect, zNear, zFar, new Mat4());
+    public Mat4 mul(Mat4 right, Mat4 dest) {
+        dest.m00 = m00 * right.m00 + m10 * right.m01 + m20 * right.m02 + m30 * right.m03;
+        dest.m01 = m01 * right.m00 + m11 * right.m01 + m21 * right.m02 + m31 * right.m03;
+        dest.m02 = m02 * right.m00 + m12 * right.m01 + m22 * right.m02 + m32 * right.m03;
+        dest.m03 = m03 * right.m00 + m13 * right.m01 + m23 * right.m02 + m33 * right.m03;
+        dest.m10 = m00 * right.m10 + m10 * right.m11 + m20 * right.m12 + m30 * right.m13;
+        dest.m11 = m01 * right.m10 + m11 * right.m11 + m21 * right.m12 + m31 * right.m13;
+        dest.m12 = m02 * right.m10 + m12 * right.m11 + m22 * right.m12 + m32 * right.m13;
+        dest.m13 = m03 * right.m10 + m13 * right.m11 + m23 * right.m12 + m33 * right.m13;
+        dest.m20 = m00 * right.m20 + m10 * right.m21 + m20 * right.m22 + m30 * right.m23;
+        dest.m21 = m01 * right.m20 + m11 * right.m21 + m21 * right.m22 + m31 * right.m23;
+        dest.m22 = m02 * right.m20 + m12 * right.m21 + m22 * right.m22 + m32 * right.m23;
+        dest.m23 = m03 * right.m20 + m13 * right.m21 + m23 * right.m22 + m33 * right.m23;
+        dest.m30 = m00 * right.m30 + m10 * right.m31 + m20 * right.m32 + m30 * right.m33;
+        dest.m31 = m01 * right.m30 + m11 * right.m31 + m21 * right.m32 + m31 * right.m33;
+        dest.m32 = m02 * right.m30 + m12 * right.m31 + m22 * right.m32 + m32 * right.m33;
+        dest.m33 = m03 * right.m30 + m13 * right.m31 + m23 * right.m32 + m33 * right.m33;
+        return dest;
+    }
+
+    public Mat4 rotation(float angle, float x, float y, float z) {
+        float c = (float) Math.cos(angle);
+        float s = (float) Math.sin(angle);
+        float t = (float) (1.0 - c);
+        //  Normalize
+        float magnitude = (float) Math.sqrt(x * x + y * y + z * z);
+        x /= magnitude;
+        y /= magnitude;
+        z /= magnitude;
+        m00 = c + x * x * t;
+        m11 = c + y * y * t;
+        m22 = c + z * z * t;
+        float tmp1 = x * y * t;
+        float tmp2 = z * s;
+        m01 = tmp1 + tmp2;
+        m10 = tmp1 - tmp2;
+        tmp1 = x * z * t;
+        tmp2 = y * s;
+        m02 = tmp1 - tmp2;
+        m20 = tmp1 + tmp2;
+        tmp1 = y * z * t;
+        tmp2 = x * s;
+        m12 = tmp1 + tmp2;
+        m21 = tmp1 - tmp2;
+        m03 = 0;
+        m13 = 0;
+        m23 = 0;
+        m30 = 0;
+        m31 = 0;
+        m32 = 0;
+        m33 = 1;
+        return this;
+    }
+
+    public Mat4 rotate(float angle, float x, float y, float z) {
+        return rotate(angle, x, y, z, this);
+    }
+
+    /**
+     * Vec must be normalized.
+     *
+     * @param angle
+     * @param x
+     * @param y
+     * @param z
+     * @param dest
+     * @return
+     */
+    public Mat4 rotate(float angle, float x, float y, float z, Mat4 dest) {
+        float s = (float) Math.sin(angle);
+        float c = (float) Math.cos(angle);
+        float C = 1.0f - c;
+        // rotation matrix elements: m30, m31, m32, m03, m13, m23 = 0, m33 = 1
+        float xx = x * x, xy = x * y, xz = x * z;
+        float yy = y * y, yz = y * z;
+        float zz = z * z;
+        float rm00 = xx * C + c;
+        float rm01 = xy * C + z * s;
+        float rm02 = xz * C - y * s;
+        float rm10 = xy * C - z * s;
+        float rm11 = yy * C + c;
+        float rm12 = yz * C + x * s;
+        float rm20 = xz * C + y * s;
+        float rm21 = yz * C - x * s;
+        float rm22 = zz * C + c;
+        // add temporaries for dependent values
+        float nm00 = m00 * rm00 + m10 * rm01 + m20 * rm02;
+        float nm01 = m01 * rm00 + m11 * rm01 + m21 * rm02;
+        float nm02 = m02 * rm00 + m12 * rm01 + m22 * rm02;
+        float nm03 = m03 * rm00 + m13 * rm01 + m23 * rm02;
+        float nm10 = m00 * rm10 + m10 * rm11 + m20 * rm12;
+        float nm11 = m01 * rm10 + m11 * rm11 + m21 * rm12;
+        float nm12 = m02 * rm10 + m12 * rm11 + m22 * rm12;
+        float nm13 = m03 * rm10 + m13 * rm11 + m23 * rm12;
+        // set non-dependent values directly
+        dest.m20 = m00 * rm20 + m10 * rm21 + m20 * rm22;
+        dest.m21 = m01 * rm20 + m11 * rm21 + m21 * rm22;
+        dest.m22 = m02 * rm20 + m12 * rm21 + m22 * rm22;
+        dest.m23 = m03 * rm20 + m13 * rm21 + m23 * rm22;
+        // set other values
+        dest.m00 = nm00;
+        dest.m01 = nm01;
+        dest.m02 = nm02;
+        dest.m03 = nm03;
+        dest.m10 = nm10;
+        dest.m11 = nm11;
+        dest.m12 = nm12;
+        dest.m13 = nm13;
+        dest.m30 = m30;
+        dest.m31 = m31;
+        dest.m32 = m32;
+        dest.m33 = m33;
+        return dest;
+    }
+
+    public Mat4 translation(float x, float y, float z) {
+        m00 = 1.0f;
+        m01 = 0.0f;
+        m02 = 0.0f;
+        m03 = 0.0f;
+        m10 = 0.0f;
+        m11 = 1.0f;
+        m12 = 0.0f;
+        m13 = 0.0f;
+        m20 = 0.0f;
+        m21 = 0.0f;
+        m22 = 1.0f;
+        m23 = 0.0f;
+        m30 = x;
+        m31 = y;
+        m32 = z;
+        m33 = 1.0f;
+        return this;
+    }
+
+    public Mat4 translate(float x, float y, float z) {
+        // translation matrix elements: m00, m11, m22, m33 = 1
+        // m30 = x, m31 = y, m32 = z, all others = 0
+        m30 = m00 * x + m10 * y + m20 * z + m30;
+        m31 = m01 * x + m11 * y + m21 * z + m31;
+        m32 = m02 * x + m12 * y + m22 * z + m32;
+        m33 = m03 * x + m13 * y + m23 * z + m33;
+        return this;
+    }
+
+    public Mat4 perspective(float fovy, float aspect, float zNear, float zFar) {
+        return perspective(fovy, aspect, zNear, zFar, this);
     }
 
     public static Mat4 perspective(float fovy, float aspect, float zNear, float zFar, Mat4 res) {
@@ -122,8 +273,44 @@ public class Mat4 {
         return res;
     }
 
+    public Mat4 mulPerspective(float fovy, float aspect, float zNear, float zFar) {
+        return mulPerspective(fovy, aspect, zNear, zFar, this);
+    }
+
+    public Mat4 mulPerspective(float fovy, float aspect, float zNear, float zFar, Mat4 res) {
+        float h = (float) Math.tan(fovy * 0.5f) * zNear;
+        float w = h * aspect;
+        // calculate right matrix elements
+        float rm00 = zNear / w;
+        float rm11 = zNear / h;
+        float rm22 = -(zFar + zNear) / (zFar - zNear);
+        float rm32 = -2.0f * zFar * zNear / (zFar - zNear);
+        // perform optimized matrix multiplication
+        float nm20 = m20 * rm22 - m30;
+        float nm21 = m21 * rm22 - m31;
+        float nm22 = m22 * rm22 - m32;
+        float nm23 = m23 * rm22 - m33;
+        res.m00 = m00 * rm00;
+        res.m01 = m01 * rm00;
+        res.m02 = m02 * rm00;
+        res.m03 = m03 * rm00;
+        res.m10 = m10 * rm11;
+        res.m11 = m11 * rm11;
+        res.m12 = m12 * rm11;
+        res.m13 = m13 * rm11;
+        res.m30 = m20 * rm32;
+        res.m31 = m21 * rm32;
+        res.m32 = m22 * rm32;
+        res.m33 = m23 * rm32;
+        res.m20 = nm20;
+        res.m21 = nm21;
+        res.m22 = nm22;
+        res.m23 = nm23;
+        return res;
+    }
+
     public boolean equals(Mat4 other) {
-        return equals(other, 1);
+        return equals(other, 2);
     }
 
     public boolean equals(Mat4 other, int maxUlps) {
@@ -190,16 +377,73 @@ public class Mat4 {
      * @param expected The expected value.
      * @param actual The actual value.
      * @param maxUlps The maximum difference in ULPs.
-     * @return 
+     * @return
      */
     public static boolean compareFloatEquals(float expected, float actual, int maxUlps) {
         int expectedBits = Float.floatToIntBits(expected) < 0 ? 0x80000000 - Float.floatToIntBits(expected) : Float.floatToIntBits(expected);
         int actualBits = Float.floatToIntBits(actual) < 0 ? 0x80000000 - Float.floatToIntBits(actual) : Float.floatToIntBits(actual);
         int difference = expectedBits > actualBits ? expectedBits - actualBits : actualBits - expectedBits;
-boolean a = !Float.isNaN(expected);
-boolean b = !Float.isNaN(actual);
-boolean c = difference <= maxUlps;
+        if (difference > maxUlps) {
+            System.out.println("expected: " + expected + ", actual: " + actual);
+            System.out.println("diff " + difference);
+        }
         return !Float.isNaN(expected) && !Float.isNaN(actual) && difference <= maxUlps;
+    }
+
+    public float[] toFA_() {
+        return toFloatArray(new float[16]);
+    }
+
+    public float[] toFloatArray(float[] res) {
+        return toFA(res, 0);
+    }
+
+    public float[] toFA(float[] res, int index) {
+        res[index + 0] = m00;
+        res[index + 1] = m01;
+        res[index + 2] = m02;
+        res[index + 3] = m03;
+        res[index + 4] = m10;
+        res[index + 5] = m11;
+        res[index + 6] = m12;
+        res[index + 7] = m13;
+        res[index + 8] = m20;
+        res[index + 9] = m21;
+        res[index + 10] = m22;
+        res[index + 11] = m23;
+        res[index + 12] = m30;
+        res[index + 13] = m31;
+        res[index + 14] = m32;
+        res[index + 15] = m33;
+        return res;
+    }
+
+    public ByteBuffer toFB_() {
+        return toFB(ByteBuffer.allocate(16 * Float.BYTES));
+    }
+
+    public ByteBuffer toFB(ByteBuffer res) {
+        return toFB(res, 0);
+    }
+
+    public ByteBuffer toFB(ByteBuffer res, int index) {
+        res.putFloat(index + 0, m00);
+        res.putFloat(index + 1, m01);
+        res.putFloat(index + 2, m02);
+        res.putFloat(index + 3, m03);
+        res.putFloat(index + 4, m10);
+        res.putFloat(index + 5, m11);
+        res.putFloat(index + 6, m12);
+        res.putFloat(index + 7, m13);
+        res.putFloat(index + 8, m20);
+        res.putFloat(index + 9, m21);
+        res.putFloat(index + 10, m22);
+        res.putFloat(index + 11, m23);
+        res.putFloat(index + 12, m30);
+        res.putFloat(index + 13, m31);
+        res.putFloat(index + 14, m32);
+        res.putFloat(index + 15, m33);
+        return res;
     }
 
     public void print() {
@@ -215,7 +459,7 @@ boolean c = difference <= maxUlps;
     }
 
     public void print(String title, boolean outStream) {
-        String res = title.isEmpty() ? "" : (title + "\n")
+        String res = title + "\n"
                 + "| " + m00 + " " + m10 + " " + m20 + " " + m30 + " |\n"
                 + "| " + m01 + " " + m11 + " " + m21 + " " + m31 + " |\n"
                 + "| " + m02 + " " + m12 + " " + m22 + " " + m32 + " |\n"
