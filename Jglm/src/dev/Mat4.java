@@ -5,6 +5,7 @@
  */
 package dev;
 
+import core.glm;
 import java.io.PrintStream;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
@@ -19,6 +20,8 @@ public class Mat4 {
     public float m01, m11, m21, m31;
     public float m02, m12, m22, m32;
     public float m03, m13, m23, m33;
+
+    public static final int SIZEOF = 4 * 4 * Float.BYTES;
 
     public Mat4() {
         m00 = 1.0f;
@@ -78,6 +81,68 @@ public class Mat4 {
         this.m33 = m33;
     }
 
+    public Mat4 set(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13,
+            float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33) {
+        this.m00 = m00;
+        this.m01 = m01;
+        this.m02 = m02;
+        this.m03 = m03;
+        this.m10 = m10;
+        this.m11 = m11;
+        this.m12 = m12;
+        this.m13 = m13;
+        this.m20 = m20;
+        this.m21 = m21;
+        this.m22 = m22;
+        this.m23 = m23;
+        this.m30 = m30;
+        this.m31 = m31;
+        this.m32 = m32;
+        this.m33 = m33;
+        return this;
+    }
+
+    public Mat4 set(Mat4 m) {
+        m00 = m.m00;
+        m01 = m.m01;
+        m02 = m.m02;
+        m03 = m.m03;
+        m10 = m.m10;
+        m11 = m.m11;
+        m12 = m.m12;
+        m13 = m.m13;
+        m20 = m.m20;
+        m21 = m.m21;
+        m22 = m.m22;
+        m23 = m.m23;
+        m30 = m.m30;
+        m31 = m.m31;
+        m32 = m.m32;
+        m33 = m.m33;
+        return this;
+    }
+
+    public float det() {
+        return (m00 * m11 - m01 * m10) * (m22 * m33 - m23 * m32)
+                + (m02 * m10 - m00 * m12) * (m21 * m33 - m23 * m31)
+                + (m00 * m13 - m03 * m10) * (m21 * m32 - m22 * m31)
+                + (m01 * m12 - m02 * m11) * (m20 * m33 - m23 * m30)
+                + (m03 * m11 - m01 * m13) * (m20 * m32 - m22 * m30)
+                + (m02 * m13 - m03 * m12) * (m20 * m31 - m21 * m30);
+    }
+
+    /**
+     * Return the determinant of this matrix by assuming that it represents an {@link #isAffine() affine} transformation and thus
+     * its last row is equal to <tt>(0, 0, 0, 1)</tt>.
+     *
+     * @return the determinant
+     */
+    public float det4x3() {
+        return (m00 * m11 - m01 * m10) * m22
+                + (m02 * m10 - m00 * m12) * m21
+                + (m01 * m12 - m02 * m11) * m20;
+    }
+
     public Mat4 identity() {
         m00 = 1.0f;
         m01 = 0.0f;
@@ -98,39 +163,150 @@ public class Mat4 {
         return this;
     }
 
+    /**
+     * Invert this matrix and write the result into <code>dest</code>.
+     * <p>
+     * If <code>this</code> matrix represents an {@link #isAffine() affine} transformation, such as translation, rotation, scaling and shearing,
+     * and thus its last row is equal to <tt>(0, 0, 0, 1)</tt>, then {@link #invert4x3(Matrix4f)} can be used instead of this method.
+     *
+     * @see #invert4x3(Matrix4f)
+     * @return dest
+     */
+    public Mat4 inverse() {
+        return Mat4.this.inverse(this);
+    }
+
+    /**
+     * Invert this matrix.
+     * <p>
+     * If <code>this</code> matrix represents an {@link #isAffine() affine} transformation, such as translation, rotation, scaling and shearing,
+     * and thus its last row is equal to <tt>(0, 0, 0, 1)</tt>, then {@link #inverse4x3()} can be used instead of this method.
+     *
+     * @param dest
+     * @see #inverse4x3()
+     *
+     * @return this
+     */
+    public Mat4 inverse(Mat4 dest) {
+        float a = m00 * m11 - m01 * m10;
+        float b = m00 * m12 - m02 * m10;
+        float c = m00 * m13 - m03 * m10;
+        float d = m01 * m12 - m02 * m11;
+        float e = m01 * m13 - m03 * m11;
+        float f = m02 * m13 - m03 * m12;
+        float g = m20 * m31 - m21 * m30;
+        float h = m20 * m32 - m22 * m30;
+        float i = m20 * m33 - m23 * m30;
+        float j = m21 * m32 - m22 * m31;
+        float k = m21 * m33 - m23 * m31;
+        float l = m22 * m33 - m23 * m32;
+        float det = a * l - b * k + c * j + d * i - e * h + f * g;
+        det = 1.0f / det;
+        dest.set((m11 * l - m12 * k + m13 * j) * det,
+                (-m01 * l + m02 * k - m03 * j) * det,
+                (m31 * f - m32 * e + m33 * d) * det,
+                (-m21 * f + m22 * e - m23 * d) * det,
+                (-m10 * l + m12 * i - m13 * h) * det,
+                (m00 * l - m02 * i + m03 * h) * det,
+                (-m30 * f + m32 * c - m33 * b) * det,
+                (m20 * f - m22 * c + m23 * b) * det,
+                (m10 * k - m11 * i + m13 * g) * det,
+                (-m00 * k + m01 * i - m03 * g) * det,
+                (m30 * e - m31 * c + m33 * a) * det,
+                (-m20 * e + m21 * c - m23 * a) * det,
+                (-m10 * j + m11 * h - m12 * g) * det,
+                (m00 * j - m01 * h + m02 * g) * det,
+                (-m30 * d + m31 * b - m32 * a) * det,
+                (m20 * d - m21 * b + m22 * a) * det);
+        return dest;
+    }
+
+    /**
+     * Invert this matrix by assuming that it is an {@link #isAffine() affine} transformation (i.e. its last row is equal to <tt>(0, 0, 0, 1)</tt>).
+     *
+     * @return this
+     */
+    public Mat4 inverse4x3() {
+        return inverse4x3(this);
+    }
+
+    /**
+     * Invert this matrix by assuming that it is an {@link #isAffine() affine} transformation (i.e. its last row is equal to <tt>(0, 0, 0, 1)</tt>)
+     * and write the result into <code>dest</code>.
+     *
+     * @param dest will hold the result
+     * @return dest
+     */
+    public Mat4 inverse4x3(Mat4 dest) {
+        float s = det4x3();
+        s = 1.0f / s;
+        float m10m22 = m10 * m22;
+        float m10m21 = m10 * m21;
+        float m10m02 = m10 * m02;
+        float m10m01 = m10 * m01;
+        float m11m22 = m11 * m22;
+        float m11m20 = m11 * m20;
+        float m11m02 = m11 * m02;
+        float m11m00 = m11 * m00;
+        float m12m21 = m12 * m21;
+        float m12m20 = m12 * m20;
+        float m12m01 = m12 * m01;
+        float m12m00 = m12 * m00;
+        float m20m02 = m20 * m02;
+        float m20m01 = m20 * m01;
+        float m21m02 = m21 * m02;
+        float m21m00 = m21 * m00;
+        float m22m01 = m22 * m01;
+        float m22m00 = m22 * m00;
+        dest.set((m11m22 - m12m21) * s,
+                (m21m02 - m22m01) * s,
+                (m12m01 - m11m02) * s,
+                0.0f,
+                (m12m20 - m10m22) * s,
+                (m22m00 - m20m02) * s,
+                (m10m02 - m12m00) * s,
+                0.0f,
+                (m10m21 - m11m20) * s,
+                (m20m01 - m21m00) * s,
+                (m11m00 - m10m01) * s,
+                0.0f,
+                (m10m22 * m31 - m10m21 * m32 + m11m20 * m32 - m11m22 * m30 + m12m21 * m30 - m12m20 * m31) * s,
+                (m20m02 * m31 - m20m01 * m32 + m21m00 * m32 - m21m02 * m30 + m22m01 * m30 - m22m00 * m31) * s,
+                (m11m02 * m30 - m12m01 * m30 + m12m00 * m31 - m10m02 * m31 + m10m01 * m32 - m11m00 * m32) * s,
+                1.0f);
+        return dest;
+    }
+
     public Mat4 mul(Mat4 right) {
         return mul(right, this);
     }
 
     public Mat4 mul(Mat4 right, Mat4 dest) {
-        dest.m00 = m00 * right.m00 + m10 * right.m01 + m20 * right.m02 + m30 * right.m03;
-        dest.m01 = m01 * right.m00 + m11 * right.m01 + m21 * right.m02 + m31 * right.m03;
-        dest.m02 = m02 * right.m00 + m12 * right.m01 + m22 * right.m02 + m32 * right.m03;
-        dest.m03 = m03 * right.m00 + m13 * right.m01 + m23 * right.m02 + m33 * right.m03;
-        dest.m10 = m00 * right.m10 + m10 * right.m11 + m20 * right.m12 + m30 * right.m13;
-        dest.m11 = m01 * right.m10 + m11 * right.m11 + m21 * right.m12 + m31 * right.m13;
-        dest.m12 = m02 * right.m10 + m12 * right.m11 + m22 * right.m12 + m32 * right.m13;
-        dest.m13 = m03 * right.m10 + m13 * right.m11 + m23 * right.m12 + m33 * right.m13;
-        dest.m20 = m00 * right.m20 + m10 * right.m21 + m20 * right.m22 + m30 * right.m23;
-        dest.m21 = m01 * right.m20 + m11 * right.m21 + m21 * right.m22 + m31 * right.m23;
-        dest.m22 = m02 * right.m20 + m12 * right.m21 + m22 * right.m22 + m32 * right.m23;
-        dest.m23 = m03 * right.m20 + m13 * right.m21 + m23 * right.m22 + m33 * right.m23;
-        dest.m30 = m00 * right.m30 + m10 * right.m31 + m20 * right.m32 + m30 * right.m33;
-        dest.m31 = m01 * right.m30 + m11 * right.m31 + m21 * right.m32 + m31 * right.m33;
-        dest.m32 = m02 * right.m30 + m12 * right.m31 + m22 * right.m32 + m32 * right.m33;
-        dest.m33 = m03 * right.m30 + m13 * right.m31 + m23 * right.m32 + m33 * right.m33;
+        dest.set(
+                m00 * right.m00 + m10 * right.m01 + m20 * right.m02 + m30 * right.m03,
+                m01 * right.m00 + m11 * right.m01 + m21 * right.m02 + m31 * right.m03,
+                m02 * right.m00 + m12 * right.m01 + m22 * right.m02 + m32 * right.m03,
+                m03 * right.m00 + m13 * right.m01 + m23 * right.m02 + m33 * right.m03,
+                m00 * right.m10 + m10 * right.m11 + m20 * right.m12 + m30 * right.m13,
+                m01 * right.m10 + m11 * right.m11 + m21 * right.m12 + m31 * right.m13,
+                m02 * right.m10 + m12 * right.m11 + m22 * right.m12 + m32 * right.m13,
+                m03 * right.m10 + m13 * right.m11 + m23 * right.m12 + m33 * right.m13,
+                m00 * right.m20 + m10 * right.m21 + m20 * right.m22 + m30 * right.m23,
+                m01 * right.m20 + m11 * right.m21 + m21 * right.m22 + m31 * right.m23,
+                m02 * right.m20 + m12 * right.m21 + m22 * right.m22 + m32 * right.m23,
+                m03 * right.m20 + m13 * right.m21 + m23 * right.m22 + m33 * right.m23,
+                m00 * right.m30 + m10 * right.m31 + m20 * right.m32 + m30 * right.m33,
+                m01 * right.m30 + m11 * right.m31 + m21 * right.m32 + m31 * right.m33,
+                m02 * right.m30 + m12 * right.m31 + m22 * right.m32 + m32 * right.m33,
+                m03 * right.m30 + m13 * right.m31 + m23 * right.m32 + m33 * right.m33);
         return dest;
     }
 
+    // Vec must be normalized
     public Mat4 rotation(float angle, float x, float y, float z) {
         float c = (float) Math.cos(angle);
         float s = (float) Math.sin(angle);
         float t = (float) (1.0 - c);
-        //  Normalize
-        float magnitude = (float) Math.sqrt(x * x + y * y + z * z);
-        x /= magnitude;
-        y /= magnitude;
-        z /= magnitude;
         m00 = c + x * x * t;
         m11 = c + y * y * t;
         m22 = c + z * z * t;
@@ -248,29 +424,19 @@ public class Mat4 {
     }
 
     public Mat4 perspective(float fovy, float aspect, float zNear, float zFar) {
-        return perspective(fovy, aspect, zNear, zFar, this);
+        return glm.perspective(fovy, aspect, zNear, zFar, this);
     }
 
     public static Mat4 perspective(float fovy, float aspect, float zNear, float zFar, Mat4 res) {
-        float h = (float) Math.tan(fovy * 0.5f) * zNear;
-        float w = h * aspect;
-        res.m00 = zNear / w;
-        res.m01 = 0.0f;
-        res.m02 = 0.0f;
-        res.m03 = 0.0f;
-        res.m10 = 0.0f;
-        res.m11 = zNear / h;
-        res.m12 = 0.0f;
-        res.m13 = 0.0f;
-        res.m20 = 0.0f;
-        res.m21 = 0.0f;
-        res.m22 = -(zFar + zNear) / (zFar - zNear);
-        res.m23 = -1.0f;
-        res.m30 = 0.0f;
-        res.m31 = 0.0f;
-        res.m32 = -2.0f * zFar * zNear / (zFar - zNear);
-        res.m33 = 0.0f;
-        return res;
+        return glm.perspective(fovy, aspect, zNear, zFar, res);
+    }
+
+    public Mat4 perspectiveFov(float fov, float width, float height, float zNear, float zFar) {
+        return glm.perspectiveFov(fov, width, height, zNear, zFar, this);
+    }
+
+    public static Mat4 perspectiveFov(float fov, float width, float height, float zNear, float zFar, Mat4 res) {
+        return glm.perspectiveFov(fov, width, height, zNear, zFar, res);
     }
 
     public Mat4 mulPerspective(float fovy, float aspect, float zNear, float zFar) {
@@ -383,19 +549,19 @@ public class Mat4 {
         int expectedBits = Float.floatToIntBits(expected) < 0 ? 0x80000000 - Float.floatToIntBits(expected) : Float.floatToIntBits(expected);
         int actualBits = Float.floatToIntBits(actual) < 0 ? 0x80000000 - Float.floatToIntBits(actual) : Float.floatToIntBits(actual);
         int difference = expectedBits > actualBits ? expectedBits - actualBits : actualBits - expectedBits;
-        if (difference > maxUlps) {
-            System.out.println("expected: " + expected + ", actual: " + actual);
-            System.out.println("diff " + difference);
-        }
+//        if (difference > maxUlps) {
+        System.out.println("expected: " + expected + ", actual: " + actual);
+        System.out.println("diff " + difference);
+//        }
         return !Float.isNaN(expected) && !Float.isNaN(actual) && difference <= maxUlps;
     }
 
     public float[] toFA_() {
-        return toFloatArray(new float[16]);
+        return toFA(new float[16]);
     }
 
-    public float[] toFloatArray(float[] res) {
-        return toFA(res, 0);
+    public float[] toFA(float[] res) {
+        return Mat4.this.toFA(res, 0);
     }
 
     public float[] toFA(float[] res, int index) {

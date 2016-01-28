@@ -12,10 +12,18 @@ package dev;
 public class Vec3 {
 
     public float x, y, z;
+    public static final int SIZEOF = 3 * Float.BYTES;
 
     public Vec3(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
+    }
+    
+    public float [] toFA(float [] fa ){
+        fa[0] = x;
+        fa[1] = y;
+        fa[2] = z;
+        return fa;
     }
 }
