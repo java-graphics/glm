@@ -41,6 +41,25 @@ public class Mat4 {
         m32 = 0.0f;
         m33 = 1.0f;
     }
+    
+    public Mat4(float s) {
+        m00 = s;
+        m01 = 0.0f;
+        m02 = 0.0f;
+        m03 = 0.0f;
+        m10 = 0.0f;
+        m11 = s;
+        m12 = 0.0f;
+        m13 = 0.0f;
+        m20 = 0.0f;
+        m21 = 0.0f;
+        m22 = s;
+        m23 = 0.0f;
+        m30 = 0.0f;
+        m31 = 0.0f;
+        m32 = 0.0f;
+        m33 = s;
+    }
 
     public Mat4(Mat4 m) {
         m00 = m.m00;
@@ -129,6 +148,17 @@ public class Mat4 {
                 + (m01 * m12 - m02 * m11) * (m20 * m33 - m23 * m30)
                 + (m03 * m11 - m01 * m13) * (m20 * m32 - m22 * m30)
                 + (m02 * m13 - m03 * m12) * (m20 * m31 - m21 * m30);
+    }
+    
+    /**
+     * Return the determinant of the upper left 3x3 submatrix of this matrix.
+     * 
+     * @return the determinant
+     */
+    public float det3() {
+        return (m00 * m11 - m01 * m10) * m22
+             + (m02 * m10 - m00 * m12) * m21
+             + (m01 * m12 - m02 * m11) * m20;
     }
 
     /**
@@ -274,6 +304,48 @@ public class Mat4 {
                 (m20m02 * m31 - m20m01 * m32 + m21m00 * m32 - m21m02 * m30 + m22m01 * m30 - m22m00 * m31) * s,
                 (m11m02 * m30 - m12m01 * m30 + m12m00 * m31 - m10m02 * m31 + m10m01 * m32 - m11m00 * m32) * s,
                 1.0f);
+        return dest;
+    }
+    
+    public Mat4 invTransp() {
+        return invTransp(this);
+    }
+    
+    /**
+     * Compute a normal matrix from the upper left 3x3 submatrix of <code>this</code>
+     * and store it into the upper left 3x3 submatrix of <code>dest</code>.
+     * All other values of <code>dest</code> will be set to {@link #identity() identity}.
+     * <p>
+     * The normal matrix of <tt>m</tt> is the transpose of the inverse of <tt>m</tt>.
+     * <p>
+     * Please note that, if <code>this</code> is an orthogonal matrix or a matrix whose columns are orthogonal vectors, 
+     * then this method <i>need not</i> be invoked, since in that case <code>this</code> itself is its normal matrix.
+     * In that case, use {@link #set3x3(Matrix4f)} to set a given Matrix4f to only the upper left 3x3 submatrix
+     * of this matrix.
+     * 
+     * @see #set3x3(Matrix4f)
+     * 
+     * @param dest
+     *             will hold the result
+     * @return dest
+     */
+    public Mat4 invTransp(Mat4 dest) {
+        float det = det3();
+        float s = 1.0f / det;
+        /* Invert and transpose in one go */
+        dest.set((m11 * m22 - m21 * m12) * s,
+                 (m20 * m12 - m10 * m22) * s,
+                 (m10 * m21 - m20 * m11) * s,
+                 0.0f,
+                 (m21 * m02 - m01 * m22) * s,
+                 (m00 * m22 - m20 * m02) * s,
+                 (m20 * m01 - m00 * m21) * s,
+                 0.0f,
+                 (m01 * m12 - m11 * m02) * s,
+                 (m10 * m02 - m00 * m12) * s,
+                 (m00 * m11 - m10 * m01) * s,
+                 0.0f,
+                 0.0f, 0.0f, 0.0f, 1.0f);
         return dest;
     }
 

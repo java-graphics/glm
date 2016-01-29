@@ -14,7 +14,7 @@ public class Mat3 {
     public float m00, m10, m20;
     public float m01, m11, m21;
     public float m02, m12, m22;
-    
+
     public static final int SIZEOF = 3 * 3 * Float.BYTES;
 
     public Mat3() {
@@ -39,6 +39,24 @@ public class Mat3 {
         m20 = m.m20;
         m21 = m.m21;
         m22 = m.m22;
+    }
+
+    /**
+     * Create a new {@link Matrix3f} and make it a copy of the upper left 3x3 of the given {@link Matrix4f}.
+     *
+     * @param mat
+     * the {@link Matrix4f} to copy the values from
+     */
+    public Mat3(Mat4 mat) {
+        m00 = mat.m00;
+        m01 = mat.m01;
+        m02 = mat.m02;
+        m10 = mat.m10;
+        m11 = mat.m11;
+        m12 = mat.m12;
+        m20 = mat.m20;
+        m21 = mat.m21;
+        m22 = mat.m22;
     }
 
     public Mat3(float m00, float m01, float m02, float m10, float m11, float m12, float m20, float m21, float m22) {
@@ -106,7 +124,7 @@ public class Mat3 {
     public Mat3 invTransp() {
         return invTransp(this);
     }
-    
+
     /**
      * Invert this matrix.
      *
@@ -118,9 +136,9 @@ public class Mat3 {
 
     /**
      * Invert the <code>this</code> matrix and store the result in <code>dest</code>.
-     * 
+     *
      * @param dest
-     *             will hold the result
+     * will hold the result
      * @return dest
      */
     public Mat3 invert(Mat3 dest) {
@@ -128,14 +146,14 @@ public class Mat3 {
         // client must make sure that matrix is invertible
         s = 1.0f / s;
         dest.set((m11 * m22 - m21 * m12) * s,
-                 (m21 * m02 - m01 * m22) * s,
-                 (m01 * m12 - m11 * m02) * s,
-                 (m20 * m12 - m10 * m22) * s,
-                 (m00 * m22 - m20 * m02) * s,
-                 (m10 * m02 - m00 * m12) * s,
-                 (m10 * m21 - m20 * m11) * s,
-                 (m20 * m01 - m00 * m21) * s,
-                 (m00 * m11 - m10 * m01) * s);
+                (m21 * m02 - m01 * m22) * s,
+                (m01 * m12 - m11 * m02) * s,
+                (m20 * m12 - m10 * m22) * s,
+                (m00 * m22 - m20 * m02) * s,
+                (m10 * m02 - m00 * m12) * s,
+                (m10 * m21 - m20 * m11) * s,
+                (m20 * m01 - m00 * m21) * s,
+                (m00 * m11 - m10 * m01) * s);
         return dest;
     }
 
@@ -226,8 +244,12 @@ public class Mat3 {
 //        }
         return !Float.isNaN(expected) && !Float.isNaN(actual) && difference <= maxUlps;
     }
-    
-    public float[] toFloatArray(float[] res) {
+
+    public float[] toFA_() {
+        return toFA(new float[9], 0);
+    }
+
+    public float[] toFA(float[] res) {
         return toFA(res, 0);
     }
 
@@ -242,5 +264,29 @@ public class Mat3 {
         res[index + 7] = m21;
         res[index + 8] = m22;
         return res;
+    }
+
+    public void print() {
+        print("", true);
+    }
+
+    public void print(String title) {
+        print(title, true);
+    }
+
+    public void print(boolean outStream) {
+        print("", outStream);
+    }
+
+    public void print(String title, boolean outStream) {
+        String res = title + "\n"
+                + "| " + m00 + " " + m10 + " " + m20 + " |\n"
+                + "| " + m01 + " " + m11 + " " + m21 + " |\n"
+                + "| " + m02 + " " + m12 + " " + m22 + " |\n";
+        if (outStream) {
+            System.out.print(res);
+        } else {
+            System.err.print(res);
+        }
     }
 }

@@ -6,6 +6,8 @@
 package core;
 
 import dev.Mat4;
+import dev.Vec3;
+import dev.Vec4;
 
 /**
  *
@@ -22,6 +24,48 @@ public class glm {
         } else {
             return source + (-source % multiple);
         }
+    }
+
+    public static int packSnorm3x10_1x2(Vec4 v) {
+        int[] result = new int[4];
+        result[0] = (int) (Math.max(-1, Math.min(1, v.x)) * 511.f);
+        result[1] = (int) (Math.max(-1, Math.min(1, v.y)) * 511.f);
+        result[2] = (int) (Math.max(-1, Math.min(1, v.z)) * 511.f);
+        result[3] = (int) (Math.max(-1, Math.min(1, v.w)) * 1.f);
+        result[0] = (result[0] << 22) >>> 22;
+        result[1] = (result[1] << 22) >>> 12;
+        result[2] = (result[2] << 22) >>> 2;
+        result[3] = (result[3] << 30);
+        return result[0] | result[1] | result[2] | result[3];
+    }
+
+    public static int packF2x11_1x10(Vec3 v) {
+        return ((int) v.x << 21) >>> 21 | ((int) v.y << 21) >>> 11 | ((int) v.z << 22);
+    }
+
+    /**
+     * http://stackoverflow.com/a/18946610/1047713
+     *
+     * @param min
+     * @param max
+     * @param res
+     * @return
+     */
+    public static Vec3 linearRand(Vec3 min, Vec3 max, Vec3 res) {
+        return Vec3.linearRand(min, max, res);
+    }
+
+    public static Vec3 linearRand_(Vec3 min, Vec3 max) {
+        return Vec3.linearRand_(min, max);
+    }
+
+    public static double linearRand(double min, double max) {
+        return Math.random() * (max + Double.MIN_VALUE) + min;
+    }
+
+    public static Mat4 perspective_(float fovy, float aspect, float zNear, float zFar) {
+        return GLM_LEFT_HANDED ? perspectiveRH(fovy, aspect, zNear, zFar, new Mat4())
+                : perspectiveLH(fovy, aspect, zNear, zFar, new Mat4());
     }
 
     public static Mat4 perspective(float fovy, float aspect, float zNear, float zFar, Mat4 mat) {
@@ -71,13 +115,18 @@ public class glm {
         return res;
     }
 
+    public static Mat4 perspectiveFov_(float fov, float width, float height, float zNear, float zFar) {
+        return GLM_LEFT_HANDED ? perspectiveFovRH(fov, width, height, zNear, zFar, new Mat4())
+                : perspectiveFovLH(fov, width, height, zNear, zFar, new Mat4());
+    }
+
     public static Mat4 perspectiveFov(float fov, float width, float height, float zNear, float zFar, Mat4 mat) {
         return GLM_LEFT_HANDED ? perspectiveFovRH(fov, width, height, zNear, zFar, mat)
                 : perspectiveFovLH(fov, width, height, zNear, zFar, mat);
     }
 
     public static Mat4 perspectiveFovRH(float fov, float width, float height, float zNear, float zFar, Mat4 res) {
-        float h =  (float) (Math.cos(0.5f * fov) / Math.sin(0.5f * fov));
+        float h = (float) (Math.cos(0.5f * fov) / Math.sin(0.5f * fov));
         float w = h * height / width;
         res.m00 = w;
         res.m01 = 0.0f;
@@ -99,7 +148,7 @@ public class glm {
     }
 
     public static Mat4 perspectiveFovLH(float fov, float width, float height, float zNear, float zFar, Mat4 res) {
-        float h =  (float) (Math.cos(0.5f * fov) / Math.sin(0.5f * fov));
+        float h = (float) (Math.cos(0.5f * fov) / Math.sin(0.5f * fov));
         float w = h * height / width;
         res.m00 = w;
         res.m01 = 0.0f;

@@ -9,14 +9,7 @@ package dev;
  *
  * @author GBarbieri
  */
-public class Vec2 {
-
-    public static final int SIZEOF = 2 * Float.BYTES;
-
-    public float x, y;
-
-    public Vec2(float x, float y) {
-        this.x = x;
-        this.y = y;
-    }
+public class Vec2i8 {
+    
+    public static final int SIZEOF = 2 * Byte.BYTES;
 }
