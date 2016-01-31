@@ -22,4 +22,15 @@ public class Vec4 {
         this.w = w;
     }
 
+    public float[] toFA_() {
+        return toFA(new float[4]);
+    }
+
+    public float[] toFA(float[] fa) {
+        fa[0] = x;
+        fa[1] = y;
+        fa[2] = z;
+        fa[3] = w;
+        return fa;
+    }
 }

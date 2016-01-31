@@ -13,7 +13,7 @@ import dev.Vec4;
  *
  * @author GBarbieri
  */
-public class glm {
+public class glm extends packing {
 
     public static boolean GLM_LEFT_HANDED = true;
 
@@ -24,23 +24,6 @@ public class glm {
         } else {
             return source + (-source % multiple);
         }
-    }
-
-    public static int packSnorm3x10_1x2(Vec4 v) {
-        int[] result = new int[4];
-        result[0] = (int) (Math.max(-1, Math.min(1, v.x)) * 511.f);
-        result[1] = (int) (Math.max(-1, Math.min(1, v.y)) * 511.f);
-        result[2] = (int) (Math.max(-1, Math.min(1, v.z)) * 511.f);
-        result[3] = (int) (Math.max(-1, Math.min(1, v.w)) * 1.f);
-        result[0] = (result[0] << 22) >>> 22;
-        result[1] = (result[1] << 22) >>> 12;
-        result[2] = (result[2] << 22) >>> 2;
-        result[3] = (result[3] << 30);
-        return result[0] | result[1] | result[2] | result[3];
-    }
-
-    public static int packF2x11_1x10(Vec3 v) {
-        return ((int) v.x << 21) >>> 21 | ((int) v.y << 21) >>> 11 | ((int) v.z << 22);
     }
 
     /**

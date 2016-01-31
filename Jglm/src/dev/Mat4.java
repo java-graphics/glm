@@ -41,7 +41,7 @@ public class Mat4 {
         m32 = 0.0f;
         m33 = 1.0f;
     }
-    
+
     public Mat4(float s) {
         m00 = s;
         m01 = 0.0f;
@@ -149,21 +149,22 @@ public class Mat4 {
                 + (m03 * m11 - m01 * m13) * (m20 * m32 - m22 * m30)
                 + (m02 * m13 - m03 * m12) * (m20 * m31 - m21 * m30);
     }
-    
+
     /**
      * Return the determinant of the upper left 3x3 submatrix of this matrix.
-     * 
+     *
      * @return the determinant
      */
     public float det3() {
         return (m00 * m11 - m01 * m10) * m22
-             + (m02 * m10 - m00 * m12) * m21
-             + (m01 * m12 - m02 * m11) * m20;
+                + (m02 * m10 - m00 * m12) * m21
+                + (m01 * m12 - m02 * m11) * m20;
     }
 
     /**
-     * Return the determinant of this matrix by assuming that it represents an {@link #isAffine() affine} transformation and thus
-     * its last row is equal to <tt>(0, 0, 0, 1)</tt>.
+     * Return the determinant of this matrix by assuming that it represents an
+     * {@link #isAffine() affine} transformation and thus its last row is equal
+     * to <tt>(0, 0, 0, 1)</tt>.
      *
      * @return the determinant
      */
@@ -196,8 +197,10 @@ public class Mat4 {
     /**
      * Invert this matrix and write the result into <code>dest</code>.
      * <p>
-     * If <code>this</code> matrix represents an {@link #isAffine() affine} transformation, such as translation, rotation, scaling and shearing,
-     * and thus its last row is equal to <tt>(0, 0, 0, 1)</tt>, then {@link #invert4x3(Matrix4f)} can be used instead of this method.
+     * If <code>this</code> matrix represents an {@link #isAffine() affine}
+     * transformation, such as translation, rotation, scaling and shearing, and
+     * thus its last row is equal to <tt>(0, 0, 0, 1)</tt>, then
+     * {@link #invert4x3(Matrix4f)} can be used instead of this method.
      *
      * @see #invert4x3(Matrix4f)
      * @return dest
@@ -209,8 +212,10 @@ public class Mat4 {
     /**
      * Invert this matrix.
      * <p>
-     * If <code>this</code> matrix represents an {@link #isAffine() affine} transformation, such as translation, rotation, scaling and shearing,
-     * and thus its last row is equal to <tt>(0, 0, 0, 1)</tt>, then {@link #inverse4x3()} can be used instead of this method.
+     * If <code>this</code> matrix represents an {@link #isAffine() affine}
+     * transformation, such as translation, rotation, scaling and shearing, and
+     * thus its last row is equal to <tt>(0, 0, 0, 1)</tt>, then
+     * {@link #inverse4x3()} can be used instead of this method.
      *
      * @param dest
      * @see #inverse4x3()
@@ -252,7 +257,8 @@ public class Mat4 {
     }
 
     /**
-     * Invert this matrix by assuming that it is an {@link #isAffine() affine} transformation (i.e. its last row is equal to <tt>(0, 0, 0, 1)</tt>).
+     * Invert this matrix by assuming that it is an {@link #isAffine() affine}
+     * transformation (i.e. its last row is equal to <tt>(0, 0, 0, 1)</tt>).
      *
      * @return this
      */
@@ -261,8 +267,9 @@ public class Mat4 {
     }
 
     /**
-     * Invert this matrix by assuming that it is an {@link #isAffine() affine} transformation (i.e. its last row is equal to <tt>(0, 0, 0, 1)</tt>)
-     * and write the result into <code>dest</code>.
+     * Invert this matrix by assuming that it is an {@link #isAffine() affine}
+     * transformation (i.e. its last row is equal to <tt>(0, 0, 0, 1)</tt>) and
+     * write the result into <code>dest</code>.
      *
      * @param dest will hold the result
      * @return dest
@@ -306,27 +313,29 @@ public class Mat4 {
                 1.0f);
         return dest;
     }
-    
+
     public Mat4 invTransp() {
         return invTransp(this);
     }
-    
+
     /**
-     * Compute a normal matrix from the upper left 3x3 submatrix of <code>this</code>
-     * and store it into the upper left 3x3 submatrix of <code>dest</code>.
-     * All other values of <code>dest</code> will be set to {@link #identity() identity}.
+     * Compute a normal matrix from the upper left 3x3 submatrix of
+     * <code>this</code> and store it into the upper left 3x3 submatrix of
+     * <code>dest</code>. All other values of <code>dest</code> will be set to
+     * {@link #identity() identity}.
      * <p>
-     * The normal matrix of <tt>m</tt> is the transpose of the inverse of <tt>m</tt>.
+     * The normal matrix of <tt>m</tt> is the transpose of the inverse of
+     * <tt>m</tt>.
      * <p>
-     * Please note that, if <code>this</code> is an orthogonal matrix or a matrix whose columns are orthogonal vectors, 
-     * then this method <i>need not</i> be invoked, since in that case <code>this</code> itself is its normal matrix.
-     * In that case, use {@link #set3x3(Matrix4f)} to set a given Matrix4f to only the upper left 3x3 submatrix
-     * of this matrix.
-     * 
+     * Please note that, if <code>this</code> is an orthogonal matrix or a
+     * matrix whose columns are orthogonal vectors, then this method <i>need
+     * not</i> be invoked, since in that case <code>this</code> itself is its
+     * normal matrix. In that case, use {@link #set3x3(Matrix4f)} to set a given
+     * Matrix4f to only the upper left 3x3 submatrix of this matrix.
+     *
      * @see #set3x3(Matrix4f)
-     * 
-     * @param dest
-     *             will hold the result
+     *
+     * @param dest will hold the result
      * @return dest
      */
     public Mat4 invTransp(Mat4 dest) {
@@ -334,18 +343,18 @@ public class Mat4 {
         float s = 1.0f / det;
         /* Invert and transpose in one go */
         dest.set((m11 * m22 - m21 * m12) * s,
-                 (m20 * m12 - m10 * m22) * s,
-                 (m10 * m21 - m20 * m11) * s,
-                 0.0f,
-                 (m21 * m02 - m01 * m22) * s,
-                 (m00 * m22 - m20 * m02) * s,
-                 (m20 * m01 - m00 * m21) * s,
-                 0.0f,
-                 (m01 * m12 - m11 * m02) * s,
-                 (m10 * m02 - m00 * m12) * s,
-                 (m00 * m11 - m10 * m01) * s,
-                 0.0f,
-                 0.0f, 0.0f, 0.0f, 1.0f);
+                (m20 * m12 - m10 * m22) * s,
+                (m10 * m21 - m20 * m11) * s,
+                0.0f,
+                (m21 * m02 - m01 * m22) * s,
+                (m00 * m22 - m20 * m02) * s,
+                (m20 * m01 - m00 * m21) * s,
+                0.0f,
+                (m01 * m12 - m11 * m02) * s,
+                (m10 * m02 - m00 * m12) * s,
+                (m00 * m11 - m10 * m01) * s,
+                0.0f,
+                0.0f, 0.0f, 0.0f, 1.0f);
         return dest;
     }
 
@@ -485,13 +494,25 @@ public class Mat4 {
         return this;
     }
 
+    public Mat4 translate(Vec3 v) {
+        return translate(this, v.x, v.y, v.z);
+    }
+
     public Mat4 translate(float x, float y, float z) {
+        return translate(this, x, y, z);
+    }
+
+    public Mat4 translate(Mat4 res, Vec3 v) {
+        return translate(res, v.x, v.y, v.z);
+    }
+
+    public Mat4 translate(Mat4 res, float x, float y, float z) {
         // translation matrix elements: m00, m11, m22, m33 = 1
         // m30 = x, m31 = y, m32 = z, all others = 0
-        m30 = m00 * x + m10 * y + m20 * z + m30;
-        m31 = m01 * x + m11 * y + m21 * z + m31;
-        m32 = m02 * x + m12 * y + m22 * z + m32;
-        m33 = m03 * x + m13 * y + m23 * z + m33;
+        res.m30 = res.m00 * x + res.m10 * y + res.m20 * z + res.m30;
+        res.m31 = res.m01 * x + res.m11 * y + res.m21 * z + res.m31;
+        res.m32 = res.m02 * x + res.m12 * y + res.m22 * z + res.m32;
+        res.m33 = res.m03 * x + res.m13 * y + res.m23 * z + res.m33;
         return this;
     }
 
@@ -606,8 +627,8 @@ public class Mat4 {
      * This can be used to compensate for inequality caused by accumulated
      * floating point math errors.
      *
-     * The error margin is specified in ULPs (units of least precision).
-     * A one-ULP difference means there are no representable floats in between.
+     * The error margin is specified in ULPs (units of least precision). A
+     * one-ULP difference means there are no representable floats in between.
      * E.g. 0f and 1.4e-45f are one ULP apart. So are -6.1340704f and -6.13407f.
      * Depending on the number of calculations involved, typically a margin of
      * 1-5 ULPs should be enough.
