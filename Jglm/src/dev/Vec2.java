@@ -19,4 +19,9 @@ public class Vec2 {
         this.x = x;
         this.y = y;
     }
+
+    public Vec2(float f) {
+        x = f;
+        y = f;
+    }
 }
