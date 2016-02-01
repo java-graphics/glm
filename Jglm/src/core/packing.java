@@ -5,7 +5,6 @@
  */
 package core;
 
-import static core.func_common.isNan;
 import dev.Vec3;
 import dev.Vec4;
 
@@ -37,9 +36,9 @@ public class packing extends func_common {
     public static int floatTo11bit(float x) {
         if (x == 0f) {
             return 0;
-        } else if (isNan(x)) {
+        } else if (Float.isNaN(x)) {
             return ~0;
-        } else if (isInf(x)) {
+        } else if (Float.isInfinite(x)) {
             return 0xf << 6;
         }
         return float2packed11((int) x);
@@ -48,9 +47,9 @@ public class packing extends func_common {
     public static int floatTo10bit(float x) {
         if (x == 0f) {
             return 0;
-        } else if (isNan(x)) {
+        } else if (Float.isNaN(x)) {
             return ~0;
-        } else if (isInf(x)) {
+        } else if (Float.isInfinite(x)) {
             return 0xf << 6;
         }
         return float2packed10((int) x);

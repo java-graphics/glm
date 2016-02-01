@@ -5,6 +5,7 @@
  */
 package dev;
 
+import core.glm;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -38,6 +39,23 @@ public class Mat4Test {
     @Test
     public void test_constructor_b() {
         System.out.println("constructor_b");
+        Mat4 result = new Mat4(1);
+        Mat4 expResult = new Mat4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
+        assertTrue(result.equals(expResult));
+    }
+
+    @Test
+    public void test_constructor_c() {
+        System.out.println("constructor_c");
+        Mat4 instance = new Mat4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        Mat4 result = new Mat4(instance);
+        Mat4 expResult = new Mat4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        assertTrue(result.equals(expResult));
+    }
+
+    @Test
+    public void test_constructor_d() {
+        System.out.println("constructor_d");
         Mat4 result = new Mat4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
         Mat4 expResult = new Mat4();
         expResult.m00 = 0;
@@ -60,12 +78,88 @@ public class Mat4Test {
     }
 
     @Test
+    public void test_set_a() {
+        System.out.println("set_a");
+        Mat4 result = new Mat4().set(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        Mat4 expResult = new Mat4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
+        assertTrue(result.equals(expResult));
+    }
+
+    @Test
+    public void test_det_0() {
+        System.out.println("det_0");
+        float det = new Mat4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).det();
+        float expResult = 0;
+        assertTrue(glm.compareFloatEquals(expResult, det, 1));
+    }
+
+    @Test
+    public void test_det_1() {
+        System.out.println("det_1");
+        float det = new Mat4(2, 5, 3, 5, 4, 6, 6, 3, 11, 3, 2, -2, 4, -7, 9, 3).det();
+        float expResult = 2960f;
+        assertTrue(glm.compareFloatEquals(expResult, det, 1));
+    }
+
+    @Test
+    public void test_det3() {
+        System.out.println("det3");
+        float det = new Mat4(2, 5, 3, 5, 4, 6, 6, 3, 11, 3, 2, -2, 4, -7, 9, 3).det3();
+        float expResult = 116f;
+        assertTrue(glm.compareFloatEquals(expResult, det, 1));
+    }
+
+    @Test
+    public void test_det4x3() {
+        System.out.println("det4x3");
+        float det = new Mat4(2, 5, 3, 5, 4, 6, 6, 3, 11, 3, 2, -2, 0, 0, 0, 1).det4x3();
+        float expResult = 116f;
+        assertTrue(glm.compareFloatEquals(expResult, det, 1));
+    }
+
+    @Test
     public void test_identity() {
         System.out.println("identity");
         Mat4 instance = new Mat4();
         Mat4 expResult = new Mat4(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
         Mat4 result = instance.identity();
         assertTrue(expResult.equals(result));
+    }
+
+    @Test
+    public void test_inverse() {
+        System.out.println("inverse");
+        Mat4 instance = new Mat4(2, 5, 3, 5, 4, 6, 6, 3, 11, 3, 2, -2, 4, -7, 9, 3);
+        Mat4 expResult = new Mat4(0.100337841f, -0.114864871f, 0.107432432f, 0.0192567576f,
+                -0.0415540561f, 0.128378376f, -0.0141891893f, -0.0685810819f,
+                -0.180067569f, 0.222972974f, -0.0614864863f, 0.0361486487f,
+                0.309459478f, -0.216216221f, 0.00810810830f, 0.0391891897f);
+        Mat4 result = instance.inverse();
+        assertTrue(expResult.equals(result));
+    }
+
+    @Test
+    public void test_inverse4x3() {
+        System.out.println("inverse4x3");
+        Mat4 instance = new Mat4(2, 5, 3, 5, 4, 6, 6, 3, 11, 3, 2, -2, 0, 0, 0, 1);
+        Mat4 expResult = new Mat4(-0.0517241359f, -0.00862068962f, 0.103448272f, 0.491379321f,
+                0.500000000f, -0.250000000f, -0.000000000f, -1.75000000f,
+                -0.465517253f, 0.422413796f, -0.0689655170f, 0.922413766f,
+                -0.000000000f, 0.000000000f, -0.000000000f, 1.00000000f);
+        Mat4 result = instance.inverse();
+        assertTrue(expResult.equals(result));
+    }
+
+    @Test
+    public void test_invTransp3() {
+        System.out.println("invTransp3");
+        Mat4 instance = new Mat4(2, 5, 3, 5, 4, 6, 6, 3, 11, 3, 2, -2, 4, -7, 9, 3);
+        Mat4 expResult = new Mat4(-0.0517241359f, 0.500000000f, -0.465517253f, 0f,
+                -0.00862068962f, -0.250000000f, 0.422413796f, 0f,
+                0.103448272f, -0.000000000f, -0.0689655170f, 0f,
+                0f, 0f, 0f, 0f);
+        Mat4 result = instance.invTransp();
+        assertTrue(expResult.equals3(result));
     }
 
     @Test
@@ -92,7 +186,6 @@ public class Mat4Test {
                 0.595584869f, -0.122294709f, 0.793928623f, 0f,
                 0f, 0f, 0f, 1f);
         Mat4 result = instance.rotation(ang, x, y, z);
-        result.print();
         assertTrue(result.equals(expResult));
     }
 
