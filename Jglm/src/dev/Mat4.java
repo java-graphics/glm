@@ -6,9 +6,7 @@
 package dev;
 
 import core.glm;
-import java.io.PrintStream;
 import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
 
 /**
  *
@@ -206,7 +204,7 @@ public class Mat4 {
      * @return dest
      */
     public Mat4 inverse() {
-        return Mat4.this.inverse(this);
+        return inverse(this);
     }
 
     /**
@@ -315,7 +313,7 @@ public class Mat4 {
     }
 
     public Mat4 invTransp() {
-        return invTransp(this);
+        return invTransp3(this);
     }
 
     /**
@@ -338,7 +336,7 @@ public class Mat4 {
      * @param dest will hold the result
      * @return dest
      */
-    public Mat4 invTransp(Mat4 dest) {
+    public Mat4 invTransp3(Mat4 dest) {
         float det = det3();
         float s = 1.0f / det;
         /* Invert and transpose in one go */
@@ -568,85 +566,88 @@ public class Mat4 {
         return res;
     }
 
+    public boolean equals3(Mat4 other) {
+        return equals3(other, 2);
+    }
+
+    public boolean equals3(Mat4 other, int maxUlps) {
+        if (!glm.compareFloatEquals(m00, other.m00, maxUlps)) {
+            return false;
+        }
+        if (!glm.compareFloatEquals(m01, other.m01, maxUlps)) {
+            return false;
+        }
+        if (!glm.compareFloatEquals(m02, other.m02, maxUlps)) {
+            return false;
+        }
+        if (!glm.compareFloatEquals(m10, other.m10, maxUlps)) {
+            return false;
+        }
+        if (!glm.compareFloatEquals(m11, other.m11, maxUlps)) {
+            return false;
+        }
+        if (!glm.compareFloatEquals(m12, other.m12, maxUlps)) {
+            return false;
+        }
+        if (!glm.compareFloatEquals(m20, other.m20, maxUlps)) {
+            return false;
+        }
+        if (!glm.compareFloatEquals(m21, other.m21, maxUlps)) {
+            return false;
+        }
+        return glm.compareFloatEquals(m22, other.m22, maxUlps);
+    }
     public boolean equals(Mat4 other) {
         return equals(other, 2);
     }
 
     public boolean equals(Mat4 other, int maxUlps) {
-        if (!compareFloatEquals(m00, other.m00, maxUlps)) {
+        if (!glm.compareFloatEquals(m00, other.m00, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m01, other.m01, maxUlps)) {
+        if (!glm.compareFloatEquals(m01, other.m01, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m02, other.m02, maxUlps)) {
+        if (!glm.compareFloatEquals(m02, other.m02, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m03, other.m03, maxUlps)) {
+        if (!glm.compareFloatEquals(m03, other.m03, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m10, other.m10, maxUlps)) {
+        if (!glm.compareFloatEquals(m10, other.m10, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m11, other.m11, maxUlps)) {
+        if (!glm.compareFloatEquals(m11, other.m11, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m12, other.m12, maxUlps)) {
+        if (!glm.compareFloatEquals(m12, other.m12, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m13, other.m13, maxUlps)) {
+        if (!glm.compareFloatEquals(m13, other.m13, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m20, other.m20, maxUlps)) {
+        if (!glm.compareFloatEquals(m20, other.m20, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m21, other.m21, maxUlps)) {
+        if (!glm.compareFloatEquals(m21, other.m21, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m22, other.m22, maxUlps)) {
+        if (!glm.compareFloatEquals(m22, other.m22, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m23, other.m23, maxUlps)) {
+        if (!glm.compareFloatEquals(m23, other.m23, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m30, other.m30, maxUlps)) {
+        if (!glm.compareFloatEquals(m30, other.m30, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m31, other.m31, maxUlps)) {
+        if (!glm.compareFloatEquals(m31, other.m31, maxUlps)) {
             return false;
         }
-        if (!compareFloatEquals(m32, other.m32, maxUlps)) {
+        if (!glm.compareFloatEquals(m32, other.m32, maxUlps)) {
             return false;
         }
-        return compareFloatEquals(m33, other.m33, maxUlps);
-    }
-
-    /**
-     * Compare two floating points for equality within a margin of error.
-     *
-     * This can be used to compensate for inequality caused by accumulated
-     * floating point math errors.
-     *
-     * The error margin is specified in ULPs (units of least precision). A
-     * one-ULP difference means there are no representable floats in between.
-     * E.g. 0f and 1.4e-45f are one ULP apart. So are -6.1340704f and -6.13407f.
-     * Depending on the number of calculations involved, typically a margin of
-     * 1-5 ULPs should be enough.
-     *
-     * @param expected The expected value.
-     * @param actual The actual value.
-     * @param maxUlps The maximum difference in ULPs.
-     * @return
-     */
-    public static boolean compareFloatEquals(float expected, float actual, int maxUlps) {
-        int expectedBits = Float.floatToIntBits(expected) < 0 ? 0x80000000 - Float.floatToIntBits(expected) : Float.floatToIntBits(expected);
-        int actualBits = Float.floatToIntBits(actual) < 0 ? 0x80000000 - Float.floatToIntBits(actual) : Float.floatToIntBits(actual);
-        int difference = expectedBits > actualBits ? expectedBits - actualBits : actualBits - expectedBits;
-//        if (difference > maxUlps) {
-        System.out.println("expected: " + expected + ", actual: " + actual);
-        System.out.println("diff " + difference);
-//        }
-        return !Float.isNaN(expected) && !Float.isNaN(actual) && difference <= maxUlps;
+        return glm.compareFloatEquals(m33, other.m33, maxUlps);
     }
 
     public float[] toFA_() {
