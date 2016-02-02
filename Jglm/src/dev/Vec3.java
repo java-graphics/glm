@@ -22,6 +22,12 @@ public class Vec3 {
         z = 0f;
     }
 
+    public Vec3(float f) {
+        x = f;
+        y = f;
+        z = f;
+    }
+
     public Vec3(float x, float y, float z) {
         this.x = x;
         this.y = y;

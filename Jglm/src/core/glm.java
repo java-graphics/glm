@@ -46,6 +46,29 @@ public class glm extends packing {
         return Math.random() * (max + Double.MIN_VALUE) + min;
     }
 
+    public static Mat4 ortho_(float left, float right, float bottom, float top, float zNear, float zFar) {
+        return ortho(new Mat4(), left, right, bottom, top, zNear, zFar);
+    }
+    public static Mat4 ortho(Mat4 res, float left, float right, float bottom, float top, float zNear, float zFar) {
+        res.m00 = 2.0f / (right - left);
+        res.m01 = 0.0f;
+        res.m02 = 0.0f;
+        res.m03 = 0.0f;
+        res.m10 = 0.0f;
+        res.m11 = 2.0f / (top - bottom);
+        res.m12 = 0.0f;
+        res.m13 = 0.0f;
+        res.m20 = 0.0f;
+        res.m21 = 0.0f;
+        res.m22 = -2.0f / (zFar - zNear);
+        res.m23 = 0.0f;
+        res.m30 = -(right + left) / (right - left);
+        res.m31 = -(top + bottom) / (top - bottom);
+        res.m32 = -(zFar + zNear) / (zFar - zNear);
+        res.m33 = 1.0f;
+        return res;
+    }
+    
     public static Mat4 perspective_(float fovy, float aspect, float zNear, float zFar) {
         return GLM_LEFT_HANDED ? perspectiveRH(fovy, aspect, zNear, zFar, new Mat4())
                 : perspectiveLH(fovy, aspect, zNear, zFar, new Mat4());

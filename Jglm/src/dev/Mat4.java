@@ -471,6 +471,98 @@ public class Mat4 {
         dest.m33 = m33;
         return dest;
     }
+    
+    /**
+     * Apply scaling to this matrix by uniformly scaling all base axes by the given <code>xyz</code> factor.
+     * <p>
+     * If <code>M</code> is <code>this</code> matrix and <code>S</code> the scaling matrix,
+     * then the new matrix will be <code>M * S</code>. So when transforming a
+     * vector <code>v</code> with the new matrix by using <code>M * S * v</code>, the
+     * scaling will be applied first!
+     * <p>
+     * Individual scaling of all three axes can be applied using {@link #scale(float, float, float)}. 
+     * 
+     * @see #scale(float, float, float)
+     * 
+     * @param xyz
+     *            the factor for all components
+     * @return this
+     */
+    public Mat4 scale(float xyz) {
+        return scale(xyz, xyz, xyz);
+    }
+    
+    public Mat4 scale(Vec3 v) {
+        return scale(v.x, v.y, v.z);
+    }
+    
+    public Mat4 scale(Vec3 v, Mat4 res) {
+        return scale(v.x, v.y, v.z, res);
+    }
+    
+    /**
+     * Apply scaling to this matrix by scaling the base axes by the given x,
+     * y and z factors.
+     * <p>
+     * If <code>M</code> is <code>this</code> matrix and <code>S</code> the scaling matrix,
+     * then the new matrix will be <code>M * S</code>. So when transforming a
+     * vector <code>v</code> with the new matrix by using <code>M * S * v</code>, the
+     * scaling will be applied first!
+     * 
+     * @param x
+     *            the factor of the x component
+     * @param y
+     *            the factor of the y component
+     * @param z
+     *            the factor of the z component
+     * @return this
+     */
+    public Mat4 scale(float x, float y, float z) {
+        return scale(x, y, z, this);
+    }
+    
+    /**
+     * Apply scaling to the this matrix by scaling the base axes by the given x,
+     * y and z factors and store the result in <code>dest</code>.
+     * <p>
+     * If <code>M</code> is <code>this</code> matrix and <code>S</code> the scaling matrix,
+     * then the new matrix will be <code>M * S</code>. So when transforming a
+     * vector <code>v</code> with the new matrix by using <code>M * S * v</code>
+     * , the scaling will be applied first!
+     * 
+     * @param x
+     *            the factor of the x component
+     * @param y
+     *            the factor of the y component
+     * @param z
+     *            the factor of the z component
+     * @param dest
+     *            will hold the result
+     * @return dest
+     */
+    public Mat4 scale(float x, float y, float z, Mat4 dest) {
+        // scale matrix elements:
+        // m00 = x, m11 = y, m22 = z
+        // m33 = 1
+        // all others = 0
+        dest.m00 = m00 * x;
+        dest.m01 = m01 * x;
+        dest.m02 = m02 * x;
+        dest.m03 = m03 * x;
+        dest.m10 = m10 * y;
+        dest.m11 = m11 * y;
+        dest.m12 = m12 * y;
+        dest.m13 = m13 * y;
+        dest.m20 = m20 * z;
+        dest.m21 = m21 * z;
+        dest.m22 = m22 * z;
+        dest.m23 = m23 * z;
+        dest.m30 = m30;
+        dest.m31 = m31;
+        dest.m32 = m32;
+        dest.m33 = m33;
+        return dest;
+    }
 
     public Mat4 translation(float x, float y, float z) {
         m00 = 1.0f;
