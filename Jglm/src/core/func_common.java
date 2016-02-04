@@ -11,10 +11,6 @@ package core;
  */
 public class func_common {
 
-    public static int levels(int dimensions) {
-        return log2(dimensions) + 1;
-    }
-
     public static int log2(int value) {
         return (int) (Math.log(value) / Math.log(2));
     }
