@@ -13,5 +13,5 @@ import dev.Vec4;
  */
 public class Vertex_v4fc4f {
     
-    public static final int SIZEOF = 2 * Vec4.SIZEOF;
+    public static final int SIZE = 2 * Vec4.SIZE;
 }

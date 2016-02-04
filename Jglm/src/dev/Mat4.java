@@ -19,7 +19,7 @@ public class Mat4 {
     public float m02, m12, m22, m32;
     public float m03, m13, m23, m33;
 
-    public static final int SIZEOF = 4 * 4 * Float.BYTES;
+    public static final int SIZE = 4 * 4 * Float.BYTES;
 
     public Mat4() {
         m00 = 1.0f;

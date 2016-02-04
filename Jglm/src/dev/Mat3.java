@@ -15,7 +15,7 @@ public class Mat3 {
     public float m01, m11, m21;
     public float m02, m12, m22;
 
-    public static final int SIZEOF = 3 * 3 * Float.BYTES;
+    public static final int SIZE = 3 * 3 * Float.BYTES;
 
     public Mat3() {
         m00 = 1.0f;

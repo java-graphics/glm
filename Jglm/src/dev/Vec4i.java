@@ -11,6 +11,8 @@ package dev;
  */
 public class Vec4i {
 
+    public static final int SIZE = 4 * Integer.BYTES;
+
     public int x, y, z, w;
 
     public Vec4i(int x, int y, int z, int w) {

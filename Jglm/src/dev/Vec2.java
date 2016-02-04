@@ -11,7 +11,7 @@ package dev;
  */
 public class Vec2 {
 
-    public static final int SIZEOF = 2 * Float.BYTES;
+    public static final int SIZE = 2 * Float.BYTES;
 
     public float x, y;
 
@@ -23,6 +23,29 @@ public class Vec2 {
     public Vec2(float f) {
         x = f;
         y = f;
+    }
+    
+    /**
+     * Normalize this vector.
+     * 
+     * @return this
+     */
+    public Vec2 normalize() {
+        return normalize(this);
+    }
+
+    /**
+     * Normalize this vector and store the result in <code>dest</code>.
+     * 
+     * @param dest
+     *        will hold the result
+     * @return dest
+     */
+    public Vec2 normalize(Vec2 dest) {
+        float invLength = (float) (1.0 / Math.sqrt(x * x + y * y));
+        dest.x = x * invLength;
+        dest.y = y * invLength;
+        return dest;
     }
     
     public Vec2 sub(Vec2 minuend) {

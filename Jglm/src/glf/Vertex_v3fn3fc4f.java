@@ -24,8 +24,8 @@ public class Vertex_v3fn3fc4f {
         this.color = color;
     }
 
-    public static final int SIZEOF = 2 * Vec3.SIZEOF + Vec4.SIZEOF;
+    public static final int SIZE = 2 * Vec3.SIZE + Vec4.SIZE;
     public static final int OFFSET_POSITION = 0;
-    public static final int OFFSET_NORMAL = Vec3.SIZEOF;
-    public static final int OFFSET_COLOR = 2 * Vec3.SIZEOF;
+    public static final int OFFSET_NORMAL = Vec3.SIZE;
+    public static final int OFFSET_COLOR = 2 * Vec3.SIZE;
 }

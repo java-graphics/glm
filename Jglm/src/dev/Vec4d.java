@@ -11,7 +11,7 @@ package dev;
  */
 public class Vec4d {
 
-    public static final int SIZEOF = 4 * Double.BYTES;
+    public static final int SIZE = 4 * Double.BYTES;
             
     public double x, y, z, w;
 

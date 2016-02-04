@@ -11,7 +11,7 @@ package dev;
  */
 public class Vec4 {
 
-    public static final int SIZEOF = 4 * Float.BYTES;
+    public static final int SIZE = 4 * Float.BYTES;
 
     public float x, y, z, w;
 

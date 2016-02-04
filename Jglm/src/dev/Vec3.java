@@ -14,7 +14,7 @@ import core.glm;
 public class Vec3 {
 
     public float x, y, z;
-    public static final int SIZEOF = 3 * Float.BYTES;
+    public static final int SIZE = 3 * Float.BYTES;
 
     public Vec3() {
         x = 0f;
