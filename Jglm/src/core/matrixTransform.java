@@ -15,7 +15,7 @@ import dev.Vec3d;
  *
  * @author GBarbieri
  */
-public class matrix_transform extends packing {
+class matrixTransform extends packing {
 
     public static boolean GLM_LEFT_HANDED = false;
 
@@ -185,8 +185,8 @@ public class matrix_transform extends packing {
     }
 
     public static Mat4 perspectiveFov_(float fov, float width, float height, float zNear, float zFar) {
-        return GLM_LEFT_HANDED ? perspectiveFovRH(fov, width, height, zNear, zFar, new Mat4())
-                : perspectiveFovLH(fov, width, height, zNear, zFar, new Mat4());
+        return GLM_LEFT_HANDED ? perspectiveFovLH(fov, width, height, zNear, zFar, new Mat4())
+                : perspectiveFovRH(fov, width, height, zNear, zFar, new Mat4());
     }
 
     public static Mat4 perspectiveFov(float fov, float width, float height, float zNear, float zFar, Mat4 mat) {
@@ -404,13 +404,13 @@ public class matrix_transform extends packing {
     }
 
     public static Mat4d perspectiveFov_(double fov, double width, double height, double zNear, double zFar) {
-        return GLM_LEFT_HANDED ? perspectiveFovRH(fov, width, height, zNear, zFar, new Mat4d())
-                : perspectiveFovLH(fov, width, height, zNear, zFar, new Mat4d());
+        return GLM_LEFT_HANDED ? perspectiveFovLH(fov, width, height, zNear, zFar, new Mat4d())
+                : perspectiveFovRH(fov, width, height, zNear, zFar, new Mat4d());
     }
 
     public static Mat4d perspectiveFov(double fov, double width, double height, double zNear, double zFar, Mat4d mat) {
-        return GLM_LEFT_HANDED ? perspectiveFovRH(fov, width, height, zNear, zFar, mat)
-                : perspectiveFovLH(fov, width, height, zNear, zFar, mat);
+        return GLM_LEFT_HANDED ? perspectiveFovLH(fov, width, height, zNear, zFar, mat)
+                : perspectiveFovRH(fov, width, height, zNear, zFar, mat);
     }
 
     private static Mat4d perspectiveFovRH(double fov, double width, double height, double zNear, double zFar, Mat4d res) {

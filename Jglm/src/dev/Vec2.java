@@ -9,15 +9,16 @@ package dev;
  *
  * @author GBarbieri
  */
-public class Vec2 {
-
-    public static final int SIZE = 2 * Float.BYTES;
-
-    public float x, y;
+public class Vec2 extends operatorVec2 {
 
     public Vec2() {
         x = 0f;
         y = 0f;
+    }
+
+    public Vec2(float f) {
+        x = f;
+        y = f;
     }
 
     public Vec2(float x, float y) {
@@ -25,19 +26,29 @@ public class Vec2 {
         this.y = y;
     }
 
+    public Vec2(double f) {
+        x = (float) f;
+        y = (float) f;
+    }
+
     public Vec2(double x, double y) {
         this.x = (float) x;
         this.y = (float) y;
     }
 
-    public Vec2(float f) {
-        x = f;
-        y = f;
+    public Vec2(Vec2 v) {
+        x = v.x;
+        y = v.y;
     }
-    
-    public Vec2(double f) {
-        x = (float) f;
-        y = (float) f;
+
+    public Vec2(Vec3 v) {
+        x = v.x;
+        y = v.y;
+    }
+
+    public Vec2(Vec4 v) {
+        x = v.x;
+        y = v.y;
     }
 
     /**
@@ -72,53 +83,4 @@ public class Vec2 {
         return dest;
     }
 
-    public Vec2 sub(float minuend) {
-        return sub(minuend, this);
-    }
-
-    public Vec2 sub(Vec2 minuend) {
-        return sub(minuend, this);
-    }
-
-    public Vec2 sub(float minuend, Vec2 res) {
-        res.x = x - minuend;
-        res.y = y - minuend;
-        return res;
-    }
-
-    public Vec2 sub(Vec2 minuend, Vec2 res) {
-        res.x = x - minuend.x;
-        res.y = y - minuend.y;
-        return res;
-    }
-
-    public Vec2 mul(float multiplicand) {
-        return mul(multiplicand, this);
-    }
-
-    public Vec2 mul(Vec2 multiplicand) {
-        return mul(multiplicand, this);
-    }
-
-    public Vec2 mul(float multiplicand, Vec2 res) {
-        res.x = x * multiplicand;
-        res.y = y * multiplicand;
-        return res;
-    }
-
-    public Vec2 mul(Vec2 multiplicand, Vec2 res) {
-        res.x = x * multiplicand.x;
-        res.y = y * multiplicand.y;
-        return res;
-    }
-
-    public Vec2 div(Vec2 divisor) {
-        return div(divisor, this);
-    }
-
-    public Vec2 div(Vec2 divisor, Vec2 res) {
-        res.x = x / divisor.x;
-        res.y = y / divisor.y;
-        return res;
-    }
 }

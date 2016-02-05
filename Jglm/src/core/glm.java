@@ -13,7 +13,7 @@ import dev.Vec4;
  *
  * @author GBarbieri
  */
-public class glm extends matrix_transform {
+ public class glm extends noise {
 
     
 

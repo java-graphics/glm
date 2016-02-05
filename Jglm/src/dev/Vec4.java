@@ -9,11 +9,21 @@ package dev;
  *
  * @author GBarbieri
  */
-public class Vec4 {
+public class Vec4 extends funcCommonVec4 {
 
-    public static final int SIZE = 4 * Float.BYTES;
+    public Vec4() {
+        x = 0f;
+        y = 0f;
+        z = 0f;
+        w = 0f;
+    }
 
-    public float x, y, z, w;
+    public Vec4(Vec4 v) {
+        x = v.x;
+        y = v.y;
+        z = v.z;
+        w = v.w;
+    }
 
     public Vec4(float f) {
         x = f;
@@ -27,6 +37,13 @@ public class Vec4 {
         this.y = y;
         this.z = z;
         this.w = w;
+    }
+
+    public Vec4(float f, Vec3 v) {
+        this.x = f;
+        this.y = v.x;
+        this.z = v.y;
+        this.w = v.z;
     }
 
     public Vec4(Vec2 a, Vec2 b) {
@@ -52,40 +69,64 @@ public class Vec4 {
         return this;
     }
 
-    public Vec4 add(float f) {
-        return add(f, this);
+    public Vec4 add_(float addend) {
+        return add(addend, new Vec4());
     }
 
-    public Vec4 add(float f, Vec4 res) {
-        res.x += f;
-        res.y += f;
-        res.z += f;
-        res.w += f;
+    public Vec4 add(float addend) {
+        return add(addend, this);
+    }
+
+    public Vec4 add(float addend, Vec4 result) {
+        result.x += addend;
+        result.y += addend;
+        result.z += addend;
+        result.w += addend;
         return this;
     }
 
-    public Vec4 div(float f) {
-        return div(f, this);
+    public Vec4 div(float divisor) {
+        return div(divisor, this);
     }
 
-    public Vec4 div(float f, Vec4 res) {
-        res.x /= f;
-        res.y /= f;
-        res.z /= f;
-        res.w /= f;
+    public Vec4 div(float divisor, Vec4 quotient) {
+        quotient.x /= divisor;
+        quotient.y /= divisor;
+        quotient.z /= divisor;
+        quotient.w /= divisor;
         return this;
+    }
+
+    public Vec4 mul_(Vec4 multiplicand) {
+        return mul(multiplicand, new Vec4());
+    }
+
+    public Vec4 mul(Vec4 multiplicand) {
+        return mul(multiplicand, this);
+    }
+
+    public Vec4 mul(float f, Vec4 res) {
+        return mul(f, f, f, f, res);
+    }
+
+    public Vec4 mul(Vec4 multiplicand, Vec4 product) {
+        product.x = x * multiplicand.x;
+        product.y = y * multiplicand.y;
+        product.z = z * multiplicand.z;
+        product.w = w * multiplicand.w;
+        return product;
     }
 
     public Vec4 mul(float f) {
         return mul(f, this);
     }
-
-    public Vec4 mul(float f, Vec4 res) {
-        res.x *= f;
-        res.y *= f;
-        res.z *= f;
-        res.w *= f;
-        return this;
+    
+    public Vec4 mul(float x, float y, float z, float w, Vec4 product) {
+        product.x = this.x * x;
+        product.y = this.y * y;
+        product.z = this.z * z;
+        product.w = this.w * w;
+        return product;
     }
 
     /**
@@ -116,6 +157,78 @@ public class Vec4 {
                 mat.m02 * x + mat.m12 * y + mat.m22 * z + mat.m32 * w,
                 mat.m03 * x + mat.m13 * y + mat.m23 * z + mat.m33 * w);
         return res;
+    }
+
+    public Vec4 plus_(float addend) {
+        return plus(addend, new Vec4());
+    }
+
+    public Vec4 plus(float addend) {
+        return plus(addend, this);
+    }
+
+    public Vec4 plus(float addend, Vec4 res) {
+        return plus(addend, addend, addend, addend, res);
+    }
+
+    public Vec4 plus_(Vec4 addend) {
+        return plus(addend, new Vec4());
+    }
+
+    public Vec4 plus(Vec4 addend) {
+        return plus(addend, this);
+    }
+
+    public Vec4 plus(Vec4 addend, Vec4 res) {
+        return plus(addend.x, addend.y, addend.z, addend.w, res);
+    }
+
+    public Vec4 plus_(float x, float y, float z, float w) {
+        return plus(x, y, z, w, new Vec4());
+    }
+
+    public Vec4 plus(float x, float y, float z, float w) {
+        return plus(x, y, z, w, this);
+    }
+
+    public Vec4 plus(float x, float y, float z, float w, Vec4 res) {
+        res.x += x;
+        res.y += y;
+        res.z += z;
+        res.w += w;
+        return res;
+    }
+
+    public Vec4 sub_(float minuend) {
+        return sub(minuend, new Vec4());
+    }
+
+    public Vec4 sub(float minuend) {
+        return sub(minuend, this);
+    }
+
+    public Vec4 sub(float minuend, Vec4 res) {
+        res.x -= minuend;
+        res.y -= minuend;
+        res.z -= minuend;
+        res.w -= minuend;
+        return this;
+    }
+
+    public Vec4 sub_(Vec4 subtrahend) {
+        return sub(subtrahend, new Vec4());
+    }
+
+    public Vec4 sub(Vec4 subtrahend) {
+        return sub(subtrahend, this);
+    }
+
+    public Vec4 sub(Vec4 subtrahend, Vec4 res) {
+        res.x -= subtrahend.x;
+        res.y -= subtrahend.y;
+        res.z -= subtrahend.z;
+        res.w -= subtrahend.w;
+        return this;
     }
 
     public float[] toFA_() {

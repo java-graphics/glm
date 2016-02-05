@@ -6,12 +6,44 @@
 package core;
 
 import dev.Vec3;
+import dev.Vec4;
 
 /**
  *
  * @author elect
  */
-class func_common {
+class funcCommon {
+
+    public static Vec4 clamp_(Vec4 v, float minVal, float maxVal) {
+        return clamp(v, minVal, maxVal, new Vec4());
+    }
+
+    public static Vec4 clamp(Vec4 v, float minVal, float maxVal, Vec4 result) {
+        result.x = Math.min(Math.max(v.x, minVal), maxVal);
+        result.y = Math.min(Math.max(v.y, minVal), maxVal);
+        result.z = Math.min(Math.max(v.z, minVal), maxVal);
+        result.w = Math.min(Math.max(v.w, minVal), maxVal);
+        return result;
+    }
+
+    public static float floor(float f) {
+        return (float) Math.floor(f);
+    }
+
+    public static Vec3 floor(Vec3 v) {
+        v.x = (float) Math.floor(v.x);
+        v.y = (float) Math.floor(v.y);
+        v.z = (float) Math.floor(v.z);
+        return v;
+    }
+    
+    public static Vec4 floor(Vec4 v) {
+        v.x = (float) Math.floor(v.x);
+        v.y = (float) Math.floor(v.y);
+        v.z = (float) Math.floor(v.z);
+        v.w = (float) Math.floor(v.w);
+        return v;
+    }
 
     public static int log2(int value) {
         return (int) (Math.log(value) / Math.log(2));
@@ -31,6 +63,18 @@ class func_common {
 
     public static Vec3 min(Vec3 v0, Vec3 v1, Vec3 res) {
         return res.set(Math.min(v0.x, v1.x), Math.min(v0.y, v1.y), Math.min(v0.z, v1.z));
+    }
+
+    public static Vec4 mod_(Vec4 dividend, float divisor) {
+        return mod(dividend, divisor, new Vec4());
+    }
+
+    public static Vec4 mod(Vec4 dividend, float divisor, Vec4 result) {
+        result.x = dividend.x % divisor;
+        result.y = dividend.y % divisor;
+        result.z = dividend.z % divisor;
+        result.w = dividend.w % divisor;
+        return result;
     }
 
     /**
@@ -74,5 +118,25 @@ class func_common {
             System.out.println("diff " + difference);
         }
         return !Double.isNaN(expected) && !Double.isNaN(actual) && difference <= maxUlps;
+    }
+
+    public static Vec3 step_(Vec3 edge, Vec3 x) {
+        return mix(new Vec3(1), new Vec3(0), lessThan_(x, edge));
+    }
+
+    public static Vec3 lessThan_(Vec3 a, Vec3 b) {
+        Vec3 result = new Vec3();
+        result.x = a.x < b.x ? 1 : 0;
+        result.y = a.y < b.y ? 1 : 0;
+        result.z = a.z < b.z ? 1 : 0;
+        return result;
+    }
+
+    public static Vec3 mix(Vec3 v0, Vec3 v1, Vec3 a) {
+        Vec3 result = new Vec3();
+        result.x = v0.x + a.x * (v1.x - v0.x);
+        result.y = v0.y + a.y * (v1.y - v0.y);
+        result.z = v0.z + a.z * (v1.z - v0.z);
+        return result;
     }
 }

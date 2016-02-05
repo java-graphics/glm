@@ -22,6 +22,12 @@ public class Vec3 {
         z = 0f;
     }
 
+    public Vec3(Vec4 v) {
+        x = v.x;
+        y = v.y;
+        z = v.z;
+    }
+
     public Vec3(float f) {
         x = f;
         y = f;
@@ -77,6 +83,63 @@ public class Vec3 {
         res.y = Math.min(y, v.y);
         res.z = Math.min(z, v.z);
         return res;
+    }
+
+    public Vec3 mul_(Vec3 multiplicand) {
+        return mul(multiplicand, new Vec3());
+    }
+
+    public Vec3 mul(Vec3 multiplicand) {
+        return mul(multiplicand, this);
+    }
+
+    public Vec3 mul(float multiplicand, Vec3 product) {
+        return mul(multiplicand, multiplicand, multiplicand, product);
+    }
+
+    public Vec3 mul(Vec3 multiplicand, Vec3 product) {
+        return mul(multiplicand.x, multiplicand.y, multiplicand.z, product);
+    }
+
+    public Vec3 mul(float multiplicand) {
+        return mul(multiplicand, this);
+    }
+
+    public Vec3 mul(float multiplicandX, float multiplicandY, float multiplicandZ, Vec3 product) {
+        product.x = this.x * multiplicandX;
+        product.y = this.y * multiplicandY;
+        product.z = this.z * multiplicandZ;
+        return product;
+    }
+
+    public Vec3 sub_(float f) {
+        return sub(f, new Vec3());
+    }
+
+    public Vec3 sub(float f) {
+        return sub(f, this);
+    }
+
+    public Vec3 sub(float f, Vec3 res) {
+        res.x -= f;
+        res.y -= f;
+        res.z -= f;
+        return this;
+    }
+
+    public Vec3 sub_(Vec3 subtrahend) {
+        return sub(subtrahend, new Vec3());
+    }
+
+    public Vec3 sub(Vec3 subtrahend) {
+        return sub(subtrahend, this);
+    }
+
+    public Vec3 sub(Vec3 subtrahend, Vec3 res) {
+        res.x -= subtrahend.x;
+        res.y -= subtrahend.y;
+        res.z -= subtrahend.z;
+        return this;
     }
 
     public static Vec3 linearRand_(Vec3 min, Vec3 max) {

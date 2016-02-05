@@ -335,6 +335,10 @@ public class Mat4 {
     public Mat4 invTransp() {
         return invTransp3(this);
     }
+    
+    public Mat4 invTransp3_() {
+        return invTransp3(new Mat4());
+    }
 
     /**
      * Compute a normal matrix from the upper left 3x3 submatrix of
