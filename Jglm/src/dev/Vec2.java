@@ -15,25 +15,40 @@ public class Vec2 {
 
     public float x, y;
 
+    public Vec2() {
+        x = 0f;
+        y = 0f;
+    }
+
     public Vec2(float x, float y) {
         this.x = x;
         this.y = y;
+    }
+
+    public Vec2(double x, double y) {
+        this.x = (float) x;
+        this.y = (float) y;
     }
 
     public Vec2(float f) {
         x = f;
         y = f;
     }
+    
+    public Vec2(double f) {
+        x = (float) f;
+        y = (float) f;
+    }
 
     /**
      * Return the length of this vector.
-     * 
+     *
      * @return the length
      */
     public float length() {
         return (float) Math.sqrt((x * x) + (y * y));
     }
-    
+
     /**
      * Normalize this vector.
      *

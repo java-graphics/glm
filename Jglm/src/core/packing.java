@@ -12,7 +12,7 @@ import dev.Vec4;
  *
  * @author elect
  */
-public class packing extends func_common {
+class packing extends func_common {
 
     public static int packSnorm3x10_1x2(Vec4 v) {
         int[] result = new int[4];

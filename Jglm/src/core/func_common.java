@@ -5,14 +5,32 @@
  */
 package core;
 
+import dev.Vec3;
+
 /**
  *
  * @author elect
  */
-public class func_common {
+class func_common {
 
     public static int log2(int value) {
         return (int) (Math.log(value) / Math.log(2));
+    }
+
+    public static Vec3 max_(Vec3 v0, Vec3 v1) {
+        return max(v0, v1, new Vec3());
+    }
+
+    public static Vec3 max(Vec3 v0, Vec3 v1, Vec3 res) {
+        return res.set(Math.max(v0.x, v1.x), Math.max(v0.y, v1.y), Math.max(v0.z, v1.z));
+    }
+
+    public static Vec3 min_(Vec3 v0, Vec3 v1) {
+        return min(v0, v1, new Vec3());
+    }
+
+    public static Vec3 min(Vec3 v0, Vec3 v1, Vec3 res) {
+        return res.set(Math.min(v0.x, v1.x), Math.min(v0.y, v1.y), Math.min(v0.z, v1.z));
     }
 
     /**
@@ -33,13 +51,28 @@ public class func_common {
      * @return
      */
     public static boolean compareFloatEquals(float expected, float actual, int maxUlps) {
-        int expectedBits = Float.floatToIntBits(expected) < 0 ? 0x80000000 - Float.floatToIntBits(expected) : Float.floatToIntBits(expected);
-        int actualBits = Float.floatToIntBits(actual) < 0 ? 0x80000000 - Float.floatToIntBits(actual) : Float.floatToIntBits(actual);
+        int expectedBits = Float.floatToIntBits(expected) < 0
+                ? 0x80000000 - Float.floatToIntBits(expected) : Float.floatToIntBits(expected);
+        int actualBits = Float.floatToIntBits(actual) < 0
+                ? 0x80000000 - Float.floatToIntBits(actual) : Float.floatToIntBits(actual);
         int difference = expectedBits > actualBits ? expectedBits - actualBits : actualBits - expectedBits;
         if (difference > maxUlps) {
             System.out.println("expected: " + expected + ", actual: " + actual);
             System.out.println("diff " + difference);
         }
         return !Float.isNaN(expected) && !Float.isNaN(actual) && difference <= maxUlps;
+    }
+
+    public static boolean compareDoubleEquals(double expected, double actual, int maxUlps) {
+        long expectedBits = Double.doubleToLongBits(expected) < 0
+                ? 0x8000000000000000L - Double.doubleToLongBits(expected) : Double.doubleToLongBits(expected);
+        long actualBits = Double.doubleToLongBits(actual) < 0
+                ? 0x8000000000000000L - Double.doubleToLongBits(actual) : Double.doubleToLongBits(actual);
+        long difference = expectedBits > actualBits ? expectedBits - actualBits : actualBits - expectedBits;
+        if (difference > maxUlps) {
+            System.out.println("expected: " + expected + ", actual: " + actual);
+            System.out.println("diff " + difference);
+        }
+        return !Double.isNaN(expected) && !Double.isNaN(actual) && difference <= maxUlps;
     }
 }
