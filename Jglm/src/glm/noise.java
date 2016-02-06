@@ -5,8 +5,9 @@
  */
 package glm;
 
-import dev.Vec3;
-import dev.Vec4;
+import glm.vec._3.Vec3;
+import glm.vec._4.Vec4;
+import glm.glm.*;
 
 /**
  *
@@ -26,14 +27,14 @@ class noise extends matrixTransform {
         float f4 = 0.309016994374947451f;
 
         // First corner
-        Vec4 i = floor(v.add_(dot(v, new Vec4(f4))));
-        Vec4 x0 = v.sub(i).plus(dot(i, new Vec4(c.x)));
+        Vec4 i = v.add_(v.dot(new Vec4(f4))).floor_();
+        Vec4 x0 = v.sub_(i).add(i.dot(new Vec4(c.x)));
 
         // Other corners
         // Rank sorting originally contributed by Bill Licea-Kane, AMD (formerly ATI)
-        Vec4 i0 = new Vec4();
-        Vec3 isX = step_(new Vec3(x0.y, x0.z, x0.w), new Vec3(x0.x));
-        Vec3 isYZ = step_(new Vec3(x0.z, x0.w, x0.w), new Vec3(x0.y, x0.y, x0.z));
+        Vec4 i0;
+        Vec3 isX = new Vec3(x0.y, x0.z, x0.w).step(new Vec3(x0.x));
+        Vec3 isYZ = new Vec3(x0.z, x0.w, x0.w).step(new Vec3(x0.y, x0.y, x0.z));
         //  i0.x = dot(isX, vec3(1.0));
         //i0.x = isX.x + isX.y + isX.z;
         //i0.yzw = static_cast<T>(1) - isX;
@@ -47,34 +48,34 @@ class noise extends matrixTransform {
         i0.w += 1 - isYZ.z;
 
         // i0 now contains the unique values 0,1,2,3 in each channel
-        Vec4 i3 = clamp_(i0, 0, 1);
-        Vec4 i2 = clamp_(i0.sub_(1), 0, 1);
-        Vec4 i1 = clamp_(i0.sub_(2), 0, 1);
+        Vec4 i3 = i0.clamp_(0, 1);
+        Vec4 i2 = i0.sub_(1).clamp_(0, 1);
+        Vec4 i1 = i0.sub_(2).clamp_(0, 1);
 
         //  x0 = x0 - 0.0 + 0.0 * C.xxxx
         //  x1 = x0 - i1  + 0.0 * C.xxxx
         //  x2 = x0 - i2  + 0.0 * C.xxxx
         //  x3 = x0 - i3  + 0.0 * C.xxxx
         //  x4 = x0 - 1.0 + 4.0 * C.xxxx
-        Vec4 x1 = x0.sub_(i1).plus(c.x);
-        Vec4 x2 = x0.sub_(i2).plus(c.y);
-        Vec4 x3 = x0.sub_(i3).plus(c.z);
-        Vec4 x4 = x0.plus(c.w);
+        Vec4 x1 = x0.sub_(i1).add(c.x);
+        Vec4 x2 = x0.sub_(i2).add(c.y);
+        Vec4 x3 = x0.sub_(i3).add(c.z);
+        Vec4 x4 = x0.add(c.w);
 
         // Permutations
-        i.mod_(289);
+        i.mod_(new Vec4(289));
         float j0 = permute(permute(permute(permute(i.w) + i.z) + i.y) + i.x);
         Vec4 j1 = permute_(permute_(permute_(permute_(
-                new Vec4(i.w).plus(i1.w, i2.w, i3.w, 1))
-                .plus(i.z).plus(i1.z, i2.z, i3.z, 1))
-                .plus(i.y).plus(i1.y, i2.y, i3.y, 1))
-                .plus(i.x).plus(i1.x, i2.x, i3.x, 1));
+                new Vec4(i.w).add(i1.w, i2.w, i3.w, 1))
+                .add(i.z).add(i1.z, i2.z, i3.z, 1))
+                .add(i.y).add(i1.y, i2.y, i3.y, 1))
+                .add(i.x).add(i1.x, i2.x, i3.x, 1));
 
         // Gradients: 7x7x6 points over a cube, mapped onto a 4-cross polytope
         // 7*7*6 = 294, which is close to the ring size 17*17 = 289.
         Vec4 ip = new Vec4(1f / 294, 1f / 49, 1f / 7, 0);
 
-//        Vec4 p0 = grad4(j0, ip);
+        Vec4 p0 = grad4_(j0, ip);
 //        float[] p1 = grad4(j1[0], ip);
 //        float[] p2 = grad4(j1[1], ip);
 //        float[] p3 = grad4(j1[2], ip);
@@ -104,19 +105,14 @@ class noise extends matrixTransform {
 //        return subtr(x.su, floor(x));
 //    }
 //    
-//    private static Vec4 grad4_(float j, Vec4 ip) {
-//        Vec3 pXYZ = new Vec3(j).mul(new Vec3(ip));
-//        float[] a = mult(new float[]{ip[0], ip[1], ip[2]}, j);
-//        float[] b = fract(a);
-//        float[] c = mult(b, 7);
-//        float[] d = floor(c);
-//        float[] e = mult(d, ip[2]);
-//        float[] pXYZ = subtr(e, 1);
-//        float pW = 1.5f - dot(abs(pXYZ), new float[]{1, 1, 1});
-//        float[] s = lessThan(new float[]{pXYZ[0], pXYZ[1], pXYZ[2], pW}, 0);
+    private static Vec4 grad4_(float j, Vec4 ip) {
+        Vec3 pXYZ = new Vec3(j).mul(new Vec3(ip)).mul(7).fract().mul(ip.z).sub(1);
+        float pW = 1.5f - pXYZ.abs().dot(new Vec3(1));
+//        Vec4 s = new Vec4;
 //        pXYZ = add(pXYZ, mult(subtr(mult(new float[]{s[0], s[1], s[2]}, 2), 1), s[3]));
 //        return new float[]{pXYZ[0], pXYZ[1], pXYZ[2], pW};
-//    }
+return null;
+    }
 
     private static float permute(float x) {
         return mod289((x * 34 + 1) * x);
@@ -127,7 +123,7 @@ class noise extends matrixTransform {
     }
 
     private static Vec4 permute_(Vec4 x) {
-        return mod289_(new Vec4(x).mul(34).plus(1).mul(x));
+        return mod289_(new Vec4(x).mul(34).add(1).mul(x));
     }
 
     private static Vec4 mod289_(Vec4 v) {

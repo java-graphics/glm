@@ -3,18 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev;
+package glm.vec._3;
 
+import glm.vec._4.Vec4;
 import glm.glm;
 
 /**
  *
  * @author GBarbieri
  */
-public class Vec3 {
-
-    public float x, y, z;
-    public static final int SIZE = 3 * Float.BYTES;
+public class Vec3 extends funcRelational {
 
     public Vec3() {
         x = 0f;

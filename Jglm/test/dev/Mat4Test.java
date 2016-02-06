@@ -5,6 +5,7 @@
  */
 package dev;
 
+import glm.vec._3.Vec3;
 import glm.mat._4.Mat4;
 import glm.glm;
 import org.junit.AfterClass;
@@ -91,7 +92,7 @@ public class Mat4Test {
         System.out.println("det_0");
         float det = new Mat4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15).det();
         float expResult = 0;
-        assertTrue(glm.compareFloatEquals(expResult, det, 1));
+        assertTrue(glm.compareFloatEquals(expResult, det));
     }
 
     @Test
@@ -99,7 +100,7 @@ public class Mat4Test {
         System.out.println("det_1");
         float det = new Mat4(2, 5, 3, 5, 4, 6, 6, 3, 11, 3, 2, -2, 4, -7, 9, 3).det();
         float expResult = 2960f;
-        assertTrue(glm.compareFloatEquals(expResult, det, 1));
+        assertTrue(glm.compareFloatEquals(expResult, det));
     }
 
     @Test
@@ -107,7 +108,7 @@ public class Mat4Test {
         System.out.println("det3");
         float det = new Mat4(2, 5, 3, 5, 4, 6, 6, 3, 11, 3, 2, -2, 4, -7, 9, 3).det3();
         float expResult = 116f;
-        assertTrue(glm.compareFloatEquals(expResult, det, 1));
+        assertTrue(glm.compareFloatEquals(expResult, det));
     }
 
     @Test
@@ -115,7 +116,7 @@ public class Mat4Test {
         System.out.println("det4x3");
         float det = new Mat4(2, 5, 3, 5, 4, 6, 6, 3, 11, 3, 2, -2, 0, 0, 0, 1).det4x3();
         float expResult = 116f;
-        assertTrue(glm.compareFloatEquals(expResult, det, 1));
+        assertTrue(glm.compareFloatEquals(expResult, det));
     }
 
     @Test

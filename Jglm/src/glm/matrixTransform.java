@@ -8,7 +8,7 @@ package glm;
 import static glm.glm.GLM_LEFT_HANDED;
 import glm.mat._4.Mat4;
 import glm.mat._4.Mat4d;
-import dev.Vec3;
+import glm.vec._3.Vec3;
 import dev.Vec3d;
 
 /**

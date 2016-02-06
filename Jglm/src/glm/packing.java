@@ -5,8 +5,8 @@
  */
 package glm;
 
-import dev.Vec3;
-import dev.Vec4;
+import glm.vec._3.Vec3;
+import glm.vec._4.Vec4;
 
 /**
  *

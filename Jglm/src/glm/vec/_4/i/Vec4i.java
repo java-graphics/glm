@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev;
+package glm.vec._4.i;
 
 /**
  *
@@ -14,6 +14,13 @@ public class Vec4i {
     public static final int SIZE = 4 * Integer.BYTES;
 
     public int x, y, z, w;
+
+    public Vec4i() {
+        x = 0;
+        y = 0;
+        z = 0;
+        w = 0;
+    }
 
     public Vec4i(int x, int y, int z, int w) {
         this.x = x;

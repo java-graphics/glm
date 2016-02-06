@@ -11,7 +11,7 @@ import dev.*;
  *
  * @author GBarbieri
  */
-class operator extends funcVectorRelational {
+class operator extends funcRelational {
 
     public Vec2 sub(float minuend) {
         return sub(minuend, (Vec2) this);

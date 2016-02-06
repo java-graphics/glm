@@ -5,6 +5,8 @@
  */
 package glm.vec._2;
 
+import glm.glm;
+
 /**
  *
  * @author elect
@@ -47,6 +49,42 @@ class funcExponential extends funcCommon {
         return result;
     }
 
+    public Vec2 inverseSqrt() {
+        return inverseSqrt((Vec2) this);
+    }
+
+    public Vec2 inverseSqrt_() {
+        return inverseSqrt(new Vec2());
+    }
+
+    public Vec2 inverseSqrt(Vec2 result) {
+        return inverseSqrt((Vec2) this, result);
+    }
+
+    public static Vec2 inverseSqrt(Vec2 x, Vec2 result) {
+        result.x = glm.inverseSqrt(x.x);
+        result.y = glm.inverseSqrt(x.y);
+        return result;
+    }
+
+    public Vec2 log() {
+        return log((Vec2) this);
+    }
+
+    public Vec2 log_() {
+        return log(new Vec2());
+    }
+
+    public Vec2 log(Vec2 result) {
+        return log((Vec2) this, result);
+    }
+
+    public static Vec2 log(Vec2 x, Vec2 result) {
+        result.x = (float) Math.log(x.x);
+        result.y = (float) Math.log(x.y);
+        return result;
+    }
+
     public Vec2 log2() {
         return log2((Vec2) this);
     }
@@ -56,8 +94,49 @@ class funcExponential extends funcCommon {
     }
 
     public Vec2 log2(Vec2 result) {
-        result.x = (float) (Math.log(result.x) / Math.log(2));
-        result.y = (float) (Math.log(result.y) / Math.log(2));
+        return log2((Vec2) this, result);
+    }
+
+    public static Vec2 log2(Vec2 x, Vec2 result) {
+        result.x = (float) (Math.log(x.x) / Math.log(2));
+        result.y = (float) (Math.log(x.y) / Math.log(2));
         return result;
     }
+
+    public Vec2 pow(Vec2 y) {
+        return pow(y, (Vec2) this);
+    }
+
+    public Vec2 pow_(Vec2 y) {
+        return pow(y, new Vec2());
+    }
+
+    public Vec2 pow(Vec2 y, Vec2 result) {
+        return pow((Vec2) this, y, result);
+    }
+
+    public static Vec2 pow(Vec2 x, Vec2 y, Vec2 result) {
+        result.x = (float) Math.pow(x.x, y.x);
+        result.y = (float) Math.pow(x.y, y.y);
+        return result;
+    }
+
+    public Vec2 sqrt() {
+        return sqrt((Vec2) this);
+    }
+
+    public Vec2 sqrt_() {
+        return sqrt(new Vec2());
+    }
+
+    public Vec2 sqrt(Vec2 result) {
+        return sqrt((Vec2) this, result);
+    }
+
+    public static Vec2 sqrt(Vec2 x, Vec2 result) {
+        result.x = (float) Math.sqrt(x.x);
+        result.y = (float) Math.sqrt(x.y);
+        return result;
+    }
+
 }

@@ -5,14 +5,18 @@
  */
 package glm;
 
-import dev.Vec4;
+import glm.vec._4.Vec4;
 
 /**
  *
  * @author GBarbieri
  */
-class funcGeometric extends funcCommon {
+class funcGeometric extends funcExponential {
 
+    public static float length(float x) {
+        return (float)Math.abs(x);
+    }
+    
     public static float dot(Vec4 v0, Vec4 v1) {
         return v0.x * v1.x + v0.y * v1.y + v0.z * v1.z + v0.w * v1.w;
     }

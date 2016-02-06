@@ -6,8 +6,8 @@
 package glm;
 
 import glm.mat._4.Mat4;
-import dev.Vec3;
-import dev.Vec4;
+import glm.vec._3.Vec3;
+import glm.vec._4.Vec4;
 
 /**
  *
@@ -15,7 +15,6 @@ import dev.Vec4;
  */
  public class glm extends noise {
 
-    
 
     public static int ceilMultiple(int source, int multiple) {
         if (source > 0) {
