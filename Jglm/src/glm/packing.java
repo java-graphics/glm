@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package core;
+package glm;
 
 import dev.Vec3;
 import dev.Vec4;
@@ -12,7 +12,7 @@ import dev.Vec4;
  *
  * @author elect
  */
-public class packing extends func_common {
+class packing extends funcGeometric {
 
     public static int packSnorm3x10_1x2(Vec4 v) {
         int[] result = new int[4];

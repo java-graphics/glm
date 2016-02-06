@@ -12,7 +12,7 @@ package dev;
 public class Vec2i {
 
     public int x, y;
-    public static final int SIZEOF = 2 * Integer.BYTES;
+    public static final int SIZE = 2 * Integer.BYTES;
 
     public Vec2i() {
         x = 0;

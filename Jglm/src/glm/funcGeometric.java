@@ -3,13 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev;
+package glm;
+
+import dev.Vec4;
 
 /**
  *
  * @author GBarbieri
  */
-public class Vec2i8 {
-    
-    public static final int SIZE = 2 * Byte.BYTES;
+class funcGeometric extends funcCommon {
+
+    public static float dot(Vec4 v0, Vec4 v1) {
+        return v0.x * v1.x + v0.y * v1.y + v0.z * v1.z + v0.w * v1.w;
+    }
 }

@@ -9,19 +9,15 @@ package dev;
  *
  * @author GBarbieri
  */
-public class Vec2 {
+public class Vec3i {
 
-    public static final int SIZEOF = 2 * Float.BYTES;
+    public static final int SIZE = 3 * Integer.BYTES;
 
-    public float x, y;
+    public int x, y, z;
 
-    public Vec2(float x, float y) {
-        this.x = x;
-        this.y = y;
-    }
-
-    public Vec2(float f) {
-        x = f;
-        y = f;
+    public Vec3i() {
+        x = 0;
+        y = 0;
+        z = 0;
     }
 }

@@ -5,7 +5,8 @@
  */
 package dev;
 
-import core.glm;
+import glm.mat._4.Mat4;
+import glm.glm;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -163,6 +164,17 @@ public class Mat4Test {
     }
 
     @Test
+    public void test_lookAt() {
+        System.out.println("lookAt");
+        Mat4 result = glm.lookAt_(new Vec3(0.5, 1.0, 2.0), new Vec3(0), new Vec3(0, 0, 1));
+        Mat4 expResult = new Mat4(-0.894427121f, -0.390359968f, 0.218217880f, 0.000000000f,
+                0.447213560f, -0.780719936f, 0.436435759f, 0.000000000f,
+                0.000000000f, 0.487949967f, 0.872871518f, 0.000000000f,
+                -0.000000000f, -0.000000000f, -2.29128766f, 1.00000000f);
+        assertTrue(expResult.equals(result));
+    }
+
+    @Test
     public void test_mul_a() {
         System.out.println("mul_a");
         Mat4 result = new Mat4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
@@ -255,7 +267,7 @@ public class Mat4Test {
         Mat4 result = new Mat4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
         Mat4 expResult = new Mat4(1.81066f, 0f, 0f, 0f, 0f, 2.41421342f, 0f, 0f,
                 0f, 0f, -1.00200200f, -1f, 0f, 0f, -0.200200200f, 0f);
-        Mat4.perspective(fovy, aspect, zNear, zFar, result);
+        glm.perspective(fovy, aspect, zNear, zFar, result);
         assertTrue(result.equals(expResult));
     }
 
@@ -297,7 +309,7 @@ public class Mat4Test {
         System.out.println("toFA");
         float[] expResult = new float[]{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15};
         Mat4 result = new Mat4(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15);
-        assertArrayEquals(expResult, result.toFA(new float[16]), 1e-5f);
+        assertArrayEquals(expResult, result.toFa(new float[16]), 1e-5f);
     }
 //
 //    /**

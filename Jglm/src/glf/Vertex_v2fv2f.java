@@ -5,7 +5,7 @@
  */
 package glf;
 
-import dev.Vec2;
+import glm.vec._2.Vec2;
 
 /**
  *
@@ -13,7 +13,7 @@ import dev.Vec2;
  */
 public class Vertex_v2fv2f {
 
-    public static final int SIZEOF = 2 * Vec2.SIZEOF;
+    public static final int SIZE = 2 * Vec2.SIZE;
     
     public Vec2 position;
     public Vec2 texCoord;

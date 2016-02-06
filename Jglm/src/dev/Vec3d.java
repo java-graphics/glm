@@ -9,7 +9,7 @@ package dev;
  *
  * @author GBarbieri
  */
-public class Vec2i8 {
-    
-    public static final int SIZE = 2 * Byte.BYTES;
+public class Vec3d {
+
+    public double x, y, z;
 }

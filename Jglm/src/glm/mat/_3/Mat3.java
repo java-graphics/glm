@@ -3,7 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev;
+package glm.mat._3;
+
+import glm.mat._4.Mat4;
 
 /**
  *
@@ -15,7 +17,7 @@ public class Mat3 {
     public float m01, m11, m21;
     public float m02, m12, m22;
 
-    public static final int SIZEOF = 3 * 3 * Float.BYTES;
+    public static final int SIZE = 3 * 3 * Float.BYTES;
 
     public Mat3() {
         m00 = 1.0f;

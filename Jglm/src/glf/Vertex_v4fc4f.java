@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev;
+package glf;
+
+import dev.Vec4;
 
 /**
  *
  * @author GBarbieri
  */
-public class Vec2i8 {
+public class Vertex_v4fc4f {
     
-    public static final int SIZE = 2 * Byte.BYTES;
+    public static final int SIZE = 2 * Vec4.SIZE;
 }

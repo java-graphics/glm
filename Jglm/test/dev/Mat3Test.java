@@ -5,6 +5,7 @@
  */
 package dev;
 
+import glm.mat._3.Mat3;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 

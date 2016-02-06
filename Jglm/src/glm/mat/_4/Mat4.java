@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev;
+package glm.mat._4;
 
-import core.glm;
+import dev.Vec3;
+import dev.Vec4;
+import glm.glm;
 import java.nio.ByteBuffer;
 
 /**
@@ -19,7 +21,7 @@ public class Mat4 {
     public float m02, m12, m22, m32;
     public float m03, m13, m23, m33;
 
-    public static final int SIZEOF = 4 * 4 * Float.BYTES;
+    public static final int SIZE = 4 * 4 * Float.BYTES;
 
     public Mat4() {
         m00 = 1.0f;
@@ -96,6 +98,26 @@ public class Mat4 {
         this.m31 = m31;
         this.m32 = m32;
         this.m33 = m33;
+    }
+
+    public Mat4(double m00, double m01, double m02, double m03, double m10, double m11, double m12, double m13,
+            double m20, double m21, double m22, double m23, double m30, double m31, double m32, double m33) {
+        this.m00 = (float) m00;
+        this.m01 = (float) m01;
+        this.m02 = (float) m02;
+        this.m03 = (float) m03;
+        this.m10 = (float) m10;
+        this.m11 = (float) m11;
+        this.m12 = (float) m12;
+        this.m13 = (float) m13;
+        this.m20 = (float) m20;
+        this.m21 = (float) m21;
+        this.m22 = (float) m22;
+        this.m23 = (float) m23;
+        this.m30 = (float) m30;
+        this.m31 = (float) m31;
+        this.m32 = (float) m32;
+        this.m33 = (float) m33;
     }
 
     public Mat4 set(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13,
@@ -315,6 +337,10 @@ public class Mat4 {
     public Mat4 invTransp() {
         return invTransp3(this);
     }
+    
+    public Mat4 invTransp3_() {
+        return invTransp3(new Mat4());
+    }
 
     /**
      * Compute a normal matrix from the upper left 3x3 submatrix of
@@ -354,6 +380,38 @@ public class Mat4 {
                 0.0f,
                 0.0f, 0.0f, 0.0f, 1.0f);
         return dest;
+    }
+
+    /**
+     * Multiply this Vector4f by the given matrix mat and store the result in
+     * <code>this</code>.
+     *
+     * @param v
+     * @return this
+     */
+    public Vec4 mul(Vec4 v) {
+        return mul(v, v);
+    }
+
+    /**
+     * Multiply this Vector4f by the given matrix mat and store the result in
+     * <code>dest</code>.
+     *
+     * @param right
+     * the destination vector to hold the result
+     * @param res
+     * @return dest
+     */
+    public Vec4 mul(Vec4 right, Vec4 res) {
+        res.set(m00 * right.x + m10 * right.y + m20 * right.z + m30 * right.w,
+                m01 * right.x + m11 * right.y + m21 * right.z + m31 * right.w,
+                m02 * right.x + m12 * right.y + m22 * right.z + m32 * right.w,
+                m03 * right.x + m13 * right.y + m23 * right.z + m33 * right.w);
+        return res;
+    }
+
+    public Mat4 mul_(Mat4 right) {
+        return mul(right, new Mat4());
     }
 
     public Mat4 mul(Mat4 right) {
@@ -409,6 +467,10 @@ public class Mat4 {
         m32 = 0;
         m33 = 1;
         return this;
+    }
+
+    public Mat4 rotate(float angle, Vec3 v) {
+        return rotate(angle, v.x, v.y, v.z, this);
     }
 
     public Mat4 rotate(float angle, float x, float y, float z) {
@@ -472,6 +534,98 @@ public class Mat4 {
         return dest;
     }
 
+    /**
+     * Apply scaling to this matrix by uniformly scaling all base axes by the given <code>xyz</code> factor.
+     * <p>
+     * If <code>M</code> is <code>this</code> matrix and <code>S</code> the scaling matrix,
+     * then the new matrix will be <code>M * S</code>. So when transforming a
+     * vector <code>v</code> with the new matrix by using <code>M * S * v</code>, the
+     * scaling will be applied first!
+     * <p>
+     * Individual scaling of all three axes can be applied using {@link #scale(float, float, float)}.
+     *
+     * @see #scale(float, float, float)
+     *
+     * @param s
+     * the factor for all components
+     * @return this
+     */
+    public Mat4 scale(float s) {
+        return scale(s, s, s);
+    }
+
+    public Mat4 scale(Vec3 v) {
+        return scale(v.x, v.y, v.z);
+    }
+
+    public Mat4 scale(Vec3 v, Mat4 res) {
+        return scale(v.x, v.y, v.z, res);
+    }
+
+    /**
+     * Apply scaling to this matrix by scaling the base axes by the given x,
+     * y and z factors.
+     * <p>
+     * If <code>M</code> is <code>this</code> matrix and <code>S</code> the scaling matrix,
+     * then the new matrix will be <code>M * S</code>. So when transforming a
+     * vector <code>v</code> with the new matrix by using <code>M * S * v</code>, the
+     * scaling will be applied first!
+     *
+     * @param x
+     * the factor of the x component
+     * @param y
+     * the factor of the y component
+     * @param z
+     * the factor of the z component
+     * @return this
+     */
+    public Mat4 scale(float x, float y, float z) {
+        return scale(x, y, z, this);
+    }
+
+    /**
+     * Apply scaling to the this matrix by scaling the base axes by the given x,
+     * y and z factors and store the result in <code>dest</code>.
+     * <p>
+     * If <code>M</code> is <code>this</code> matrix and <code>S</code> the scaling matrix,
+     * then the new matrix will be <code>M * S</code>. So when transforming a
+     * vector <code>v</code> with the new matrix by using <code>M * S * v</code>
+     * , the scaling will be applied first!
+     *
+     * @param x
+     * the factor of the x component
+     * @param y
+     * the factor of the y component
+     * @param z
+     * the factor of the z component
+     * @param dest
+     * will hold the result
+     * @return dest
+     */
+    public Mat4 scale(float x, float y, float z, Mat4 dest) {
+        // scale matrix elements:
+        // m00 = x, m11 = y, m22 = z
+        // m33 = 1
+        // all others = 0
+        dest.m00 = m00 * x;
+        dest.m01 = m01 * x;
+        dest.m02 = m02 * x;
+        dest.m03 = m03 * x;
+        dest.m10 = m10 * y;
+        dest.m11 = m11 * y;
+        dest.m12 = m12 * y;
+        dest.m13 = m13 * y;
+        dest.m20 = m20 * z;
+        dest.m21 = m21 * z;
+        dest.m22 = m22 * z;
+        dest.m23 = m23 * z;
+        dest.m30 = m30;
+        dest.m31 = m31;
+        dest.m32 = m32;
+        dest.m33 = m33;
+        return dest;
+    }
+
     public Mat4 translation(float x, float y, float z) {
         m00 = 1.0f;
         m01 = 0.0f;
@@ -514,20 +668,24 @@ public class Mat4 {
         return this;
     }
 
+    public Mat4 lookAt(Vec3 eye, Vec3 center, Vec3 up) {
+        return glm.lookAt(eye, center, up, this);
+    }
+
+    public static Mat4 lookAt(Vec3 eye, Vec3 center, Vec3 up, Mat4 res) {
+        return glm.lookAt(eye, center, up, res);
+    }
+
+     public Mat4 ortho(float left, float right, float bottom, float top, float zNear, float zFar) {
+        return glm.ortho(this, left, right, bottom, top, zNear, zFar);
+    }
+    
     public Mat4 perspective(float fovy, float aspect, float zNear, float zFar) {
         return glm.perspective(fovy, aspect, zNear, zFar, this);
     }
 
-    public static Mat4 perspective(float fovy, float aspect, float zNear, float zFar, Mat4 res) {
-        return glm.perspective(fovy, aspect, zNear, zFar, res);
-    }
-
     public Mat4 perspectiveFov(float fov, float width, float height, float zNear, float zFar) {
         return glm.perspectiveFov(fov, width, height, zNear, zFar, this);
-    }
-
-    public static Mat4 perspectiveFov(float fov, float width, float height, float zNear, float zFar, Mat4 res) {
-        return glm.perspectiveFov(fov, width, height, zNear, zFar, res);
     }
 
     public Mat4 mulPerspective(float fovy, float aspect, float zNear, float zFar) {
@@ -597,6 +755,7 @@ public class Mat4 {
         }
         return glm.compareFloatEquals(m22, other.m22, maxUlps);
     }
+
     public boolean equals(Mat4 other) {
         return equals(other, 2);
     }
@@ -650,15 +809,15 @@ public class Mat4 {
         return glm.compareFloatEquals(m33, other.m33, maxUlps);
     }
 
-    public float[] toFA_() {
-        return toFA(new float[16]);
+    public float[] toFa_() {
+        return toFa(new float[16]);
     }
 
-    public float[] toFA(float[] res) {
-        return Mat4.this.toFA(res, 0);
+    public float[] toFa(float[] res) {
+        return toFa(res, 0);
     }
 
-    public float[] toFA(float[] res, int index) {
+    public float[] toFa(float[] res, int index) {
         res[index + 0] = m00;
         res[index + 1] = m01;
         res[index + 2] = m02;
@@ -678,15 +837,15 @@ public class Mat4 {
         return res;
     }
 
-    public ByteBuffer toFB_() {
-        return toFB(ByteBuffer.allocate(16 * Float.BYTES));
+    public ByteBuffer toFb_() {
+        return toFb(ByteBuffer.allocate(16 * Float.BYTES));
     }
 
-    public ByteBuffer toFB(ByteBuffer res) {
-        return toFB(res, 0);
+    public ByteBuffer toFb(ByteBuffer res) {
+        return toFb(res, 0);
     }
 
-    public ByteBuffer toFB(ByteBuffer res, int index) {
+    public ByteBuffer toFb(ByteBuffer res, int index) {
         res.putFloat(index + 0, m00);
         res.putFloat(index + 1, m01);
         res.putFloat(index + 2, m02);
