@@ -29,6 +29,14 @@ public class Vec4 {
         this.w = w;
     }
 
+    public Vec4 set(Vec4 v) {
+        x = v.x;
+        y = v.y;
+        z = v.z;
+        w = v.w;
+        return this;
+    }
+
     public float[] toFA_() {
         return toFA(new float[4]);
     }
