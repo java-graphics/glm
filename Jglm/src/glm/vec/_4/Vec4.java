@@ -5,15 +5,14 @@
  */
 package glm.vec._4;
 
-import glm.vec._3.Vec3;
-import glm.mat._4.Mat4;
 import glm.vec._2.Vec2;
+import glm.vec._3.Vec3;
 
 /**
  *
  * @author GBarbieri
  */
-public class Vec4 extends operator {
+public class Vec4 extends noise {
 
     public Vec4() {
         x = 0f;
@@ -44,17 +43,40 @@ public class Vec4 extends operator {
     }
 
     public Vec4(float f, Vec3 v) {
-        this.x = f;
-        this.y = v.x;
-        this.z = v.y;
-        this.w = v.z;
+        x = f;
+        y = v.x;
+        z = v.y;
+        w = v.z;
     }
-    
+
     public Vec4(Vec3 v, float f) {
-        this.x = v.x;
-        this.y = v.y;
-        this.z = v.z;
-        this.w = f;
+        x = v.x;
+        y = v.y;
+        z = v.z;
+        w = f;
+    }
+
+    public Vec4(Vec2 v0, Vec2 v1) {
+        x = v0.x;
+        y = v0.y;
+        z = v1.x;
+        w = v1.y;
+    }
+
+    public Vec4 set(Vec4 v) {
+        x = v.x;
+        y = v.y;
+        z = v.z;
+        w = v.w;
+        return this;
+    }
+
+    public Vec4 set(float f) {
+        x = f;
+        y = f;
+        z = f;
+        w = f;
+        return this;
     }
 
     public Vec4 set(float x, float y, float z, float w) {
@@ -65,11 +87,27 @@ public class Vec4 extends operator {
         return this;
     }
 
+    public Vec4 set(float f, Vec3 v) {
+        x = f;
+        y = v.x;
+        z = v.y;
+        w = v.z;
+        return this;
+    }
+
     public Vec4 set(Vec3 v, float f) {
         x = v.x;
         y = v.y;
         z = v.z;
         w = f;
+        return this;
+    }
+
+    public Vec4 set(Vec2 v0, Vec2 v1) {
+        x = v0.x;
+        y = v0.y;
+        z = v1.x;
+        w = v1.y;
         return this;
     }
 

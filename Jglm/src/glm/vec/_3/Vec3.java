@@ -12,7 +12,7 @@ import glm.glm;
  *
  * @author GBarbieri
  */
-public class Vec3 extends funcRelational {
+public class Vec3 extends operator {
 
     public Vec3() {
         x = 0f;
@@ -58,85 +58,6 @@ public class Vec3 extends funcRelational {
         this.x = x;
         this.y = y;
         this.z = z;
-        return this;
-    }
-
-    public Vec3 max(Vec3 v) {
-        return max(v, this);
-    }
-
-    public Vec3 max(Vec3 v, Vec3 res) {
-        res.x = Math.max(x, v.x);
-        res.y = Math.max(y, v.y);
-        res.z = Math.max(z, v.z);
-        return res;
-    }
-
-    public Vec3 min(Vec3 v) {
-        return min(v, this);
-    }
-
-    public Vec3 min(Vec3 v, Vec3 res) {
-        res.x = Math.min(x, v.x);
-        res.y = Math.min(y, v.y);
-        res.z = Math.min(z, v.z);
-        return res;
-    }
-
-    public Vec3 mul_(Vec3 multiplicand) {
-        return mul(multiplicand, new Vec3());
-    }
-
-    public Vec3 mul(Vec3 multiplicand) {
-        return mul(multiplicand, this);
-    }
-
-    public Vec3 mul(float multiplicand, Vec3 product) {
-        return mul(multiplicand, multiplicand, multiplicand, product);
-    }
-
-    public Vec3 mul(Vec3 multiplicand, Vec3 product) {
-        return mul(multiplicand.x, multiplicand.y, multiplicand.z, product);
-    }
-
-    public Vec3 mul(float multiplicand) {
-        return mul(multiplicand, this);
-    }
-
-    public Vec3 mul(float multiplicandX, float multiplicandY, float multiplicandZ, Vec3 product) {
-        product.x = this.x * multiplicandX;
-        product.y = this.y * multiplicandY;
-        product.z = this.z * multiplicandZ;
-        return product;
-    }
-
-    public Vec3 sub_(float f) {
-        return sub(f, new Vec3());
-    }
-
-    public Vec3 sub(float f) {
-        return sub(f, this);
-    }
-
-    public Vec3 sub(float f, Vec3 res) {
-        res.x -= f;
-        res.y -= f;
-        res.z -= f;
-        return this;
-    }
-
-    public Vec3 sub_(Vec3 subtrahend) {
-        return sub(subtrahend, new Vec3());
-    }
-
-    public Vec3 sub(Vec3 subtrahend) {
-        return sub(subtrahend, this);
-    }
-
-    public Vec3 sub(Vec3 subtrahend, Vec3 res) {
-        res.x -= subtrahend.x;
-        res.y -= subtrahend.y;
-        res.z -= subtrahend.z;
         return this;
     }
 
