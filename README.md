@@ -8,3 +8,4 @@ JGLM provides classes and functions designed and implemented with the same namin
 This project isn't limited to GLSL features. An extension system, based on the GLSL extension conventions, provides extended capabilities: matrix transformations, quaternions, data packing, random numbers, noise, etc...
 
 
+http://glm.g-truc.net/0.9.4/api/modules.html
