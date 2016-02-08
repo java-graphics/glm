@@ -19,10 +19,10 @@ class noise extends operator {
     }
 
     public static Vec4 grad4_(float j, Vec4 ip) {
-        Vec3 pXYZ = new Vec3(j).mul(new Vec3(ip)).mul(7).fract().mul(ip.z).sub(1);
-        float pW = 1.5f - pXYZ.abs().dot(new Vec3(1));
+        Vec3 pXYZ = new Vec3(j).mul(new Vec3(ip)).fract().mul(7).floor().mul(ip.z).sub(1);
+        float pW = 1.5f - pXYZ.abs_().dot(new Vec3(1));
         Vec4 s = new Vec4(pXYZ, pW).lessThan(new Vec4(0.0f));
-        pXYZ.add(new Vec3(s).mul(2).sub(1)).mul(s.w);
+        pXYZ.add(new Vec3(s).mul(2).sub(1).mul(s.w));
         return new Vec4(pXYZ, pW);
     }
 
@@ -48,8 +48,8 @@ class noise extends operator {
         // Other corners
         // Rank sorting originally contributed by Bill Licea-Kane, AMD (formerly ATI)
         Vec4 i0;
-        Vec3 isX = new Vec3(x0.y, x0.z, x0.w).step(new Vec3(x0.x));
-        Vec3 isYZ = new Vec3(x0.z, x0.w, x0.w).step(new Vec3(x0.y, x0.y, x0.z));
+        Vec3 isX = new Vec3(x0.x).step(new Vec3(x0.y, x0.z, x0.w));
+        Vec3 isYZ = new Vec3(x0.y, x0.y, x0.z).step(new Vec3(x0.z, x0.w, x0.w));
         //  i0.x = dot(isX, vec3(1.0));
         //i0.x = isX.x + isX.y + isX.z;
         //i0.yzw = static_cast<T>(1) - isX;
@@ -75,7 +75,7 @@ class noise extends operator {
         Vec4 x1 = x0.sub_(i1).add(c.x);
         Vec4 x2 = x0.sub_(i2).add(c.y);
         Vec4 x3 = x0.sub_(i3).add(c.z);
-        Vec4 x4 = x0.add(c.w);
+        Vec4 x4 = x0.add_(c.w);
 
         // Permutations
         i.mod_(new Vec4(289));
@@ -110,9 +110,9 @@ class noise extends operator {
 
         m0.mul(m0);
         m1.mul(m1);
-
-        return 49f * m0.mul(m0).dot(new Vec3(p0.dot(x0), p1.dot(x1), p2.dot(x2)))
-                + m1.mul(m1).dot(new Vec2(p3.dot(p3), p4.dot(p4)));
+        
+        return 49f * (m0.mul(m0).dot(new Vec3(p0.dot(x0), p1.dot(x1), p2.dot(x2)))
+                + m1.mul(m1).dot(new Vec2(p3.dot(x3), p4.dot(x4))));
     }
 
     public static Vec4 taylorInvSqrt_(Vec4 r) {

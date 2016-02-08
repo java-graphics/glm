@@ -29,7 +29,7 @@ class funcCommon {
     }
 
     public Vec2 abs(Vec2 result) {
-        return abs((Vec2) this, (Vec2) this);
+        return abs((Vec2) this, result);
     }
 
     public static Vec2 abs(Vec2 x, Vec2 result) {

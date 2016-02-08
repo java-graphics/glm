@@ -19,7 +19,7 @@ class funcCommon {
     public static int MAX_ULPS = 2;
 
     public static float abs(float x) {
-        return (float) Math.abs(x);
+        return Math.abs(x);
     }
 
     public static float ceil(float x) {

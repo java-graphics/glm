@@ -186,10 +186,10 @@ public class operator extends funcRelational {
 
     public static Vec4 sub(Vec4 minuend, float subtrahendX, float subtrahendY, float subtrahendZ,
             float subtrahendW, Vec4 result) {
-        result.x = minuend.x * subtrahendX;
-        result.y = minuend.y * subtrahendY;
-        result.z = minuend.z * subtrahendZ;
-        result.w = minuend.w * subtrahendW;
+        result.x = minuend.x - subtrahendX;
+        result.y = minuend.y - subtrahendY;
+        result.z = minuend.z - subtrahendZ;
+        result.w = minuend.w - subtrahendW;
         return result;
     }
 

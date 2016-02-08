@@ -27,7 +27,7 @@ public class funcCommon {
     }
 
     public Vec3 abs(Vec3 result) {
-        return abs((Vec3) this, (Vec3) this);
+        return abs((Vec3) this, result);
     }
 
     public static Vec3 abs(Vec3 x, Vec3 result) {
@@ -399,9 +399,23 @@ public class funcCommon {
     }
 
     public static Vec3 step(Vec3 edge, Vec3 x, Vec3 result) {
-        result.x = x.x < edge.x ? 0f : 1f;
-        result.y = x.y < edge.y ? 0f : 1f;
-        result.z = x.z < edge.z ? 0f : 1f;
+        // glm::lessThan(x, edge)
+        float ltX = x.x < edge.x ? 1f : 0f;
+        float ltY = x.y < edge.y ? 1f : 0f;
+        float ltZ = x.z < edge.z ? 1f : 0f;
+        // mix(1, 0, glm::lessThan(x, edge));
+        result.x = 1 + ltX * (0 - 1);
+        result.y = 1 + ltY * (0 - 1);
+        result.z = 1 + ltZ * (0 - 1);
         return result;
     }
+    
+
+    
+//    GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x, vecType<T, P> const & y, vecType<U, P> const & a)
+//    {
+//            GLM_STATIC_ASSERT(std::numeric_limits<U>::is_iec559, "'mix' only accept floating-point inputs for the interpolator a");
+//
+//            return vecType<T, P>(vecType<U, P>(x) + a * vecType<U, P>(y - x));
+//    }
 }

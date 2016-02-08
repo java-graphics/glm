@@ -176,11 +176,10 @@ public class operator extends funcRelational {
         return sub((Vec3) this, subtrahendX, subtrahendY, subtrahendZ, new Vec3());
     }
 
-    public static Vec3 sub(Vec3 minuend, float subtrahendX, float subtrahendY, float subtrahendZ,
-            Vec3 result) {
-        result.x = minuend.x * subtrahendX;
-        result.y = minuend.y * subtrahendY;
-        result.z = minuend.z * subtrahendZ;
+    public static Vec3 sub(Vec3 minuend, float subtrahendX, float subtrahendY, float subtrahendZ, Vec3 result) {
+        result.x = minuend.x - subtrahendX;
+        result.y = minuend.y - subtrahendY;
+        result.z = minuend.z - subtrahendZ;
         return result;
     }
 }

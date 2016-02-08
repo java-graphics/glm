@@ -41,7 +41,9 @@ public class funcGeometric extends funcExponential {
     }
 
     public static float dot(Vec2 x, Vec2 y) {
-        return x.x * y.x + x.y * y.y;
+        float tX = x.x * y.x;
+        float tY = x.y * y.y;
+        return tX + tY;
     }
 
     public static float length(Vec2 x, Vec2 result) {
