@@ -12,7 +12,7 @@ import glm.vec._3.Vec3;
  *
  * @author GBarbieri
  */
-public class Vec4 extends noise {
+public class Vec4 extends colorSpace {
 
     public Vec4() {
         x = 0f;
@@ -61,6 +61,13 @@ public class Vec4 extends noise {
         y = v0.y;
         z = v1.x;
         w = v1.y;
+    }
+    
+    public Vec4(Vec2 v, float f0, float f1) {
+        x = v.x;
+        y = v.y;
+        z = f0;
+        w = f1;
     }
 
     public Vec4 set(Vec4 v) {
