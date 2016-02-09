@@ -25,9 +25,9 @@ public class colorSpace extends noise {
 
     public static Vec4 compute_rgbToSrgb(Vec4 colorRGB, float gammaCorrection, Vec4 colorSRGB) {
         // vecType<T, P> const ClampedColor(clamp(ColorRGB, static_cast<T>(0), static_cast<T>(1)));
-        float clampedColorX = Math.min(Math.max(colorRGB.x, 1), 0);
-        float clampedColorY = Math.min(Math.max(colorRGB.y, 1), 0);
-        float clampedColorZ = Math.min(Math.max(colorRGB.z, 1), 0);
+        float clampedColorX = Math.min(Math.max(colorRGB.x, 0), 1);
+        float clampedColorY = Math.min(Math.max(colorRGB.y, 0), 1);
+        float clampedColorZ = Math.min(Math.max(colorRGB.z, 0), 1);
         // x = pow(ClampedColor, vecType<T, P>(GammaCorrection)) * static_cast<T>(1.055) - static_cast<T>(0.055)
         float xX = (float) (Math.pow(clampedColorX, gammaCorrection) * 1.055 - 0.055);
         float xY = (float) (Math.pow(clampedColorY, gammaCorrection) * 1.055 - 0.055);
