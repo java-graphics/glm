@@ -26,14 +26,14 @@ public class Vertex_v3fv4u8 {
         this.color = color;
     }
 
-    public ByteBuffer toBB_() {
-        return ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder())
-                .putFloat(0 * Float.BYTES, position.x)
-                .putFloat(1 * Float.BYTES, position.y)
-                .putFloat(2 * Float.BYTES, position.z)
-                .put(3 * Float.BYTES + 0 * Byte.BYTES, color.x)
-                .put(3 * Float.BYTES + 1 * Byte.BYTES, color.y)
-                .put(3 * Float.BYTES + 2 * Byte.BYTES, color.z)
-                .put(3 * Float.BYTES + 3 * Byte.BYTES, color.w);
+    public void toBb(ByteBuffer bb, int index) {
+        bb
+                .putFloat(index * SIZE + 0 * Float.BYTES, position.x)
+                .putFloat(index * SIZE + 1 * Float.BYTES, position.y)
+                .putFloat(index * SIZE + 2 * Float.BYTES, position.z)
+                .put(index * SIZE + 3 * Float.BYTES + 0 * Byte.BYTES, color.x)
+                .put(index * SIZE + 3 * Float.BYTES + 1 * Byte.BYTES, color.y)
+                .put(index * SIZE + 3 * Float.BYTES + 2 * Byte.BYTES, color.z)
+                .put(index * SIZE + 3 * Float.BYTES + 3 * Byte.BYTES, color.w);
     }
 }

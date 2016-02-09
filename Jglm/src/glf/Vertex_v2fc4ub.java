@@ -5,31 +5,33 @@
  */
 package glf;
 
+import dev.Vec4u8;
 import glm.vec._2.Vec2;
 import java.nio.ByteBuffer;
-import java.nio.FloatBuffer;
 
 /**
  *
  * @author GBarbieri
  */
-public class Vertex_v2fv2f {
+public class Vertex_v2fc4ub {
 
-    public static final int SIZE = 2 * Vec2.SIZE;
+    public static final int SIZE = Vec2.SIZE + Vec4u8.SIZE;
 
     public Vec2 position;
-    public Vec2 texCoord;
+    public Vec4u8 color;
 
-    public Vertex_v2fv2f(Vec2 position, Vec2 texCoord) {
+    public Vertex_v2fc4ub(Vec2 position, Vec4u8 color) {
         this.position = position;
-        this.texCoord = texCoord;
+        this.color = color;
     }
 
     public void toBb(ByteBuffer bb, int index) {
         bb
                 .putFloat(index * SIZE + 0 * Float.BYTES, position.x)
                 .putFloat(index * SIZE + 1 * Float.BYTES, position.y)
-                .putFloat(index * SIZE + 2 * Float.BYTES, texCoord.x)
-                .putFloat(index * SIZE + 3 * Float.BYTES, texCoord.y);
+                .put(index * SIZE + 2 * Float.BYTES + 0 * Byte.BYTES, color.x)
+                .put(index * SIZE + 2 * Float.BYTES + 1 * Byte.BYTES, color.y)
+                .put(index * SIZE + 2 * Float.BYTES + 2 * Byte.BYTES, color.z)
+                .put(index * SIZE + 2 * Float.BYTES + 3 * Byte.BYTES, color.w);
     }
 }
