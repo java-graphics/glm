@@ -55,6 +55,16 @@ public class Vec2 extends operator {
         y = v.y;
     }
 
+    public float[] toFa_() {
+        return toFa(new float[2]);
+    }
+
+    public float[] toFa(float[] fa) {
+        fa[0] = x;
+        fa[1] = y;
+        return fa;
+    }
+
     /**
      * Return the length of this vector.
      *
