@@ -410,6 +410,10 @@ public class funcCommon {
         return result;
     }
     
+    public Vec3 toUnsignedFloat() {
+        return toUnsignedFloat((Vec3) this);
+    }
+    
     public Vec3 toUnsignedFloat_() {
         return toUnsignedFloat(new Vec3());
     }
