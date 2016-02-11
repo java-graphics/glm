@@ -410,12 +410,18 @@ public class funcCommon {
         return result;
     }
     
+    public Vec3 toUnsignedFloat_() {
+        return toUnsignedFloat(new Vec3());
+    }
 
-    
-//    GLM_FUNC_QUALIFIER static vecType<T, P> call(vecType<T, P> const & x, vecType<T, P> const & y, vecType<U, P> const & a)
-//    {
-//            GLM_STATIC_ASSERT(std::numeric_limits<U>::is_iec559, "'mix' only accept floating-point inputs for the interpolator a");
-//
-//            return vecType<T, P>(vecType<U, P>(x) + a * vecType<U, P>(y - x));
-//    }
+    public Vec3 toUnsignedFloat(Vec3 result) {
+        return toUnsignedFloat((Vec3) this, result);
+    }
+
+    public static Vec3 toUnsignedFloat(Vec3 x, Vec3 result) {
+        result.x = Float.intBitsToFloat((int) x.x);
+        result.y = Float.intBitsToFloat((int) x.y);
+        result.z = Float.intBitsToFloat((int) x.z);
+        return result;
+    }
 }

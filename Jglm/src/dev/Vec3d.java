@@ -11,5 +11,7 @@ package dev;
  */
 public class Vec3d {
 
+    public static final int SIZE = 3 * Double.BYTES;
+    
     public double x, y, z;
 }

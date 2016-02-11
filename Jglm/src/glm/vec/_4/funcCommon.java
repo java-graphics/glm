@@ -427,4 +427,20 @@ class funcCommon {
         result.w = x.w < edge.w ? 0f : 1f;
         return result;
     }
+
+    public Vec4 toUnsignedFloat_() {
+        return toUnsignedFloat(new Vec4());
+    }
+
+    public Vec4 toUnsignedFloat(Vec4 result) {
+        return toUnsignedFloat((Vec4) this, result);
+    }
+
+    public static Vec4 toUnsignedFloat(Vec4 x, Vec4 result) {
+        result.x = Float.intBitsToFloat((int) x.x);
+        result.y = Float.intBitsToFloat((int) x.y);
+        result.z = Float.intBitsToFloat((int) x.z);
+        result.w = Float.intBitsToFloat((int) x.w);
+        return result;
+    }
 }

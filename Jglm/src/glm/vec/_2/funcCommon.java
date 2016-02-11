@@ -384,4 +384,18 @@ class funcCommon {
         result.y = x.y < edge.y ? 0f : 1f;
         return result;
     }
+
+    public Vec2 toUnsignedFloat_() {
+        return toUnsignedFloat(new Vec2());
+    }
+
+    public Vec2 toUnsignedFloat(Vec2 result) {
+        return toUnsignedFloat((Vec2) this, result);
+    }
+
+    public static Vec2 toUnsignedFloat(Vec2 x, Vec2 result) {
+        result.x = Float.intBitsToFloat((int) x.x);
+        result.y = Float.intBitsToFloat((int) x.y);
+        return result;
+    }
 }

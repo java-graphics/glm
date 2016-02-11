@@ -8,6 +8,7 @@ package glm.vec._2;
 import dev.*;
 import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
+import java.nio.ByteBuffer;
 
 /**
  *
@@ -63,6 +64,13 @@ public class Vec2 extends operator {
         fa[0] = x;
         fa[1] = y;
         return fa;
+    }
+
+    public ByteBuffer toBb(ByteBuffer bb, int index) {
+        bb
+                .putFloat(index * SIZE + 0 * Float.BYTES, x)
+                .putFloat(index * SIZE + 1 * Float.BYTES, y);
+        return bb;
     }
 
     /**
