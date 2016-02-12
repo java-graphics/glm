@@ -5,7 +5,6 @@
  */
 package glm.vec._2;
 
-import dev.*;
 import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
 import java.nio.ByteBuffer;
@@ -54,6 +53,30 @@ public class Vec2 extends operator {
     public Vec2(Vec4 v) {
         x = v.x;
         y = v.y;
+    }
+    
+    public Vec2 set(float f) {
+        x = f;
+        y = f;
+        return this;
+    }
+    
+    public Vec2 set(float x, float y) {
+        this.x = x;
+        this.y = y;
+        return this;
+    }
+
+    public Vec2 set(int[] ia) {
+        x = ia[0];
+        y = ia[1];
+        return this;
+    }
+    
+    public Vec2 set(float[] fa) {
+        x = fa[0];
+        y = fa[1];
+        return this;
     }
 
     public float[] toFa_() {

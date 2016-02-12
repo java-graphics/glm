@@ -93,6 +93,14 @@ public class Vec4 extends colorSpace {
         this.w = w;
         return this;
     }
+        
+    public Vec4 set(float[] fa) {
+        x = fa[0];
+        y = fa[1];
+        z = fa[2];
+        w = fa[3];
+        return this;
+    }
 
     public Vec4 set(float f, Vec3 v) {
         x = f;

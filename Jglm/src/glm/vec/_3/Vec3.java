@@ -54,10 +54,24 @@ public class Vec3 extends operator {
         this.z = (float) z;
     }
 
+    public Vec3 set(float f) {
+        x = f;
+        y = f;
+        z = f;
+        return this;
+    }
+
     public Vec3 set(float x, float y, float z) {
         this.x = x;
         this.y = y;
         this.z = z;
+        return this;
+    }
+
+    public Vec3 set(float[] fa) {
+        x = fa[0];
+        y = fa[1];
+        z = fa[2];
         return this;
     }
 
