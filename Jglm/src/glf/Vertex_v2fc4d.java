@@ -25,17 +25,13 @@ public class Vertex_v2fc4d {
         this.color = color;
     }
 
-    public ByteBuffer toBB(ByteBuffer bb) {
+    public ByteBuffer toBB(ByteBuffer bb, int index) {
         return bb
-                .putFloat(0 * Float.BYTES, position.x)
-                .putFloat(1 * Float.BYTES, position.y)
-                .putDouble(2 * Float.BYTES + 0 * Double.BYTES, color.x)
-                .putDouble(2 * Float.BYTES + 1 * Double.BYTES, color.y)
-                .putDouble(2 * Float.BYTES + 2 * Double.BYTES, color.z)
-                .putDouble(2 * Float.BYTES + 3 * Double.BYTES, color.w);
-    }
-
-    public ByteBuffer toBB_() {
-        return toBB(ByteBuffer.allocate(SIZE));
+                .putFloat(index * SIZE + 0 * Float.BYTES, position.x)
+                .putFloat(index * SIZE + 1 * Float.BYTES, position.y)
+                .putDouble(index * SIZE + 2 * Float.BYTES + 0 * Double.BYTES, color.x)
+                .putDouble(index * SIZE + 2 * Float.BYTES + 1 * Double.BYTES, color.y)
+                .putDouble(index * SIZE + 2 * Float.BYTES + 2 * Double.BYTES, color.z)
+                .putDouble(index * SIZE + 2 * Float.BYTES + 3 * Double.BYTES, color.w);
     }
 }
