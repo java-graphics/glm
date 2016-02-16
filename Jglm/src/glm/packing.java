@@ -39,9 +39,9 @@ class packing extends funcGeometric {
         } else if (Float.isNaN(x)) {
             return ~0;
         } else if (Float.isInfinite(x)) {
-            return 0xf << 6;
+            return 0x1f << 6;
         }
-        return float2packed11((int) x);
+        return float2packed11(Float.floatToIntBits(x));
     }
 
     public static int floatTo10bit(float x) {
@@ -50,12 +50,17 @@ class packing extends funcGeometric {
         } else if (Float.isNaN(x)) {
             return ~0;
         } else if (Float.isInfinite(x)) {
-            return 0xf << 6;
+            return 0x1f << 6;
         }
-        return float2packed10((int) x);
+        return float2packed10(Float.floatToIntBits(x));
     }
 
-    public static int float2packed11(int f) {
+//    public static void main(String[] args) {
+//        System.out.println("Integer.toUnsignedLong(0x000007c0): " + Integer.toUnsignedLong(0x00008000));
+////        System.out.println("Integer.toUnsignedString(0x000007c0): " + Integer.toUnsignedString(0x00000x00007c0007c0));
+//    }
+
+    public static int float2packed11(int i) {
         // 10 bits    =>                         EE EEEFFFFF
         // 11 bits    =>                        EEE EEFFFFFF
         // Half bits  =>                   SEEEEEFF FFFFFFFF
@@ -67,8 +72,8 @@ class packing extends funcGeometric {
         // 0x38000000 => 00111000 00000000 00000000 00000000
         // 0x7f800000 => 01111111 10000000 00000000 00000000
         // 0x00008000 => 00000000 00000000 10000000 00000000
-        return ((((f & 0x7f800000) - 0x38000000) >> 17) & 0x07c0) // exponential
-                | ((f >> 17) & 0x003f); // Mantissa
+        return ((((i & 0x7f800000) - 0x38000000) >> 17) & 0x07c0) // exponential
+                | ((i >> 17) & 0x003f); // Mantissa
     }
 
     public static int float2packed10(int f) {
