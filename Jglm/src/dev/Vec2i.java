@@ -18,6 +18,11 @@ public class Vec2i {
         x = 0;
         y = 0;
     }
+    
+    public Vec2i(int i) {
+        x = i;
+        y = i;
+    }
 
     public Vec2i(Vec2i v) {
         x = v.x;
