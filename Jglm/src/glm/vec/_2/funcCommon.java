@@ -6,7 +6,7 @@
 package glm.vec._2;
 
 import dev.Vec2bool;
-import dev.Vec2i;
+import glm.vec._2.i.Vec2i;
 import glm.glm;
 
 /**

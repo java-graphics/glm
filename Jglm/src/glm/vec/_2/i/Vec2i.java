@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev;
+package glm.vec._2.i;
 
 /**
  *
  * @author GBarbieri
  */
-public class Vec2i {
+public class Vec2i extends operator{
 
     public int x, y;
     public static final int SIZE = 2 * Integer.BYTES;

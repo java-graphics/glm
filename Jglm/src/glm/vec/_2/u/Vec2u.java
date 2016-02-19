@@ -5,6 +5,7 @@
  */
 package glm.vec._2.u;
 
+import glm.vec._2.i.Vec2i;
 import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
 import java.nio.ByteBuffer;
@@ -13,7 +14,7 @@ import java.nio.ByteBuffer;
  *
  * @author GBarbieri
  */
-public class Vec2u {
+public class Vec2u extends operator{
 
     public static final int SIZE = 2 * Integer.BYTES;
     public int x, y;
@@ -34,6 +35,11 @@ public class Vec2u {
     }
 
     public Vec2u(Vec2u v) {
+        x = v.x;
+        y = v.y;
+    }
+    
+    public Vec2u(Vec2i v) {
         x = v.x;
         y = v.y;
     }
