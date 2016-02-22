@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package glm.mat._4;
+package glm.mat._4.d;
 
 import dev.Vec3d;
 import dev.Vec4d;
 import glm.glm;
+import glm.mat._4.Mat4;
 import java.nio.ByteBuffer;
 
 /**

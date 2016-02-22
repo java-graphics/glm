@@ -7,7 +7,7 @@ package glm;
 
 import static glm.glm.GLM_LEFT_HANDED;
 import glm.mat._4.Mat4;
-import glm.mat._4.Mat4d;
+import glm.mat._4.d.Mat4d;
 import glm.vec._3.Vec3;
 import dev.Vec3d;
 
@@ -15,7 +15,7 @@ import dev.Vec3d;
  *
  * @author GBarbieri
  */
-class matrixTransform extends packing {
+class matrixTransform extends funcMatrix {
 
     public static boolean GLM_LEFT_HANDED = false;
 
