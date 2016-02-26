@@ -18,6 +18,7 @@ import dev.Vec3d;
 class matrixTransform extends funcMatrix {
 
     public static boolean GLM_LEFT_HANDED = false;
+    public static boolean GLM_DEPTH_ZERO_TO_ONE = false;
 
     public static Mat4 lookAt_(Vec3 eye, Vec3 center, Vec3 up) {
         return GLM_LEFT_HANDED ? lookAtLH(eye, center, up, new Mat4()) : lookAtRH(eye, center, up, new Mat4());
@@ -109,10 +110,16 @@ class matrixTransform extends funcMatrix {
     }
 
     public static Mat4 ortho_(float left, float right, float bottom, float top, float zNear, float zFar) {
-        return ortho(new Mat4(), left, right, bottom, top, zNear, zFar);
+        return GLM_LEFT_HANDED ? orthoLH(new Mat4(), left, right, bottom, top, zNear, zFar)
+                : orthoRH(new Mat4(), left, right, bottom, top, zNear, zFar);
     }
 
     public static Mat4 ortho(Mat4 res, float left, float right, float bottom, float top, float zNear, float zFar) {
+        return GLM_LEFT_HANDED ? orthoLH(res, left, right, bottom, top, zNear, zFar)
+                : orthoRH(res, left, right, bottom, top, zNear, zFar);
+    }
+
+    private static Mat4 orthoLH(Mat4 res, float left, float right, float bottom, float top, float zNear, float zFar) {
         res.m00 = 2.0f / (right - left);
         res.m01 = 0.0f;
         res.m02 = 0.0f;
@@ -123,11 +130,31 @@ class matrixTransform extends funcMatrix {
         res.m13 = 0.0f;
         res.m20 = 0.0f;
         res.m21 = 0.0f;
-        res.m22 = -2.0f / (zFar - zNear);
+        res.m22 = (GLM_DEPTH_ZERO_TO_ONE ? 1f : 2.0f) / (zFar - zNear);
         res.m23 = 0.0f;
         res.m30 = -(right + left) / (right - left);
         res.m31 = -(top + bottom) / (top - bottom);
-        res.m32 = -(zFar + zNear) / (zFar - zNear);
+        res.m32 = -(GLM_DEPTH_ZERO_TO_ONE ? zNear : (zFar + zNear)) / (zFar - zNear);
+        res.m33 = 1.0f;
+        return res;
+    }
+    
+    private static Mat4 orthoRH(Mat4 res, float left, float right, float bottom, float top, float zNear, float zFar) {
+        res.m00 = 2.0f / (right - left);
+        res.m01 = 0.0f;
+        res.m02 = 0.0f;
+        res.m03 = 0.0f;
+        res.m10 = 0.0f;
+        res.m11 = 2.0f / (top - bottom);
+        res.m12 = 0.0f;
+        res.m13 = 0.0f;
+        res.m20 = 0.0f;
+        res.m21 = 0.0f;
+        res.m22 = - (GLM_DEPTH_ZERO_TO_ONE ? 1f : 2.0f) / (zFar - zNear);
+        res.m23 = 0.0f;
+        res.m30 = -(right + left) / (right - left);
+        res.m31 = -(top + bottom) / (top - bottom);
+        res.m32 = -(GLM_DEPTH_ZERO_TO_ONE ? zNear : (zFar + zNear)) / (zFar - zNear);
         res.m33 = 1.0f;
         return res;
     }
