@@ -109,6 +109,19 @@ class matrixTransform extends funcMatrix {
         return res;
     }
 
+    public static Mat4 ortho_(float left, float right, float bottom, float top) {
+        return ortho(new Mat4(), left, right, bottom, top);
+    }
+    public static Mat4 ortho(Mat4 res, float left, float right, float bottom, float top) {
+        res.identity();
+        res.m00 = 2 / (right - left);
+        res.m11 = 2 / (top - bottom);
+        res.m22 = -1;
+        res.m30 = -(right + left) / (right - left);
+        res.m31 = -(top + bottom) / (top - bottom);
+        return res;
+    }
+
     public static Mat4 ortho_(float left, float right, float bottom, float top, float zNear, float zFar) {
         return GLM_LEFT_HANDED ? orthoLH(new Mat4(), left, right, bottom, top, zNear, zFar)
                 : orthoRH(new Mat4(), left, right, bottom, top, zNear, zFar);
@@ -138,7 +151,7 @@ class matrixTransform extends funcMatrix {
         res.m33 = 1.0f;
         return res;
     }
-    
+
     private static Mat4 orthoRH(Mat4 res, float left, float right, float bottom, float top, float zNear, float zFar) {
         res.m00 = 2.0f / (right - left);
         res.m01 = 0.0f;
@@ -150,7 +163,7 @@ class matrixTransform extends funcMatrix {
         res.m13 = 0.0f;
         res.m20 = 0.0f;
         res.m21 = 0.0f;
-        res.m22 = - (GLM_DEPTH_ZERO_TO_ONE ? 1f : 2.0f) / (zFar - zNear);
+        res.m22 = -(GLM_DEPTH_ZERO_TO_ONE ? 1f : 2.0f) / (zFar - zNear);
         res.m23 = 0.0f;
         res.m30 = -(right + left) / (right - left);
         res.m31 = -(top + bottom) / (top - bottom);

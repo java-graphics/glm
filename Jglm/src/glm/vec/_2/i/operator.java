@@ -5,7 +5,7 @@
  */
 package glm.vec._2.i;
 
-import glm.vec._2.u.*;
+import glm.vec._2.Vec2;
 
 /**
  *
@@ -170,6 +170,18 @@ class operator {
         result.x = (int) (factor0.x * factor1x);
         result.y = (int) (factor0.y * factor1y);
         return result;
+    }
+    // vec2
+    public Vec2i mul(Vec2 factor) {
+        return mul(factor, (Vec2i) this);
+    }
+
+    public Vec2i mul_(Vec2 factor) {
+        return mul(factor, new Vec2i());
+    }
+
+    public Vec2i mul(Vec2 factor, Vec2i result) {
+        return mul((Vec2i) this, factor.x, factor.y, result);
     }
 
     // sub  --------------------------------------------------------------------

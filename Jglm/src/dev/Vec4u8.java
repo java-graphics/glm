@@ -5,6 +5,8 @@
  */
 package dev;
 
+import glm.vec._4.Vec4;
+
 /**
  *
  * @author GBarbieri
@@ -14,6 +16,20 @@ public class Vec4u8 {
     public static final int SIZE = 4 * Byte.BYTES;
 
     public byte x, y, z, w;
+
+    public Vec4u8() {
+        x = 0;
+        y = 0;
+        z = 0;
+        w = 0;
+    }
+    
+    public Vec4u8(Vec4 v) {
+        x = (byte) v.x;
+        y = (byte) v.y;
+        z = (byte) v.z;
+        w = (byte) v.w;
+    }
 
     public Vec4u8(byte x, byte y, byte z, byte w) {
         this.x = x;
@@ -29,11 +45,11 @@ public class Vec4u8 {
         this.w = (byte) w;
     }
 
-    public byte[] toBA_() {
-        return toBA(new byte[4]);
+    public byte[] toBa_() {
+        return toBa(new byte[4]);
     }
 
-    public byte[] toBA(byte[] byteArray) {
+    public byte[] toBa(byte[] byteArray) {
         byteArray[0] = x;
         byteArray[1] = y;
         byteArray[2] = z;

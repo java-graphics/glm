@@ -6,6 +6,8 @@
 package glm.vec._2;
 
 import dev.*;
+import glm.vec._2.i.Vec2i;
+import glm.vec._2.u.Vec2u;
 
 /**
  *
@@ -179,5 +181,17 @@ class operator extends funcRelational {
         result.x = minuend.x - subtrahendX;
         result.y = minuend.y - subtrahendY;
         return result;
+    }
+    // vec2i
+    public Vec2 sub(Vec2i subtrahend) {
+        return sub(subtrahend, (Vec2) this);
+    }
+
+    public Vec2 sub_(Vec2i subtrahend) {
+        return sub(subtrahend, new Vec2());
+    }
+
+    public Vec2 sub(Vec2i subtrahend, Vec2 result) {
+        return sub((Vec2) this, subtrahend.x, subtrahend.y, result);
     }
 }
