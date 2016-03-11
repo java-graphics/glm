@@ -87,10 +87,18 @@ public class Vec3 extends operator {
     }
 
     public Vec3 negate() {
-        x = -x;
-        y = -y;
-        z = -z;
-        return this;
+        return negate(this);
+    }
+
+    public Vec3 negate_() {
+        return negate(new Vec3());
+    }
+
+    public Vec3 negate(Vec3 res) {
+        res.x = -x;
+        res.y = -y;
+        res.z = -z;
+        return res;
     }
 
     public float[] toFA_() {
