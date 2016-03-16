@@ -101,6 +101,30 @@ public class Vec3 extends operator {
         return res;
     }
 
+    /**
+     * Normalize this vector.
+     *
+     * @return this
+     */
+    public Vec3 normalize() {
+        return normalize(this);
+    }
+
+    /**
+     * Normalize this vector and store the result in <code>dest</code>.
+     *
+     * @param dest
+     * will hold the result
+     * @return dest
+     */
+    public Vec3 normalize(Vec3 dest) {
+        float invLength = (float) (1.0 / Math.sqrt(x * x + y * y + z * z));
+        dest.x = x * invLength;
+        dest.y = y * invLength;
+        dest.z = z * invLength;
+        return dest;
+    }
+
     public float[] toFA_() {
         return toFA(new float[3]);
     }
