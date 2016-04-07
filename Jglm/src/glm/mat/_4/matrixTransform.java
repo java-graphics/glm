@@ -295,6 +295,10 @@ class matrixTransform extends funcMatrix {
         return (Mat4) this;
     }
 
+    public Mat4 scale(float[] f) {
+        return scale(f[0], f[1], f[2]);
+    }
+
     public Mat4 scale(float s) {
         return scale(s, s, s);
     }
