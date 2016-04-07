@@ -315,23 +315,23 @@ class matrixTransform extends funcMatrix {
         return scale(x, y, z, (Mat4) this);
     }
 
-    public Mat4 scale(float x, float y, float z, Mat4 result) {
-        result.m00 = x;
-        result.m01 = 0.0f;
-        result.m02 = 0.0f;
-        result.m03 = 0.0f;
-        result.m10 = 0.0f;
-        result.m11 = y;
-        result.m12 = 0.0f;
-        result.m13 = 0.0f;
-        result.m20 = 0.0f;
-        result.m21 = 0.0f;
-        result.m22 = z;
-        result.m23 = 0.0f;
-        result.m30 = 0.0f;
-        result.m31 = 0.0f;
-        result.m32 = 0.0f;
-        result.m33 = 1.0f;
+    public Mat4 scale(float x, float y, float z, Mat4 res) {
+        res.m00 = m00 * x;
+        res.m01 = m01 * x;
+        res.m02 = m02 * x;
+        res.m03 = m03 * x;
+        res.m10 = m10 * y;
+        res.m11 = m11 * y;
+        res.m12 = m12 * y;
+        res.m13 = m13 * y;
+        res.m20 = m20 * z;
+        res.m21 = m21 * z;
+        res.m22 = m22 * z;
+        res.m23 = m23 * z;
+        res.m30 = m30;
+        res.m31 = m31;
+        res.m32 = m32;
+        res.m33 = m33;
         return (Mat4) this;
     }
 
