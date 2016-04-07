@@ -363,6 +363,10 @@ class matrixTransform extends funcMatrix {
         return translate((Mat4) this, v.x, v.y, v.z);
     }
 
+    public Mat4 translate(float[] t) {
+        return translate((Mat4) this, t[0], t[1], t[2]);
+    }
+
     public Mat4 translate(float x, float y, float z) {
         return translate((Mat4) this, x, y, z);
     }
