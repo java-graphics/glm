@@ -329,7 +329,7 @@ public class Mat4 extends matrixTransform {
     }
 
     public ByteBuffer toFb_() {
-        return toFb(ByteBuffer.allocate(16 * Float.BYTES));
+        return toFb(ByteBuffer.allocate(SIZE));
     }
 
     public ByteBuffer toFb(ByteBuffer res) {
