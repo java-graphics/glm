@@ -328,31 +328,31 @@ public class Mat4 extends matrixTransform {
         return res;
     }
 
-    public ByteBuffer toFb_() {
-        return toFb(ByteBuffer.allocate(SIZE));
+    public ByteBuffer toBb_() {
+        return Mat4.this.toBb(ByteBuffer.allocate(SIZE));
     }
 
-    public ByteBuffer toFb(ByteBuffer res) {
-        return toFb(res, 0);
+    public ByteBuffer toBb(ByteBuffer res) {
+        return toBb(res, 0);
     }
 
-    public ByteBuffer toFb(ByteBuffer res, int index) {
-        res.putFloat((index + 0) * Float.BYTES, m00);
-        res.putFloat((index + 1) * Float.BYTES, m01);
-        res.putFloat((index + 2) * Float.BYTES, m02);
-        res.putFloat((index + 3) * Float.BYTES, m03);
-        res.putFloat((index + 4) * Float.BYTES, m10);
-        res.putFloat((index + 5) * Float.BYTES, m11);
-        res.putFloat((index + 6) * Float.BYTES, m12);
-        res.putFloat((index + 7) * Float.BYTES, m13);
-        res.putFloat((index + 8) * Float.BYTES, m20);
-        res.putFloat((index + 9) * Float.BYTES, m21);
-        res.putFloat((index + 10) * Float.BYTES, m22);
-        res.putFloat((index + 11) * Float.BYTES, m23);
-        res.putFloat((index + 12) * Float.BYTES, m30);
-        res.putFloat((index + 13) * Float.BYTES, m31);
-        res.putFloat((index + 14) * Float.BYTES, m32);
-        res.putFloat((index + 15) * Float.BYTES, m33);
+    public ByteBuffer toBb(ByteBuffer res, int index) {
+        res.putFloat(index + 0 * Float.BYTES, m00);
+        res.putFloat(index + 1 * Float.BYTES, m01);
+        res.putFloat(index + 2 * Float.BYTES, m02);
+        res.putFloat(index + 3 * Float.BYTES, m03);
+        res.putFloat(index + 4 * Float.BYTES, m10);
+        res.putFloat(index + 5 * Float.BYTES, m11);
+        res.putFloat(index + 6 * Float.BYTES, m12);
+        res.putFloat(index + 7 * Float.BYTES, m13);
+        res.putFloat(index + 8 * Float.BYTES, m20);
+        res.putFloat(index + 9 * Float.BYTES, m21);
+        res.putFloat(index + 10 * Float.BYTES, m22);
+        res.putFloat(index + 11 * Float.BYTES, m23);
+        res.putFloat(index + 12 * Float.BYTES, m30);
+        res.putFloat(index + 13 * Float.BYTES, m31);
+        res.putFloat(index + 14 * Float.BYTES, m32);
+        res.putFloat(index + 15 * Float.BYTES, m33);
         return res;
     }
 
