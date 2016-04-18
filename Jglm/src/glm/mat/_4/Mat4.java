@@ -9,6 +9,8 @@ import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
 import glm.glm;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 /**
  *
@@ -328,15 +330,15 @@ public class Mat4 extends matrixTransform {
         return res;
     }
 
-    public ByteBuffer toBb_() {
-        return Mat4.this.toBb(ByteBuffer.allocate(SIZE));
+    public ByteBuffer toDbb_() {
+        return Mat4.this.toDbb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()));
     }
 
-    public ByteBuffer toBb(ByteBuffer res) {
-        return toBb(res, 0);
+    public ByteBuffer toDbb(ByteBuffer res) {
+        return toDbb(res, 0);
     }
 
-    public ByteBuffer toBb(ByteBuffer res, int index) {
+    public ByteBuffer toDbb(ByteBuffer res, int index) {
         res.putFloat(index + 0 * Float.BYTES, m00);
         res.putFloat(index + 1 * Float.BYTES, m01);
         res.putFloat(index + 2 * Float.BYTES, m02);
@@ -353,6 +355,34 @@ public class Mat4 extends matrixTransform {
         res.putFloat(index + 13 * Float.BYTES, m31);
         res.putFloat(index + 14 * Float.BYTES, m32);
         res.putFloat(index + 15 * Float.BYTES, m33);
+        return res;
+    }
+
+    public FloatBuffer toDfb_() {
+        return toDfb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asFloatBuffer());
+    }
+
+    public FloatBuffer toDfb(FloatBuffer res) {
+        return toDfb(res, 0);
+    }
+
+    public FloatBuffer toDfb(FloatBuffer res, int index) {
+        res.put(index + 0, m00);
+        res.put(index + 1, m01);
+        res.put(index + 2, m02);
+        res.put(index + 3, m03);
+        res.put(index + 4, m10);
+        res.put(index + 5, m11);
+        res.put(index + 6, m12);
+        res.put(index + 7, m13);
+        res.put(index + 8, m20);
+        res.put(index + 9, m21);
+        res.put(index + 10, m22);
+        res.put(index + 11, m23);
+        res.put(index + 12, m30);
+        res.put(index + 13, m31);
+        res.put(index + 14, m32);
+        res.put(index + 15, m33);
         return res;
     }
 
