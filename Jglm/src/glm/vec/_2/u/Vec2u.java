@@ -9,6 +9,8 @@ import glm.vec._2.i.Vec2i;
 import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.IntBuffer;
 
 /**
  *
@@ -82,10 +84,31 @@ public class Vec2u extends operator{
         return fa;
     }
 
-    public ByteBuffer toBb(ByteBuffer bb, int index) {
-        bb
-                .putInt(index * SIZE + 0 * Integer.BYTES, x)
-                .putInt(index * SIZE + 1 * Integer.BYTES, y);
-        return bb;
+     public IntBuffer toDib_() {
+        return toDib(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asIntBuffer());
+    }
+
+    public IntBuffer toDib(IntBuffer ib) {
+        return toDib(ib, 0);
+    }
+
+    public IntBuffer toDib(IntBuffer ib, int index) {
+        return ib
+                .put(index + 0, x)
+                .put(index + 1, y);
+    }
+
+    public ByteBuffer toDbb_() {
+        return toDbb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()));
+    }
+
+    public ByteBuffer toDbb(ByteBuffer bb) {
+        return toDbb(bb, 0);
+    }
+
+    public ByteBuffer toDbb(ByteBuffer bb, int index) {
+        return bb
+                .putInt(index + 0 * Integer.BYTES, x)
+                .putInt(index + 1 * Integer.BYTES, y);
     }
 }

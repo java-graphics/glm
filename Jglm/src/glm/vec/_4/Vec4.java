@@ -7,6 +7,9 @@ package glm.vec._4;
 
 import glm.vec._2.Vec2;
 import glm.vec._3.Vec3;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 /**
  *
@@ -143,5 +146,37 @@ public class Vec4 extends colorSpace {
         fa[2] = z;
         fa[3] = w;
         return fa;
+    }
+    
+    public FloatBuffer toDfb_() {
+        return toDfb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asFloatBuffer());
+    }
+
+    public FloatBuffer toDfb(FloatBuffer fb) {
+        return toDfb(fb, 0);
+    }
+
+    public FloatBuffer toDfb(FloatBuffer fb, int index) {
+        return fb
+                .put(index + 0, x)
+                .put(index + 1, y)
+                .put(index + 2, z)
+                .put(index + 3, w);
+    }
+
+    public ByteBuffer toDbb_() {
+        return toDbb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()));
+    }
+
+    public ByteBuffer toDbb(ByteBuffer bb) {
+        return toDbb(bb, 0);
+    }
+
+    public ByteBuffer toDbb(ByteBuffer bb, int index) {
+        return bb
+                .putFloat(index + 0 * Float.BYTES, x)
+                .putFloat(index + 1 * Float.BYTES, y)
+                .putFloat(index + 2 * Float.BYTES, z)
+                .putFloat(index + 3 * Float.BYTES, 2);
     }
 }

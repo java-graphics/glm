@@ -9,6 +9,8 @@ import glm.vec._2.i.Vec2i;
 import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 /**
  *
@@ -85,21 +87,32 @@ public class Vec2 extends operator {
         return this;
     }
 
-    public float[] toFa_() {
-        return toFa(new float[2]);
+    public FloatBuffer toDfb_() {
+        return toDfb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asFloatBuffer());
     }
 
-    public float[] toFa(float[] fa) {
-        fa[0] = x;
-        fa[1] = y;
-        return fa;
+    public FloatBuffer toDfb(FloatBuffer fb) {
+        return toDfb(fb, 0);
     }
 
-    public ByteBuffer toBb(ByteBuffer bb, int index) {
-        bb
-                .putFloat(index * SIZE + 0 * Float.BYTES, x)
-                .putFloat(index * SIZE + 1 * Float.BYTES, y);
-        return bb;
+    public FloatBuffer toDfb(FloatBuffer fb, int index) {
+        return fb
+                .put(index + 0, x)
+                .put(index + 1, y);
+    }
+
+    public ByteBuffer toDbb_() {
+        return toDbb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()));
+    }
+
+    public ByteBuffer toDbb(ByteBuffer bb) {
+        return toDbb(bb, 0);
+    }
+
+    public ByteBuffer toDbb(ByteBuffer bb, int index) {
+        return bb
+                .putFloat(index + 0 * Float.BYTES, x)
+                .putFloat(index + 1 * Float.BYTES, y);
     }
 
     /**
