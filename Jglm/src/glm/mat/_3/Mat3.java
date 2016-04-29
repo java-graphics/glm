@@ -6,6 +6,7 @@
 package glm.mat._3;
 
 import glm.mat._4.Mat4;
+import glm.vec._3.Vec3;
 
 /**
  *
@@ -22,6 +23,13 @@ public class Mat3 extends matrixTransform {
                 f, 0, 0,
                 0, f, 0,
                 0, 0, f);
+    }
+    
+    public Mat3(Vec3 v) {
+        this(
+                v.x, 0, 0,
+                0, v.y, 0,
+                0, 0, v.z);
     }
 
     public Mat3(Mat3 mat) {
