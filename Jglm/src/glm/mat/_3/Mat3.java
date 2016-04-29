@@ -57,6 +57,22 @@ public class Mat3 extends matrixTransform {
         this.m22 = m22;
     }
 
+    public Mat3 set() {
+        return set(0.0f);
+    }
+
+    public Mat3 set(float m00) {
+        return set(m00, m00, m00, m00, m00, m00, m00, m00, m00);
+    }
+
+    public Mat3 set(Mat3 m) {
+        return set(m.m00, m.m01, m.m02, m.m10, m.m11, m.m12, m.m20, m.m21, m.m22);
+    }
+
+    public Mat3 set(Mat4 m) {
+        return set(m.m00, m.m01, m.m02, m.m10, m.m11, m.m12, m.m20, m.m21, m.m22);
+    }
+
     public Mat3 set(float m00, float m01, float m02, float m10, float m11, float m12, float m20, float m21, float m22) {
         this.m00 = m00;
         this.m01 = m01;
@@ -68,107 +84,6 @@ public class Mat3 extends matrixTransform {
         this.m21 = m21;
         this.m22 = m22;
         return this;
-    }
-
-    public Mat3 set(Mat3 m) {
-        m00 = m.m00;
-        m01 = m.m01;
-        m02 = m.m02;
-        m10 = m.m10;
-        m11 = m.m11;
-        m12 = m.m12;
-        m20 = m.m20;
-        m21 = m.m21;
-        m22 = m.m22;
-        return this;
-    }
-
-    public Mat3 set(Mat4 m) {
-        m00 = m.m00;
-        m01 = m.m01;
-        m02 = m.m02;
-        m10 = m.m10;
-        m11 = m.m11;
-        m12 = m.m12;
-        m20 = m.m20;
-        m21 = m.m21;
-        m22 = m.m22;
-        return this;
-    }
-
-    /**
-     * Return the determinant of this matrix.
-     *
-     * @return the determinant
-     */
-    public float det() {
-        return (m00 * m11 - m01 * m10) * m22
-                + (m02 * m10 - m00 * m12) * m21
-                + (m01 * m12 - m02 * m11) * m20;
-    }
-
-    public Mat3 invTransp() {
-        return invTransp(this);
-    }
-
-    /**
-     * Invert this matrix.
-     *
-     * @return this
-     */
-    public Mat3 invert() {
-        return invert(this);
-    }
-
-    /**
-     * Invert the <code>this</code> matrix and store the result in <code>dest</code>.
-     *
-     * @param dest
-     * will hold the result
-     * @return dest
-     */
-    public Mat3 invert(Mat3 dest) {
-        float s = det();
-        // client must make sure that matrix is invertible
-        s = 1.0f / s;
-        dest.set((m11 * m22 - m21 * m12) * s,
-                (m21 * m02 - m01 * m22) * s,
-                (m01 * m12 - m11 * m02) * s,
-                (m20 * m12 - m10 * m22) * s,
-                (m00 * m22 - m20 * m02) * s,
-                (m10 * m02 - m00 * m12) * s,
-                (m10 * m21 - m20 * m11) * s,
-                (m20 * m01 - m00 * m21) * s,
-                (m00 * m11 - m10 * m01) * s);
-        return dest;
-    }
-
-    /**
-     * Compute a inverse and transpose matrix from <code>this</code> matrix and store it into <code>dest</code>.
-     * <p>
-     * Please note that, if <code>this</code> is an orthogonal matrix or a matrix whose columns are orthogonal vectors,
-     * then this method <i>need not</i> be invoked, since in that case <code>this</code> itself is its normal matrix.
-     *
-     * @see #set(Matrix3f)
-     *
-     * @param dest
-     * will hold the result
-     * @return dest
-     */
-    public Mat3 invTransp(Mat3 dest) {
-        float det = det();
-        float s = 1.0f / det;
-        /* Invert and transpose in one go */
-        dest.set((m11 * m22 - m21 * m12) * s,
-                (m20 * m12 - m10 * m22) * s,
-                (m10 * m21 - m20 * m11) * s,
-                (m21 * m02 - m01 * m22) * s,
-                (m00 * m22 - m20 * m02) * s,
-                (m20 * m01 - m00 * m21) * s,
-                (m01 * m12 - m11 * m02) * s,
-                (m10 * m02 - m00 * m12) * s,
-                (m00 * m11 - m10 * m01) * s);
-        return dest;
     }
 
     public boolean equals(Mat3 other) {
