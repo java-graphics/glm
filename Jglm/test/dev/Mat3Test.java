@@ -24,7 +24,7 @@ public class Mat3Test {
         System.out.println("invTransp_a");
         Mat3 mat = new Mat3(7,2,1,0,3,-1,-3,4,-2);
         Mat3 expResult = new Mat3(-2f, 3f, 9f, 8f, -11f, -34f, -5f, 7f, 21f);
-        mat.invTransp();
+        mat.invTransp(mat);
         assertTrue(mat.equals(expResult));
     }
 }

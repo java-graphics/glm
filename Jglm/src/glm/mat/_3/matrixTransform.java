@@ -14,6 +14,10 @@ import glm.vec._3.Vec3;
  */
 public abstract class matrixTransform extends funcMatrix {
 
+    public Mat3 rotation(float ang, Vec3 v) {
+        return rotation(ang, v.x, v.y, v.z);
+    }
+
     /**
      * Vec must be normalized
      *
@@ -59,24 +63,24 @@ public abstract class matrixTransform extends funcMatrix {
      * @return
      */
     public Mat3 rotate(float ang, float x, float y, float z, Mat3 res) {
-        float s = (float) Math.sin(ang);
-        float c = (float) Math.cos(ang);
-        float C = 1.0f - c;
+        float sin = (float) Math.sin(ang);
+        float cos = (float) Math.cos(ang);
+        float invCos = 1.0f - cos;
 
         // rotation matrix elements:
         // m30, m31, m32, m03, m13, m23 = 0
         float xx = x * x, xy = x * y, xz = x * z;
         float yy = y * y, yz = y * z;
         float zz = z * z;
-        float rm00 = xx * C + c;
-        float rm01 = xy * C + z * s;
-        float rm02 = xz * C - y * s;
-        float rm10 = xy * C - z * s;
-        float rm11 = yy * C + c;
-        float rm12 = yz * C + x * s;
-        float rm20 = xz * C + y * s;
-        float rm21 = yz * C - x * s;
-        float rm22 = zz * C + c;
+        float rm00 = xx * invCos + cos;
+        float rm01 = xy * invCos + z * sin;
+        float rm02 = xz * invCos - y * sin;
+        float rm10 = xy * invCos - z * sin;
+        float rm11 = yy * invCos + cos;
+        float rm12 = yz * invCos + x * sin;
+        float rm20 = xz * invCos + y * sin;
+        float rm21 = yz * invCos - x * sin;
+        float rm22 = zz * invCos + cos;
 
         // add temporaries for dependent values
         float nm00 = m00 * rm00 + m10 * rm01 + m20 * rm02;
@@ -103,7 +107,7 @@ public abstract class matrixTransform extends funcMatrix {
     public Mat3 rotateX(double ang) {
         return rotateX((float) ang, (Mat3) this);
     }
-    
+
     public Mat3 rotateX(float ang) {
         return rotateX(ang, (Mat3) this);
     }
@@ -197,7 +201,7 @@ public abstract class matrixTransform extends funcMatrix {
     public Mat3 rotateZ(double ang) {
         return rotateZ((float) ang, (Mat3) this);
     }
-    
+
     public Mat3 rotateZ(float ang) {
         return rotateZ(ang, (Mat3) this);
     }

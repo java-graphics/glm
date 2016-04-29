@@ -61,8 +61,8 @@ public class Mat3 extends matrixTransform {
         return set(1.0f);
     }
 
-    public Mat3 set(float m00) {
-        return set(m00, m00, m00, m00, m00, m00, m00, m00, m00);
+    public Mat3 set(float f) {
+        return set(f, 0, 0, 0, f, 0, 0, 0, f);
     }
 
     public Mat3 set(Mat3 m) {

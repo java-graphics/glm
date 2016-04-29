@@ -25,6 +25,10 @@ public abstract class funcMatrix {
         return inverse((Mat3) this);
     }
 
+    public Mat3 inverse_() {
+        return inverse(new Mat3());
+    }
+
     /**
      * Matrix is supposed to be invertible
      *
@@ -43,6 +47,10 @@ public abstract class funcMatrix {
                 (m20 * m01 - m00 * m21) * s,
                 (m00 * m11 - m10 * m01) * s);
         return res;
+    }
+
+    public Mat3 invTransp() {
+        return invTransp((Mat3) this);
     }
 
     public Mat3 invTransp_() {
