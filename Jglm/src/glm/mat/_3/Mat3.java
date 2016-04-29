@@ -58,7 +58,7 @@ public class Mat3 extends matrixTransform {
     }
 
     public Mat3 set() {
-        return set(0.0f);
+        return set(1.0f);
     }
 
     public Mat3 set(float m00) {
@@ -84,6 +84,10 @@ public class Mat3 extends matrixTransform {
         this.m21 = m21;
         this.m22 = m22;
         return this;
+    }
+    
+    public Mat3 identity() {
+        return set();
     }
 
     public boolean equals(Mat3 other) {
