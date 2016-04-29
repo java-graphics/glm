@@ -25,12 +25,28 @@ public class Vec4 extends colorSpace {
         this(v.x, v.y, v.z, v.w);
     }
 
+    public Vec4(float f) {
+        this(f, f, f, f);
+    }
+
+    public Vec4(float[] fa) {
+        this(fa, 0);
+    }
+
+    public Vec4(float[] fa, int i) {
+        this(fa[i + 0], fa[i + 1], fa[i + 2], fa[i + 3]);
+    }
+
     public Vec4(double d) {
         this((float) d);
     }
 
-    public Vec4(float f) {
-        this(f, f, f, f);
+    public Vec4(double[] da) {
+        this(da, 0);
+    }
+
+    public Vec4(double[] da, int i) {
+        this(da[i + 0], da[i + 1], da[i + 2], da[i + 3]);
     }
 
     public Vec4(float f, Vec3 v) {
@@ -60,6 +76,10 @@ public class Vec4 extends colorSpace {
         this.w = w;
     }
 
+    public Vec4 set() {
+        return set(0);
+    }
+
     public Vec4 set(Vec4 v) {
         return set(v.x, v.y, v.z, v.w);
     }
@@ -69,7 +89,23 @@ public class Vec4 extends colorSpace {
     }
 
     public Vec4 set(float[] fa) {
-        return set(fa[0], fa[1], fa[2], fa[3]);
+        return set(fa, 0);
+    }
+
+    public Vec4 set(float[] fa, int i) {
+        return set(fa[i + 0], fa[i + 1], fa[i + 2], fa[i + 3]);
+    }
+
+    public Vec4 set(double d) {
+        return set(d, d, d, d);
+    }
+
+    public Vec4 set(double[] da) {
+        return set(da, 0);
+    }
+
+    public Vec4 set(double[] da, int i) {
+        return set(da[i + 0], da[i + 1], da[i + 2], da[i + 3]);
     }
 
     public Vec4 set(float f, Vec3 v) {
@@ -82,6 +118,14 @@ public class Vec4 extends colorSpace {
 
     public Vec4 set(Vec2 v0, Vec2 v1) {
         return set(v0.x, v0.y, v1.x, v1.y);
+    }
+
+    public Vec4 set(Vec2 v, float f0, float f1) {
+        return set(v.x, v.y, f0, f1);
+    }
+
+    public Vec4 set(double x, double y, double z, double w) {
+        return set((float) x, (float) y, (float) z, (float) w);
     }
 
     public Vec4 set(float x, float y, float z, float w) {
