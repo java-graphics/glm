@@ -9,7 +9,7 @@ package glm.vec._3;
  *
  * @author elect
  */
-public class funcGeometric extends funcCommon {
+public abstract class funcGeometric extends funcCommon {
 
     public float dot(Vec3 y) {
         return dot((Vec3) this, y);

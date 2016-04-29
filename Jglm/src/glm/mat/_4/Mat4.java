@@ -19,60 +19,32 @@ import java.nio.FloatBuffer;
 public class Mat4 extends matrixTransform {
 
     public Mat4() {
-        m00 = 1.0f;
-        m01 = 0.0f;
-        m02 = 0.0f;
-        m03 = 0.0f;
-        m10 = 0.0f;
-        m11 = 1.0f;
-        m12 = 0.0f;
-        m13 = 0.0f;
-        m20 = 0.0f;
-        m21 = 0.0f;
-        m22 = 1.0f;
-        m23 = 0.0f;
-        m30 = 0.0f;
-        m31 = 0.0f;
-        m32 = 0.0f;
-        m33 = 1.0f;
+        this(1.0f);
     }
 
-    public Mat4(float s) {
-        m00 = s;
-        m01 = 0.0f;
-        m02 = 0.0f;
-        m03 = 0.0f;
-        m10 = 0.0f;
-        m11 = s;
-        m12 = 0.0f;
-        m13 = 0.0f;
-        m20 = 0.0f;
-        m21 = 0.0f;
-        m22 = s;
-        m23 = 0.0f;
-        m30 = 0.0f;
-        m31 = 0.0f;
-        m32 = 0.0f;
-        m33 = s;
+    public Mat4(float f) {
+        this(
+                f, 0, 0, 0,
+                0, f, 0, 0,
+                0, 0, f, 0,
+                0, 0, 0, f);
     }
 
-    public Mat4(Mat4 m) {
-        m00 = m.m00;
-        m01 = m.m01;
-        m02 = m.m02;
-        m03 = m.m03;
-        m10 = m.m10;
-        m11 = m.m11;
-        m12 = m.m12;
-        m13 = m.m13;
-        m20 = m.m20;
-        m21 = m.m21;
-        m22 = m.m22;
-        m23 = m.m23;
-        m30 = m.m30;
-        m31 = m.m31;
-        m32 = m.m32;
-        m33 = m.m33;
+    public Mat4(Mat4 mat) {
+        this(
+                mat.m00, mat.m01, mat.m02, mat.m03,
+                mat.m10, mat.m11, mat.m12, mat.m13,
+                mat.m20, mat.m21, mat.m22, mat.m23,
+                mat.m30, mat.m31, mat.m32, mat.m33);
+    }
+
+    public Mat4(double m00, double m01, double m02, double m03, double m10, double m11, double m12, double m13,
+            double m20, double m21, double m22, double m23, double m30, double m31, double m32, double m33) {
+        this(
+                (float) m00, (float) m01, (float) m02, (float) m03,
+                (float) m10, (float) m11, (float) m12, (float) m13,
+                (float) m20, (float) m21, (float) m22, (float) m23,
+                (float) m30, (float) m31, (float) m32, (float) m33);
     }
 
     public Mat4(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13,
@@ -95,28 +67,39 @@ public class Mat4 extends matrixTransform {
         this.m33 = m33;
     }
 
-    public Mat4(double m00, double m01, double m02, double m03, double m10, double m11, double m12, double m13,
+    public Mat4 set() {
+        return set(0);
+    }
+
+    public Mat4 set(float f) {
+        return set(
+                f, 0, 0, 0,
+                0, f, 0, 0,
+                0, 0, f, 0,
+                0, 0, 0, f);
+    }
+
+    public Mat4 set(Mat4 mat) {
+        return set(
+                mat.m00, mat.m01, mat.m02, mat.m03,
+                mat.m10, mat.m11, mat.m12, mat.m13,
+                mat.m20, mat.m21, mat.m22, mat.m23,
+                mat.m30, mat.m31, mat.m32, mat.m33);
+    }
+
+    public Mat4 set(double m00, double m01, double m02, double m03, double m10, double m11, double m12, double m13,
             double m20, double m21, double m22, double m23, double m30, double m31, double m32, double m33) {
-        this.m00 = (float) m00;
-        this.m01 = (float) m01;
-        this.m02 = (float) m02;
-        this.m03 = (float) m03;
-        this.m10 = (float) m10;
-        this.m11 = (float) m11;
-        this.m12 = (float) m12;
-        this.m13 = (float) m13;
-        this.m20 = (float) m20;
-        this.m21 = (float) m21;
-        this.m22 = (float) m22;
-        this.m23 = (float) m23;
-        this.m30 = (float) m30;
-        this.m31 = (float) m31;
-        this.m32 = (float) m32;
-        this.m33 = (float) m33;
+
+        return set(
+                (float) m00, (float) m01, (float) m02, (float) m03,
+                (float) m10, (float) m11, (float) m12, (float) m13,
+                (float) m20, (float) m21, (float) m22, (float) m23,
+                (float) m30, (float) m31, (float) m32, (float) m33);
     }
 
     public Mat4 set(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13,
             float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33) {
+        
         this.m00 = m00;
         this.m01 = m01;
         this.m02 = m02;
@@ -133,26 +116,6 @@ public class Mat4 extends matrixTransform {
         this.m31 = m31;
         this.m32 = m32;
         this.m33 = m33;
-        return this;
-    }
-
-    public Mat4 set(Mat4 m) {
-        m00 = m.m00;
-        m01 = m.m01;
-        m02 = m.m02;
-        m03 = m.m03;
-        m10 = m.m10;
-        m11 = m.m11;
-        m12 = m.m12;
-        m13 = m.m13;
-        m20 = m.m20;
-        m21 = m.m21;
-        m22 = m.m22;
-        m23 = m.m23;
-        m30 = m.m30;
-        m31 = m.m31;
-        m32 = m.m32;
-        m33 = m.m33;
         return this;
     }
 

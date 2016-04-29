@@ -11,7 +11,7 @@ import glm.vec._2.Vec2;
  *
  * @author GBarbieri
  */
-class operator {
+public abstract class operator {
 
     // add  --------------------------------------------------------------------
     public Vec2i add(int addend) {

@@ -11,7 +11,7 @@ import glm.mat._4.Mat4;
  *
  * @author elect
  */
-public class operator extends funcRelational {
+public abstract class operator extends funcRelational {
 
     public Vec4 add(float addend) {
         return add(addend, (Vec4) this);

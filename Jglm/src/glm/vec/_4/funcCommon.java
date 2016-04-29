@@ -13,7 +13,7 @@ import glm.vec._4.i.Vec4i;
  *
  * @author GBarbieri
  */
-class funcCommon {
+public abstract class funcCommon {
 
     public static final int SIZE = 4 * Float.BYTES;
 

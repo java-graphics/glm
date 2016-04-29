@@ -11,54 +11,38 @@ import glm.mat._4.Mat4;
  *
  * @author GBarbieri
  */
-public class Mat3 {
-
-    public float m00, m10, m20;
-    public float m01, m11, m21;
-    public float m02, m12, m22;
-
-    public static final int SIZE = 3 * 3 * Float.BYTES;
+public class Mat3 extends matrixTransform {
 
     public Mat3() {
-        m00 = 1.0f;
-        m01 = 0.0f;
-        m02 = 0.0f;
-        m10 = 0.0f;
-        m11 = 1.0f;
-        m12 = 0.0f;
-        m20 = 0.0f;
-        m21 = 0.0f;
-        m22 = 1.0f;
+        this(1.0f);
     }
 
-    public Mat3(Mat3 m) {
-        m00 = m.m00;
-        m01 = m.m01;
-        m02 = m.m02;
-        m10 = m.m10;
-        m11 = m.m11;
-        m12 = m.m12;
-        m20 = m.m20;
-        m21 = m.m21;
-        m22 = m.m22;
+    public Mat3(float f) {
+        this(
+                f, 0, 0,
+                0, f, 0,
+                0, 0, f);
     }
 
-    /**
-     * Create a new {@link Matrix3f} and make it a copy of the upper left 3x3 of the given {@link Matrix4f}.
-     *
-     * @param mat
-     * the {@link Matrix4f} to copy the values from
-     */
+    public Mat3(Mat3 mat) {
+        this(
+                mat.m00, mat.m01, mat.m02,
+                mat.m10, mat.m11, mat.m12,
+                mat.m20, mat.m21, mat.m22);
+    }
+
     public Mat3(Mat4 mat) {
-        m00 = mat.m00;
-        m01 = mat.m01;
-        m02 = mat.m02;
-        m10 = mat.m10;
-        m11 = mat.m11;
-        m12 = mat.m12;
-        m20 = mat.m20;
-        m21 = mat.m21;
-        m22 = mat.m22;
+        this(
+                mat.m00, mat.m01, mat.m02,
+                mat.m10, mat.m11, mat.m12,
+                mat.m20, mat.m21, mat.m22);
+    }
+
+    public Mat3(double m00, double m01, double m02, double m10, double m11, double m12, double m20, double m21, double m22) {
+        this(
+                (float) m00, (float) m01, (float) m02,
+                (float) m10, (float) m11, (float) m12,
+                (float) m20, (float) m21, (float) m22);
     }
 
     public Mat3(float m00, float m01, float m02, float m10, float m11, float m12, float m20, float m21, float m22) {

@@ -9,7 +9,7 @@ package glm.vec._4;
  *
  * @author GBarbieri
  */
-public class colorSpace extends noise {
+public abstract class colorSpace extends noise {
 
     public Vec4 convertLinearToSRGB() {
         return compute_rgbToSrgb((Vec4) this, 0.41666f, (Vec4) this);

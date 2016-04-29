@@ -12,7 +12,7 @@ import glm.vec._3.Vec3;
  *
  * @author GBarbieri
  */
-class matrixTransform extends funcMatrix {
+public abstract class matrixTransform extends funcMatrix {
 
     /**
      * Vec must be normalized

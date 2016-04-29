@@ -9,7 +9,7 @@ package glm.vec._2.u;
  *
  * @author GBarbieri
  */
-class operator {
+public abstract class operator {
 
     public Vec2u add(int addend) {
         return add(addend, (Vec2u) this);

@@ -9,7 +9,7 @@ package glm.mat._4;
  *
  * @author GBarbieri
  */
-class funcMatrix {
+public abstract class funcMatrix {
 
     public float m00, m10, m20, m30;
     public float m01, m11, m21, m31;
@@ -37,22 +37,23 @@ class funcMatrix {
         float l = m22 * m33 - m23 * m32;
         float det = a * l - b * k + c * j + d * i - e * h + f * g;
         det = 1.0f / det;
-        dest.set((m11 * l - m12 * k + m13 * j) * det,
+        dest.set(
+                (+m11 * l - m12 * k + m13 * j) * det,
                 (-m01 * l + m02 * k - m03 * j) * det,
-                (m31 * f - m32 * e + m33 * d) * det,
+                (+m31 * f - m32 * e + m33 * d) * det,
                 (-m21 * f + m22 * e - m23 * d) * det,
                 (-m10 * l + m12 * i - m13 * h) * det,
-                (m00 * l - m02 * i + m03 * h) * det,
+                (+m00 * l - m02 * i + m03 * h) * det,
                 (-m30 * f + m32 * c - m33 * b) * det,
-                (m20 * f - m22 * c + m23 * b) * det,
-                (m10 * k - m11 * i + m13 * g) * det,
+                (+m20 * f - m22 * c + m23 * b) * det,
+                (+m10 * k - m11 * i + m13 * g) * det,
                 (-m00 * k + m01 * i - m03 * g) * det,
-                (m30 * e - m31 * c + m33 * a) * det,
+                (+m30 * e - m31 * c + m33 * a) * det,
                 (-m20 * e + m21 * c - m23 * a) * det,
                 (-m10 * j + m11 * h - m12 * g) * det,
-                (m00 * j - m01 * h + m02 * g) * det,
+                (+m00 * j - m01 * h + m02 * g) * det,
                 (-m30 * d + m31 * b - m32 * a) * det,
-                (m20 * d - m21 * b + m22 * a) * det);
+                (+m20 * d - m21 * b + m22 * a) * det);
         return dest;
     }
 

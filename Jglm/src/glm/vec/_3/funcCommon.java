@@ -13,7 +13,7 @@ import glm.vec._3.i.Vec3i;
  *
  * @author elect
  */
-public class funcCommon {
+public abstract class funcCommon {
 
     public float x, y, z;
     public static final int SIZE = 3 * Float.BYTES;

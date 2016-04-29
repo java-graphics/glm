@@ -5,15 +5,13 @@
  */
 package glm.vec._2;
 
-import dev.*;
 import glm.vec._2.i.Vec2i;
-import glm.vec._2.u.Vec2u;
 
 /**
  *
  * @author GBarbieri
  */
-class operator extends funcRelational {
+public abstract class operator extends funcRelational {
 
     public Vec2 add(float addend) {
         return add(addend, (Vec2) this);
