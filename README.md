@@ -34,4 +34,4 @@ public class Class {
 }
 ```
 
-All functions with `_` at the end involvs implicitly an internal instantiation. They are useful for case scenario when you want the most readable and compact code.
+All functions with `_` at the end involv implicitly an internal instantiation. They are useful for case scenario when you want the most readable and compact code.
