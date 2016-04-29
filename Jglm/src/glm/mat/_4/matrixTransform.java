@@ -67,10 +67,10 @@ public abstract class matrixTransform extends funcMatrix {
      * @param x
      * @param y
      * @param z
-     * @param dest
+     * @param res
      * @return
      */
-    public Mat4 rotate(float angle, float x, float y, float z, Mat4 dest) {
+    public Mat4 rotate(float angle, float x, float y, float z, Mat4 res) {
         float s = (float) Math.sin(angle);
         float c = (float) Math.cos(angle);
         float C = 1.0f - c;
@@ -97,65 +97,77 @@ public abstract class matrixTransform extends funcMatrix {
         float nm12 = m02 * rm10 + m12 * rm11 + m22 * rm12;
         float nm13 = m03 * rm10 + m13 * rm11 + m23 * rm12;
         // set non-dependent values directly
-        dest.m20 = m00 * rm20 + m10 * rm21 + m20 * rm22;
-        dest.m21 = m01 * rm20 + m11 * rm21 + m21 * rm22;
-        dest.m22 = m02 * rm20 + m12 * rm21 + m22 * rm22;
-        dest.m23 = m03 * rm20 + m13 * rm21 + m23 * rm22;
+        res.m20 = m00 * rm20 + m10 * rm21 + m20 * rm22;
+        res.m21 = m01 * rm20 + m11 * rm21 + m21 * rm22;
+        res.m22 = m02 * rm20 + m12 * rm21 + m22 * rm22;
+        res.m23 = m03 * rm20 + m13 * rm21 + m23 * rm22;
         // set other values
-        dest.m00 = nm00;
-        dest.m01 = nm01;
-        dest.m02 = nm02;
-        dest.m03 = nm03;
-        dest.m10 = nm10;
-        dest.m11 = nm11;
-        dest.m12 = nm12;
-        dest.m13 = nm13;
-        dest.m30 = m30;
-        dest.m31 = m31;
-        dest.m32 = m32;
-        dest.m33 = m33;
-        return dest;
+        res.m00 = nm00;
+        res.m01 = nm01;
+        res.m02 = nm02;
+        res.m03 = nm03;
+        res.m10 = nm10;
+        res.m11 = nm11;
+        res.m12 = nm12;
+        res.m13 = nm13;
+        res.m30 = m30;
+        res.m31 = m31;
+        res.m32 = m32;
+        res.m33 = m33;
+        return res;
     }
 
     public Mat4 rotateX(double ang) {
         return rotateX((float) ang, (Mat4) this);
     }
-    
+
     public Mat4 rotateX(float ang) {
         return rotateX(ang, (Mat4) this);
     }
 
-    public Mat4 rotateX(float ang, Mat4 dest) {
-        float cos = (float) Math.cos(ang);
-        float sin = (float) Math.sin(ang);
-        float rm11 = cos;
-        float rm12 = sin;
+    public Mat4 rotateX(float ang, Mat4 res) {
+        float sin, cos;
+        if (ang == (float) Math.PI || ang == -(float) Math.PI) {
+            cos = -1.0f;
+            sin = 0.0f;
+        } else if (ang == (float) Math.PI * 0.5f || ang == -(float) Math.PI * 1.5f) {
+            cos = 0.0f;
+            sin = 1.0f;
+        } else if (ang == (float) -Math.PI * 0.5f || ang == (float) Math.PI * 1.5f) {
+            cos = 0.0f;
+            sin = -1.0f;
+        } else {
+            cos = (float) Math.cos(ang);
+            sin = (float) Math.sin(ang);
+        }
+        float rm11 = +cos;
+        float rm12 = +sin;
         float rm21 = -sin;
-        float rm22 = cos;
+        float rm22 = +cos;
         // add temporaries for dependent values
         float nm10 = m10 * rm11 + m20 * rm12;
         float nm11 = m11 * rm11 + m21 * rm12;
         float nm12 = m12 * rm11 + m22 * rm12;
         float nm13 = m13 * rm11 + m23 * rm12;
         // set non-dependent values directly
-        dest.m20 = m10 * rm21 + m20 * rm22;
-        dest.m21 = m11 * rm21 + m21 * rm22;
-        dest.m22 = m12 * rm21 + m22 * rm22;
-        dest.m23 = m13 * rm21 + m23 * rm22;
+        res.m20 = m10 * rm21 + m20 * rm22;
+        res.m21 = m11 * rm21 + m21 * rm22;
+        res.m22 = m12 * rm21 + m22 * rm22;
+        res.m23 = m13 * rm21 + m23 * rm22;
         // set other values
-        dest.m10 = nm10;
-        dest.m11 = nm11;
-        dest.m12 = nm12;
-        dest.m13 = nm13;
-        dest.m00 = m00;
-        dest.m01 = m01;
-        dest.m02 = m02;
-        dest.m03 = m03;
-        dest.m30 = m30;
-        dest.m31 = m31;
-        dest.m32 = m32;
-        dest.m33 = m33;
-        return dest;
+        res.m10 = nm10;
+        res.m11 = nm11;
+        res.m12 = nm12;
+        res.m13 = nm13;
+        res.m00 = m00;
+        res.m01 = m01;
+        res.m02 = m02;
+        res.m03 = m03;
+        res.m30 = m30;
+        res.m31 = m31;
+        res.m32 = m32;
+        res.m33 = m33;
+        return res;
     }
 
     public Mat4 rotateY(double ang) {
@@ -166,9 +178,21 @@ public abstract class matrixTransform extends funcMatrix {
         return rotateY(ang, (Mat4) this);
     }
 
-    public Mat4 rotateY(float ang, Mat4 dest) {
-        float cos = (float) Math.cos(ang);
-        float sin = (float) Math.sin(ang);
+    public Mat4 rotateY(float ang, Mat4 res) {
+        float cos, sin;
+        if (ang == (float) Math.PI || ang == -(float) Math.PI) {
+            cos = -1.0f;
+            sin = 0.0f;
+        } else if (ang == (float) Math.PI * 0.5f || ang == -(float) Math.PI * 1.5f) {
+            cos = 0.0f;
+            sin = 1.0f;
+        } else if (ang == (float) -Math.PI * 0.5f || ang == (float) Math.PI * 1.5f) {
+            cos = 0.0f;
+            sin = -1.0f;
+        } else {
+            cos = (float) Math.cos(ang);
+            sin = (float) Math.sin(ang);
+        }
         float rm00 = cos;
         float rm02 = -sin;
         float rm20 = sin;
@@ -179,37 +203,49 @@ public abstract class matrixTransform extends funcMatrix {
         float nm02 = m02 * rm00 + m22 * rm02;
         float nm03 = m03 * rm00 + m23 * rm02;
         // set non-dependent values directly
-        dest.m20 = m00 * rm20 + m20 * rm22;
-        dest.m21 = m01 * rm20 + m21 * rm22;
-        dest.m22 = m02 * rm20 + m22 * rm22;
-        dest.m23 = m03 * rm20 + m23 * rm22;
+        res.m20 = m00 * rm20 + m20 * rm22;
+        res.m21 = m01 * rm20 + m21 * rm22;
+        res.m22 = m02 * rm20 + m22 * rm22;
+        res.m23 = m03 * rm20 + m23 * rm22;
         // set other values
-        dest.m00 = nm00;
-        dest.m01 = nm01;
-        dest.m02 = nm02;
-        dest.m03 = nm03;
-        dest.m10 = m10;
-        dest.m11 = m11;
-        dest.m12 = m12;
-        dest.m13 = m13;
-        dest.m30 = m30;
-        dest.m31 = m31;
-        dest.m32 = m32;
-        dest.m33 = m33;
-        return dest;
+        res.m00 = nm00;
+        res.m01 = nm01;
+        res.m02 = nm02;
+        res.m03 = nm03;
+        res.m10 = m10;
+        res.m11 = m11;
+        res.m12 = m12;
+        res.m13 = m13;
+        res.m30 = m30;
+        res.m31 = m31;
+        res.m32 = m32;
+        res.m33 = m33;
+        return res;
     }
 
     public Mat4 rotateZ(double ang) {
         return rotateZ((float) ang, (Mat4) this);
     }
-    
+
     public Mat4 rotateZ(float ang) {
         return rotateZ(ang, (Mat4) this);
     }
 
-    public Mat4 rotateZ(float ang, Mat4 dest) {
-        float cos = (float) Math.cos(ang);
-        float sin = (float) Math.sin(ang);
+    public Mat4 rotateZ(float ang, Mat4 res) {
+        float sin, cos;
+        if (ang == (float) Math.PI || ang == -(float) Math.PI) {
+            cos = -1.0f;
+            sin = 0.0f;
+        } else if (ang == (float) Math.PI * 0.5f || ang == -(float) Math.PI * 1.5f) {
+            cos = 0.0f;
+            sin = 1.0f;
+        } else if (ang == (float) -Math.PI * 0.5f || ang == (float) Math.PI * 1.5f) {
+            cos = 0.0f;
+            sin = -1.0f;
+        } else {
+            cos = (float) Math.cos(ang);
+            sin = (float) Math.sin(ang);
+        }
         float rm00 = cos;
         float rm01 = sin;
         float rm10 = -sin;
@@ -221,24 +257,24 @@ public abstract class matrixTransform extends funcMatrix {
         float nm02 = m02 * rm00 + m12 * rm01;
         float nm03 = m03 * rm00 + m13 * rm01;
         // set non-dependent values directly
-        dest.m10 = m00 * rm10 + m10 * rm11;
-        dest.m11 = m01 * rm10 + m11 * rm11;
-        dest.m12 = m02 * rm10 + m12 * rm11;
-        dest.m13 = m03 * rm10 + m13 * rm11;
+        res.m10 = m00 * rm10 + m10 * rm11;
+        res.m11 = m01 * rm10 + m11 * rm11;
+        res.m12 = m02 * rm10 + m12 * rm11;
+        res.m13 = m03 * rm10 + m13 * rm11;
         // set other values
-        dest.m00 = nm00;
-        dest.m01 = nm01;
-        dest.m02 = nm02;
-        dest.m03 = nm03;
-        dest.m20 = m20;
-        dest.m21 = m21;
-        dest.m22 = m22;
-        dest.m23 = m23;
-        dest.m30 = m30;
-        dest.m31 = m31;
-        dest.m32 = m32;
-        dest.m33 = m33;
-        return dest;
+        res.m00 = nm00;
+        res.m01 = nm01;
+        res.m02 = nm02;
+        res.m03 = nm03;
+        res.m20 = m20;
+        res.m21 = m21;
+        res.m22 = m22;
+        res.m23 = m23;
+        res.m30 = m30;
+        res.m31 = m31;
+        res.m32 = m32;
+        res.m33 = m33;
+        return res;
     }
 
     public Mat4 rotationX(float ang) {
