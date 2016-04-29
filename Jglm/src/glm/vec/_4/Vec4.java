@@ -18,24 +18,39 @@ import java.nio.FloatBuffer;
 public class Vec4 extends colorSpace {
 
     public Vec4() {
-        x = 0f;
-        y = 0f;
-        z = 0f;
-        w = 0f;
+        this(0);
     }
 
     public Vec4(Vec4 v) {
-        x = v.x;
-        y = v.y;
-        z = v.z;
-        w = v.w;
+        this(v.x, v.y, v.z, v.w);
+    }
+
+    public Vec4(double d) {
+        this((float) d);
     }
 
     public Vec4(float f) {
-        x = f;
-        y = f;
-        z = f;
-        w = f;
+        this(f, f, f, f);
+    }
+
+    public Vec4(float f, Vec3 v) {
+        this(f, v.x, v.y, v.z);
+    }
+
+    public Vec4(Vec3 v, float f) {
+        this(v.x, v.y, v.z, f);
+    }
+
+    public Vec4(Vec2 v0, Vec2 v1) {
+        this(v0.x, v0.y, v1.x, v1.y);
+    }
+
+    public Vec4(Vec2 v, float f0, float f1) {
+        this(v.x, v.y, f0, f1);
+    }
+
+    public Vec4(double x, double y, double z, double w) {
+        this((float) x, (float) y, (float) z, (float) w);
     }
 
     public Vec4(float x, float y, float z, float w) {
@@ -45,55 +60,28 @@ public class Vec4 extends colorSpace {
         this.w = w;
     }
 
-    public Vec4(double x, double y, double z, double w) {
-        this.x = (float) x;
-        this.y = (float) y;
-        this.z = (float) z;
-        this.w = (float) w;
-    }
-
-    public Vec4(float f, Vec3 v) {
-        x = f;
-        y = v.x;
-        z = v.y;
-        w = v.z;
-    }
-
-    public Vec4(Vec3 v, float f) {
-        x = v.x;
-        y = v.y;
-        z = v.z;
-        w = f;
-    }
-
-    public Vec4(Vec2 v0, Vec2 v1) {
-        x = v0.x;
-        y = v0.y;
-        z = v1.x;
-        w = v1.y;
-    }
-
-    public Vec4(Vec2 v, float f0, float f1) {
-        x = v.x;
-        y = v.y;
-        z = f0;
-        w = f1;
-    }
-
     public Vec4 set(Vec4 v) {
-        x = v.x;
-        y = v.y;
-        z = v.z;
-        w = v.w;
-        return this;
+        return set(v.x, v.y, v.z, v.w);
     }
 
     public Vec4 set(float f) {
-        x = f;
-        y = f;
-        z = f;
-        w = f;
-        return this;
+        return set(f, f, f, f);
+    }
+
+    public Vec4 set(float[] fa) {
+        return set(fa[0], fa[1], fa[2], fa[3]);
+    }
+
+    public Vec4 set(float f, Vec3 v) {
+        return set(f, v.x, v.y, v.z);
+    }
+
+    public Vec4 set(Vec3 v, float f) {
+        return set(v.x, v.y, v.z, f);
+    }
+
+    public Vec4 set(Vec2 v0, Vec2 v1) {
+        return set(v0.x, v0.y, v1.x, v1.y);
     }
 
     public Vec4 set(float x, float y, float z, float w) {
@@ -101,38 +89,6 @@ public class Vec4 extends colorSpace {
         this.y = y;
         this.z = z;
         this.w = w;
-        return this;
-    }
-
-    public Vec4 set(float[] fa) {
-        x = fa[0];
-        y = fa[1];
-        z = fa[2];
-        w = fa[3];
-        return this;
-    }
-
-    public Vec4 set(float f, Vec3 v) {
-        x = f;
-        y = v.x;
-        z = v.y;
-        w = v.z;
-        return this;
-    }
-
-    public Vec4 set(Vec3 v, float f) {
-        x = v.x;
-        y = v.y;
-        z = v.z;
-        w = f;
-        return this;
-    }
-
-    public Vec4 set(Vec2 v0, Vec2 v1) {
-        x = v0.x;
-        y = v0.y;
-        z = v1.x;
-        w = v1.y;
         return this;
     }
 
@@ -147,7 +103,7 @@ public class Vec4 extends colorSpace {
         fa[3] = w;
         return fa;
     }
-    
+
     public FloatBuffer toDfb_() {
         return toDfb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asFloatBuffer());
     }
