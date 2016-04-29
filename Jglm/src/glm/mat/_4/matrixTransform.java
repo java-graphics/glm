@@ -117,6 +117,10 @@ class matrixTransform extends funcMatrix {
         return dest;
     }
 
+    public Mat4 rotateX(double ang) {
+        return rotateX((float) ang, (Mat4) this);
+    }
+    
     public Mat4 rotateX(float ang) {
         return rotateX(ang, (Mat4) this);
     }
@@ -152,6 +156,10 @@ class matrixTransform extends funcMatrix {
         dest.m32 = m32;
         dest.m33 = m33;
         return dest;
+    }
+
+    public Mat4 rotateY(double ang) {
+        return rotateY((float) ang, (Mat4) this);
     }
 
     public Mat4 rotateY(float ang) {
@@ -191,6 +199,10 @@ class matrixTransform extends funcMatrix {
         return dest;
     }
 
+    public Mat4 rotateZ(double ang) {
+        return rotateZ((float) ang, (Mat4) this);
+    }
+    
     public Mat4 rotateZ(float ang) {
         return rotateZ(ang, (Mat4) this);
     }
