@@ -5,7 +5,7 @@
 package jglm;
 
 /**
- *
+ * @deprecated
  * @author gbarbieri
  */
 public class Mat4 extends Mat {
@@ -100,7 +100,6 @@ public class Mat4 extends Mat {
 //            rotationX(roll)
 //        }
 //    }
-
     public float[] toFloatArray() {
         return new float[]{
             c0.x, c0.y, c0.z, c0.w,

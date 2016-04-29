@@ -5,7 +5,7 @@
 package jglm;
 
 /**
- *
+ * @deprecated
  * @author gbarbieri
  */
 public class Vec2i extends Veci {
@@ -28,7 +28,7 @@ public class Vec2i extends Veci {
     }
 
     public Vec2i(int x, int y) {
-        
+
         this.x = x;
         this.y = y;
         vector = new int[]{x, y};
@@ -47,7 +47,7 @@ public class Vec2i extends Veci {
     }
 
     public Vec2i minus(Vec2i vec2i) {
-        
+
         return new Vec2i(x - vec2i.x, y - vec2i.y);
     }
 

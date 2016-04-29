@@ -5,7 +5,7 @@
 package jglm;
 
 /**
- *
+ * @deprecated
  * @author gbarbieri
  */
 public class Mat3 extends Mat {
@@ -134,7 +134,7 @@ public class Mat3 extends Mat {
         }
         return new Mat3(result);
     }
-    
+
     public Vec3 mult(Vec3 second) {
 
         float[] result = new float[3];

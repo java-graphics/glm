@@ -5,7 +5,7 @@
 package jglm;
 
 /**
- *
+ * @deprecated 
  * @author gbarbieri
  */
 public class Vec {

@@ -25,9 +25,14 @@
  * The views and conclusions contained in the software and documentation are
  * those of the authors and should not be interpreted as representing official
  * policies, either expressed or implied, of JogAmp Community.
+ *
  */
 package jglm;
 
+/**
+ * @deprecated
+ * @author GBarbieri
+ */
 public class Quat {
 
     public float x, y, z, w;
@@ -179,7 +184,7 @@ public class Quat {
         Quat quat;
 
         float dot = a.dot(b);
-        
+
         if (dot < -0.999999) {
 //            System.out.println("1");
             tmp = xUnit.crossProduct(a);
@@ -276,7 +281,7 @@ public class Quat {
      * Multiply this quaternion by the param quaternion
      *
      * @param q a quaternion to multiply with
-     * @return 
+     * @return
      */
     public Quat mult(Quat q) {
 
@@ -354,7 +359,8 @@ public class Quat {
 
     /**
      * Invert the quaternion If rotational, will produce a the inverse rotation
-     * @return 
+     *
+     * @return
      */
     public Quat conjugate() {
 
@@ -475,26 +481,24 @@ public class Quat {
             x = (m[5] - m[7]) * S;
             y = (m[6] - m[2]) * S;
             z = (m[1] - m[3]) * S;
+        } else if ((m[0] > m[4]) & (m[0] > m[8])) {
+            float S = (float) (Math.sqrt(1.0f + m[0] - m[4] - m[8]) * 2f); // S=4*qx
+            w = (m[7] - m[5]) / S;
+            x = 0.25f * S;
+            y = (m[3] + m[1]) / S;
+            z = (m[6] + m[2]) / S;
+        } else if (m[4] > m[8]) {
+            float S = (float) (Math.sqrt(1.0f + m[4] - m[0] - m[8]) * 2f); // S=4*qy
+            w = (m[6] - m[2]) / S;
+            x = (m[3] + m[1]) / S;
+            y = 0.25f * S;
+            z = (m[7] + m[5]) / S;
         } else {
-            if ((m[0] > m[4]) & (m[0] > m[8])) {
-                float S = (float) (Math.sqrt(1.0f + m[0] - m[4] - m[8]) * 2f); // S=4*qx
-                w = (m[7] - m[5]) / S;
-                x = 0.25f * S;
-                y = (m[3] + m[1]) / S;
-                z = (m[6] + m[2]) / S;
-            } else if (m[4] > m[8]) {
-                float S = (float) (Math.sqrt(1.0f + m[4] - m[0] - m[8]) * 2f); // S=4*qy
-                w = (m[6] - m[2]) / S;
-                x = (m[3] + m[1]) / S;
-                y = 0.25f * S;
-                z = (m[7] + m[5]) / S;
-            } else {
-                float S = (float) (Math.sqrt(1.0f + m[8] - m[0] - m[4]) * 2f); // S=4*qz
-                w = (m[3] - m[1]) / S;
-                x = (m[6] + m[2]) / S;
-                y = (m[7] + m[5]) / S;
-                z = 0.25f * S;
-            }
+            float S = (float) (Math.sqrt(1.0f + m[8] - m[0] - m[4]) * 2f); // S=4*qz
+            w = (m[3] - m[1]) / S;
+            x = (m[6] + m[2]) / S;
+            y = (m[7] + m[5]) / S;
+            z = 0.25f * S;
         }
     }
 
