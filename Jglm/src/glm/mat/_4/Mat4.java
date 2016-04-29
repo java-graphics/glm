@@ -8,6 +8,7 @@ package glm.mat._4;
 import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
 import glm.glm;
+import glm.mat._3.Mat3;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -28,6 +29,14 @@ public class Mat4 extends matrixTransform {
                 0, f, 0, 0,
                 0, 0, f, 0,
                 0, 0, 0, f);
+    }
+
+    public Mat4(Mat3 mat) {
+        this(
+                mat.m00, mat.m01, mat.m02, 0,
+                mat.m10, mat.m11, mat.m12, 0,
+                mat.m20, mat.m21, mat.m22, 0,
+                0, 0, 0, 1);
     }
 
     public Mat4(Mat4 mat) {
@@ -99,7 +108,7 @@ public class Mat4 extends matrixTransform {
 
     public Mat4 set(float m00, float m01, float m02, float m03, float m10, float m11, float m12, float m13,
             float m20, float m21, float m22, float m23, float m30, float m31, float m32, float m33) {
-        
+
         this.m00 = m00;
         this.m01 = m01;
         this.m02 = m02;
