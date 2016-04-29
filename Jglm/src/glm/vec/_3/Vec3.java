@@ -64,6 +64,10 @@ public class Vec3 extends operator {
         return this;
     }
 
+    public Vec3 set(double x, double y, double z) {
+        return set((float) x, (float) y, (float) z);
+    }
+
     public Vec3 set(float x, float y, float z) {
         this.x = x;
         this.y = y;
