@@ -108,6 +108,10 @@ public class Vec3 extends operator {
         return res;
     }
 
+    public float length() {
+        return (float) Math.sqrt(x * x + y * y + z * z);
+    }
+
     /**
      * Normalize this vector.
      *
@@ -120,8 +124,7 @@ public class Vec3 extends operator {
     /**
      * Normalize this vector and store the result in <code>dest</code>.
      *
-     * @param dest
-     * will hold the result
+     * @param dest will hold the result
      * @return dest
      */
     public Vec3 normalize(Vec3 dest) {

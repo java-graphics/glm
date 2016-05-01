@@ -148,12 +148,20 @@ public class Mat4 extends matrixTransform {
         return set(v.x, v.y, v.z, v.w, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
     }
 
+    public Mat4 c0(Vec3 v, float f) {
+        return set(v.x, v.y, v.z, f, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
+    }
+
     public Mat4 c0(float x, float y, float z, float w) {
         return set(x, y, z, w, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33);
     }
 
     public Mat4 c1(Vec4 v) {
         return set(m00, m01, m02, m03, v.x, v.y, v.z, v.w, m20, m21, m22, m23, m30, m31, m32, m33);
+    }
+
+    public Mat4 c1(Vec3 v, float f) {
+        return set(m00, m01, m02, m03, v.x, v.y, v.z, f, m20, m21, m22, m23, m30, m31, m32, m33);
     }
 
     public Mat4 c1(float x, float y, float z, float w) {
@@ -164,12 +172,20 @@ public class Mat4 extends matrixTransform {
         return set(m00, m01, m02, m03, m10, m11, m12, m13, v.x, v.y, v.z, v.w, m30, m31, m32, m33);
     }
 
+    public Mat4 c2(Vec3 v, float f) {
+        return set(m00, m01, m02, m03, m10, m11, m12, m13, v.x, v.y, v.z, f, m30, m31, m32, m33);
+    }
+
     public Mat4 c2(float x, float y, float z, float w) {
         return set(m00, m01, m02, m03, m10, m11, m12, m13, x, y, z, w, m30, m31, m32, m33);
     }
 
     public Mat4 c3(Vec4 v) {
         return set(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, v.x, v.y, v.z, v.w);
+    }
+
+    public Mat4 c3(Vec3 v, float f) {
+        return set(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, v.x, v.y, v.z, f);
     }
 
     public Mat4 c3(float x, float y, float z, float w) {

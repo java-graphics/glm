@@ -11,6 +11,25 @@ package glm.vec._3;
  */
 public abstract class funcGeometric extends funcCommon {
 
+    public Vec3 cross(Vec3 y) {
+        return cross(y, (Vec3) this);
+    }
+
+    public Vec3 cross_(Vec3 y) {
+        return cross(y, new Vec3());
+    }
+
+    public Vec3 cross(Vec3 y, Vec3 res) {
+        return cross((Vec3) this, y, res);
+    }
+
+    public static Vec3 cross(Vec3 x, Vec3 y, Vec3 res) {
+        return res.set(
+                x.y * y.z - y.y * x.z,
+                x.z * y.x - y.z * x.x,
+                x.x * y.y - y.x * x.y);
+    }
+
     public float dot(Vec3 y) {
         return dot((Vec3) this, y);
     }
