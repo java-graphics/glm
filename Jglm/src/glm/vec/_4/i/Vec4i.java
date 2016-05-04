@@ -8,6 +8,7 @@ package glm.vec._4.i;
 import glm.vec._3.i.Vec3i;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 /**
@@ -56,6 +57,22 @@ public class Vec4i {
 
     public IntBuffer toDib(IntBuffer ib, int index) {
         return ib
+                .put(index + 0, x)
+                .put(index + 1, y)
+                .put(index + 2, z)
+                .put(index + 3, w);
+    }
+    
+    public FloatBuffer toDfb_() {
+        return toDfb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asFloatBuffer());
+    }
+
+    public FloatBuffer toDfb(FloatBuffer fb) {
+        return toDfb(fb, 0);
+    }
+
+    public FloatBuffer toDfb(FloatBuffer fb, int index) {
+        return fb
                 .put(index + 0, x)
                 .put(index + 1, y)
                 .put(index + 2, z)

@@ -7,6 +7,9 @@ package glm.mat._3;
 
 import glm.mat._4.Mat4;
 import glm.vec._3.Vec3;
+import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
+import java.nio.FloatBuffer;
 
 /**
  *
@@ -158,15 +161,15 @@ public class Mat3 extends matrixTransform {
         return !Float.isNaN(expected) && !Float.isNaN(actual) && difference <= maxUlps;
     }
 
-    public float[] toFA_() {
-        return toFA(new float[9], 0);
+    public float[] toFa_() {
+        return Mat3.this.toFa(new float[9], 0);
     }
 
-    public float[] toFA(float[] res) {
-        return toFA(res, 0);
+    public float[] toFa(float[] res) {
+        return Mat3.this.toFa(res, 0);
     }
 
-    public float[] toFA(float[] res, int index) {
+    public float[] toFa(float[] res, int index) {
         res[index + 0] = m00;
         res[index + 1] = m01;
         res[index + 2] = m02;
@@ -176,6 +179,48 @@ public class Mat3 extends matrixTransform {
         res[index + 6] = m20;
         res[index + 7] = m21;
         res[index + 8] = m22;
+        return res;
+    }
+    
+    public ByteBuffer toDbb_() {
+        return toDbb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()));
+    }
+
+    public ByteBuffer toDbb(ByteBuffer res) {
+        return toDbb(res, 0);
+    }
+
+    public ByteBuffer toDbb(ByteBuffer res, int index) {
+        res.putFloat(index + 0 * Float.BYTES, m00);
+        res.putFloat(index + 1 * Float.BYTES, m01);
+        res.putFloat(index + 2 * Float.BYTES, m02);
+        res.putFloat(index + 3 * Float.BYTES, m10);
+        res.putFloat(index + 4 * Float.BYTES, m11);
+        res.putFloat(index + 5 * Float.BYTES, m12);
+        res.putFloat(index + 6 * Float.BYTES, m20);
+        res.putFloat(index + 7 * Float.BYTES, m21);
+        res.putFloat(index + 8 * Float.BYTES, m22);
+        return res;
+    }
+
+    public FloatBuffer toDfb_() {
+        return toDfb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asFloatBuffer());
+    }
+
+    public FloatBuffer toDfb(FloatBuffer res) {
+        return toDfb(res, 0);
+    }
+
+    public FloatBuffer toDfb(FloatBuffer res, int index) {
+        res.put(index + 0, m00);
+        res.put(index + 1, m01);
+        res.put(index + 2, m02);
+        res.put(index + 3, m10);
+        res.put(index + 4, m11);
+        res.put(index + 5, m12);
+        res.put(index + 6, m20);
+        res.put(index + 7, m21);
+        res.put(index + 8, m22);
         return res;
     }
 
