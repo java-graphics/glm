@@ -7,6 +7,7 @@ package glm.vec._3;
 
 import glm.vec._4.Vec4;
 import glm.glm;
+import java.io.PrintStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -174,5 +175,17 @@ public class Vec3 extends operator {
                 .putFloat(index + 0 * Float.BYTES, x)
                 .putFloat(index + 1 * Float.BYTES, y)
                 .putFloat(index + 2 * Float.BYTES, z);
+    }
+
+    public void print() {
+        print("", System.out);
+    }
+
+    public void print(String title) {
+        print(title, System.out);
+    }
+
+    public void print(String title, PrintStream printStream) {
+        printStream.println(title + ": (" + x + ", " + y + ", " + z + ")");
     }
 }
