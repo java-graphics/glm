@@ -9,6 +9,7 @@ import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
 import glm.glm;
 import glm.mat._3.Mat3;
+import glm.quat.Quat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -191,7 +192,7 @@ public class Mat4 extends matrixTransform {
     public Mat4 c3(float x, float y, float z, float w) {
         return set(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, x, y, z, w);
     }
-
+    
     public Mat4 identity() {
         return set(1.0f);
     }
@@ -237,6 +238,33 @@ public class Mat4 extends matrixTransform {
         return dest;
     }
 
+    public static Mat4 cast_(Quat q) {
+        return cast(q, new Mat4());
+    }
+
+    public static Mat4 cast(Quat q, Mat4 res) {
+        res.m00 = 1 - 2 * q.y * q.y - 2 * q.z * q.z;
+        res.m01 = 2 * q.x * q.y + 2 * q.w * q.z;
+        res.m02 = 2 * q.x * q.z - 2 * q.w * q.y;
+        res.m03 = 0.0f;
+
+        res.m10 = 2 * q.x * q.y - 2 * q.w * q.z;
+        res.m11 = 1 - 2 * q.x * q.x - 2 * q.z * q.z;
+        res.m12 = 2 * q.y * q.z + 2 * q.w * q.x;
+        res.m13 = 0.0f;
+
+        res.m20 = 2 * q.x * q.z + 2 * q.w * q.y;
+        res.m21 = 2 * q.y * q.z - 2 * q.w * q.x;
+        res.m22 = 1 - 2 * q.x * q.x - 2 * q.y * q.y;
+        res.m23 = 0.0f;
+        
+        res.m30 = 0.0f;
+        res.m31 = 0.0f;
+        res.m32 = 0.0f;
+        res.m33 = 1.0f;        
+        return res;
+    }
+    
     public boolean equals3(Mat4 other) {
         return equals3(other, 2);
     }

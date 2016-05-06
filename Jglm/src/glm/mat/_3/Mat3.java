@@ -6,6 +6,7 @@
 package glm.mat._3;
 
 import glm.mat._4.Mat4;
+import glm.quat.Quat;
 import glm.vec._3.Vec3;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -27,7 +28,7 @@ public class Mat3 extends matrixTransform {
                 0, f, 0,
                 0, 0, f);
     }
-    
+
     public Mat3(Vec3 v) {
         this(
                 v.x, 0, 0,
@@ -68,6 +69,22 @@ public class Mat3 extends matrixTransform {
         this.m22 = m22;
     }
 
+    public static Mat3 cast(Quat q) {
+        Mat3 result = new Mat3();
+        result.m00 = 1 - 2 * q.y * q.y - 2 * q.z * q.z;
+        result.m01 = 2 * q.x * q.y + 2 * q.w * q.z;
+        result.m02 = 2 * q.x * q.z - 2 * q.w * q.y;
+
+        result.m10 = 2 * q.x * q.y - 2 * q.w * q.z;
+        result.m11 = 1 - 2 * q.x * q.x - 2 * q.z * q.z;
+        result.m12 = 2 * q.y * q.z + 2 * q.w * q.x;
+
+        result.m20 = 2 * q.x * q.z + 2 * q.w * q.y;
+        result.m21 = 2 * q.y * q.z - 2 * q.w * q.x;
+        result.m22 = 1 - 2 * q.x * q.x - 2 * q.y * q.y;
+        return result;
+    }
+
     public Mat3 set() {
         return set(1.0f);
     }
@@ -96,7 +113,7 @@ public class Mat3 extends matrixTransform {
         this.m22 = m22;
         return this;
     }
-    
+
     public Mat3 identity() {
         return set();
     }
@@ -181,7 +198,7 @@ public class Mat3 extends matrixTransform {
         res[index + 8] = m22;
         return res;
     }
-    
+
     public ByteBuffer toDbb_() {
         return toDbb(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()));
     }
