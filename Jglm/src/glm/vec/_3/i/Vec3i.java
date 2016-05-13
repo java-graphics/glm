@@ -25,6 +25,12 @@ public class Vec3i {
         z = 0;
     }
 
+    public Vec3i(int i) {
+        x = i;
+        y = i;
+        z = i;
+    }
+
     public IntBuffer toDib_() {
         return Vec3i.this.toDib(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asIntBuffer());
     }

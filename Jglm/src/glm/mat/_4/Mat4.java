@@ -32,6 +32,19 @@ public class Mat4 extends matrixTransform {
                 0, 0, 0, f);
     }
 
+    public Mat4(float[] f) {
+        this(f, 0);
+    }
+
+    // TODO transpose
+    public Mat4(float[] f, int index) {
+        this(
+                f[index + 0], f[index + 4], f[index + 8], f[index + 12],
+                f[index + 1], f[index + 5], f[index + 9], f[index + 13],
+                f[index + 2], f[index + 6], f[index + 10], f[index + 14],
+                f[index + 3], f[index + 7], f[index + 11], f[index + 15]);
+    }
+
     public Mat4(Mat3 mat) {
         this(
                 mat.m00, mat.m01, mat.m02, 0,
@@ -192,7 +205,7 @@ public class Mat4 extends matrixTransform {
     public Mat4 c3(float x, float y, float z, float w) {
         return set(m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, x, y, z, w);
     }
-    
+
     public Mat4 identity() {
         return set(1.0f);
     }
@@ -257,14 +270,14 @@ public class Mat4 extends matrixTransform {
         res.m21 = 2 * q.y * q.z - 2 * q.w * q.x;
         res.m22 = 1 - 2 * q.x * q.x - 2 * q.y * q.y;
         res.m23 = 0.0f;
-        
+
         res.m30 = 0.0f;
         res.m31 = 0.0f;
         res.m32 = 0.0f;
-        res.m33 = 1.0f;        
+        res.m33 = 1.0f;
         return res;
     }
-    
+
     public boolean equals3(Mat4 other) {
         return equals3(other, 2);
     }
