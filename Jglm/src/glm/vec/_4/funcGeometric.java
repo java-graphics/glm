@@ -23,4 +23,27 @@ public abstract class funcGeometric extends funcCommon {
         return tX + tY + tZ + tW;
     }
 
+    /**
+     * Normalize this vector.
+     *
+     * @return this
+     */
+    public Vec4 normalize() {
+        return normalize((Vec4) this);
+    }
+
+    /**
+     * Normalize this vector and store the result in <code>res</code>.
+     *
+     * @param res will hold the result
+     * @return
+     */
+    public Vec4 normalize(Vec4 res) {
+        float invLength = (float) (1.0 / Math.sqrt(x * x + y * y + z * z + w * w));
+        res.x = x * invLength;
+        res.y = y * invLength;
+        res.z = z * invLength;
+        res.w = w * invLength;
+        return res;
+    }
 }

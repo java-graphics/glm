@@ -260,11 +260,7 @@ public abstract class funcCommon {
     }
 
     public static Vec4 mix(Vec4 x, Vec4 y, boolean a, Vec4 result) {
-        result.x = a ? y.x : x.x;
-        result.y = a ? y.y : x.y;
-        result.z = a ? y.z : x.z;
-        result.w = a ? y.w : x.w;
-        return result;
+        return mix(x, y, a, a, a, a, result);
     }
 
     public Vec4 mix(Vec4 y, Vec4bool a) {
@@ -280,10 +276,14 @@ public abstract class funcCommon {
     }
 
     public static Vec4 mix(Vec4 x, Vec4 y, Vec4bool a, Vec4 result) {
-        result.x = a.x ? y.x : x.x;
-        result.y = a.y ? y.y : x.y;
-        result.z = a.z ? y.z : x.z;
-        result.w = a.w ? y.w : x.w;
+        return mix(x, y, a.x, a.y, a.z, a.w, result);
+    }
+
+    public static Vec4 mix(Vec4 x, Vec4 y, boolean a0, boolean a1, boolean a2, boolean a3, Vec4 result) {
+        result.x = a0 ? y.x : x.x;
+        result.y = a1 ? y.y : x.y;
+        result.z = a2 ? y.z : x.z;
+        result.w = a3 ? y.w : x.w;
         return result;
     }
 
@@ -300,11 +300,7 @@ public abstract class funcCommon {
     }
 
     public static Vec4 mix(Vec4 x, Vec4 y, float a, Vec4 result) {
-        result.x = x.x + a * (y.x - x.x);
-        result.y = x.y + a * (y.y - x.y);
-        result.z = x.z + a * (y.z - x.z);
-        result.w = x.w + a * (y.w - x.w);
-        return result;
+        return mix(x, y, a, a, a, a, result);
     }
 
     public Vec4 mix(Vec4 y, Vec4 a) {
@@ -320,10 +316,14 @@ public abstract class funcCommon {
     }
 
     public static Vec4 mix(Vec4 x, Vec4 y, Vec4 a, Vec4 result) {
-        result.x = x.x + a.x * (y.x - x.x);
-        result.y = x.y + a.y * (y.y - x.y);
-        result.z = x.z + a.z * (y.z - x.z);
-        result.z = x.w + a.w * (y.w - x.w);
+        return mix(x, y, a.x, a.y, a.z, a.w, result);
+    }
+    
+    public static Vec4 mix(Vec4 x, Vec4 y, float a0, float a1, float a2, float a3, Vec4 result) {
+        result.x = x.x + a0 * (y.x - x.x);
+        result.y = x.y + a1 * (y.y - x.y);
+        result.z = x.z + a2 * (y.z - x.z);
+        result.w = x.w + a3 * (y.w - x.w);
         return result;
     }
 

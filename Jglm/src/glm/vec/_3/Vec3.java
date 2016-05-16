@@ -113,34 +113,11 @@ public class Vec3 extends operator {
         return (float) Math.sqrt(x * x + y * y + z * z);
     }
 
-    /**
-     * Normalize this vector.
-     *
-     * @return this
-     */
-    public Vec3 normalize() {
-        return normalize(this);
+    public float[] toFa_() {
+        return toFa(new float[3]);
     }
 
-    /**
-     * Normalize this vector and store the result in <code>dest</code>.
-     *
-     * @param dest will hold the result
-     * @return dest
-     */
-    public Vec3 normalize(Vec3 dest) {
-        float invLength = (float) (1.0 / Math.sqrt(x * x + y * y + z * z));
-        dest.x = x * invLength;
-        dest.y = y * invLength;
-        dest.z = z * invLength;
-        return dest;
-    }
-
-    public float[] toFA_() {
-        return toFA(new float[3]);
-    }
-
-    public float[] toFA(float[] fa) {
+    public float[] toFa(float[] fa) {
         fa[0] = x;
         fa[1] = y;
         fa[2] = z;

@@ -5,6 +5,7 @@
  */
 package glm;
 
+import glm.quat.Quat;
 import glm.vec._4.Vec4;
 
 /**
@@ -18,6 +19,10 @@ class funcGeometric extends funcExponential {
     }
     
     public static float dot(Vec4 v0, Vec4 v1) {
-        return v0.x * v1.x + v0.y * v1.y + v0.z * v1.z + v0.w * v1.w;
+        return Vec4.dot(v0, v1);
+    }
+    
+    public static float dot(Quat v0, Quat v1) {
+        return Quat.dot(v0, v1);
     }
 }

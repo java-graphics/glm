@@ -40,4 +40,27 @@ public abstract class funcGeometric extends funcCommon {
         float tZ = x.z * y.z;
         return tX + tY + tZ;
     }
+
+    /**
+     * Normalize this vector.
+     *
+     * @return this
+     */
+    public Vec3 normalize() {
+        return normalize((Vec3) this);
+    }
+
+    /**
+     * Normalize this vector and store the result in <code>res</code>.
+     *
+     * @param res will hold the result
+     * @return
+     */
+    public Vec3 normalize(Vec3 res) {
+        float invLength = (float) (1.0 / Math.sqrt(x * x + y * y + z * z));
+        res.x = x * invLength;
+        res.y = y * invLength;
+        res.z = z * invLength;
+        return res;
+    }
 }

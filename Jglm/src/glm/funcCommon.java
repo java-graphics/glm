@@ -74,6 +74,22 @@ class funcCommon {
         return x + a * (y - x);
     }
 
+    public static Vec4 mix_(Vec4 x, Vec4 y, float a) {
+        return mix(x, y, a, new Vec4());
+    }
+
+    public static Vec4 mix(Vec4 x, Vec4 y, float a, Vec4 res) {
+        return Vec4.mix(x, y, a, res);
+    }
+
+    public static Vec4 mix_(Vec4 x, Vec4 y, Vec4 a) {
+        return mix(x, y, a, new Vec4());
+    }
+
+    public static Vec4 mix(Vec4 x, Vec4 y, Vec4 a, Vec4 res) {
+        return Vec4.mix(x, y, a, res);
+    }
+
     public static float mod(float x, float y) {
         return x - y * floor(x / y);
     }

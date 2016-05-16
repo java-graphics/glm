@@ -179,4 +179,9 @@ public class Vec4 extends colorSpace {
                 .putFloat(index + 2 * Float.BYTES, z)
                 .putFloat(index + 3 * Float.BYTES, 2);
     }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ", " + z + ", " + w + ")";
+    }
 }

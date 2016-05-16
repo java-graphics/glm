@@ -12,9 +12,7 @@ import glm.vec._3.Vec3;
  *
  * @author GBarbieri
  */
-public class Quat {
-
-    public float w, x, y, z;
+public class Quat extends funcGeometric {
 
     public Quat() {
         this(0.0f, 0.0f, 0.0f);
@@ -73,21 +71,6 @@ public class Quat {
 
     public Quat conjugate(Quat res) {
         return res.set(w, -x, -y, -z);
-    }
-
-    public Quat mul_(Quat q) {
-        return mul(q, new Quat());
-    }
-
-    public Quat mul(Quat q) {
-        return mul(q, this);
-    }
-
-    public Quat mul(Quat q, Quat res) {
-        return res.set(res.w * q.w - res.x * q.x - res.y * q.y - res.z * q.z,
-                res.w * q.x + res.x * q.w + res.y * q.z - res.z * q.y,
-                res.w * q.y + res.y * q.w + res.z * q.x - res.x * q.z,
-                res.w * q.z + res.z * q.w + res.x * q.y - res.y * q.x);
     }
 
     public static Quat cast(Mat4 m) {
@@ -171,34 +154,5 @@ public class Quat {
         res.m32 = 0.0f;
         res.m33 = 1.0f;
         return res;
-    }
-
-    public Quat normalize() {
-        return normalize(this);
-    }
-
-    public static Quat normalize(Quat q) {
-        float len = length(q);
-        if (len <= 0) { // Problem
-            return new Quat(1, 0, 0, 0);
-        }
-        float oneOverLen = 1 / len;
-        return new Quat(q.w * oneOverLen, q.x * oneOverLen, q.y * oneOverLen, q.z * oneOverLen);
-    }
-
-    public float length() {
-        return length(this);
-    }
-
-    public static float length(Quat q) {
-        return (float) Math.sqrt(dot(q, q));
-    }
-
-    public float dot(Quat q) {
-        return dot(this, q);
-    }
-
-    public static float dot(Quat q1, Quat q2) {
-        return q1.x * q2.x + q1.y * q2.y + q1.z * q2.z + q1.w * q2.w;
     }
 }

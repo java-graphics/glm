@@ -5,8 +5,6 @@
  */
 package glm;
 
-import glm.vec._2.Vec2;
-
 /**
  *
  * @author elect
