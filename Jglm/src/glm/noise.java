@@ -9,7 +9,7 @@ package glm;
  *
  * @author GBarbieri
  */
-class noise extends matrixTransform {
+abstract class noise extends matrixTransform {
 
     public static float taylorInvSqrt_(float r) {
         return 1.79284291400159f - r * 0.85373472095314f;

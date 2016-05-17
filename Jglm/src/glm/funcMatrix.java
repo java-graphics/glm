@@ -11,7 +11,7 @@ import glm.mat._4.Mat4;
  *
  * @author GBarbieri
  */
-class funcMatrix extends packing {
+abstract class funcMatrix extends packing {
 
     public static Mat4 transpose_(Mat4 mat) {
         return Mat4.transpose(mat, new Mat4());

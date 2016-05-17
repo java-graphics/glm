@@ -5,8 +5,6 @@
  */
 package glm;
 
-import glm.vec._2.Vec2;
-import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
 
 /**
@@ -14,7 +12,7 @@ import glm.vec._4.Vec4;
  *
  * @author elect
  */
-class funcCommon {
+abstract class funcCommon {
 
     public static int MAX_ULPS = 2;
 

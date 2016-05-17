@@ -6,14 +6,23 @@
 package glm;
 
 import glm.quat.Quat;
+import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
 
 /**
  *
  * @author GBarbieri
  */
-class funcGeometric extends funcExponential {
+abstract class funcGeometric extends funcExponential {
 
+    public static Quat angleAxis_(float degAngle, Vec3 v) {
+        return Quat.angleAxis_(degAngle, v);
+    }
+    
+    public static Quat angleAxis(float degAngle, Vec3 v, Quat res) {
+        return Quat.angleAxis(degAngle, v, res);
+    }
+    
     public static float length(float x) {
         return (float)Math.abs(x);
     }

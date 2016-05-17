@@ -5,11 +5,34 @@
  */
 package glm.quat;
 
+import glm.vec._3.Vec3;
+
 /**
  *
  * @author elect
  */
 abstract class funcGeometric extends funcCommon {
+
+    public Quat angleAxis(float angle, Vec3 v) {
+        return Quat.angleAxis(angle, v, (Quat) this);
+    }
+
+    public static Quat angleAxis_(float angle, Vec3 v) {
+        return Quat.angleAxis(angle, v, new Quat());
+    }
+
+    public static Quat angleAxis(float angle, Vec3 v, Quat res) {
+
+        float a = angle;
+        float s = (float) Math.sin(a * 0.5f);
+
+        res.w = (float) Math.cos(a * 0.5f);
+        res.x = v.x * s;
+        res.y = v.y * s;
+        res.z = v.z * s;
+
+        return res;
+    }
 
     public float dot(Quat q) {
         return w * q.w + x * q.x + y * q.y + z * q.z;

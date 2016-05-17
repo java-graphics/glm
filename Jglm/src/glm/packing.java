@@ -12,7 +12,7 @@ import glm.vec._4.Vec4;
  *
  * @author elect
  */
-class packing extends funcGeometric {
+abstract class packing extends funcGeometric {
 
     public static int packSnorm3x10_1x2(Vec4 v) {
         int[] result = new int[4];

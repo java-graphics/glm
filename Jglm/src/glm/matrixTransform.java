@@ -15,7 +15,7 @@ import dev.Vec3d;
  *
  * @author GBarbieri
  */
-class matrixTransform extends funcMatrix {
+abstract class matrixTransform extends funcMatrix {
 
     public static boolean GLM_LEFT_HANDED = false;
     public static boolean GLM_DEPTH_ZERO_TO_ONE = false;

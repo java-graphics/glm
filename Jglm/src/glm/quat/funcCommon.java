@@ -9,7 +9,7 @@ package glm.quat;
  *
  * @author elect
  */
-public class funcCommon {
+abstract class funcCommon {
 
     public static final int SIZE = 4 * Float.BYTES;
 
