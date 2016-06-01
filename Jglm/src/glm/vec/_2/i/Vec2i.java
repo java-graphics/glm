@@ -38,6 +38,12 @@ public class Vec2i extends operator {
         this.y = y;
     }
 
+    public Vec2i set(Vec2i v) {
+        x = v.x;
+        y = v.y;
+        return this;
+    }
+
     public Vec2i set(int x, int y) {
         this.x = x;
         this.y = y;
