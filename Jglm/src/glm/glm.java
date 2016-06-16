@@ -13,8 +13,7 @@ import glm.vec._4.Vec4;
  *
  * @author GBarbieri
  */
- public class glm extends noise {
-
+public class glm extends noise {
 
     public static int ceilMultiple(int source, int multiple) {
         if (source > 0) {
@@ -25,14 +24,15 @@ import glm.vec._4.Vec4;
         }
     }
 
-    /**
-     * http://stackoverflow.com/a/18946610/1047713
-     *
-     * @param min
-     * @param max
-     * @param res
-     * @return
-     */
+    // http://stackoverflow.com/a/18946610/1047713
+    public static double linearRand() {
+        return linearRand(0, 1);
+    }
+
+    public static double linearRand(double min, double max) {
+        return Math.random() * (max + Double.MIN_VALUE) + min;
+    }
+
     public static Vec3 linearRand(Vec3 min, Vec3 max, Vec3 res) {
         return Vec3.linearRand(min, max, res);
     }
@@ -40,12 +40,6 @@ import glm.vec._4.Vec4;
     public static Vec3 linearRand_(Vec3 min, Vec3 max) {
         return Vec3.linearRand_(min, max);
     }
-
-    public static double linearRand(double min, double max) {
-        return Math.random() * (max + Double.MIN_VALUE) + min;
-    }
-
-    
 
     public static Vec3 project_(Vec3 obj, Mat4 model, Mat4 proj, Vec4 viewport) {
         return project(obj, model, proj, viewport, new Vec3());
