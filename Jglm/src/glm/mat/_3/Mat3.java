@@ -118,6 +118,41 @@ public class Mat3 extends matrixTransform {
         return set();
     }
 
+    public Vec3 mul(Vec3 v) {
+        return mul(v, v);
+    }
+
+    public Vec3 mul(Vec3 right, Vec3 res) {
+        res.set(m00 * right.x + m10 * right.y + m20 * right.z,
+                m01 * right.x + m11 * right.y + m21 * right.z,
+                m02 * right.x + m12 * right.y + m22 * right.z
+        );
+        return res;
+    }
+
+    public Mat3 mul_(Mat3 right) {
+        return mul(right, new Mat3());
+    }
+
+    public Mat3 mul(Mat3 right) {
+        return mul(right, this);
+    }
+
+    public Mat3 mul(Mat3 right, Mat3 dest) {
+        dest.set(
+                m00 * right.m00 + m10 * right.m01 + m20 * right.m02,
+                m01 * right.m00 + m11 * right.m01 + m21 * right.m02,
+                m02 * right.m00 + m12 * right.m01 + m22 * right.m02,
+                m00 * right.m10 + m10 * right.m11 + m20 * right.m12,
+                m01 * right.m10 + m11 * right.m11 + m21 * right.m12,
+                m02 * right.m10 + m12 * right.m11 + m22 * right.m12,
+                m00 * right.m20 + m10 * right.m21 + m20 * right.m22,
+                m01 * right.m20 + m11 * right.m21 + m21 * right.m22,
+                m02 * right.m20 + m12 * right.m21 + m22 * right.m22
+        );
+        return dest;
+    }
+
     public boolean equals(Mat3 other) {
         return equals(other, 2);
     }
@@ -156,8 +191,8 @@ public class Mat3 extends matrixTransform {
      * This can be used to compensate for inequality caused by accumulated
      * floating point math errors.
      *
-     * The error margin is specified in ULPs (units of least precision).
-     * A one-ULP difference means there are no representable floats in between.
+     * The error margin is specified in ULPs (units of least precision). A
+     * one-ULP difference means there are no representable floats in between.
      * E.g. 0f and 1.4e-45f are one ULP apart. So are -6.1340704f and -6.13407f.
      * Depending on the number of calculations involved, typically a margin of
      * 1-5 ULPs should be enough.
