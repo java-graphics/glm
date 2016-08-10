@@ -73,7 +73,11 @@ public class Quat extends funcGeometric {
         return res.set(w, -x, -y, -z);
     }
 
-    public static Quat cast(Mat4 m) {
+    public static Quat cast_(Mat4 m) {
+        return cast(m, new Quat());
+    }
+
+    public static Quat cast(Mat4 m, Quat res) {
 
         float fourXSquaredMinus1 = m.m00 - m.m11 - m.m22;
         float fourYSquaredMinus1 = m.m11 - m.m00 - m.m22;
@@ -98,7 +102,6 @@ public class Quat extends funcGeometric {
         float biggestVal = (float) (Math.sqrt(fourBiggestSquaredMinus1 + 1) * 0.5f);
         float mult = 0.25f / biggestVal;
 
-        Quat res = new Quat();
         switch (biggestIndex) {
             case 0:
                 res.w = biggestVal;

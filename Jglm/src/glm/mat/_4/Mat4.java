@@ -210,6 +210,10 @@ public class Mat4 extends matrixTransform {
         return set(1.0f);
     }
 
+    public Vec4 mul_(Vec4 v) {
+        return mul(v, new Vec4());
+    }
+
     public Vec4 mul(Vec4 v) {
         return mul(v, v);
     }
