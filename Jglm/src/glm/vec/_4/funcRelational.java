@@ -113,6 +113,15 @@ public abstract class funcRelational extends funcGeometric {
         return result;
     }
 
+    public boolean isEqual(Vec4 y) {
+    
+        return glm.compareFloatEquals(this.x, y.x)
+                && glm.compareFloatEquals(this.y, y.y)
+                && glm.compareFloatEquals(this.z, y.z)
+                && glm.compareFloatEquals(this.w, y.w);
+
+    }
+
     public Vec4 notEqual(Vec4 y) {
         return notEqual((Vec4) this, y, (Vec4) this);
     }
