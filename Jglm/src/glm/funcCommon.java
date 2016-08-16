@@ -138,8 +138,8 @@ abstract class funcCommon {
                 ? 0x80000000 - Float.floatToIntBits(actual) : Float.floatToIntBits(actual);
         int difference = expectedBits > actualBits ? expectedBits - actualBits : actualBits - expectedBits;
         if (difference > maxUlps) {
-            System.out.println("expected: " + expected + ", actual: " + actual);
-            System.out.println("diff " + difference);
+//            System.out.println("expected: " + expected + ", actual: " + actual);
+//            System.out.println("diff " + difference);
         }
         return !Float.isNaN(expected) && !Float.isNaN(actual) && difference <= maxUlps;
     }
@@ -155,8 +155,8 @@ abstract class funcCommon {
                 ? 0x8000000000000000L - Double.doubleToLongBits(actual) : Double.doubleToLongBits(actual);
         long difference = expectedBits > actualBits ? expectedBits - actualBits : actualBits - expectedBits;
         if (difference > maxUlps) {
-            System.out.println("expected: " + expected + ", actual: " + actual);
-            System.out.println("diff " + difference);
+//            System.out.println("expected: " + expected + ", actual: " + actual);
+//            System.out.println("diff " + difference);
         }
         return !Double.isNaN(expected) && !Double.isNaN(actual) && difference <= maxUlps;
     }
