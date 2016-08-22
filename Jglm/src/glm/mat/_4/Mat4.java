@@ -318,6 +318,10 @@ public class Mat4 extends matrixQuery {
         return equals(other, 2);
     }
 
+    public static void main(String[] args) {
+        System.err.println(glm.compareFloatEquals(4500f, -4500f, 2));
+    }
+
     public boolean equals(Mat4 other, int maxUlps) {
         if (!glm.compareFloatEquals(m00, other.m00, maxUlps)) {
             return false;

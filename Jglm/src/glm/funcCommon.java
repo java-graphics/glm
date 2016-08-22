@@ -141,7 +141,7 @@ abstract class funcCommon {
 //            System.out.println("expected: " + expected + ", actual: " + actual);
 //            System.out.println("diff " + difference);
         }
-        return !Float.isNaN(expected) && !Float.isNaN(actual) && difference <= maxUlps;
+        return !Float.isNaN(expected) && !Float.isNaN(actual) && Math.abs(difference) <= maxUlps;
     }
 
     public static boolean compareDoubleEquals(double expected, double actual) {
@@ -158,6 +158,6 @@ abstract class funcCommon {
 //            System.out.println("expected: " + expected + ", actual: " + actual);
 //            System.out.println("diff " + difference);
         }
-        return !Double.isNaN(expected) && !Double.isNaN(actual) && difference <= maxUlps;
+        return !Double.isNaN(expected) && !Double.isNaN(actual) && Math.abs(difference) <= maxUlps;
     }
 }
