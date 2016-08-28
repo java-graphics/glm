@@ -18,7 +18,7 @@ import java.nio.FloatBuffer;
  *
  * @author GBarbieri
  */
-public class Mat4 extends matrixTransform {
+public class Mat4 extends matrixQuery {
 
     public Mat4() {
         this(1.0f);

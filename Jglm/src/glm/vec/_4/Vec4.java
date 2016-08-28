@@ -177,7 +177,7 @@ public class Vec4 extends colorSpace {
                 .putFloat(index + 0 * Float.BYTES, x)
                 .putFloat(index + 1 * Float.BYTES, y)
                 .putFloat(index + 2 * Float.BYTES, z)
-                .putFloat(index + 3 * Float.BYTES, 2);
+                .putFloat(index + 3 * Float.BYTES, w);
     }
 
     @Override
