@@ -17,16 +17,16 @@ abstract class funcGeometric extends funcCommon {
         return Quat.angleAxis(angle, v, (Quat) this);
     }
 
-    public static Quat angleAxis_(float angle, Vec3 v) {
-        return Quat.angleAxis(angle, v, new Quat());
+    public static Quat angleAxis_(float degAngle, Vec3 v) {
+        return Quat.angleAxis(degAngle, v, new Quat());
     }
 
-    public static Quat angleAxis(float angle, Vec3 v, Quat res) {
+    public static Quat angleAxis(float degAngle, Vec3 v, Quat res) {
 
-        float a = angle;
-        float s = (float) Math.sin(a * 0.5f);
+        float a = degAngle;
+        float s = (float) Math.sin(Math.toRadians(a) * 0.5f);
 
-        res.w = (float) Math.cos(a * 0.5f);
+        res.w = (float) Math.cos(Math.toRadians(a) * 0.5f);
         res.x = v.x * s;
         res.y = v.y * s;
         res.z = v.z * s;
