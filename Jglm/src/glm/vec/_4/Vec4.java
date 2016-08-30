@@ -184,4 +184,25 @@ public class Vec4 extends colorSpace {
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ", " + w + ")";
     }
+    
+    public void print() {
+        print("", true);
+    }
+
+    public void print(String title) {
+        print(title, true);
+    }
+
+    public void print(boolean outStream) {
+        print("", outStream);
+    }
+
+    public void print(String title, boolean outStream) {
+        String res = title + "\n(" + x + ", " + y + ", " + z + ", " + w + ")";
+        if (outStream) {
+            System.out.print(res);
+        } else {
+            System.err.print(res);
+        }
+    }
 }

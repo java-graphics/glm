@@ -9,7 +9,7 @@ package glm.vec._2.u;
  *
  * @author GBarbieri
  */
-public abstract class operator {
+public abstract class operator extends funcRelational {
 
     public Vec2u add(int addend) {
         return add(addend, (Vec2u) this);
@@ -91,10 +91,11 @@ public abstract class operator {
 
     public static Vec2u div(Vec2u dividend, int divisorX, int divisorY, Vec2u result) {
         /**
-         * Note, division is the only operation where signed/unsigned require different paths.
+         * Note, division is the only operation where signed/unsigned require
+         * different paths.
          */
-        result.x = Integer.divideUnsigned(dividend.x , divisorX);
-        result.y = Integer.divideUnsigned(dividend.y , divisorY);
+        result.x = Integer.divideUnsigned(dividend.x, divisorX);
+        result.y = Integer.divideUnsigned(dividend.y, divisorY);
         return result;
     }
 
@@ -181,7 +182,7 @@ public abstract class operator {
         result.y = minuend.y - subtrahendY;
         return result;
     }
-    
+
     public Vec2u mm_() {
         return mm((Vec2u) this, new Vec2u());
     }

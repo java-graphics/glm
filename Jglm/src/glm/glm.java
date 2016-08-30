@@ -33,6 +33,10 @@ public class glm extends noise {
         return Math.random() * (max + Double.MIN_VALUE) + min;
     }
 
+    public static int linearRand(int min, int max) {
+        return (int) (Math.random() * (max + Integer.MIN_VALUE) + min);
+    }
+
     public static Vec3 linearRand(Vec3 min, Vec3 max, Vec3 res) {
         return Vec3.linearRand(min, max, res);
     }

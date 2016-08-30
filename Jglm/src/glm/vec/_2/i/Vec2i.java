@@ -15,9 +15,6 @@ import java.nio.IntBuffer;
  */
 public class Vec2i extends operator {
 
-    public int x, y;
-    public static final int SIZE = 2 * Integer.BYTES;
-
     public Vec2i() {
         x = 0;
         y = 0;
@@ -49,6 +46,16 @@ public class Vec2i extends operator {
         this.y = y;
         return this;
     }
+    
+     public int[] toIA_() {
+        return toIA_(new int[2]);
+    }
+
+    public int[] toIA_(int[] ia) {
+        ia[0] = x;
+        ia[1] = y;
+        return ia;
+    }
 
     public IntBuffer toDib_() {
         return toDib(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asIntBuffer());
@@ -76,5 +83,31 @@ public class Vec2i extends operator {
         return bb
                 .putInt(index + 0 * Integer.BYTES, x)
                 .putInt(index + 1 * Integer.BYTES, y);
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+
+    public void print() {
+        print("", true);
+    }
+
+    public void print(String title) {
+        print(title, true);
+    }
+
+    public void print(boolean outStream) {
+        print("", outStream);
+    }
+
+    public void print(String title, boolean outStream) {
+        String res = title + "\n(" + x + ", " + y + ")";
+        if (outStream) {
+            System.out.print(res);
+        } else {
+            System.err.print(res);
+        }
     }
 }

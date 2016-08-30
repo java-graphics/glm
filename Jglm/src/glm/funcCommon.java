@@ -20,11 +20,23 @@ abstract class funcCommon {
         return Math.abs(x);
     }
 
+    public static int abs(int i) {
+        return Math.abs(i);
+    }
+
     public static float ceil(float x) {
         return (float) Math.ceil(x);
     }
 
+    public static int ceil(int i) {
+        return (int) Math.ceil(i);
+    }
+
     public static float clamp(float x, float minVal, float maxVal) {
+        return Math.min(Math.max(x, minVal), maxVal);
+    }
+
+    public static int clamp(int x, int minVal, int maxVal) {
         return Math.min(Math.max(x, minVal), maxVal);
     }
 
@@ -36,7 +48,15 @@ abstract class funcCommon {
         return (float) Math.floor(f);
     }
 
+    public static int floor(int i) {
+        return (int) Math.floor(i);
+    }
+
     public static float fma(float a, float b, float c) {
+        return a * b + c;
+    }
+
+    public static int fma(int a, int b, int c) {
         return a * b + c;
     }
 
@@ -60,7 +80,15 @@ abstract class funcCommon {
         return Math.max(x, y);
     }
 
+    public static int max(int x, int y) {
+        return Math.max(x, y);
+    }
+
     public static float min(float x, float y) {
+        return Math.min(x, y);
+    }
+
+    public static int min(int x, int y) {
         return Math.min(x, y);
     }
 
@@ -68,7 +96,15 @@ abstract class funcCommon {
         return a ? y : x;
     }
 
+    public static int mix(int x, int y, boolean a) {
+        return a ? y : x;
+    }
+
     public static float mix(float x, float y, float a) {
+        return x + a * (y - x);
+    }
+
+    public static int mix(int x, int y, int a) {
         return x + a * (y - x);
     }
 
