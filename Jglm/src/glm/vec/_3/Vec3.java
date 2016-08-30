@@ -24,6 +24,12 @@ public class Vec3 extends operator {
         z = 0f;
     }
 
+    public Vec3(Vec3 v) {
+        x = v.x;
+        y = v.y;
+        z = v.z;
+    }
+
     public Vec3(Vec4 v) {
         x = v.x;
         y = v.y;
@@ -163,6 +169,6 @@ public class Vec3 extends operator {
     }
 
     public void print(String title, PrintStream printStream) {
-        printStream.println(title + ": (" + x + ", " + y + ", " + z + ")");
+        printStream.println(title + "\n(" + x + ", " + y + ", " + z + ")");
     }
 }

@@ -7,6 +7,7 @@ package glm.mat._3;
 
 import glm.mat._4.Mat4;
 import glm.quat.Quat;
+import glm.vec._2.Vec2;
 import glm.vec._3.Vec3;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -48,6 +49,18 @@ public class Mat3 extends matrixQuery {
                 mat.m00, mat.m01, mat.m02,
                 mat.m10, mat.m11, mat.m12,
                 mat.m20, mat.m21, mat.m22);
+    }
+
+    public Mat3(float[] f) {
+        this(f, 0);
+    }
+
+    // TODO transpose
+    public Mat3(float[] f, int index) {
+        this(
+                f[index + 0], f[index + 3], f[index + 6],
+                f[index + 1], f[index + 4], f[index + 7],
+                f[index + 2], f[index + 5], f[index + 8]);
     }
 
     public Mat3(double m00, double m01, double m02, double m10, double m11, double m12, double m20, double m21, double m22) {
@@ -112,6 +125,42 @@ public class Mat3 extends matrixQuery {
         this.m21 = m21;
         this.m22 = m22;
         return this;
+    }
+
+    public Mat3 c0(Vec3 v) {
+        return set(v.x, v.y, v.z, m10, m11, m12, m20, m21, m22);
+    }
+
+    public Mat3 c0(Vec2 v, float f) {
+        return set(v.x, v.y, f, m10, m11, m12, m20, m21, m22);
+    }
+
+    public Mat3 c0(float x, float y, float z) {
+        return set(x, y, z, m10, m11, m12, m20, m21, m22);
+    }
+
+    public Mat3 c1(Vec3 v) {
+        return set(m00, m01, m02, v.x, v.y, v.z, m20, m21, m22);
+    }
+
+    public Mat3 c1(Vec2 v, float f) {
+        return set(m00, m01, m02, v.x, v.y, f, m20, m21, m22);
+    }
+
+    public Mat3 c1(float x, float y, float z) {
+        return set(m00, m01, m02, x, y, z, m20, m21, m22);
+    }
+
+    public Mat3 c2(Vec3 v) {
+        return set(m00, m01, m02, m10, m11, m12, v.x, v.y, v.z);
+    }
+
+    public Mat3 c2(Vec2 v, float f) {
+        return set(m00, m01, m02, m10, m11, m12, v.x, v.y, f);
+    }
+
+    public Mat3 c2(float x, float y, float z) {
+        return set(m00, m01, m02, m10, m11, m12, x, y, z);
     }
 
     public Mat3 identity() {

@@ -47,7 +47,7 @@ public class Vec2 extends operator {
         x = v.x;
         y = v.y;
     }
-    
+
     public Vec2(Vec2i v) {
         x = v.x;
         y = v.y;
@@ -62,13 +62,13 @@ public class Vec2 extends operator {
         x = v.x;
         y = v.y;
     }
-    
+
     public Vec2 set(float f) {
         x = f;
         y = f;
         return this;
     }
-    
+
     public Vec2 set(float x, float y) {
         this.x = x;
         this.y = y;
@@ -80,11 +80,21 @@ public class Vec2 extends operator {
         y = ia[1];
         return this;
     }
-    
+
     public Vec2 set(float[] fa) {
         x = fa[0];
         y = fa[1];
         return this;
+    }
+
+    public float[] toFA_() {
+        return toFA(new float[2]);
+    }
+
+    public float[] toFA(float[] fa) {
+        fa[0] = x;
+        fa[1] = y;
+        return fa;
     }
 
     public FloatBuffer toDfb_() {
@@ -136,8 +146,7 @@ public class Vec2 extends operator {
     /**
      * Normalize this vector and store the result in <code>dest</code>.
      *
-     * @param dest
-     * will hold the result
+     * @param dest will hold the result
      * @return dest
      */
     public Vec2 normalize(Vec2 dest) {
@@ -145,6 +154,32 @@ public class Vec2 extends operator {
         dest.x = x * invLength;
         dest.y = y * invLength;
         return dest;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+
+    public void print() {
+        print("", true);
+    }
+
+    public void print(String title) {
+        print(title, true);
+    }
+
+    public void print(boolean outStream) {
+        print("", outStream);
+    }
+
+    public void print(String title, boolean outStream) {
+        String res = title + "\n(" + x + ", " + y + ")";
+        if (outStream) {
+            System.out.print(res);
+        } else {
+            System.err.print(res);
+        }
     }
 
 }

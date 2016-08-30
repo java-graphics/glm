@@ -16,10 +16,7 @@ import java.nio.IntBuffer;
  *
  * @author GBarbieri
  */
-public class Vec2u extends operator{
-
-    public static final int SIZE = 2 * Integer.BYTES;
-    public int x, y;
+public class Vec2u extends operator {
 
     public Vec2u() {
         x = 0;
@@ -40,7 +37,7 @@ public class Vec2u extends operator{
         x = v.x;
         y = v.y;
     }
-    
+
     public Vec2u(Vec2i v) {
         x = v.x;
         y = v.y;
@@ -84,7 +81,7 @@ public class Vec2u extends operator{
         return fa;
     }
 
-     public IntBuffer toDib_() {
+    public IntBuffer toDib_() {
         return toDib(ByteBuffer.allocateDirect(SIZE).order(ByteOrder.nativeOrder()).asIntBuffer());
     }
 
@@ -110,5 +107,31 @@ public class Vec2u extends operator{
         return bb
                 .putInt(index + 0 * Integer.BYTES, x)
                 .putInt(index + 1 * Integer.BYTES, y);
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+
+    public void print() {
+        print("", true);
+    }
+
+    public void print(String title) {
+        print(title, true);
+    }
+
+    public void print(boolean outStream) {
+        print("", outStream);
+    }
+
+    public void print(String title, boolean outStream) {
+        String res = title + "\n(" + x + ", " + y + ")";
+        if (outStream) {
+            System.out.print(res);
+        } else {
+            System.err.print(res);
+        }
     }
 }

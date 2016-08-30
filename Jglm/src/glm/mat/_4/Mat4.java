@@ -32,6 +32,14 @@ public class Mat4 extends matrixQuery {
                 0, 0, 0, f);
     }
 
+    public Mat4(Vec4 v) {
+        this(
+                v.x, 0, 0, 0,
+                0, v.y, 0, 0,
+                0, 0, v.z, 0,
+                0, 0, 0, v.w);
+    }
+
     public Mat4(float[] f) {
         this(f, 0);
     }
