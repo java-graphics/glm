@@ -13,6 +13,8 @@ import glm.quat.Quat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import vr.HmdMatrix34_t;
+import vr.HmdMatrix44_t;
 
 /**
  *
@@ -30,6 +32,24 @@ public class Mat4 extends matrixQuery {
                 0, f, 0, 0,
                 0, 0, f, 0,
                 0, 0, 0, f);
+    }
+
+    public Mat4(HmdMatrix44_t hmdMat) {
+        this(
+                hmdMat.m[0], hmdMat.m[4], hmdMat.m[8], hmdMat.m[12],
+                hmdMat.m[1], hmdMat.m[5], hmdMat.m[9], hmdMat.m[13],
+                hmdMat.m[2], hmdMat.m[6], hmdMat.m[10], hmdMat.m[14],
+                hmdMat.m[3], hmdMat.m[7], hmdMat.m[11], hmdMat.m[15]);
+
+    }
+
+    public Mat4(HmdMatrix34_t hmdMat) {
+        this(
+                hmdMat.m[0], hmdMat.m[4], hmdMat.m[8], 0f,
+                hmdMat.m[1], hmdMat.m[5], hmdMat.m[9], 0f,
+                hmdMat.m[2], hmdMat.m[6], hmdMat.m[10], 0f,
+                hmdMat.m[3], hmdMat.m[7], hmdMat.m[11], 1f);
+
     }
 
     public Mat4(Vec4 v) {

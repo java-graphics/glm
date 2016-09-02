@@ -12,6 +12,8 @@ import glm.vec._3.Vec3;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
+import vr.HmdMatrix34_t;
+import vr.HmdMatrix44_t;
 
 /**
  *
@@ -35,7 +37,7 @@ public class Mat3 extends matrixQuery {
                 v.x, 0, 0,
                 0, v.y, 0,
                 0, 0, v.z);
-    }
+    }   
 
     public Mat3(Mat3 mat) {
         this(
