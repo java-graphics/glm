@@ -49,7 +49,6 @@ public class Mat4 extends matrixQuery {
                 hmdMat.m[1], hmdMat.m[5], hmdMat.m[9], 0f,
                 hmdMat.m[2], hmdMat.m[6], hmdMat.m[10], 0f,
                 hmdMat.m[3], hmdMat.m[7], hmdMat.m[11], 1f);
-
     }
 
     public Mat4(Vec4 v) {
@@ -152,6 +151,23 @@ public class Mat4 extends matrixQuery {
                 mat.m10, mat.m11, mat.m12, mat.m13,
                 mat.m20, mat.m21, mat.m22, mat.m23,
                 mat.m30, mat.m31, mat.m32, mat.m33);
+    }
+
+    public Mat4 set(HmdMatrix44_t hmdMat) {
+        return set(
+                hmdMat.m[0], hmdMat.m[4], hmdMat.m[8], hmdMat.m[12],
+                hmdMat.m[1], hmdMat.m[5], hmdMat.m[9], hmdMat.m[13],
+                hmdMat.m[2], hmdMat.m[6], hmdMat.m[10], hmdMat.m[14],
+                hmdMat.m[3], hmdMat.m[7], hmdMat.m[11], hmdMat.m[15]);
+
+    }
+
+    public Mat4 set(HmdMatrix34_t hmdMat) {
+        return set(
+                hmdMat.m[0], hmdMat.m[4], hmdMat.m[8], 0f,
+                hmdMat.m[1], hmdMat.m[5], hmdMat.m[9], 0f,
+                hmdMat.m[2], hmdMat.m[6], hmdMat.m[10], 0f,
+                hmdMat.m[3], hmdMat.m[7], hmdMat.m[11], 1f);
     }
 
     public Mat4 set(double m00, double m01, double m02, double m03, double m10, double m11, double m12, double m13,
