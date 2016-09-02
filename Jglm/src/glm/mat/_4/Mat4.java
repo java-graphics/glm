@@ -45,12 +45,12 @@ public class Mat4 extends matrixQuery {
     }
 
     // TODO transpose
-    public Mat4(float[] f, int index) {
+    public Mat4(float[] f, int offset) {
         this(
-                f[index + 0], f[index + 4], f[index + 8], f[index + 12],
-                f[index + 1], f[index + 5], f[index + 9], f[index + 13],
-                f[index + 2], f[index + 6], f[index + 10], f[index + 14],
-                f[index + 3], f[index + 7], f[index + 11], f[index + 15]);
+                f[offset + 0], f[offset + 1], f[offset + 2], f[offset + 3],
+                f[offset + 4], f[offset + 5], f[offset + 6], f[offset + 7],
+                f[offset + 8], f[offset + 9], f[offset + 10], f[offset + 11],
+                f[offset + 12], f[offset + 13], f[offset + 14], f[offset + 15]);
     }
 
     public Mat4(Mat3 mat) {
@@ -163,6 +163,32 @@ public class Mat4 extends matrixQuery {
         this.m31 = m31;
         this.m32 = m32;
         this.m33 = m33;
+        return this;
+    }
+
+    public Mat4 set(int column, int row, float value) {
+
+        if (column >= 0 && column < 4 && row >= 0 && row < 4) {
+
+            float[] f = this.toFa_();
+            f[(column * 4) + row] = value;
+            this.set(f);
+        }
+
+        return this;
+    }
+
+    public Mat4 set(float[] f) {
+        return set(f, 0);
+    }
+
+    public Mat4 set(float[] f, int offset) {
+        set(
+                f[offset + 0], f[offset + 1], f[offset + 2], f[offset + 3],
+                f[offset + 4], f[offset + 5], f[offset + 6], f[offset + 7],
+                f[offset + 8], f[offset + 9], f[offset + 10], f[offset + 11],
+                f[offset + 12], f[offset + 13], f[offset + 14], f[offset + 15]);
+
         return this;
     }
 
@@ -375,14 +401,35 @@ public class Mat4 extends matrixQuery {
         return glm.compareFloatEquals(m33, other.m33, maxUlps);
     }
 
+    /**
+     * return an new array in column major order <br>
+     * c1,c2,c3,c4
+     *
+     * @return
+     */
     public float[] toFa_() {
         return toFa(new float[16]);
     }
 
+    /**
+     * return an array in column major order <br>
+     * c1,c2,c3,c4
+     *
+     * @param res
+     * @return
+     */
     public float[] toFa(float[] res) {
         return toFa(res, 0);
     }
 
+    /**
+     * return an array column major order <br>
+     * c1,c2,c3,c4
+     *
+     * @param res
+     * @param index
+     * @return
+     */
     public float[] toFa(float[] res, int index) {
         res[index + 0] = m00;
         res[index + 1] = m01;

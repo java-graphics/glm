@@ -22,6 +22,10 @@ public abstract class funcMatrix {
         return inverse((Mat4) this);
     }
 
+    public Mat4 inverse_() {
+        return inverse(new Mat4());
+    }
+
     public Mat4 inverse(Mat4 dest) {
         float a = m00 * m11 - m01 * m10;
         float b = m00 * m12 - m02 * m10;

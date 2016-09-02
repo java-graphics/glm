@@ -56,11 +56,11 @@ public class Mat3 extends matrixQuery {
     }
 
     // TODO transpose
-    public Mat3(float[] f, int index) {
+    public Mat3(float[] f, int offset) {
         this(
-                f[index + 0], f[index + 3], f[index + 6],
-                f[index + 1], f[index + 4], f[index + 7],
-                f[index + 2], f[index + 5], f[index + 8]);
+                f[offset + 0], f[offset + 1], f[offset + 2],
+                f[offset + 3], f[offset + 4], f[offset + 5],
+                f[offset + 6], f[offset + 7], f[offset + 8]);
     }
 
     public Mat3(double m00, double m01, double m02, double m10, double m11, double m12, double m20, double m21, double m22) {
@@ -124,6 +124,32 @@ public class Mat3 extends matrixQuery {
         this.m20 = m20;
         this.m21 = m21;
         this.m22 = m22;
+        return this;
+    }
+
+    public Mat3 set(int column, int row, float value) {
+
+        if (column >= 0 && column < 3 && row >= 0 && row < 3) {
+
+            float[] f = this.toFa_();
+            f[(column * 3) + row] = value;
+            this.set(f);
+
+        }
+
+        return this;
+    }
+
+    public Mat3 set(float[] f) {
+        return set(f, 0);
+    }
+
+    public Mat3 set(float[] f, int offset) {
+        set(
+                f[offset + 0], f[offset + 1], f[offset + 2],
+                f[offset + 3], f[offset + 4], f[offset + 5],
+                f[offset + 6], f[offset + 7], f[offset + 8]);
+
         return this;
     }
 
