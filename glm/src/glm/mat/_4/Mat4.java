@@ -437,6 +437,18 @@ public class Mat4 extends matrixQuery {
         return glm.compareFloatEquals(m33, other.m33, maxUlps);
     }
 
+    // TODO also other class
+    public Mat3 toMat3_() {
+        return toMat3(new Mat3());
+    }
+
+    public Mat3 toMat3(Mat3 res) {
+        return res.set(
+                m00, m01, m02, 
+                m10, m11, m12, 
+                m20, m21, m22);
+    }
+
     /**
      * return an new array in column major order <br>
      * c1,c2,c3,c4
