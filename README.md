@@ -43,4 +43,4 @@ Steps:
 
 Enhances:
 
-- support for [openvr](https://github.com/java-graphics-society/openvr) matrices, helpful to avoid all the problems regardint colum or row major order.
+- support for [openvr](https://github.com/java-graphics-society/openvr) matrices, helpful to avoid all the problems regarding colum or row major order.
