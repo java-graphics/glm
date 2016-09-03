@@ -119,6 +119,14 @@ public class Vec3 extends operator {
         return (float) Math.sqrt(x * x + y * y + z * z);
     }
 
+    public Vec4 toVec4_() {
+        return toVec4(new Vec4());
+    }
+
+    public Vec4 toVec4(Vec4 res) {
+        return res.set(x, y, z, 1.0f);
+    }
+
     public float[] toFa_() {
         return toFa(new float[3]);
     }
