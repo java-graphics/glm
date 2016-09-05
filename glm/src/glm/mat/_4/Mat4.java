@@ -279,6 +279,17 @@ public class Mat4 extends matrixQuery {
     public Mat4 identity() {
         return set(1.0f);
     }
+    
+    public Mat4 cleanTranslation() {
+        m03 = 0.0f;
+        m13 = 0.0f;
+        m23 = 0.0f;
+        m33 = 1.0f;
+        m30 = 0.0f;
+        m31 = 0.0f;
+        m32 = 0.0f;
+        return this;
+    }
 
     public Vec4 mul(Vec4 v) {
         return mul(v, v);
