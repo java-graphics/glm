@@ -50,6 +50,10 @@ public abstract class funcGeometric extends funcCommon {
         return normalize((Vec3) this);
     }
 
+    public Vec3 normalize_() {
+        return normalize(new Vec3());
+    }
+
     /**
      * Normalize this vector and store the result in <code>res</code>.
      *
