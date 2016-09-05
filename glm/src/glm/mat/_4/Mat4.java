@@ -279,6 +279,17 @@ public class Mat4 extends matrixQuery {
     public Mat4 identity() {
         return set(1.0f);
     }
+    
+    public Mat4 cleanTranslation() {
+        m03 = 0.0f;
+        m13 = 0.0f;
+        m23 = 0.0f;
+        m33 = 1.0f;
+        m30 = 0.0f;
+        m31 = 0.0f;
+        m32 = 0.0f;
+        return this;
+    }
 
     public Vec4 mul(Vec4 v) {
         return mul(v, v);
@@ -435,6 +446,18 @@ public class Mat4 extends matrixQuery {
             return false;
         }
         return glm.compareFloatEquals(m33, other.m33, maxUlps);
+    }
+
+    // TODO also other class
+    public Mat3 toMat3_() {
+        return toMat3(new Mat3());
+    }
+
+    public Mat3 toMat3(Mat3 res) {
+        return res.set(
+                m00, m01, m02, 
+                m10, m11, m12, 
+                m20, m21, m22);
     }
 
     /**

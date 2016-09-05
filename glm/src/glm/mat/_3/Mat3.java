@@ -289,6 +289,18 @@ public class Mat3 extends matrixQuery {
 //        }
         return !Float.isNaN(expected) && !Float.isNaN(actual) && difference <= maxUlps;
     }
+    
+    public Mat4 toMat4_() {
+        return toMat4(new Mat4());
+    }
+
+    public Mat4 toMat4(Mat4 res) {
+        return res.set(
+                m00, m01, m02, 0, 
+                m10, m11, m12, 0,
+                m20, m21, m22, 0,
+                0, 0, 0, 1);
+    }
 
     public float[] toFa_() {
         return Mat3.this.toFa(new float[9], 0);

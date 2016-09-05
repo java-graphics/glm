@@ -64,6 +64,10 @@ public class Vec3 extends operator {
         this.z = (float) z;
     }
 
+    public Vec3 set(Vec3 v) {
+        return set(v.x, v.y, v.z);
+    }
+
     public Vec3 set(float f) {
         x = f;
         y = f;
@@ -119,6 +123,14 @@ public class Vec3 extends operator {
         return (float) Math.sqrt(x * x + y * y + z * z);
     }
 
+    public Vec4 toVec4_() {
+        return toVec4(new Vec4());
+    }
+
+    public Vec4 toVec4(Vec4 res) {
+        return res.set(x, y, z, 1.0f);
+    }
+
     public float[] toFa_() {
         return toFa(new float[3]);
     }
@@ -159,8 +171,8 @@ public class Vec3 extends operator {
                 .putFloat(index + 1 * Float.BYTES, y)
                 .putFloat(index + 2 * Float.BYTES, z);
     }
-
-    @Override
+    
+     @Override
     public String toString() {
         return "(" + x + ", " + y + ", " + z + ")";
     }

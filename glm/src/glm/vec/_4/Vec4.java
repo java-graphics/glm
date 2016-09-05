@@ -136,6 +136,14 @@ public class Vec4 extends colorSpace {
         return this;
     }
 
+    public Vec3 toVec3_() {
+        return toVec3(new Vec3());
+    }
+
+    public Vec3 toVec3(Vec3 res) {
+        return res.set(x, y, z);
+    }
+    
     public float[] toFA_() {
         return toFA(new float[4]);
     }
