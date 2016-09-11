@@ -9,7 +9,7 @@ package glm.vec._3.i;
  *
  * @author fschaefers
  */
-public abstract class operator extends funcRelational {
+abstract class operator extends funcRelational {
 
     public Vec3i add(int addend) {
         return add(addend, (Vec3i) this);

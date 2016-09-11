@@ -9,7 +9,7 @@ package glm.vec._3.i;
  *
  * @author fschaefers
  */
-public abstract class funcRelational extends funcCommon {
+abstract class funcRelational extends funcCommon {
 
     public Vec3i lessThan(Vec3i y) {
         return lessThan((Vec3i) this, y, (Vec3i) this);

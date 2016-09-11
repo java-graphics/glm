@@ -6,13 +6,13 @@
 package glm.vec._3.i;
 
 import glm.glm;
-import glm.vec._3.bool.Vec3bool;
+import glm.vec._3.b.Vec3b;
 
 /**
  *
  * @author fschaefers
  */
-public abstract class funcCommon {
+abstract class funcCommon {
 
     public static final int SIZE = 3 * Integer.BYTES;
     public int x, y, z;
@@ -188,22 +188,22 @@ public abstract class funcCommon {
         return result;
     }
 
-    public Vec3i mix(Vec3i y, Vec3bool a) {
+    public Vec3i mix(Vec3i y, Vec3b a) {
         return mix(y, a, (Vec3i) this);
     }
 
-    public Vec3i mix_(Vec3i y, Vec3bool a) {
+    public Vec3i mix_(Vec3i y, Vec3b a) {
         return mix(y, a, new Vec3i());
     }
 
-    public Vec3i mix(Vec3i y, Vec3bool a, Vec3i result) {
+    public Vec3i mix(Vec3i y, Vec3b a, Vec3i result) {
         return mix((Vec3i) this, y, a, result);
     }
 
-    public static Vec3i mix(Vec3i x, Vec3i y, Vec3bool a, Vec3i result) {
-        result.x = a.x ? y.x : x.x;
-        result.y = a.y ? y.y : x.y;
-        result.z = a.z ? y.z : x.z;
+    public static Vec3i mix(Vec3i x, Vec3i y, Vec3b a, Vec3i result) {
+        result.x = a.x == 1 ? y.x : x.x;
+        result.y = a.y == 1 ? y.y : x.y;
+        result.z = a.z == 1 ? y.z : x.z;
         return result;
     }
 

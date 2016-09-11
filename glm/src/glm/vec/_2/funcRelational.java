@@ -11,7 +11,7 @@ import glm.glm;
  *
  * @author elect
  */
-public abstract class funcRelational extends funcGeometric {
+abstract class funcRelational extends funcGeometric {
 
     public Vec2 lessThan(Vec2 y) {
         return lessThan((Vec2) this, y, (Vec2) this);

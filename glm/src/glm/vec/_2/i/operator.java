@@ -11,7 +11,7 @@ import glm.vec._2.Vec2;
  *
  * @author GBarbieri
  */
-public abstract class operator extends funcRelational{
+abstract class operator extends funcRelational{
 
     // add  --------------------------------------------------------------------
     public Vec2i add(int addend) {

@@ -14,7 +14,7 @@ import glm.glm;
  *
  * @author GBarbieri
  */
-public abstract class funcCommon {
+abstract class funcCommon {
 
     public static final int SIZE = 2 * Float.BYTES;
 

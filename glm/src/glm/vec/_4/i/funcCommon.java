@@ -6,13 +6,13 @@
 package glm.vec._4.i;
 
 import glm.glm;
-import glm.vec._4.bool.Vec4bool;
+import glm.vec._4.b.Vec4b;
 
 /**
  *
  * @author fschaefers
  */
-public abstract class funcCommon {
+abstract class funcCommon {
 
     public static final int SIZE = 4 * Float.BYTES;
 
@@ -194,20 +194,20 @@ public abstract class funcCommon {
         return mix(x, y, a, a, a, a, result);
     }
 
-    public Vec4i mix(Vec4i y, Vec4bool a) {
+    public Vec4i mix(Vec4i y, Vec4b a) {
         return mix(y, a, (Vec4i) this);
     }
 
-    public Vec4i mix_(Vec4i y, Vec4bool a) {
+    public Vec4i mix_(Vec4i y, Vec4b a) {
         return mix(y, a, new Vec4i());
     }
 
-    public Vec4i mix(Vec4i y, Vec4bool a, Vec4i result) {
+    public Vec4i mix(Vec4i y, Vec4b a, Vec4i result) {
         return mix((Vec4i) this, y, a, result);
     }
 
-    public static Vec4i mix(Vec4i x, Vec4i y, Vec4bool a, Vec4i result) {
-        return mix(x, y, a.x, a.y, a.z, a.w, result);
+    public static Vec4i mix(Vec4i x, Vec4i y, Vec4b a, Vec4i result) {
+        return mix(x, y, a.x == 1, a.y == 1, a.z == 1, a.w == 1, result);
     }
 
     public static Vec4i mix(Vec4i x, Vec4i y, boolean a0, boolean a1, boolean a2, boolean a3, Vec4i result) {

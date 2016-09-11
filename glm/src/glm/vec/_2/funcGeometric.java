@@ -9,7 +9,7 @@ package glm.vec._2;
  *
  * @author elect
  */
-public abstract class funcGeometric extends funcExponential {
+abstract class funcGeometric extends funcExponential {
 
     public Vec2 cross(Vec2 y) {
         return cross(y, (Vec2) this);

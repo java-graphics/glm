@@ -5,14 +5,13 @@
  */
 package glm.mat._3;
 
-import glm.glm;
 import glm.vec._3.Vec3;
 
 /**
  *
  * @author GBarbieri
  */
-public abstract class matrixTransform extends funcMatrix {
+abstract class matrixTransform extends funcMatrix {
 
     public Mat3 rotation(float ang, Vec3 v) {
         return rotation(ang, v.x, v.y, v.z);

@@ -9,7 +9,7 @@ package glm.vec._3;
  *
  * @author elect
  */
-public abstract class funcGeometric extends funcCommon {
+abstract class funcGeometric extends funcCommon {
 
     public Vec3 cross(Vec3 y) {
         return cross(y, (Vec3) this);

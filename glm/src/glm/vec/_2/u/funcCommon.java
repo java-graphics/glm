@@ -12,7 +12,7 @@ import glm.glm;
  *
  * @author fschaefers
  */
-public abstract class funcCommon {
+abstract class funcCommon {
 
     public int x, y;
     public static final int SIZE = 2 * Integer.BYTES;

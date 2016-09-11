@@ -11,7 +11,7 @@ import glm.mat._4.Mat4;
  *
  * @author fschaefers
  */
-public abstract class operator extends funcRelational {
+abstract class operator extends funcRelational {
 
     public Vec4i add(int addend) {
         return add(addend, (Vec4i) this);

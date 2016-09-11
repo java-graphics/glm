@@ -9,7 +9,7 @@ package glm.mat._4;
  *
  * @author GBarbieri
  */
-public class matrixQuery extends matrixTransform {
+abstract class matrixQuery extends matrixTransform {
 
     public boolean isIdentity() {
         return isIdentity(0.0f);
