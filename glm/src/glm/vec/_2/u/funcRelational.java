@@ -10,7 +10,7 @@ import glm.glm;
  *
  * @author fschaefers
  */
-public abstract class funcRelational extends funcCommon {
+abstract class funcRelational extends funcCommon {
 
     public Vec2u lessThan(Vec2u y) {
         return lessThan((Vec2u) this, y, (Vec2u) this);

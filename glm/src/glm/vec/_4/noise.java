@@ -12,7 +12,7 @@ import glm.vec._3.Vec3;
  *
  * @author elect
  */
-public abstract class noise extends operator {
+abstract class noise extends operator {
 
     public Vec4 grad4_(float j) {
         return grad4_(j, (Vec4) this);

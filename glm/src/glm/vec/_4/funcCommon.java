@@ -6,14 +6,14 @@
 package glm.vec._4;
 
 import glm.glm;
-import glm.vec._4.bool.Vec4bool;
+import glm.vec._4.b.Vec4b;
 import glm.vec._4.i.Vec4i;
 
 /**
  *
  * @author GBarbieri
  */
-public abstract class funcCommon {
+abstract class funcCommon {
 
     public static final int SIZE = 4 * Float.BYTES;
 
@@ -175,35 +175,35 @@ public abstract class funcCommon {
         return result;
     }
 
-    public Vec4bool isInf_() {
-        return isInf((Vec4) this, new Vec4bool());
+    public Vec4b isInf_() {
+        return isInf((Vec4) this, new Vec4b());
     }
 
-    public Vec4bool isInf(Vec4bool result) {
+    public Vec4b isInf(Vec4b result) {
         return isInf((Vec4) this, result);
     }
 
-    public static Vec4bool isInf(Vec4 x, Vec4bool result) {
-        result.x = Float.isInfinite(x.x);
-        result.y = Float.isInfinite(x.y);
-        result.z = Float.isInfinite(x.z);
-        result.w = Float.isInfinite(x.w);
+    public static Vec4b isInf(Vec4 x, Vec4b result) {
+        result.x = (byte) (Float.isInfinite(x.x) ? 1 : 0);
+        result.y = (byte) (Float.isInfinite(x.y) ? 1 : 0);
+        result.z = (byte) (Float.isInfinite(x.z) ? 1 : 0);
+        result.w = (byte) (Float.isInfinite(x.w) ? 1 : 0);
         return result;
     }
 
-    public Vec4bool isNan() {
-        return isNan((Vec4) this, new Vec4bool());
+    public Vec4b isNan() {
+        return isNan((Vec4) this, new Vec4b());
     }
 
-    public Vec4bool isNan(Vec4bool result) {
+    public Vec4b isNan(Vec4b result) {
         return isNan((Vec4) this, result);
     }
 
-    public static Vec4bool isNan(Vec4 x, Vec4bool result) {
-        result.x = Float.isNaN(x.x);
-        result.y = Float.isNaN(x.y);
-        result.z = Float.isNaN(x.z);
-        result.w = Float.isNaN(x.z);
+    public static Vec4b isNan(Vec4 x, Vec4b result) {
+        result.x = (byte) (Float.isNaN(x.x) ? 1 : 0);
+        result.y = (byte) (Float.isNaN(x.y) ? 1 : 0);
+        result.z = (byte) (Float.isNaN(x.z) ? 1 : 0);
+        result.w = (byte) (Float.isNaN(x.z) ? 1 : 0);
         return result;
     }
 
@@ -263,19 +263,19 @@ public abstract class funcCommon {
         return mix(x, y, a, a, a, a, result);
     }
 
-    public Vec4 mix(Vec4 y, Vec4bool a) {
+    public Vec4 mix(Vec4 y, Vec4b a) {
         return mix(y, a, (Vec4) this);
     }
 
-    public Vec4 mix_(Vec4 y, Vec4bool a) {
+    public Vec4 mix_(Vec4 y, Vec4b a) {
         return mix(y, a, new Vec4());
     }
 
-    public Vec4 mix(Vec4 y, Vec4bool a, Vec4 result) {
+    public Vec4 mix(Vec4 y, Vec4b a, Vec4 result) {
         return mix((Vec4) this, y, a, result);
     }
 
-    public static Vec4 mix(Vec4 x, Vec4 y, Vec4bool a, Vec4 result) {
+    public static Vec4 mix(Vec4 x, Vec4 y, Vec4b a, Vec4 result) {
         return mix(x, y, a.x, a.y, a.z, a.w, result);
     }
 
@@ -318,7 +318,7 @@ public abstract class funcCommon {
     public static Vec4 mix(Vec4 x, Vec4 y, Vec4 a, Vec4 result) {
         return mix(x, y, a.x, a.y, a.z, a.w, result);
     }
-    
+
     public static Vec4 mix(Vec4 x, Vec4 y, float a0, float a1, float a2, float a3, Vec4 result) {
         result.x = x.x + a0 * (y.x - x.x);
         result.y = x.y + a1 * (y.y - x.y);
@@ -427,7 +427,7 @@ public abstract class funcCommon {
         result.w = x.w < edge.w ? 0f : 1f;
         return result;
     }
-    
+
     public Vec4 toUnsignedFloat() {
         return toUnsignedFloat((Vec4) this);
     }

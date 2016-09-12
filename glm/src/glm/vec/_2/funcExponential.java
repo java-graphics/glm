@@ -11,7 +11,7 @@ import glm.glm;
  *
  * @author elect
  */
-public abstract class funcExponential extends funcCommon {
+abstract class funcExponential extends funcCommon {
 
     public Vec2 exp() {
         return exp((Vec2) this, (Vec2) this);

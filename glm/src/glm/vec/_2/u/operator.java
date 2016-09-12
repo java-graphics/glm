@@ -9,7 +9,7 @@ package glm.vec._2.u;
  *
  * @author GBarbieri
  */
-public abstract class operator extends funcRelational {
+abstract class operator extends funcRelational {
 
     public Vec2u add(int addend) {
         return add(addend, (Vec2u) this);
