@@ -380,7 +380,7 @@ abstract class matrixTransform extends funcMatrix {
         res.m31 = m31;
         res.m32 = m32;
         res.m33 = m33;
-        return (Mat4) this;
+        return res;
     }
 
     public Mat4 translation(Vec3 v) {
