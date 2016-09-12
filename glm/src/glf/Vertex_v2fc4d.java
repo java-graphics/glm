@@ -6,7 +6,7 @@
 package glf;
 
 import glm.vec._2.Vec2;
-import dev.Vec4d;
+import glm.vec._4.d.Vec4d;
 import java.nio.ByteBuffer;
 
 /**

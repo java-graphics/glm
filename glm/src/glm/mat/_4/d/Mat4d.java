@@ -5,8 +5,8 @@
  */
 package glm.mat._4.d;
 
-import dev.Vec3d;
-import dev.Vec4d;
+import glm.vec._3.d.Vec3d;
+import glm.vec._4.d.Vec4d;
 import glm.Glm;
 import glm.mat._4.Mat4;
 import java.nio.ByteBuffer;
