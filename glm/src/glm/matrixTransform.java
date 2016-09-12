@@ -5,7 +5,7 @@
  */
 package glm;
 
-import static glm.glm.GLM_LEFT_HANDED;
+import static glm.Glm.GLM_LEFT_HANDED;
 import glm.mat._4.Mat4;
 import glm.mat._4.d.Mat4d;
 import glm.vec._3.Vec3;

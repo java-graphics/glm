@@ -6,7 +6,7 @@
 package glm.vec._2.i;
 
 import dev.Vec2bool;
-import glm.glm;
+import glm.Glm;
 
 /**
  *
@@ -305,9 +305,10 @@ abstract class funcCommon {
         return mod((Vec2i) this, y, result);
     }
 
+    // TODO check floor return type
     public static Vec2i mod(Vec2i x, Vec2i y, Vec2i result) {
-        result.x = x.x - y.x * glm.floor(x.x / y.x);
-        result.y = x.y - y.y * glm.floor(x.y / y.y);
+        result.x = (int) (x.x - y.x * Glm.floor(x.x / y.x));
+        result.y = (int) (x.y - y.y * Glm.floor(x.y / y.y));
         return result;
     }
 

@@ -5,7 +5,7 @@
  */
 package glm.vec._3;
 
-import glm.glm;
+import glm.Glm;
 import glm.vec._3.b.Vec3b;
 import glm.vec._3.i.Vec3i;
 
@@ -323,9 +323,9 @@ abstract class funcCommon {
     }
 
     public static Vec3 mod(Vec3 x, Vec3 y, Vec3 result) {
-        result.x = x.x - y.x * glm.floor(x.x / y.x);
-        result.y = x.y - y.y * glm.floor(x.y / y.y);
-        result.z = x.z - y.z * glm.floor(x.z / y.z);
+        result.x = (float) (x.x - y.x * Glm.floor(x.x / y.x));
+        result.y = (float) (x.y - y.y * Glm.floor(x.y / y.y));
+        result.z = (float) (x.z - y.z * Glm.floor(x.z / y.z));
         return result;
     }
 

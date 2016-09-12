@@ -7,7 +7,7 @@ package glm.vec._2;
 
 import dev.Vec2bool;
 import glm.vec._2.i.Vec2i;
-import glm.glm;
+import glm.Glm;
 
 /**
  * TODO ldexp, frexp, modf, roundEven, trunc
@@ -308,9 +308,10 @@ abstract class funcCommon {
         return mod((Vec2) this, y, result);
     }
 
+    // TODO check floor return type
     public static Vec2 mod(Vec2 x, Vec2 y, Vec2 result) {
-        result.x = x.x - y.x * glm.floor(x.x / y.x);
-        result.y = x.y - y.y * glm.floor(x.y / y.y);
+        result.x = (float) (x.x - y.x * Glm.floor(x.x / y.x));
+        result.y = (float) (x.y - y.y * Glm.floor(x.y / y.y));
         return result;
     }
 

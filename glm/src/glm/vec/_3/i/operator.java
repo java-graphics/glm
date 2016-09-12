@@ -54,15 +54,15 @@ abstract class operator extends funcRelational {
         return result;
     }
 
-    public Vec3i div(float divisor) {
+    public Vec3i div(int divisor) {
         return div(divisor, (Vec3i) this);
     }
 
-    public Vec3i div_(float divisor) {
+    public Vec3i div_(int divisor) {
         return div(divisor, new Vec3i());
     }
 
-    public Vec3i div(float divisor, Vec3i result) {
+    public Vec3i div(int divisor, Vec3i result) {
         return div((Vec3i) this, divisor, divisor, divisor, result);
     }
 
@@ -78,22 +78,22 @@ abstract class operator extends funcRelational {
         return div((Vec3i) this, divisor.x, divisor.y, divisor.z, result);
     }
 
-    public Vec3i div_(float divisorX, float divisorY, float divisorZ, Vec3i result) {
+    public Vec3i div_(int divisorX, int divisorY, int divisorZ, Vec3i result) {
         return div((Vec3i) this, divisorX, divisorY, divisorZ, result);
     }
 
-    public Vec3i div(float divisorX, float divisorY, float divisorZ) {
+    public Vec3i div(int divisorX, int divisorY, int divisorZ) {
         return div((Vec3i) this, divisorX, divisorY, divisorZ, (Vec3i) this);
     }
 
-    public Vec3i div_(float divisorX, float divisorY, float divisorZ) {
+    public Vec3i div_(int divisorX, int divisorY, int divisorZ) {
         return div((Vec3i) this, divisorX, divisorY, divisorZ, new Vec3i());
     }
 
-    public static Vec3i div(Vec3i dividend, float divisorX, float divisorY, float divisorZ, Vec3i result) {
-        result.x = (int) (dividend.x / divisorX);
-        result.y = (int) (dividend.y / divisorY);
-        result.z = (int) (dividend.z / divisorZ);
+    public static Vec3i div(Vec3i dividend, int divisorX, int divisorY, int divisorZ, Vec3i result) {
+        result.x = dividend.x / divisorX;
+        result.y = dividend.y / divisorY;
+        result.z = dividend.z / divisorZ;
         return result;
     }
 
@@ -138,6 +138,25 @@ abstract class operator extends funcRelational {
         result.y = factor0.y * factor1y;
         result.z = factor0.z * factor1z;
         return result;
+    }
+
+    public Vec3i shiftR_(int shift) {
+        return shiftR(x, y, z, shift, shift, shift, new Vec3i());
+    }
+
+    public Vec3i shiftR(int shift, Vec3i res) {
+        return shiftR(x, y, z, shift, shift, shift, res);
+    }
+
+    public Vec3i shiftR(int sx, int sy, int sz, Vec3i res) {
+        return shiftR(x, y, z, sx, sy, sz, res);
+    }
+
+    public static Vec3i shiftR(int ax, int ay, int az, int sx, int sy, int sz, Vec3i res) {
+        res.x = ax >> sx;
+        res.y = ay >> sy;
+        res.z = az >> sz;
+        return res;
     }
 
     public Vec3i sub(int subtrahend) {

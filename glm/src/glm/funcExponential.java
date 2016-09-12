@@ -9,7 +9,7 @@ package glm;
  *
  * @author elect
  */
-abstract class funcExponential extends funcCommon {
+abstract class funcExponential extends FuncCommon {
 
     public static float exp(float x) {
         return (float) Math.exp(x);

@@ -5,7 +5,7 @@
  */
 package glm.vec._4;
 
-import glm.glm;
+import glm.Glm;
 
 /**
  *
@@ -106,19 +106,19 @@ abstract class funcRelational extends funcGeometric {
     }
 
     public static Vec4 equal(Vec4 x, Vec4 y, Vec4 result) {
-        result.x = glm.compareFloatEquals(x.x, y.x) ? 1 : 0;
-        result.y = glm.compareFloatEquals(x.y, y.y) ? 1 : 0;
-        result.z = glm.compareFloatEquals(x.z, y.z) ? 1 : 0;
-        result.w = glm.compareFloatEquals(x.w, y.w) ? 1 : 0;
+        result.x = Glm.compareFloatEquals(x.x, y.x) ? 1 : 0;
+        result.y = Glm.compareFloatEquals(x.y, y.y) ? 1 : 0;
+        result.z = Glm.compareFloatEquals(x.z, y.z) ? 1 : 0;
+        result.w = Glm.compareFloatEquals(x.w, y.w) ? 1 : 0;
         return result;
     }
 
     public boolean isEqual(Vec4 y) {
     
-        return glm.compareFloatEquals(this.x, y.x)
-                && glm.compareFloatEquals(this.y, y.y)
-                && glm.compareFloatEquals(this.z, y.z)
-                && glm.compareFloatEquals(this.w, y.w);
+        return Glm.compareFloatEquals(this.x, y.x)
+                && Glm.compareFloatEquals(this.y, y.y)
+                && Glm.compareFloatEquals(this.z, y.z)
+                && Glm.compareFloatEquals(this.w, y.w);
 
     }
 
@@ -135,10 +135,10 @@ abstract class funcRelational extends funcGeometric {
     }
 
     public static Vec4 notEqual(Vec4 x, Vec4 y, Vec4 result) {
-        result.x = !glm.compareFloatEquals(x.x, y.x) ? 1 : 0;
-        result.y = !glm.compareFloatEquals(x.y, y.y) ? 1 : 0;
-        result.z = !glm.compareFloatEquals(x.z, y.z) ? 1 : 0;
-        result.w = !glm.compareFloatEquals(x.w, y.w) ? 1 : 0;
+        result.x = !Glm.compareFloatEquals(x.x, y.x) ? 1 : 0;
+        result.y = !Glm.compareFloatEquals(x.y, y.y) ? 1 : 0;
+        result.z = !Glm.compareFloatEquals(x.z, y.z) ? 1 : 0;
+        result.w = !Glm.compareFloatEquals(x.w, y.w) ? 1 : 0;
         return result;
     }
 

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package glm.vec._2.u;
+package glm.vec._2.ui;
 
 import glm.vec._2.i.Vec2i;
 import glm.vec._3.Vec3;
@@ -16,56 +16,56 @@ import java.nio.IntBuffer;
  *
  * @author GBarbieri
  */
-public class Vec2u extends operator {
+public class Vec2ui extends operator {
 
-    public Vec2u() {
+    public Vec2ui() {
         x = 0;
         y = 0;
     }
 
-    public Vec2u(int i) {
+    public Vec2ui(int i) {
         x = i;
         y = i;
     }
 
-    public Vec2u(int x, int y) {
+    public Vec2ui(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public Vec2u(Vec2u v) {
+    public Vec2ui(Vec2ui v) {
         x = v.x;
         y = v.y;
     }
 
-    public Vec2u(Vec2i v) {
+    public Vec2ui(Vec2i v) {
         x = v.x;
         y = v.y;
     }
 
-    public Vec2u(Vec3 v) {
+    public Vec2ui(Vec3 v) {
         x = (int) v.x;
         y = (int) v.y;
     }
 
-    public Vec2u(Vec4 v) {
+    public Vec2ui(Vec4 v) {
         x = (int) v.x;
         y = (int) v.y;
     }
 
-    public Vec2u set(int i) {
+    public Vec2ui set(int i) {
         x = i;
         y = i;
         return this;
     }
 
-    public Vec2u set(float x, float y) {
+    public Vec2ui set(float x, float y) {
         this.x = (int) x;
         this.y = (int) y;
         return this;
     }
 
-    public Vec2u set(int[] ia) {
+    public Vec2ui set(int[] ia) {
         x = ia[0];
         y = ia[1];
         return this;

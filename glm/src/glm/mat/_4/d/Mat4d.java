@@ -7,7 +7,7 @@ package glm.mat._4.d;
 
 import dev.Vec3d;
 import dev.Vec4d;
-import glm.glm;
+import glm.Glm;
 import glm.mat._4.Mat4;
 import java.nio.ByteBuffer;
 
@@ -685,23 +685,23 @@ public class Mat4d {
     }
 
     public Mat4d lookAt(Vec3d eye, Vec3d center, Vec3d up) {
-        return glm.lookAt(eye, center, up, this);
+        return Glm.lookAt(eye, center, up, this);
     }
 
     public static Mat4d lookAt(Vec3d eye, Vec3d center, Vec3d up, Mat4d res) {
-        return glm.lookAt(eye, center, up, res);
+        return Glm.lookAt(eye, center, up, res);
     }
 
     public Mat4d ortho(double left, double right, double bottom, double top, double zNear, double zFar) {
-        return glm.ortho(this, left, right, bottom, top, zNear, zFar);
+        return Glm.ortho(this, left, right, bottom, top, zNear, zFar);
     }
 
     public Mat4d perspective(double fovy, double aspect, double zNear, double zFar) {
-        return glm.perspective(fovy, aspect, zNear, zFar, this);
+        return Glm.perspective(fovy, aspect, zNear, zFar, this);
     }
 
     public Mat4d perspectiveFov(double fov, double width, double height, double zNear, double zFar) {
-        return glm.perspectiveFov(fov, width, height, zNear, zFar, this);
+        return Glm.perspectiveFov(fov, width, height, zNear, zFar, this);
     }
 
     public Mat4d mulPerspective(double fovy, double aspect, double zNear, double zFar) {
@@ -745,31 +745,31 @@ public class Mat4d {
     }
 
     public boolean equals3(Mat4d other, int maxUlps) {
-        if (!glm.compareDoubleEquals(m00, other.m00, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m00, other.m00, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m01, other.m01, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m01, other.m01, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m02, other.m02, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m02, other.m02, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m10, other.m10, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m10, other.m10, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m11, other.m11, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m11, other.m11, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m12, other.m12, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m12, other.m12, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m20, other.m20, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m20, other.m20, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m21, other.m21, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m21, other.m21, maxUlps)) {
             return false;
         }
-        return glm.compareDoubleEquals(m22, other.m22, maxUlps);
+        return Glm.compareDoubleEquals(m22, other.m22, maxUlps);
     }
 
     public boolean equals(Mat4d other) {
@@ -777,52 +777,52 @@ public class Mat4d {
     }
 
     public boolean equals(Mat4d other, int maxUlps) {
-        if (!glm.compareDoubleEquals(m00, other.m00, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m00, other.m00, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m01, other.m01, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m01, other.m01, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m02, other.m02, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m02, other.m02, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m03, other.m03, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m03, other.m03, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m10, other.m10, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m10, other.m10, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m11, other.m11, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m11, other.m11, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m12, other.m12, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m12, other.m12, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m13, other.m13, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m13, other.m13, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m20, other.m20, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m20, other.m20, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m21, other.m21, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m21, other.m21, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m22, other.m22, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m22, other.m22, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m23, other.m23, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m23, other.m23, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m30, other.m30, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m30, other.m30, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m31, other.m31, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m31, other.m31, maxUlps)) {
             return false;
         }
-        if (!glm.compareDoubleEquals(m32, other.m32, maxUlps)) {
+        if (!Glm.compareDoubleEquals(m32, other.m32, maxUlps)) {
             return false;
         }
-        return glm.compareDoubleEquals(m33, other.m33, maxUlps);
+        return Glm.compareDoubleEquals(m33, other.m33, maxUlps);
     }
 
     public double[] toDa_() {

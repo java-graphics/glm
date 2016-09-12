@@ -5,7 +5,7 @@
  */
 package glm.mat._4;
 
-import glm.glm;
+import glm.Glm;
 import glm.vec._3.Vec3;
 
 /**
@@ -438,23 +438,23 @@ abstract class matrixTransform extends funcMatrix {
     }
 
     public Mat4 lookAt(Vec3 eye, Vec3 center, Vec3 up) {
-        return glm.lookAt(eye, center, up, (Mat4) this);
+        return Glm.lookAt(eye, center, up, (Mat4) this);
     }
 
     public static Mat4 lookAt(Vec3 eye, Vec3 center, Vec3 up, Mat4 res) {
-        return glm.lookAt(eye, center, up, res);
+        return Glm.lookAt(eye, center, up, res);
     }
 
     public Mat4 ortho(float left, float right, float bottom, float top, float zNear, float zFar) {
-        return glm.ortho((Mat4) this, left, right, bottom, top, zNear, zFar);
+        return Glm.ortho((Mat4) this, left, right, bottom, top, zNear, zFar);
     }
 
     public Mat4 perspective(float fovy, float aspect, float zNear, float zFar) {
-        return glm.perspective(fovy, aspect, zNear, zFar, (Mat4) this);
+        return Glm.perspective(fovy, aspect, zNear, zFar, (Mat4) this);
     }
 
     public Mat4 perspectiveFov(float fov, float width, float height, float zNear, float zFar) {
-        return glm.perspectiveFov(fov, width, height, zNear, zFar, (Mat4) this);
+        return Glm.perspectiveFov(fov, width, height, zNear, zFar, (Mat4) this);
     }
 
     public Mat4 mulPerspective(float fovy, float aspect, float zNear, float zFar) {

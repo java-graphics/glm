@@ -5,7 +5,7 @@
  */
 package glm.vec._2.i;
 
-import glm.glm;
+import glm.Glm;
 
 /**
  *
@@ -105,8 +105,8 @@ abstract class funcRelational extends funcCommon {
 
     public boolean isEqual(Vec2i y) {
 
-        return glm.compareFloatEquals(this.x, y.x)
-                && glm.compareFloatEquals(this.y, y.y);
+        return Glm.compareFloatEquals(this.x, y.x)
+                && Glm.compareFloatEquals(this.y, y.y);
 
     }
 

@@ -5,7 +5,7 @@
  */
 package glm.vec._4;
 
-import glm.glm;
+import glm.Glm;
 import glm.vec._4.b.Vec4b;
 import glm.vec._4.i.Vec4i;
 
@@ -340,10 +340,10 @@ abstract class funcCommon {
     }
 
     public static Vec4 mod(Vec4 x, Vec4 y, Vec4 result) {
-        result.x = x.x - y.x * glm.floor(x.x / y.x);
-        result.y = x.y - y.y * glm.floor(x.y / y.y);
-        result.z = x.z - y.z * glm.floor(x.z / y.z);
-        result.w = x.w - y.w * glm.floor(x.w / y.w);
+        result.x = (float) (x.x - y.x * Glm.floor(x.x / y.x));
+        result.y = (float) (x.y - y.y * Glm.floor(x.y / y.y));
+        result.z = (float) (x.z - y.z * Glm.floor(x.z / y.z));
+        result.w = (float) (x.w - y.w * Glm.floor(x.w / y.w));
         return result;
     }
 
