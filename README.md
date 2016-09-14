@@ -36,7 +36,6 @@ public class Class {
 
 All functions with `_` at the end involv implicitly an internal instantiation. They are useful for case scenario when you want the most readable and compact code.
 
-
 Steps:
 
 - add jars under `\lib`
@@ -44,3 +43,6 @@ Steps:
 Enhances:
 
 - support for [openvr](https://github.com/java-graphics-society/openvr) matrices, helpful to avoid all the problems regarding colum or row major order.
+
+
+Ps: most of `Mat4d` and a couple of other methods in `Glm` are quoted directly from [JOML](https://github.com/JOML-CI/JOML), by [Kai Burjack](https://github.com/httpdigest)
