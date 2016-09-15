@@ -201,19 +201,6 @@ public class Mat4d {
                 + (m01 * m12 - m02 * m11) * m20;
     }
 
-    /**
-     * Return the determinant of this matrix by assuming that it represents an
-     * {@link #isAffine() affine} transformation and thus its last row is equal
-     * to <tt>(0, 0, 0, 1)</tt>.
-     *
-     * @return the determinant
-     */
-    public double det4x3() {
-        return (m00 * m11 - m01 * m10) * m22
-                + (m02 * m10 - m00 * m12) * m21
-                + (m01 * m12 - m02 * m11) * m20;
-    }
-
     public Mat4d identity() {
         m00 = 1.0;
         m01 = 0.0;
@@ -296,63 +283,6 @@ public class Mat4d {
         return dest;
     }
 
-    /**
-     * Invert this matrix by assuming that it is an {@link #isAffine() affine}
-     * transformation (i.e. its last row is equal to <tt>(0, 0, 0, 1)</tt>).
-     *
-     * @return this
-     */
-    public Mat4d inverse4x3() {
-        return inverse4x3(this);
-    }
-
-    /**
-     * Invert this matrix by assuming that it is an {@link #isAffine() affine}
-     * transformation (i.e. its last row is equal to <tt>(0, 0, 0, 1)</tt>) and
-     * write the result into <code>dest</code>.
-     *
-     * @param dest will hold the result
-     * @return dest
-     */
-    public Mat4d inverse4x3(Mat4d dest) {
-        double s = det4x3();
-        s = 1.0 / s;
-        double m10m22 = m10 * m22;
-        double m10m21 = m10 * m21;
-        double m10m02 = m10 * m02;
-        double m10m01 = m10 * m01;
-        double m11m22 = m11 * m22;
-        double m11m20 = m11 * m20;
-        double m11m02 = m11 * m02;
-        double m11m00 = m11 * m00;
-        double m12m21 = m12 * m21;
-        double m12m20 = m12 * m20;
-        double m12m01 = m12 * m01;
-        double m12m00 = m12 * m00;
-        double m20m02 = m20 * m02;
-        double m20m01 = m20 * m01;
-        double m21m02 = m21 * m02;
-        double m21m00 = m21 * m00;
-        double m22m01 = m22 * m01;
-        double m22m00 = m22 * m00;
-        dest.set((m11m22 - m12m21) * s,
-                (m21m02 - m22m01) * s,
-                (m12m01 - m11m02) * s,
-                0.0,
-                (m12m20 - m10m22) * s,
-                (m22m00 - m20m02) * s,
-                (m10m02 - m12m00) * s,
-                0.0,
-                (m10m21 - m11m20) * s,
-                (m20m01 - m21m00) * s,
-                (m11m00 - m10m01) * s,
-                0.0,
-                (m10m22 * m31 - m10m21 * m32 + m11m20 * m32 - m11m22 * m30 + m12m21 * m30 - m12m20 * m31) * s,
-                (m20m02 * m31 - m20m01 * m32 + m21m00 * m32 - m21m02 * m30 + m22m01 * m30 - m22m00 * m31) * s,
-                (m11m02 * m30 - m12m01 * m30 + m12m00 * m31 - m10m02 * m31 + m10m01 * m32 - m11m00 * m32) * s,
-                1.0);
-        return dest;
-    }
 
     public Mat4d invTransp() {
         return invTransp3(this);
@@ -703,43 +633,7 @@ public class Mat4d {
     public Mat4d perspectiveFov(double fov, double width, double height, double zNear, double zFar) {
         return Glm.perspectiveFov(fov, width, height, zNear, zFar, this);
     }
-
-    public Mat4d mulPerspective(double fovy, double aspect, double zNear, double zFar) {
-        return mulPerspective(fovy, aspect, zNear, zFar, this);
-    }
-
-    public Mat4d mulPerspective(double fovy, double aspect, double zNear, double zFar, Mat4d res) {
-        double h = Math.tan(fovy * 0.5f) * zNear;
-        double w = h * aspect;
-        // calculate right matrix elements
-        double rm00 = zNear / w;
-        double rm11 = zNear / h;
-        double rm22 = -(zFar + zNear) / (zFar - zNear);
-        double rm32 = -2.0 * zFar * zNear / (zFar - zNear);
-        // perform optimized matrix multiplication
-        double nm20 = m20 * rm22 - m30;
-        double nm21 = m21 * rm22 - m31;
-        double nm22 = m22 * rm22 - m32;
-        double nm23 = m23 * rm22 - m33;
-        res.m00 = m00 * rm00;
-        res.m01 = m01 * rm00;
-        res.m02 = m02 * rm00;
-        res.m03 = m03 * rm00;
-        res.m10 = m10 * rm11;
-        res.m11 = m11 * rm11;
-        res.m12 = m12 * rm11;
-        res.m13 = m13 * rm11;
-        res.m30 = m20 * rm32;
-        res.m31 = m21 * rm32;
-        res.m32 = m22 * rm32;
-        res.m33 = m23 * rm32;
-        res.m20 = nm20;
-        res.m21 = nm21;
-        res.m22 = nm22;
-        res.m23 = nm23;
-        return res;
-    }
-
+    
     public boolean equals3(Mat4d other) {
         return equals3(other, 2);
     }
@@ -826,10 +720,10 @@ public class Mat4d {
     }
 
     public double[] toDa_() {
-        return toFa(new double[16]);
+        return toDa(new double[16]);
     }
 
-    public double[] toFa(double[] res) {
+    public double[] toDa(double[] res) {
         return toFa(res, 0);
     }
 
@@ -853,15 +747,15 @@ public class Mat4d {
         return res;
     }
 
-    public ByteBuffer toDb_() {
-        return toDb(ByteBuffer.allocate(16 * Double.BYTES));
+    public ByteBuffer toDbb_() {
+        return toDbb(ByteBuffer.allocate(16 * Double.BYTES));
     }
 
-    public ByteBuffer toDb(ByteBuffer res) {
-        return toDb(res, 0);
+    public ByteBuffer toDbb(ByteBuffer res) {
+        return Mat4d.this.toDbb(res, 0);
     }
 
-    public ByteBuffer toDb(ByteBuffer res, int index) {
+    public ByteBuffer toDbb(ByteBuffer res, int index) {
         res.putDouble(index + 0, m00);
         res.putDouble(index + 1, m01);
         res.putDouble(index + 2, m02);
