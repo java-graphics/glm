@@ -196,9 +196,13 @@ public class Mat3 extends matrixQuery {
     }
 
     public Vec3 mul(Vec3 v) {
+        return mul(v, new Vec3());
+    }
+    public Vec3 mul_(Vec3 v) {
         return mul(v, v);
     }
-
+    
+    
     public Vec3 mul(Vec3 right, Vec3 res) {
         res.set(m00 * right.x + m10 * right.y + m20 * right.z,
                 m01 * right.x + m11 * right.y + m21 * right.z,
