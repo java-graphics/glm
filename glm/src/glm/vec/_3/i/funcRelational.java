@@ -9,7 +9,7 @@ package glm.vec._3.i;
  *
  * @author fschaefers
  */
-public abstract class funcRelational extends funcCommon {
+abstract class funcRelational extends funcCommon {
 
     public Vec3i lessThan(Vec3i y) {
         return lessThan((Vec3i) this, y, (Vec3i) this);
@@ -49,6 +49,10 @@ public abstract class funcRelational extends funcCommon {
         return result;
     }
 
+    public Vec3i greaterThan_(int i) {
+        return greaterThan(i, i, i, new Vec3i());
+    }
+
     public Vec3i greaterThan(Vec3i y) {
         return greaterThan((Vec3i) this, y, (Vec3i) this);
     }
@@ -61,10 +65,18 @@ public abstract class funcRelational extends funcCommon {
         return greaterThan((Vec3i) this, y, result);
     }
 
-    public static Vec3i greaterThan(Vec3i x, Vec3i y, Vec3i result) {
-        result.x = x.x > y.x ? 1 : 0;
-        result.y = x.y > y.y ? 1 : 0;
-        result.z = x.z > y.z ? 1 : 0;
+    public Vec3i greaterThan(int bx, int by, int bz, Vec3i result) {
+        return greaterThan(x, y, z, bx, by, bz, result);
+    }
+
+    public Vec3i greaterThan(Vec3i a, Vec3i b, Vec3i result) {
+        return greaterThan(a.x, a.y, a.z, b.x, b.y, b.z, result);
+    }
+
+    public static Vec3i greaterThan(int aX, int aY, int aZ, int bX, int bY, int bZ, Vec3i result) {
+        result.x = aX > bX ? 1 : 0;
+        result.y = aY > bY ? 1 : 0;
+        result.z = aZ > bZ ? 1 : 0;
         return result;
     }
 

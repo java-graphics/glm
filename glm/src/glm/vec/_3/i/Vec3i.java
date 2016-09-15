@@ -5,7 +5,7 @@
  */
 package glm.vec._3.i;
 
-import glm.glm;
+import glm.Glm;
 import glm.vec._4.i.Vec4i;
 import java.io.PrintStream;
 import java.nio.ByteBuffer;
@@ -94,9 +94,9 @@ public class Vec3i extends operator {
     }
 
     public static Vec3i linearRand(Vec3i min, Vec3i max, Vec3i res) {
-        res.x = glm.linearRand(min.x, max.x);
-        res.y = glm.linearRand(min.y, max.y);
-        res.z = glm.linearRand(min.z, max.z);
+        res.x = Glm.linearRand(min.x, max.x);
+        res.y = Glm.linearRand(min.y, max.y);
+        res.z = Glm.linearRand(min.z, max.z);
         return res;
     }
 

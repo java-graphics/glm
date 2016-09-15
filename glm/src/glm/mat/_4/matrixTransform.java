@@ -5,27 +5,27 @@
  */
 package glm.mat._4;
 
-import glm.glm;
+import glm.Glm;
 import glm.vec._3.Vec3;
 
 /**
  *
  * @author GBarbieri
  */
-public abstract class matrixTransform extends funcMatrix {
+abstract class matrixTransform extends funcMatrix {
 
     /**
      * Vec must be normalized
      *
-     * @param angle
+     * @param radAngle
      * @param x
      * @param y
      * @param z
      * @return
      */
-    public Mat4 rotation(float angle, float x, float y, float z) {
-        float c = (float) Math.cos(angle);
-        float s = (float) Math.sin(angle);
+    public Mat4 rotation(float radAngle, float x, float y, float z) {
+        float c = (float) Math.cos(radAngle);
+        float s = (float) Math.sin(radAngle);
         float t = (float) (1.0 - c);
         m00 = c + x * x * t;
         m11 = c + y * y * t;
@@ -380,7 +380,7 @@ public abstract class matrixTransform extends funcMatrix {
         res.m31 = m31;
         res.m32 = m32;
         res.m33 = m33;
-        return (Mat4) this;
+        return res;
     }
 
     public Mat4 translation(Vec3 v) {
@@ -438,58 +438,22 @@ public abstract class matrixTransform extends funcMatrix {
     }
 
     public Mat4 lookAt(Vec3 eye, Vec3 center, Vec3 up) {
-        return glm.lookAt(eye, center, up, (Mat4) this);
+        return Glm.lookAt(eye, center, up, (Mat4) this);
     }
 
     public static Mat4 lookAt(Vec3 eye, Vec3 center, Vec3 up, Mat4 res) {
-        return glm.lookAt(eye, center, up, res);
+        return Glm.lookAt(eye, center, up, res);
     }
 
     public Mat4 ortho(float left, float right, float bottom, float top, float zNear, float zFar) {
-        return glm.ortho((Mat4) this, left, right, bottom, top, zNear, zFar);
+        return Glm.ortho((Mat4) this, left, right, bottom, top, zNear, zFar);
     }
 
     public Mat4 perspective(float fovy, float aspect, float zNear, float zFar) {
-        return glm.perspective(fovy, aspect, zNear, zFar, (Mat4) this);
+        return Glm.perspective(fovy, aspect, zNear, zFar, (Mat4) this);
     }
 
     public Mat4 perspectiveFov(float fov, float width, float height, float zNear, float zFar) {
-        return glm.perspectiveFov(fov, width, height, zNear, zFar, (Mat4) this);
-    }
-
-    public Mat4 mulPerspective(float fovy, float aspect, float zNear, float zFar) {
-        return mulPerspective(fovy, aspect, zNear, zFar, (Mat4) this);
-    }
-
-    public Mat4 mulPerspective(float fovy, float aspect, float zNear, float zFar, Mat4 res) {
-        float h = (float) Math.tan(fovy * 0.5f) * zNear;
-        float w = h * aspect;
-        // calculate right matrix elements
-        float rm00 = zNear / w;
-        float rm11 = zNear / h;
-        float rm22 = -(zFar + zNear) / (zFar - zNear);
-        float rm32 = -2.0f * zFar * zNear / (zFar - zNear);
-        // perform optimized matrix multiplication
-        float nm20 = m20 * rm22 - m30;
-        float nm21 = m21 * rm22 - m31;
-        float nm22 = m22 * rm22 - m32;
-        float nm23 = m23 * rm22 - m33;
-        res.m00 = m00 * rm00;
-        res.m01 = m01 * rm00;
-        res.m02 = m02 * rm00;
-        res.m03 = m03 * rm00;
-        res.m10 = m10 * rm11;
-        res.m11 = m11 * rm11;
-        res.m12 = m12 * rm11;
-        res.m13 = m13 * rm11;
-        res.m30 = m20 * rm32;
-        res.m31 = m21 * rm32;
-        res.m32 = m22 * rm32;
-        res.m33 = m23 * rm32;
-        res.m20 = nm20;
-        res.m21 = nm21;
-        res.m22 = nm22;
-        res.m23 = nm23;
-        return res;
+        return Glm.perspectiveFov(fov, width, height, zNear, zFar, (Mat4) this);
     }
 }

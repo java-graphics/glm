@@ -34,4 +34,12 @@ abstract class funcGeometric extends funcExponential {
     public static float dot(Quat v0, Quat v1) {
         return Quat.dot(v0, v1);
     }
+    
+    public static Vec3 cross(Vec3 v0, Vec3 v1) {
+        return v0.cross(v1);
+    }
+    
+    public static Vec3 cross_(Vec3 v0, Vec3 v1) {
+        return v0.cross_(v1);
+    }
 }

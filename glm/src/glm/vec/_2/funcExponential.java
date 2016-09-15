@@ -5,13 +5,13 @@
  */
 package glm.vec._2;
 
-import glm.glm;
+import glm.Glm;
 
 /**
  *
  * @author elect
  */
-public abstract class funcExponential extends funcCommon {
+abstract class funcExponential extends funcCommon {
 
     public Vec2 exp() {
         return exp((Vec2) this, (Vec2) this);
@@ -62,8 +62,8 @@ public abstract class funcExponential extends funcCommon {
     }
 
     public static Vec2 inverseSqrt(Vec2 x, Vec2 result) {
-        result.x = glm.inverseSqrt(x.x);
-        result.y = glm.inverseSqrt(x.y);
+        result.x = Glm.inverseSqrt(x.x);
+        result.y = Glm.inverseSqrt(x.y);
         return result;
     }
 

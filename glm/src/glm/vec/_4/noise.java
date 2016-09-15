@@ -12,7 +12,7 @@ import glm.vec._3.Vec3;
  *
  * @author elect
  */
-public abstract class noise extends operator {
+abstract class noise extends operator {
 
     public Vec4 grad4_(float j) {
         return grad4_(j, (Vec4) this);
@@ -127,20 +127,22 @@ public abstract class noise extends operator {
         return mod289((x * 34 + 1) * x);
     }
 
+    // TODO check floor return type
     private static float mod289(float x) {
-        return x - glm.glm.floor(x * 1 / 289) * 289;
+        return (float) (x - glm.Glm.floor(x * 1 / 289) * 289);
     }
 
     private static Vec4 permute_(Vec4 x) {
         return mod289_(new Vec4(x).mul(34).add(1).mul(x));
     }
 
+    // TODO check floor return type
     private static Vec4 mod289_(Vec4 v) {
         Vec4 result = new Vec4();
-        result.x = v.x - glm.glm.floor(v.x * 1 / 289) * 289;
-        result.y = v.y - glm.glm.floor(v.y * 1 / 289) * 289;
-        result.z = v.z - glm.glm.floor(v.z * 1 / 289) * 289;
-        result.w = v.w - glm.glm.floor(v.w * 1 / 289) * 289;
+        result.x = (float) (v.x - glm.Glm.floor(v.x * 1 / 289) * 289);
+        result.y = (float) (v.y - glm.Glm.floor(v.y * 1 / 289) * 289);
+        result.z = (float) (v.z - glm.Glm.floor(v.z * 1 / 289) * 289);
+        result.w = (float) (v.w - glm.Glm.floor(v.w * 1 / 289) * 289);
         return result;
     }
 }

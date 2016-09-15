@@ -6,7 +6,7 @@
 package glm.vec._3;
 
 import glm.vec._4.Vec4;
-import glm.glm;
+import glm.Glm;
 import java.io.PrintStream;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -98,9 +98,9 @@ public class Vec3 extends operator {
     }
 
     public static Vec3 linearRand(Vec3 min, Vec3 max, Vec3 res) {
-        res.x = (float) glm.linearRand(min.x, max.x);
-        res.y = (float) glm.linearRand(min.y, max.y);
-        res.z = (float) glm.linearRand(min.z, max.z);
+        res.x = (float) Glm.linearRand(min.x, max.x);
+        res.y = (float) Glm.linearRand(min.y, max.y);
+        res.z = (float) Glm.linearRand(min.z, max.z);
         return res;
     }
 
@@ -170,11 +170,6 @@ public class Vec3 extends operator {
                 .putFloat(index + 0 * Float.BYTES, x)
                 .putFloat(index + 1 * Float.BYTES, y)
                 .putFloat(index + 2 * Float.BYTES, z);
-    }
-    
-     @Override
-    public String toString() {
-        return "(" + x + ", " + y + ", " + z + ")";
     }
 
     public void print() {

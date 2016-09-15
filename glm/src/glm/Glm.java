@@ -13,7 +13,7 @@ import glm.vec._4.Vec4;
  *
  * @author GBarbieri
  */
-public class glm extends noise {
+public class Glm extends noise {
 
     public static int ceilMultiple(int source, int multiple) {
         if (source > 0) {

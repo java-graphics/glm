@@ -5,15 +5,15 @@
  */
 package glm.vec._3;
 
-import glm.glm;
-import glm.vec._3.bool.Vec3bool;
+import glm.Glm;
+import glm.vec._3.b.Vec3b;
 import glm.vec._3.i.Vec3i;
 
 /**
  *
  * @author elect
  */
-public abstract class funcCommon {
+abstract class funcCommon {
 
     public float x, y, z;
     public static final int SIZE = 3 * Float.BYTES;
@@ -166,33 +166,33 @@ public abstract class funcCommon {
         return result;
     }
 
-    public Vec3bool isInf_() {
-        return isInf((Vec3) this, new Vec3bool());
+    public Vec3b isInf_() {
+        return isInf((Vec3) this, new Vec3b());
     }
 
-    public Vec3bool isInf(Vec3bool result) {
+    public Vec3b isInf(Vec3b result) {
         return isInf((Vec3) this, result);
     }
 
-    public static Vec3bool isInf(Vec3 x, Vec3bool result) {
-        result.x = Float.isInfinite(x.x);
-        result.y = Float.isInfinite(x.y);
-        result.z = Float.isInfinite(x.z);
+    public static Vec3b isInf(Vec3 x, Vec3b result) {
+        result.x = (byte) (Float.isInfinite(x.x) ? 1 : 0);
+        result.y = (byte) (Float.isInfinite(x.y) ? 1 : 0);
+        result.z = (byte) (Float.isInfinite(x.z) ? 1 : 0);
         return result;
     }
 
-    public Vec3bool isNan() {
-        return isNan((Vec3) this, new Vec3bool());
+    public Vec3b isNan() {
+        return isNan((Vec3) this, new Vec3b());
     }
 
-    public Vec3bool isNan(Vec3bool result) {
+    public Vec3b isNan(Vec3b result) {
         return isNan((Vec3) this, result);
     }
 
-    public static Vec3bool isNan(Vec3 x, Vec3bool result) {
-        result.x = Float.isNaN(x.x);
-        result.y = Float.isNaN(x.y);
-        result.z = Float.isNaN(x.z);
+    public static Vec3b isNan(Vec3 x, Vec3b result) {
+        result.x = (byte) (Float.isNaN(x.x) ? 1 : 0);
+        result.y = (byte) (Float.isNaN(x.y) ? 1 : 0);
+        result.z = (byte) (Float.isNaN(x.z) ? 1 : 0);
         return result;
     }
 
@@ -253,22 +253,22 @@ public abstract class funcCommon {
         return result;
     }
 
-    public Vec3 mix(Vec3 y, Vec3bool a) {
+    public Vec3 mix(Vec3 y, Vec3b a) {
         return mix(y, a, (Vec3) this);
     }
 
-    public Vec3 mix_(Vec3 y, Vec3bool a) {
+    public Vec3 mix_(Vec3 y, Vec3b a) {
         return mix(y, a, new Vec3());
     }
 
-    public Vec3 mix(Vec3 y, Vec3bool a, Vec3 result) {
+    public Vec3 mix(Vec3 y, Vec3b a, Vec3 result) {
         return mix((Vec3) this, y, a, result);
     }
 
-    public static Vec3 mix(Vec3 x, Vec3 y, Vec3bool a, Vec3 result) {
-        result.x = a.x ? y.x : x.x;
-        result.y = a.y ? y.y : x.y;
-        result.z = a.z ? y.z : x.z;
+    public static Vec3 mix(Vec3 x, Vec3 y, Vec3b a, Vec3 result) {
+        result.x = a.x == 1 ? y.x : x.x;
+        result.y = a.y == 1 ? y.y : x.y;
+        result.z = a.z == 1 ? y.z : x.z;
         return result;
     }
 
@@ -323,9 +323,9 @@ public abstract class funcCommon {
     }
 
     public static Vec3 mod(Vec3 x, Vec3 y, Vec3 result) {
-        result.x = x.x - y.x * glm.floor(x.x / y.x);
-        result.y = x.y - y.y * glm.floor(x.y / y.y);
-        result.z = x.z - y.z * glm.floor(x.z / y.z);
+        result.x = (float) (x.x - y.x * Glm.floor(x.x / y.x));
+        result.y = (float) (x.y - y.y * Glm.floor(x.y / y.y));
+        result.z = (float) (x.z - y.z * Glm.floor(x.z / y.z));
         return result;
     }
 
@@ -409,11 +409,11 @@ public abstract class funcCommon {
         result.z = 1 + ltZ * (0 - 1);
         return result;
     }
-    
+
     public Vec3 toUnsignedFloat() {
         return toUnsignedFloat((Vec3) this);
     }
-    
+
     public Vec3 toUnsignedFloat_() {
         return toUnsignedFloat(new Vec3());
     }

@@ -7,7 +7,7 @@ package glm.mat._4;
 
 import glm.vec._3.Vec3;
 import glm.vec._4.Vec4;
-import glm.glm;
+import glm.Glm;
 import glm.mat._3.Mat3;
 import glm.quat.Quat;
 import java.nio.ByteBuffer;
@@ -368,31 +368,31 @@ public class Mat4 extends matrixQuery {
     }
 
     public boolean equals3(Mat4 other, int maxUlps) {
-        if (!glm.compareFloatEquals(m00, other.m00, maxUlps)) {
+        if (!Glm.compareFloatEquals(m00, other.m00, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m01, other.m01, maxUlps)) {
+        if (!Glm.compareFloatEquals(m01, other.m01, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m02, other.m02, maxUlps)) {
+        if (!Glm.compareFloatEquals(m02, other.m02, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m10, other.m10, maxUlps)) {
+        if (!Glm.compareFloatEquals(m10, other.m10, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m11, other.m11, maxUlps)) {
+        if (!Glm.compareFloatEquals(m11, other.m11, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m12, other.m12, maxUlps)) {
+        if (!Glm.compareFloatEquals(m12, other.m12, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m20, other.m20, maxUlps)) {
+        if (!Glm.compareFloatEquals(m20, other.m20, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m21, other.m21, maxUlps)) {
+        if (!Glm.compareFloatEquals(m21, other.m21, maxUlps)) {
             return false;
         }
-        return glm.compareFloatEquals(m22, other.m22, maxUlps);
+        return Glm.compareFloatEquals(m22, other.m22, maxUlps);
     }
 
     public boolean equals(Mat4 other) {
@@ -400,52 +400,52 @@ public class Mat4 extends matrixQuery {
     }
 
     public boolean equals(Mat4 other, int maxUlps) {
-        if (!glm.compareFloatEquals(m00, other.m00, maxUlps)) {
+        if (!Glm.compareFloatEquals(m00, other.m00, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m01, other.m01, maxUlps)) {
+        if (!Glm.compareFloatEquals(m01, other.m01, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m02, other.m02, maxUlps)) {
+        if (!Glm.compareFloatEquals(m02, other.m02, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m03, other.m03, maxUlps)) {
+        if (!Glm.compareFloatEquals(m03, other.m03, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m10, other.m10, maxUlps)) {
+        if (!Glm.compareFloatEquals(m10, other.m10, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m11, other.m11, maxUlps)) {
+        if (!Glm.compareFloatEquals(m11, other.m11, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m12, other.m12, maxUlps)) {
+        if (!Glm.compareFloatEquals(m12, other.m12, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m13, other.m13, maxUlps)) {
+        if (!Glm.compareFloatEquals(m13, other.m13, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m20, other.m20, maxUlps)) {
+        if (!Glm.compareFloatEquals(m20, other.m20, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m21, other.m21, maxUlps)) {
+        if (!Glm.compareFloatEquals(m21, other.m21, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m22, other.m22, maxUlps)) {
+        if (!Glm.compareFloatEquals(m22, other.m22, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m23, other.m23, maxUlps)) {
+        if (!Glm.compareFloatEquals(m23, other.m23, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m30, other.m30, maxUlps)) {
+        if (!Glm.compareFloatEquals(m30, other.m30, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m31, other.m31, maxUlps)) {
+        if (!Glm.compareFloatEquals(m31, other.m31, maxUlps)) {
             return false;
         }
-        if (!glm.compareFloatEquals(m32, other.m32, maxUlps)) {
+        if (!Glm.compareFloatEquals(m32, other.m32, maxUlps)) {
             return false;
         }
-        return glm.compareFloatEquals(m33, other.m33, maxUlps);
+        return Glm.compareFloatEquals(m33, other.m33, maxUlps);
     }
 
     // TODO also other class

@@ -19,7 +19,8 @@ abstract class noise extends matrixTransform {
         return mod289((x * 34 + 1) * x);
     }
 
+    // TODO check floor return type
     private static float mod289(float x) {
-        return x - floor(x * 1 / 289) * 289;
+        return (float) (x - floor(x * 1 / 289) * 289);
     }
 }

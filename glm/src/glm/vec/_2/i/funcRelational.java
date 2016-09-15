@@ -5,13 +5,13 @@
  */
 package glm.vec._2.i;
 
-import glm.glm;
+import glm.Glm;
 
 /**
  *
  * @author fschaefers
  */
-public abstract class funcRelational extends funcCommon {
+abstract class funcRelational extends funcCommon {
 
     public Vec2i lessThan(Vec2i y) {
         return lessThan((Vec2i) this, y, (Vec2i) this);
@@ -105,8 +105,8 @@ public abstract class funcRelational extends funcCommon {
 
     public boolean isEqual(Vec2i y) {
 
-        return glm.compareFloatEquals(this.x, y.x)
-                && glm.compareFloatEquals(this.y, y.y);
+        return Glm.compareFloatEquals(this.x, y.x)
+                && Glm.compareFloatEquals(this.y, y.y);
 
     }
 

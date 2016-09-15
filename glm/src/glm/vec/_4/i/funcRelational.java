@@ -5,13 +5,11 @@
  */
 package glm.vec._4.i;
 
-import glm.glm;
-
 /**
  *
  * @author fschaefers
  */
-public abstract class funcRelational extends funcCommon {
+abstract class funcRelational extends funcCommon {
 
     public Vec4i lessThan(Vec4i y) {
         return lessThan((Vec4i) this, y, (Vec4i) this);

@@ -36,7 +36,6 @@ public class Class {
 
 All functions with `_` at the end involv implicitly an internal instantiation. They are useful for case scenario when you want the most readable and compact code.
 
-
 Steps:
 
 - add jars under `\lib`
@@ -44,3 +43,7 @@ Steps:
 Enhances:
 
 - support for [openvr](https://github.com/java-graphics-society/openvr) matrices, helpful to avoid all the problems regarding colum or row major order.
+
+
+Credits:
+- [JOML](https://github.com/JOML-CI/JOML), by [Kai Burjack](https://github.com/httpdigest) for `Mat4/d.inverse()`, `Mat4/d.invTransp/3()`, `Mat4.det3()`, `Mat4.scale()`

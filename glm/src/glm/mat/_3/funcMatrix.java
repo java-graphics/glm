@@ -9,7 +9,7 @@ package glm.mat._3;
  *
  * @author GBarbieri
  */
-public abstract class funcMatrix {
+abstract class funcMatrix {
 
     public float m00, m10, m20;
     public float m01, m11, m21;

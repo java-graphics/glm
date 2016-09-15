@@ -5,13 +5,13 @@
  */
 package glm.vec._3;
 
-import glm.glm;
+import glm.Glm;
 
 /**
  *
  * @author elect
  */
-public abstract class funcRelational extends funcGeometric {
+abstract class funcRelational extends funcGeometric {
 
     public Vec3 lessThan(Vec3 y) {
         return lessThan((Vec3) this, y, (Vec3) this);
@@ -102,17 +102,17 @@ public abstract class funcRelational extends funcGeometric {
     }
 
     public static Vec3 equal(Vec3 x, Vec3 y, Vec3 result) {
-        result.x = glm.compareFloatEquals(x.x, y.x) ? 1 : 0;
-        result.y = glm.compareFloatEquals(x.y, y.y) ? 1 : 0;
-        result.z = glm.compareFloatEquals(x.z, y.z) ? 1 : 0;
+        result.x = Glm.compareFloatEquals(x.x, y.x) ? 1 : 0;
+        result.y = Glm.compareFloatEquals(x.y, y.y) ? 1 : 0;
+        result.z = Glm.compareFloatEquals(x.z, y.z) ? 1 : 0;
         return result;
     }
 
     public boolean isEqual(Vec3 y) {
 
-        return glm.compareFloatEquals(this.x, y.x)
-                && glm.compareFloatEquals(this.y, y.y)
-                && glm.compareFloatEquals(this.z, y.z);
+        return Glm.compareFloatEquals(this.x, y.x)
+                && Glm.compareFloatEquals(this.y, y.y)
+                && Glm.compareFloatEquals(this.z, y.z);
 
     }
 
@@ -129,9 +129,9 @@ public abstract class funcRelational extends funcGeometric {
     }
 
     public static Vec3 notEqual(Vec3 x, Vec3 y, Vec3 result) {
-        result.x = !glm.compareFloatEquals(x.x, y.x) ? 1 : 0;
-        result.y = !glm.compareFloatEquals(x.y, y.y) ? 1 : 0;
-        result.z = !glm.compareFloatEquals(x.z, y.z) ? 1 : 0;
+        result.x = !Glm.compareFloatEquals(x.x, y.x) ? 1 : 0;
+        result.y = !Glm.compareFloatEquals(x.y, y.y) ? 1 : 0;
+        result.z = !Glm.compareFloatEquals(x.z, y.z) ? 1 : 0;
         return result;
     }
 

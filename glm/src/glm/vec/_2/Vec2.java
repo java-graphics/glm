@@ -69,6 +69,10 @@ public class Vec2 extends operator {
         return this;
     }
 
+    public Vec2 set(double x, double y) {
+        return set((float) x, (float) y);
+    }
+
     public Vec2 set(float x, float y) {
         this.x = x;
         this.y = y;

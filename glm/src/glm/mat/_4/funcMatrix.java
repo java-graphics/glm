@@ -9,7 +9,7 @@ package glm.mat._4;
  *
  * @author GBarbieri
  */
-public abstract class funcMatrix {
+abstract class funcMatrix {
 
     public float m00, m10, m20, m30;
     public float m01, m11, m21, m31;
@@ -59,50 +59,6 @@ public abstract class funcMatrix {
                 (+m00 * j - m01 * h + m02 * g) * det,
                 (-m30 * d + m31 * b - m32 * a) * det,
                 (+m20 * d - m21 * b + m22 * a) * det);
-        return dest;
-    }
-
-    public Mat4 inverse4x3() {
-        return inverse4x3((Mat4) this);
-    }
-
-    public Mat4 inverse4x3(Mat4 dest) {
-        float s = det4x3();
-        s = 1.0f / s;
-        float m10m22 = m10 * m22;
-        float m10m21 = m10 * m21;
-        float m10m02 = m10 * m02;
-        float m10m01 = m10 * m01;
-        float m11m22 = m11 * m22;
-        float m11m20 = m11 * m20;
-        float m11m02 = m11 * m02;
-        float m11m00 = m11 * m00;
-        float m12m21 = m12 * m21;
-        float m12m20 = m12 * m20;
-        float m12m01 = m12 * m01;
-        float m12m00 = m12 * m00;
-        float m20m02 = m20 * m02;
-        float m20m01 = m20 * m01;
-        float m21m02 = m21 * m02;
-        float m21m00 = m21 * m00;
-        float m22m01 = m22 * m01;
-        float m22m00 = m22 * m00;
-        dest.set((m11m22 - m12m21) * s,
-                (m21m02 - m22m01) * s,
-                (m12m01 - m11m02) * s,
-                0.0f,
-                (m12m20 - m10m22) * s,
-                (m22m00 - m20m02) * s,
-                (m10m02 - m12m00) * s,
-                0.0f,
-                (m10m21 - m11m20) * s,
-                (m20m01 - m21m00) * s,
-                (m11m00 - m10m01) * s,
-                0.0f,
-                (m10m22 * m31 - m10m21 * m32 + m11m20 * m32 - m11m22 * m30 + m12m21 * m30 - m12m20 * m31) * s,
-                (m20m02 * m31 - m20m01 * m32 + m21m00 * m32 - m21m02 * m30 + m22m01 * m30 - m22m00 * m31) * s,
-                (m11m02 * m30 - m12m01 * m30 + m12m00 * m31 - m10m02 * m31 + m10m01 * m32 - m11m00 * m32) * s,
-                1.0f);
         return dest;
     }
 
@@ -164,12 +120,6 @@ public abstract class funcMatrix {
     }
 
     public float det3() {
-        return (m00 * m11 - m01 * m10) * m22
-                + (m02 * m10 - m00 * m12) * m21
-                + (m01 * m12 - m02 * m11) * m20;
-    }
-
-    public float det4x3() {
         return (m00 * m11 - m01 * m10) * m22
                 + (m02 * m10 - m00 * m12) * m21
                 + (m01 * m12 - m02 * m11) * m20;

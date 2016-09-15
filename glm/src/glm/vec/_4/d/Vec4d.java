@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dev;
+package glm.vec._4.d;
 
 /**
  *
@@ -15,6 +15,10 @@ public class Vec4d {
 
     public double x, y, z, w;
 
+    public Vec4d() {
+        
+    }
+    
     public Vec4d(double x, double y, double z, double w) {
         this.x = x;
         this.y = y;

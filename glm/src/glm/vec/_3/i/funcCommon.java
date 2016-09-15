@@ -5,14 +5,14 @@
  */
 package glm.vec._3.i;
 
-import glm.glm;
-import glm.vec._3.bool.Vec3bool;
+import glm.Glm;
+import glm.vec._3.b.Vec3b;
 
 /**
  *
  * @author fschaefers
  */
-public abstract class funcCommon {
+abstract class funcCommon {
 
     public static final int SIZE = 3 * Integer.BYTES;
     public int x, y, z;
@@ -131,41 +131,49 @@ public abstract class funcCommon {
         return result;
     }
 
-    public Vec3i max(Vec3i y) {
-        return max(y, (Vec3i) this);
+    public Vec3i max(int i) {
+        return max(x, y, z, i, i, i, (Vec3i) this);
     }
 
-    public Vec3i max_(Vec3i y) {
-        return max((Vec3i) this, y, new Vec3i());
+    public Vec3i max(Vec3i b) {
+        return max(b, (Vec3i) this);
     }
 
-    public Vec3i max(Vec3i y, Vec3i result) {
-        return max((Vec3i) this, y, result);
+    public Vec3i max_(Vec3i b) {
+        return max((Vec3i) this, b, new Vec3i());
     }
 
-    public static Vec3i max(Vec3i x, Vec3i y, Vec3i result) {
-        result.x = Math.max(x.x, y.x);
-        result.y = Math.max(x.y, y.y);
-        result.z = Math.max(x.z, y.z);
+    public Vec3i max(Vec3i b, Vec3i result) {
+        return max((Vec3i) this, b, result);
+    }
+
+    public static Vec3i max(Vec3i a, Vec3i b, Vec3i result) {
+        return max(a.x, a.y, a.z, b.x, b.y, b.z, result);
+    }
+
+    public static Vec3i max(int aX, int aY, int aZ, int bX, int bY, int bZ, Vec3i result) {
+        result.x = Math.max(aX, bX);
+        result.y = Math.max(aY, bY);
+        result.z = Math.max(aZ, bZ);
         return result;
     }
 
-    public Vec3i min(Vec3i y) {
-        return min(y, (Vec3i) this);
+    public Vec3i min(Vec3i b) {
+        return min(b, (Vec3i) this);
     }
 
-    public Vec3i min_(Vec3i y) {
-        return min(y, new Vec3i());
+    public Vec3i min_(Vec3i b) {
+        return min(b, new Vec3i());
     }
 
-    public Vec3i min(Vec3i y, Vec3i result) {
-        return min((Vec3i) this, y, result);
+    public Vec3i min(Vec3i b, Vec3i result) {
+        return min((Vec3i) this, b, result);
     }
 
-    public static Vec3i min(Vec3i x, Vec3i y, Vec3i result) {
-        result.x = Math.min(x.x, y.x);
-        result.y = Math.min(x.y, y.y);
-        result.z = Math.min(x.z, y.z);
+    public static Vec3i min(Vec3i a, Vec3i b, Vec3i result) {
+        result.x = Math.min(a.x, b.x);
+        result.y = Math.min(a.y, b.y);
+        result.z = Math.min(a.z, b.z);
         return result;
     }
 
@@ -188,22 +196,22 @@ public abstract class funcCommon {
         return result;
     }
 
-    public Vec3i mix(Vec3i y, Vec3bool a) {
+    public Vec3i mix(Vec3i y, Vec3b a) {
         return mix(y, a, (Vec3i) this);
     }
 
-    public Vec3i mix_(Vec3i y, Vec3bool a) {
+    public Vec3i mix_(Vec3i y, Vec3b a) {
         return mix(y, a, new Vec3i());
     }
 
-    public Vec3i mix(Vec3i y, Vec3bool a, Vec3i result) {
+    public Vec3i mix(Vec3i y, Vec3b a, Vec3i result) {
         return mix((Vec3i) this, y, a, result);
     }
 
-    public static Vec3i mix(Vec3i x, Vec3i y, Vec3bool a, Vec3i result) {
-        result.x = a.x ? y.x : x.x;
-        result.y = a.y ? y.y : x.y;
-        result.z = a.z ? y.z : x.z;
+    public static Vec3i mix(Vec3i x, Vec3i y, Vec3b a, Vec3i result) {
+        result.x = a.x == 1 ? y.x : x.x;
+        result.y = a.y == 1 ? y.y : x.y;
+        result.z = a.z == 1 ? y.z : x.z;
         return result;
     }
 
@@ -256,11 +264,12 @@ public abstract class funcCommon {
     public Vec3i mod(Vec3i y, Vec3i result) {
         return mod((Vec3i) this, y, result);
     }
-
+    
+    // TODO check floor return type
     public static Vec3i mod(Vec3i x, Vec3i y, Vec3i result) {
-        result.x = x.x - y.x * glm.floor(x.x / y.x);
-        result.y = x.y - y.y * glm.floor(x.y / y.y);
-        result.z = x.z - y.z * glm.floor(x.z / y.z);
+        result.x = (int) (x.x - y.x * Glm.floor(x.x / y.x));
+        result.y = (int) (x.y - y.y * Glm.floor(x.y / y.y));
+        result.z = (int) (x.z - y.z * Glm.floor(x.z / y.z));
         return result;
     }
 
