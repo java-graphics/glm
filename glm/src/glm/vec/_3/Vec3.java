@@ -172,6 +172,11 @@ public class Vec3 extends operator {
                 .putFloat(index + 2 * Float.BYTES, z);
     }
 
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ", " + z + ")";
+    }
+
     public void print() {
         print("", System.out);
     }
