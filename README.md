@@ -45,4 +45,4 @@ Enhances:
 - support for [openvr](https://github.com/java-graphics-society/openvr) matrices, helpful to avoid all the problems regarding colum or row major order.
 
 
-Ps: most of `Mat4d` and a couple of other methods in `Glm` are quoted directly from [JOML](https://github.com/JOML-CI/JOML), by [Kai Burjack](https://github.com/httpdigest)
+Credits: most of `Mat4d` class and a couple of other methods in `Glm` are quoted directly from [JOML](https://github.com/JOML-CI/JOML), by [Kai Burjack](https://github.com/httpdigest)
