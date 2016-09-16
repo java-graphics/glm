@@ -5,7 +5,7 @@
  */
 package glm.vec._3.ui;
 
-import org.joou.UInteger;
+import joou.UInteger;
 
 /**
  *

@@ -35,10 +35,10 @@ import glm.vec._4.ub.Vec4ub;
 import glm.vec._4.ui.Vec4ui;
 import glm.vec._4.ul.Vec4ul;
 import glm.vec._4.us.Vec4us;
-import org.joou.UByte;
-import org.joou.UInteger;
-import org.joou.ULong;
-import org.joou.UShort;
+import joou.UByte;
+import joou.UInteger;
+import joou.ULong;
+import joou.UShort;
 
 /**
  * TODO frexp, ldexp, modf, roundEven, trunc
@@ -1886,20 +1886,45 @@ abstract class FuncCommon {
         return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
     }
 
+    // mix ----------------------------------------------------------------------------------------------------------
+    public static float mix(float s, float a, float b) {
+        return a + s * (b - a);
+    }
+
+    public static double mix(double s, double a, double b) {
+        return a + s * (b - a);
+    }
+
+    public static int mix(int s, int a, int b) {
+        return a + s * (b - a);
+    }
+
+    public static long mix(long s, long a, long b) {
+        return a + s * (b - a);
+    }
+
+    public static UByte mix(UByte s, UByte a, UByte b) {
+        return a.add(s.mul(b.sub(b)));
+    }
+    
+    public static UInteger clamp(UInteger s, UInteger min, UInteger max) {
+        return min(max(s, min), max);
+    }
+
+    public static ULong clamp(ULong s, ULong min, ULong max) {
+        return min(max(s, min), max);
+    }
+
+    public static UShort clamp(UShort s, UShort min, UShort max) {
+        return min(max(s, min), max);
+    }
+
     public static float mix(float x, float y, boolean a) {
         return a ? y : x;
     }
 
     public static int mix(int x, int y, boolean a) {
         return a ? y : x;
-    }
-
-    public static float mix(float x, float y, float a) {
-        return x + a * (y - x);
-    }
-
-    public static int mix(int x, int y, int a) {
-        return x + a * (y - x);
     }
 
     public static Vec4 mix_(Vec4 x, Vec4 y, float a) {

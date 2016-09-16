@@ -7,7 +7,7 @@ package glm.vec._2.ui;
 
 import dev.Vec2bool;
 import glm.Glm;
-import org.joou.UInteger;
+import joou.UInteger;
 
 /**
  *

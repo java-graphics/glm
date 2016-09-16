@@ -3,12 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package glm;
-
-import joou.UByte;
-import joou.UInteger;
-import joou.ULong;
-import joou.UShort;
+package joou;
 
 /**
  *
@@ -47,5 +42,4 @@ public class UMath {
     public static UShort min(UShort a, UShort b) {
         return a.compareTo(b) < 0 ? a : b;
     }
-
 }

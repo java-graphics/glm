@@ -5,7 +5,7 @@
  */
 package glm.vec._2.us;
 
-import org.joou.UShort;
+import joou.UShort;
 
 /**
  *

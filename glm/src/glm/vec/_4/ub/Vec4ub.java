@@ -5,7 +5,7 @@
  */
 package glm.vec._4.ub;
 
-import org.joou.UByte;
+import joou.UByte;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Vec4ub {
     public UByte x, y, z, w;
 
     public Vec4ub set(int x, int y, int z, int w) {
-        return set(UByte.valueOf(x), UByte.valueOf(y), UByte.valueOf(z), UByte.valueOf(w));
+        return set(UByte.of(x), UByte.of(y), UByte.of(z), UByte.of(w));
     }
 
     public Vec4ub set(UByte x, UByte y, UByte z, UByte w) {

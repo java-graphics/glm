@@ -5,7 +5,7 @@
  */
 package glm.vec._3.ul;
 
-import org.joou.ULong;
+import joou.ULong;
 
 /**
  *
