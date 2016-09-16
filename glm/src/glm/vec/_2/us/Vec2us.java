@@ -5,6 +5,8 @@
  */
 package glm.vec._2.us;
 
+import org.joou.UShort;
+
 /**
  *
  * @author GBarbieri
@@ -13,13 +15,13 @@ public class Vec2us {
 
     public static final int SIZE = 2 * Short.BYTES;
 
-    public short x, y;
+    public UShort x, y;
 
     public Vec2us set(int x, int y) {
-        return set((short) x, (short) y);
+        return set(UShort.valueOf(x), UShort.valueOf(y));
     }
 
-    public Vec2us set(short x, short y) {
+    public Vec2us set(UShort x, UShort y) {
         this.x = x;
         this.y = y;
         return this;

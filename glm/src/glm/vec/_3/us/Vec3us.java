@@ -5,6 +5,8 @@
  */
 package glm.vec._3.us;
 
+import org.joou.UShort;
+
 /**
  *
  * @author GBarbieri
@@ -13,13 +15,13 @@ public class Vec3us {
 
     public static final int SIZE = 3 * Short.BYTES;
 
-    public short x, y, z;
+    public UShort x, y, z;
 
     public Vec3us set(int x, int y, int z) {
-        return set((short) x, (short) y, (short) z);
+        return set(UShort.valueOf(x), UShort.valueOf(y), UShort.valueOf(z));
     }
 
-    public Vec3us set(short x, short y, short z) {
+    public Vec3us set(UShort x, UShort y, UShort z) {
         this.x = x;
         this.y = y;
         this.z = z;

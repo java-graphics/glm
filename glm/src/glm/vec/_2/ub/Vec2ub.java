@@ -5,6 +5,8 @@
  */
 package glm.vec._2.ub;
 
+import org.joou.UByte;
+
 /**
  *
  * @author elect
@@ -13,13 +15,13 @@ public class Vec2ub {
 
     public static final int SIZE = 2 * Byte.BYTES;
 
-    public byte x, y;
+    public UByte x, y;
 
     public Vec2ub set(int x, int y) {
-        return set((byte) x, (byte) y);
+        return set(UByte.valueOf(x), UByte.valueOf(y));
     }
-    
-    public Vec2ub set(byte x, byte y) {
+
+    public Vec2ub set(UByte x, UByte y) {
         this.x = x;
         this.y = y;
         return this;

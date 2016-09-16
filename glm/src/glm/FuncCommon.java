@@ -35,6 +35,10 @@ import glm.vec._4.ub.Vec4ub;
 import glm.vec._4.ui.Vec4ui;
 import glm.vec._4.ul.Vec4ul;
 import glm.vec._4.us.Vec4us;
+import org.joou.UByte;
+import org.joou.UInteger;
+import org.joou.ULong;
+import org.joou.UShort;
 
 /**
  * TODO frexp, ldexp, modf, roundEven, trunc
@@ -187,12 +191,523 @@ abstract class FuncCommon {
         return res.set(ceil(v.x), ceil(v.y), ceil(v.z), ceil(v.w));
     }
 
-    public static float clamp(float x, float minVal, float maxVal) {
-        return Math.min(Math.max(x, minVal), maxVal);
+    // clamp --------------------------------------------------------------------------------------------------------
+    public static float clamp(float s, float min, float max) {
+        return min(max(s, min), max);
     }
 
-    public static int clamp(int x, int minVal, int maxVal) {
-        return Math.min(Math.max(x, minVal), maxVal);
+    public static double clamp(double s, double min, double max) {
+        return min(max(s, min), max);
+    }
+
+    public static int clamp(int s, int min, int max) {
+        return min(max(s, min), max);
+    }
+
+    public static long clamp(long s, long min, long max) {
+        return min(max(s, min), max);
+    }
+
+    public static UByte clamp(UByte s, UByte min, UByte max) {
+        return min(max(s, min), max);
+    }
+
+    public static UInteger clamp(UInteger s, UInteger min, UInteger max) {
+        return min(max(s, min), max);
+    }
+
+    public static ULong clamp(ULong s, ULong min, ULong max) {
+        return min(max(s, min), max);
+    }
+
+    public static UShort clamp(UShort s, UShort min, UShort max) {
+        return min(max(s, min), max);
+    }
+
+    // clamp(vec2, scalar) -----------------------------------------------------
+    public static Vec2 clamp_(Vec2 v, float min, float max) {
+        return clamp(v, min, max, new Vec2());
+    }
+
+    public static Vec2 clamp(Vec2 v, float min, float max, Vec2 res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    public static Vec2b clamp_(Vec2b v, byte min, byte max) {
+        return clamp(v, min, max, new Vec2b());
+    }
+
+    public static Vec2b clamp(Vec2b v, byte min, byte max, Vec2b res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    public static Vec2d clamp_(Vec2d v, double min, double max) {
+        return clamp(v, min, max, new Vec2d());
+    }
+
+    public static Vec2d clamp(Vec2d v, double min, double max, Vec2d res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    public static Vec2i clamp_(Vec2i v, int min, int max) {
+        return clamp(v, min, max, new Vec2i());
+    }
+
+    public static Vec2i clamp(Vec2i v, int min, int max, Vec2i res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    public static Vec2l clamp_(Vec2l v, long min, long max) {
+        return clamp(v, min, max, new Vec2l());
+    }
+
+    public static Vec2l clamp(Vec2l v, long min, long max, Vec2l res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    public static Vec2s clamp_(Vec2s v, short min, short max) {
+        return clamp(v, min, max, new Vec2s());
+    }
+
+    public static Vec2s clamp(Vec2s v, short min, short max, Vec2s res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    public static Vec2ub clamp_(Vec2ub v, UByte min, UByte max) {
+        return clamp(v, min, max, new Vec2ub());
+    }
+
+    public static Vec2ub clamp(Vec2ub v, UByte min, UByte max, Vec2ub res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    public static Vec2ui clamp_(Vec2ui v, UInteger min, UInteger max) {
+        return clamp(v, min, max, new Vec2ui());
+    }
+
+    public static Vec2ui clamp(Vec2ui v, UInteger min, UInteger max, Vec2ui res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    public static Vec2ul clamp_(Vec2ul v, ULong min, ULong max) {
+        return clamp(v, min, max, new Vec2ul());
+    }
+
+    public static Vec2ul clamp(Vec2ul v, ULong min, ULong max, Vec2ul res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    public static Vec2us clamp_(Vec2us v, UShort min, UShort max) {
+        return clamp(v, min, max, new Vec2us());
+    }
+
+    public static Vec2us clamp(Vec2us v, UShort min, UShort max, Vec2us res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
+    }
+
+    // clamp(vec2, vec2) -------------------------------------------------------
+    public static Vec2 clamp_(Vec2 v, Vec2 min, Vec2 max) {
+        return clamp(v, min, max, new Vec2());
+    }
+
+    public static Vec2 clamp(Vec2 v, Vec2 min, Vec2 max, Vec2 res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    public static Vec2b clamp_(Vec2b v, Vec2b min, Vec2b max) {
+        return clamp(v, min, max, new Vec2b());
+    }
+
+    public static Vec2b clamp(Vec2b v, Vec2b min, Vec2b max, Vec2b res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    public static Vec2d clamp_(Vec2d v, Vec2d min, Vec2d max) {
+        return clamp(v, min, max, new Vec2d());
+    }
+
+    public static Vec2d clamp(Vec2d v, Vec2d min, Vec2d max, Vec2d res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    public static Vec2i clamp_(Vec2i v, Vec2i min, Vec2i max) {
+        return clamp(v, min, max, new Vec2i());
+    }
+
+    public static Vec2i clamp(Vec2i v, Vec2i min, Vec2i max, Vec2i res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    public static Vec2l clamp_(Vec2l v, Vec2l min, Vec2l max) {
+        return clamp(v, min, max, new Vec2l());
+    }
+
+    public static Vec2l clamp(Vec2l v, Vec2l min, Vec2l max, Vec2l res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    public static Vec2s clamp_(Vec2s v, Vec2s min, Vec2s max) {
+        return clamp(v, min, max, new Vec2s());
+    }
+
+    public static Vec2s clamp(Vec2s v, Vec2s min, Vec2s max, Vec2s res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    public static Vec2ub clamp_(Vec2ub v, Vec2ub min, Vec2ub max) {
+        return clamp(v, min, max, new Vec2ub());
+    }
+
+    public static Vec2ub clamp(Vec2ub v, Vec2ub min, Vec2ub max, Vec2ub res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    public static Vec2ui clamp_(Vec2ui v, Vec2ui min, Vec2ui max) {
+        return clamp(v, min, max, new Vec2ui());
+    }
+
+    public static Vec2ui clamp(Vec2ui v, Vec2ui min, Vec2ui max, Vec2ui res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    public static Vec2ul clamp_(Vec2ul v, Vec2ul min, Vec2ul max) {
+        return clamp(v, min, max, new Vec2ul());
+    }
+
+    public static Vec2ul clamp(Vec2ul v, Vec2ul min, Vec2ul max, Vec2ul res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    public static Vec2us clamp_(Vec2us v, Vec2us min, Vec2us max) {
+        return clamp(v, min, max, new Vec2us());
+    }
+
+    public static Vec2us clamp(Vec2us v, Vec2us min, Vec2us max, Vec2us res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y));
+    }
+
+    // clamp(vec3, scalar) -----------------------------------------------------
+    public static Vec3 clamp_(Vec3 v, float min, float max) {
+        return clamp(v, min, max, new Vec3());
+    }
+
+    public static Vec3 clamp(Vec3 v, float min, float max, Vec3 res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    public static Vec3b clamp_(Vec3b v, byte min, byte max) {
+        return clamp(v, min, max, new Vec3b());
+    }
+
+    public static Vec3b clamp(Vec3b v, byte min, byte max, Vec3b res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    public static Vec3d clamp_(Vec3d v, double min, double max) {
+        return clamp(v, min, max, new Vec3d());
+    }
+
+    public static Vec3d clamp(Vec3d v, double min, double max, Vec3d res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    public static Vec3i clamp_(Vec3i v, int min, int max) {
+        return clamp(v, min, max, new Vec3i());
+    }
+
+    public static Vec3i clamp(Vec3i v, int min, int max, Vec3i res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    public static Vec3l clamp_(Vec3l v, long min, long max) {
+        return clamp(v, min, max, new Vec3l());
+    }
+
+    public static Vec3l clamp(Vec3l v, long min, long max, Vec3l res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    public static Vec3s clamp_(Vec3s v, short min, short max) {
+        return clamp(v, min, max, new Vec3s());
+    }
+
+    public static Vec3s clamp(Vec3s v, short min, short max, Vec3s res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    public static Vec3ub clamp_(Vec3ub v, UByte min, UByte max) {
+        return clamp(v, min, max, new Vec3ub());
+    }
+
+    public static Vec3ub clamp(Vec3ub v, UByte min, UByte max, Vec3ub res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    public static Vec3ui clamp_(Vec3ui v, UInteger min, UInteger max) {
+        return clamp(v, min, max, new Vec3ui());
+    }
+
+    public static Vec3ui clamp(Vec3ui v, UInteger min, UInteger max, Vec3ui res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    public static Vec3ul clamp_(Vec3ul v, ULong min, ULong max) {
+        return clamp(v, min, max, new Vec3ul());
+    }
+
+    public static Vec3ul clamp(Vec3ul v, ULong min, ULong max, Vec3ul res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    public static Vec3us clamp_(Vec3us v, UShort min, UShort max) {
+        return clamp(v, min, max, new Vec3us());
+    }
+
+    public static Vec3us clamp(Vec3us v, UShort min, UShort max, Vec3us res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
+    }
+
+    // clamp(vec3, vec3) -------------------------------------------------------
+    public static Vec3 clamp_(Vec3 v, Vec3 min, Vec3 max) {
+        return clamp(v, min, max, new Vec3());
+    }
+
+    public static Vec3 clamp(Vec3 v, Vec3 min, Vec3 max, Vec3 res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    public static Vec3b clamp_(Vec3b v, Vec3b min, Vec3b max) {
+        return clamp(v, min, max, new Vec3b());
+    }
+
+    public static Vec3b clamp(Vec3b v, Vec3b min, Vec3b max, Vec3b res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    public static Vec3d clamp_(Vec3d v, Vec3d min, Vec3d max) {
+        return clamp(v, min, max, new Vec3d());
+    }
+
+    public static Vec3d clamp(Vec3d v, Vec3d min, Vec3d max, Vec3d res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    public static Vec3i clamp_(Vec3i v, Vec3i min, Vec3i max) {
+        return clamp(v, min, max, new Vec3i());
+    }
+
+    public static Vec3i clamp(Vec3i v, Vec3i min, Vec3i max, Vec3i res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    public static Vec3l clamp_(Vec3l v, Vec3l min, Vec3l max) {
+        return clamp(v, min, max, new Vec3l());
+    }
+
+    public static Vec3l clamp(Vec3l v, Vec3l min, Vec3l max, Vec3l res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    public static Vec3s clamp_(Vec3s v, Vec3s min, Vec3s max) {
+        return clamp(v, min, max, new Vec3s());
+    }
+
+    public static Vec3s clamp(Vec3s v, Vec3s min, Vec3s max, Vec3s res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    public static Vec3ub clamp_(Vec3ub v, Vec3ub min, Vec3ub max) {
+        return clamp(v, min, max, new Vec3ub());
+    }
+
+    public static Vec3ub clamp(Vec3ub v, Vec3ub min, Vec3ub max, Vec3ub res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    public static Vec3ui clamp_(Vec3ui v, Vec3ui min, Vec3ui max) {
+        return clamp(v, min, max, new Vec3ui());
+    }
+
+    public static Vec3ui clamp(Vec3ui v, Vec3ui min, Vec3ui max, Vec3ui res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    public static Vec3ul clamp_(Vec3ul v, Vec3ul min, Vec3ul max) {
+        return clamp(v, min, max, new Vec3ul());
+    }
+
+    public static Vec3ul clamp(Vec3ul v, Vec3ul min, Vec3ul max, Vec3ul res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    public static Vec3us clamp_(Vec3us v, Vec3us min, Vec3us max) {
+        return clamp(v, min, max, new Vec3us());
+    }
+
+    public static Vec3us clamp(Vec3us v, Vec3us min, Vec3us max, Vec3us res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z));
+    }
+
+    // max(vec4, scalar) -------------------------------------------------------
+    public static Vec4 clamp_(Vec4 v, float min, float max) {
+        return clamp(v, min, max, new Vec4());
+    }
+
+    public static Vec4 clamp(Vec4 v, float min, float max, Vec4 res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    public static Vec4b clamp_(Vec4b v, byte min, byte max) {
+        return clamp(v, min, max, new Vec4b());
+    }
+
+    public static Vec4b clamp(Vec4b v, byte min, byte max, Vec4b res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    public static Vec4d clamp_(Vec4d v, double min, double max) {
+        return clamp(v, min, max, new Vec4d());
+    }
+
+    public static Vec4d clamp(Vec4d v, double min, double max, Vec4d res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    public static Vec4i clamp_(Vec4i v, int min, int max) {
+        return clamp(v, min, max, new Vec4i());
+    }
+
+    public static Vec4i clamp(Vec4i v, int min, int max, Vec4i res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    public static Vec4l clamp_(Vec4l v, long min, long max) {
+        return clamp(v, min, max, new Vec4l());
+    }
+
+    public static Vec4l clamp(Vec4l v, long min, long max, Vec4l res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    public static Vec4s clamp_(Vec4s v, short min, short max) {
+        return clamp(v, min, max, new Vec4s());
+    }
+
+    public static Vec4s clamp(Vec4s v, short min, short max, Vec4s res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    public static Vec4ub clamp_(Vec4ub v, UByte min, UByte max) {
+        return clamp(v, min, max, new Vec4ub());
+    }
+
+    public static Vec4ub clamp(Vec4ub v, UByte min, UByte max, Vec4ub res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    public static Vec4ui clamp_(Vec4ui v, UInteger min, UInteger max) {
+        return clamp(v, min, max, new Vec4ui());
+    }
+
+    public static Vec4ui clamp(Vec4ui v, UInteger min, UInteger max, Vec4ui res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    public static Vec4ul clamp_(Vec4ul v, ULong min, ULong max) {
+        return clamp(v, min, max, new Vec4ul());
+    }
+
+    public static Vec4ul clamp(Vec4ul v, ULong min, ULong max, Vec4ul res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    public static Vec4us clamp_(Vec4us v, UShort min, UShort max) {
+        return clamp(v, min, max, new Vec4us());
+    }
+
+    public static Vec4us clamp(Vec4us v, UShort min, UShort max, Vec4us res) {
+        return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
+    }
+
+    // clamp(vec4, vec4) -------------------------------------------------------
+    public static Vec4 clamp_(Vec4 v, Vec4 min, Vec4 max) {
+        return clamp(v, min, max, new Vec4());
+    }
+
+    public static Vec4 clamp(Vec4 v, Vec4 min, Vec4 max, Vec4 res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
+    }
+
+    public static Vec4b clamp_(Vec4b v, Vec4b min, Vec4b max) {
+        return clamp(v, min, max, new Vec4b());
+    }
+
+    public static Vec4b clamp(Vec4b v, Vec4b min, Vec4b max, Vec4b res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
+    }
+
+    public static Vec4d clamp_(Vec4d v, Vec4d min, Vec4d max) {
+        return clamp(v, min, max, new Vec4d());
+    }
+
+    public static Vec4d clamp(Vec4d v, Vec4d min, Vec4d max, Vec4d res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
+    }
+
+    public static Vec4i clamp_(Vec4i v, Vec4i min, Vec4i max) {
+        return clamp(v, min, max, new Vec4i());
+    }
+
+    public static Vec4i clamp(Vec4i v, Vec4i min, Vec4i max, Vec4i res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
+    }
+
+    public static Vec4l clamp_(Vec4l v, Vec4l min, Vec4l max) {
+        return clamp(v, min, max, new Vec4l());
+    }
+
+    public static Vec4l clamp(Vec4l v, Vec4l mix, Vec4l max, Vec4l res) {
+        return res.set(clamp(v.x, mix.x, max.x), clamp(v.y, mix.y, max.y), clamp(v.z, mix.z, max.z), clamp(v.w, mix.w, max.w));
+    }
+
+    public static Vec4s clamp_(Vec4s v, Vec4s min, Vec4s max) {
+        return clamp(v, min, max, new Vec4s());
+    }
+
+    public static Vec4s clamp(Vec4s v, Vec4s min, Vec4s max, Vec4s res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
+    }
+
+    public static Vec4ub clamp_(Vec4ub v, Vec4ub min, Vec4ub max) {
+        return clamp(v, min, max, new Vec4ub());
+    }
+
+    public static Vec4ub clamp(Vec4ub v, Vec4ub min, Vec4ub max, Vec4ub res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
+    }
+
+    public static Vec4ui clamp_(Vec4ui v, Vec4ui min, Vec4ui max) {
+        return clamp(v, min, max, new Vec4ui());
+    }
+
+    public static Vec4ui clamp(Vec4ui v, Vec4ui min, Vec4ui max, Vec4ui res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
+    }
+
+    public static Vec4ul clamp_(Vec4ul v, Vec4ul min, Vec4ul max) {
+        return clamp(v, min, max, new Vec4ul());
+    }
+
+    public static Vec4ul clamp(Vec4ul v, Vec4ul min, Vec4ul max, Vec4ul res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
+    }
+
+    public static Vec4us clamp_(Vec4us v, Vec4us min, Vec4us max) {
+        return clamp(v, min, max, new Vec4us());
+    }
+
+    public static Vec4us clamp(Vec4us v, Vec4us min, Vec4us max, Vec4us res) {
+        return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
     }
 
     public static int floatToIntBits(float x) {
@@ -350,6 +865,22 @@ abstract class FuncCommon {
         return Math.max(sA, sB);
     }
 
+    public static UByte max(UByte sA, UByte sB) {
+        return UMath.max(sA, sB);
+    }
+
+    public static UInteger max(UInteger sA, UInteger sB) {
+        return UMath.max(sA, sB);
+    }
+
+    public static ULong max(ULong sA, ULong sB) {
+        return UMath.max(sA, sB);
+    }
+
+    public static UShort max(UShort sA, UShort sB) {
+        return UMath.max(sA, sB);
+    }
+
     // max(vec2, scalar) -------------------------------------------------------
     public static Vec2 max_(Vec2 v, float s) {
         return max(v, s, new Vec2());
@@ -399,35 +930,35 @@ abstract class FuncCommon {
         return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2ub max_(Vec2ub v, byte s) {
+    public static Vec2ub max_(Vec2ub v, UByte s) {
         return max(v, s, new Vec2ub());
     }
 
-    public static Vec2ub max(Vec2ub v, byte s, Vec2ub res) {
+    public static Vec2ub max(Vec2ub v, UByte s, Vec2ub res) {
         return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2ui max_(Vec2ui v, int s) {
+    public static Vec2ui max_(Vec2ui v, UInteger s) {
         return max(v, s, new Vec2ui());
     }
 
-    public static Vec2ui max(Vec2ui v, int s, Vec2ui res) {
+    public static Vec2ui max(Vec2ui v, UInteger s, Vec2ui res) {
         return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2ul max_(Vec2ul v, long s) {
+    public static Vec2ul max_(Vec2ul v, ULong s) {
         return max(v, s, new Vec2ul());
     }
 
-    public static Vec2ul max(Vec2ul v, long s, Vec2ul res) {
+    public static Vec2ul max(Vec2ul v, ULong s, Vec2ul res) {
         return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2us max_(Vec2us v, short s) {
+    public static Vec2us max_(Vec2us v, UShort s) {
         return max(v, s, new Vec2us());
     }
 
-    public static Vec2us max(Vec2us v, short s, Vec2us res) {
+    public static Vec2us max(Vec2us v, UShort s, Vec2us res) {
         return res.set(max(v.x, s), max(v.y, s));
     }
 
@@ -561,35 +1092,35 @@ abstract class FuncCommon {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3ub max_(Vec3ub v, byte s) {
+    public static Vec3ub max_(Vec3ub v, UByte s) {
         return max(v, s, new Vec3ub());
     }
 
-    public static Vec3ub max(Vec3ub v, byte s, Vec3ub res) {
+    public static Vec3ub max(Vec3ub v, UByte s, Vec3ub res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3ui max_(Vec3ui v, int s) {
+    public static Vec3ui max_(Vec3ui v, UInteger s) {
         return max(v, s, new Vec3ui());
     }
 
-    public static Vec3ui max(Vec3ui v, int s, Vec3ui res) {
+    public static Vec3ui max(Vec3ui v, UInteger s, Vec3ui res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3ul max_(Vec3ul v, long s) {
+    public static Vec3ul max_(Vec3ul v, ULong s) {
         return max(v, s, new Vec3ul());
     }
 
-    public static Vec3ul max(Vec3ul v, long s, Vec3ul res) {
+    public static Vec3ul max(Vec3ul v, ULong s, Vec3ul res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3us max_(Vec3us v, short s) {
+    public static Vec3us max_(Vec3us v, UShort s) {
         return max(v, s, new Vec3us());
     }
 
-    public static Vec3us max(Vec3us v, short s, Vec3us res) {
+    public static Vec3us max(Vec3us v, UShort s, Vec3us res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
@@ -723,35 +1254,35 @@ abstract class FuncCommon {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
     }
 
-    public static Vec4ub max_(Vec4ub v, byte s) {
+    public static Vec4ub max_(Vec4ub v, UByte s) {
         return max(v, s, new Vec4ub());
     }
 
-    public static Vec4ub max(Vec4ub v, byte s, Vec4ub res) {
+    public static Vec4ub max(Vec4ub v, UByte s, Vec4ub res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
     }
 
-    public static Vec4ui max_(Vec4ui v, int s) {
+    public static Vec4ui max_(Vec4ui v, UInteger s) {
         return max(v, s, new Vec4ui());
     }
 
-    public static Vec4ui max(Vec4ui v, int s, Vec4ui res) {
+    public static Vec4ui max(Vec4ui v, UInteger s, Vec4ui res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
     }
 
-    public static Vec4ul max_(Vec4ul v, long s) {
+    public static Vec4ul max_(Vec4ul v, ULong s) {
         return max(v, s, new Vec4ul());
     }
 
-    public static Vec4ul max(Vec4ul v, long s, Vec4ul res) {
+    public static Vec4ul max(Vec4ul v, ULong s, Vec4ul res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
     }
 
-    public static Vec4us max_(Vec4us v, short s) {
+    public static Vec4us max_(Vec4us v, UShort s) {
         return max(v, s, new Vec4us());
     }
 
-    public static Vec4us max(Vec4us v, short s, Vec4us res) {
+    public static Vec4us max(Vec4us v, UShort s, Vec4us res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
     }
 
@@ -853,6 +1384,22 @@ abstract class FuncCommon {
         return Math.min(sA, sB);
     }
 
+    public static UByte min(UByte sA, UByte sB) {
+        return UMath.min(sA, sB);
+    }
+
+    public static UInteger min(UInteger sA, UInteger sB) {
+        return UMath.min(sA, sB);
+    }
+
+    public static ULong min(ULong sA, ULong sB) {
+        return UMath.min(sA, sB);
+    }
+
+    public static UShort min(UShort sA, UShort sB) {
+        return UMath.min(sA, sB);
+    }
+
     // min(vec2, scalar) -------------------------------------------------------
     public static Vec2 min_(Vec2 v, float s) {
         return min(v, s, new Vec2());
@@ -902,35 +1449,35 @@ abstract class FuncCommon {
         return res.set(min(v.x, s), min(v.y, s));
     }
 
-    public static Vec2ub min_(Vec2ub v, byte s) {
+    public static Vec2ub min_(Vec2ub v, UByte s) {
         return min(v, s, new Vec2ub());
     }
 
-    public static Vec2ub min(Vec2ub v, byte s, Vec2ub res) {
+    public static Vec2ub min(Vec2ub v, UByte s, Vec2ub res) {
         return res.set(min(v.x, s), min(v.y, s));
     }
 
-    public static Vec2ui min_(Vec2ui v, int s) {
+    public static Vec2ui min_(Vec2ui v, UInteger s) {
         return min(v, s, new Vec2ui());
     }
 
-    public static Vec2ui min(Vec2ui v, int s, Vec2ui res) {
+    public static Vec2ui min(Vec2ui v, UInteger s, Vec2ui res) {
         return res.set(min(v.x, s), min(v.y, s));
     }
 
-    public static Vec2ul min_(Vec2ul v, long s) {
+    public static Vec2ul min_(Vec2ul v, ULong s) {
         return min(v, s, new Vec2ul());
     }
 
-    public static Vec2ul min(Vec2ul v, long s, Vec2ul res) {
+    public static Vec2ul min(Vec2ul v, ULong s, Vec2ul res) {
         return res.set(min(v.x, s), min(v.y, s));
     }
 
-    public static Vec2us min_(Vec2us v, short s) {
+    public static Vec2us min_(Vec2us v, UShort s) {
         return min(v, s, new Vec2us());
     }
 
-    public static Vec2us min(Vec2us v, short s, Vec2us res) {
+    public static Vec2us min(Vec2us v, UShort s, Vec2us res) {
         return res.set(min(v.x, s), min(v.y, s));
     }
 
@@ -1064,35 +1611,35 @@ abstract class FuncCommon {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
     }
 
-    public static Vec3ub min_(Vec3ub v, byte s) {
+    public static Vec3ub min_(Vec3ub v, UByte s) {
         return min(v, s, new Vec3ub());
     }
 
-    public static Vec3ub min(Vec3ub v, byte s, Vec3ub res) {
+    public static Vec3ub min(Vec3ub v, UByte s, Vec3ub res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
     }
 
-    public static Vec3ui min_(Vec3ui v, int s) {
+    public static Vec3ui min_(Vec3ui v, UInteger s) {
         return min(v, s, new Vec3ui());
     }
 
-    public static Vec3ui min(Vec3ui v, int s, Vec3ui res) {
+    public static Vec3ui min(Vec3ui v, UInteger s, Vec3ui res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
     }
 
-    public static Vec3ul min_(Vec3ul v, long s) {
+    public static Vec3ul min_(Vec3ul v, ULong s) {
         return min(v, s, new Vec3ul());
     }
 
-    public static Vec3ul min(Vec3ul v, long s, Vec3ul res) {
+    public static Vec3ul min(Vec3ul v, ULong s, Vec3ul res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
     }
 
-    public static Vec3us min_(Vec3us v, short s) {
+    public static Vec3us min_(Vec3us v, UShort s) {
         return min(v, s, new Vec3us());
     }
 
-    public static Vec3us min(Vec3us v, short s, Vec3us res) {
+    public static Vec3us min(Vec3us v, UShort s, Vec3us res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
     }
 
@@ -1226,35 +1773,35 @@ abstract class FuncCommon {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
     }
 
-    public static Vec4ub min_(Vec4ub v, byte s) {
+    public static Vec4ub min_(Vec4ub v, UByte s) {
         return min(v, s, new Vec4ub());
     }
 
-    public static Vec4ub min(Vec4ub v, byte s, Vec4ub res) {
+    public static Vec4ub min(Vec4ub v, UByte s, Vec4ub res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
     }
 
-    public static Vec4ui min_(Vec4ui v, int s) {
+    public static Vec4ui min_(Vec4ui v, UInteger s) {
         return min(v, s, new Vec4ui());
     }
 
-    public static Vec4ui min(Vec4ui v, int s, Vec4ui res) {
+    public static Vec4ui min(Vec4ui v, UInteger s, Vec4ui res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
     }
 
-    public static Vec4ul min_(Vec4ul v, long s) {
+    public static Vec4ul min_(Vec4ul v, ULong s) {
         return min(v, s, new Vec4ul());
     }
 
-    public static Vec4ul min(Vec4ul v, long s, Vec4ul res) {
+    public static Vec4ul min(Vec4ul v, ULong s, Vec4ul res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
     }
 
-    public static Vec4us min_(Vec4us v, short s) {
+    public static Vec4us min_(Vec4us v, UShort s) {
         return min(v, s, new Vec4us());
     }
 
-    public static Vec4us min(Vec4us v, short s, Vec4us res) {
+    public static Vec4us min(Vec4us v, UShort s, Vec4us res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
     }
 

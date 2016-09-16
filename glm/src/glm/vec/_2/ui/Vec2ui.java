@@ -11,6 +11,7 @@ import glm.vec._4.Vec4;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
+import org.joou.UInteger;
 
 /**
  *
@@ -56,6 +57,12 @@ public class Vec2ui extends operator {
     public Vec2ui set(int i) {
         x = i;
         y = i;
+        return this;
+    }
+
+    public Vec2ui set(UInteger x, UInteger y) {
+        this.x = x;
+        this.y = y;
         return this;
     }
 

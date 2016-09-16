@@ -5,6 +5,8 @@
  */
 package glm.vec._2.ul;
 
+import org.joou.ULong;
+
 /**
  *
  * @author GBarbieri
@@ -13,9 +15,9 @@ public class Vec2ul {
 
     public static final int SIZE = 2 * Long.BYTES;
 
-    public long x, y;
+    public ULong x, y;
 
-    public Vec2ul set(long x, long y) {
+    public Vec2ul set(ULong x, ULong y) {
         this.x = x;
         this.y = y;
         return this;

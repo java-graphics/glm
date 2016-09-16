@@ -7,6 +7,7 @@ package glm.vec._2.ui;
 
 import dev.Vec2bool;
 import glm.Glm;
+import org.joou.UInteger;
 
 /**
  *
@@ -14,7 +15,7 @@ import glm.Glm;
  */
 abstract class funcCommon {
 
-    public int x, y;
+    public UInteger x, y;
     public static final int SIZE = 2 * Integer.BYTES;
 
     public Vec2ui abs() {

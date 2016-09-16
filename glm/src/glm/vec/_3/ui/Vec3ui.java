@@ -5,6 +5,8 @@
  */
 package glm.vec._3.ui;
 
+import org.joou.UInteger;
+
 /**
  *
  * @author elect
@@ -13,9 +15,9 @@ public class Vec3ui {
     
     public static final int SIZE = 3 * Integer.BYTES;
 
-    public int x, y, z;
+    public UInteger x, y, z;
 
-    public Vec3ui set(int x, int y, int z) {
+    public Vec3ui set(UInteger x, UInteger y, UInteger z) {
         this.x = x;
         this.y = y;
         this.z = z;

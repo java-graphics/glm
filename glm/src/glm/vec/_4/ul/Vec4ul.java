@@ -5,6 +5,8 @@
  */
 package glm.vec._4.ul;
 
+import org.joou.ULong;
+
 /**
  *
  * @author GBarbieri
@@ -13,9 +15,9 @@ public class Vec4ul {
 
     public static final int SIZE = 4 * Long.BYTES;
 
-    public long x, y, z, w;
+    public ULong x, y, z, w;
 
-    public Vec4ul set(long x, long y, long z, long w) {
+    public Vec4ul set(ULong x, ULong y, ULong z, ULong w) {
         this.x = x;
         this.y = y;
         this.z = z;

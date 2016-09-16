@@ -12,6 +12,7 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
+import org.joou.UInteger;
 
 /**
  *
@@ -21,7 +22,7 @@ public class Vec4ui {
 
     public final int SIZE = 4 * Integer.BYTES;
 
-    public int x, y, z, w;
+    public UInteger x, y, z, w;
 
     public Vec4ui() {
         this(0);
@@ -164,10 +165,10 @@ public class Vec4ui {
 //        return set(v.x, v.y, f0, f1);
 //    }
     public Vec4ui set(long x, long y, long z, long w) {
-        return set((int) x, (int) y, (int) z, (int) w);
+//        return set((int) x, (int) y, (int) z, (int) w);
     }
 
-    public Vec4ui set(int x, int y, int z, int w) {
+    public Vec4ui set(UInteger x, UInteger y, UInteger z, UInteger w) {
         this.x = x;
         this.y = y;
         this.z = z;
