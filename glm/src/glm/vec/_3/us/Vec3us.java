@@ -3,27 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package glm.vec._4.ub;
+package glm.vec._3.us;
 
 /**
  *
  * @author GBarbieri
  */
-public class Vec4ub {
+public class Vec3us {
 
-    public static final int SIZE = 4 * Byte.BYTES;
+    public static final int SIZE = 3 * Short.BYTES;
 
-    public byte x, y, z, w;
+    public short x, y, z;
 
-    public Vec4ub set(int x, int y, int z, int w) {
-        return set((byte) x, (byte) y, (byte) z, (byte) w);
+    public Vec3us set(int x, int y, int z) {
+        return set((short) x, (short) y, (short) z);
     }
 
-    public Vec4ub set(byte x, byte y, byte z, byte w) {
+    public Vec3us set(short x, short y, short z) {
         this.x = x;
         this.y = y;
         this.z = z;
-        this.w = w;
         return this;
     }
 }

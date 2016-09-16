@@ -11,4 +11,14 @@ package glm.vec._3.ui;
  */
 public class Vec3ui {
     
+    public static final int SIZE = 3 * Integer.BYTES;
+
+    public int x, y, z;
+
+    public Vec3ui set(int x, int y, int z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        return this;
+    }
 }

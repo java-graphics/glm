@@ -15,6 +15,18 @@ public class Vec4b {
 
     public byte x, y, z, w;
 
+    public Vec4b set(int x, int y, int z, int w) {
+        return set((byte) x, (byte) y, (byte) z, (byte) w);
+    }
+
+    public Vec4b set(byte x, byte y, byte z, byte w) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
+        return this;
+    }
+
     public boolean all() {
         return x == 1 && y == 1 && z == 1 && w == 1;
     }

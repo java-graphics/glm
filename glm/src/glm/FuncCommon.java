@@ -7,13 +7,34 @@ package glm;
 
 import glm.vec._3.d.Vec3d;
 import glm.vec._2.Vec2;
+import glm.vec._2.b.Vec2b;
 import glm.vec._2.d.Vec2d;
 import glm.vec._2.i.Vec2i;
+import glm.vec._2.l.Vec2l;
+import glm.vec._2.s.Vec2s;
+import glm.vec._2.ub.Vec2ub;
+import glm.vec._2.ui.Vec2ui;
+import glm.vec._2.ul.Vec2ul;
+import glm.vec._2.us.Vec2us;
 import glm.vec._3.Vec3;
+import glm.vec._3.b.Vec3b;
 import glm.vec._3.i.Vec3i;
+import glm.vec._3.l.Vec3l;
+import glm.vec._3.s.Vec3s;
+import glm.vec._3.ub.Vec3ub;
+import glm.vec._3.ui.Vec3ui;
+import glm.vec._3.ul.Vec3ul;
+import glm.vec._3.us.Vec3us;
 import glm.vec._4.Vec4;
+import glm.vec._4.b.Vec4b;
 import glm.vec._4.d.Vec4d;
 import glm.vec._4.i.Vec4i;
+import glm.vec._4.l.Vec4l;
+import glm.vec._4.s.Vec4s;
+import glm.vec._4.ub.Vec4ub;
+import glm.vec._4.ui.Vec4ui;
+import glm.vec._4.ul.Vec4ul;
+import glm.vec._4.us.Vec4us;
 
 /**
  * TODO frexp, ldexp, modf, roundEven, trunc
@@ -24,17 +45,17 @@ abstract class FuncCommon {
 
     public static int MAX_ULPS = 2;
 
-    // abs ---------------------------------------------------------------------
-    public static float abs(float f) {
-        return Math.abs(f);
+    // abs ----------------------------------------------------------------------------------------------------------
+    public static float abs(float s) {
+        return Math.abs(s);
     }
 
-    public static double abs(double d) {
-        return Math.abs(d);
+    public static double abs(double s) {
+        return Math.abs(s);
     }
 
-    public static int abs(int i) {
-        return Math.abs(i);
+    public static int abs(int s) {
+        return Math.abs(s);
     }
 
     public static Vec2 abs_(Vec2 v) {
@@ -109,13 +130,13 @@ abstract class FuncCommon {
         return res.set(abs(v.x), abs(v.y), abs(v.z), abs(v.w));
     }
 
-    // ceil --------------------------------------------------------------------
-    public static float ceil(float f) {
-        return (float) Math.ceil(f);
+    // ceil ---------------------------------------------------------------------------------------------------------
+    public static float ceil(float s) {
+        return (float) Math.ceil(s);
     }
 
-    public static double ceil(double d) {
-        return Math.ceil(d);
+    public static double ceil(double s) {
+        return Math.ceil(s);
     }
 
     public static Vec2 ceil_(Vec2 v) {
@@ -178,13 +199,13 @@ abstract class FuncCommon {
         return Float.floatToIntBits(x);
     }
 
-    // floor -------------------------------------------------------------------
-    public static float floor(float f) {
-        return (float) Math.floor(f);
+    // floor --------------------------------------------------------------------------------------------------------
+    public static float floor(float s) {
+        return (float) Math.floor(s);
     }
 
-    public static double floor(double d) {
-        return Math.floor(d);
+    public static double floor(double s) {
+        return Math.floor(s);
     }
 
     public static Vec2 floor_(Vec2 v) {
@@ -243,13 +264,13 @@ abstract class FuncCommon {
         return a * b + c;
     }
 
-    // fract -------------------------------------------------------------------
-    public static float fract(float f) {
-        return f - floor(f);
+    // fract --------------------------------------------------------------------------------------------------------
+    public static float fract(float s) {
+        return s - floor(s);
     }
 
-    public static double fract(double d) {
-        return d - floor(d);
+    public static double fract(double s) {
+        return s - floor(s);
     }
 
     public static Vec2 fract_(Vec2 v) {
@@ -312,318 +333,1010 @@ abstract class FuncCommon {
         return Float.isNaN(f);
     }
 
-    // max ---------------------------------------------------------------------
-    public static float max(float x, float y) {
-        return Math.max(x, y);
+    // max ----------------------------------------------------------------------------------------------------------
+    public static float max(float sA, float sB) {
+        return Math.max(sA, sB);
     }
 
-    public static double max(double x, double y) {
-        return Math.max(x, y);
+    public static double max(double sA, double sB) {
+        return Math.max(sA, sB);
     }
 
-    public static int max(int x, int y) {
-        return Math.max(x, y);
+    public static int max(int sA, int sB) {
+        return Math.max(sA, sB);
     }
 
-    public static Vec2 max_(Vec2 v, float f) {
-        return max(v, f, new Vec2());
+    public static long max(long sA, long sB) {
+        return Math.max(sA, sB);
     }
 
-    public static Vec2 max(Vec2 v, float f, Vec2 res) {
-        return res.set(max(v.x, f), max(v.y, f));
+    // max(vec2, scalar) -------------------------------------------------------
+    public static Vec2 max_(Vec2 v, float s) {
+        return max(v, s, new Vec2());
     }
 
-    public static Vec2d max_(Vec2d v, double d) {
-        return max(v, d, new Vec2d());
+    public static Vec2 max(Vec2 v, float s, Vec2 res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2d max(Vec2d v, double d, Vec2d res) {
-        return res.set(max(v.x, d), max(v.y, d));
+    public static Vec2b max_(Vec2b v, byte s) {
+        return max(v, s, new Vec2b());
     }
 
-    public static Vec2i max_(Vec2i v, int i) {
-        return max(v, i, new Vec2i());
+    public static Vec2b max(Vec2b v, byte s, Vec2b res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2i max(Vec2i v, int i, Vec2i res) {
-        return res.set(max(v.x, i), max(v.y, i));
+    public static Vec2d max_(Vec2d v, double s) {
+        return max(v, s, new Vec2d());
     }
 
-    public static Vec2 max_(Vec2 a, Vec2 b) {
-        return max(a, b, new Vec2());
+    public static Vec2d max(Vec2d v, double s, Vec2d res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2 max(Vec2 a, Vec2 b, Vec2 res) {
-        return res.set(max(a.x, b.x), max(a.y, b.y));
+    public static Vec2i max_(Vec2i v, int s) {
+        return max(v, s, new Vec2i());
     }
 
-    public static Vec2d max_(Vec2d a, Vec2d b) {
-        return max(a, b, new Vec2d());
+    public static Vec2i max(Vec2i v, int s, Vec2i res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2d max(Vec2d a, Vec2d b, Vec2d res) {
-        return res.set(max(a.x, b.x), max(a.y, b.y));
+    public static Vec2l max_(Vec2l v, long s) {
+        return max(v, s, new Vec2l());
     }
 
-    public static Vec2i max_(Vec2i a, Vec2i b) {
-        return max(a, b, new Vec2i());
+    public static Vec2l max(Vec2l v, long s, Vec2l res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2i max(Vec2i a, Vec2i b, Vec2i res) {
-        return res.set(max(a.x, b.x), max(a.y, b.y));
+    public static Vec2s max_(Vec2s v, short s) {
+        return max(v, s, new Vec2s());
     }
 
-    public static Vec3 max_(Vec3 v, float f) {
-        return max(v, f, new Vec3());
+    public static Vec2s max(Vec2s v, short s, Vec2s res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec3 max(Vec3 v, float f, Vec3 res) {
-        return res.set(max(v.x, f), max(v.y, f), max(v.z, f));
+    public static Vec2ub max_(Vec2ub v, byte s) {
+        return max(v, s, new Vec2ub());
     }
 
-    public static Vec3d max_(Vec3d v, double d) {
-        return max(v, d, new Vec3d());
+    public static Vec2ub max(Vec2ub v, byte s, Vec2ub res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec3d max(Vec3d v, double d, Vec3d res) {
-        return res.set(max(v.x, d), max(v.y, d), max(v.z, d));
+    public static Vec2ui max_(Vec2ui v, int s) {
+        return max(v, s, new Vec2ui());
     }
 
-    public static Vec3i max_(Vec3i v, int i) {
-        return max(v, i, new Vec3i());
+    public static Vec2ui max(Vec2ui v, int s, Vec2ui res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec3i max(Vec3i v, int i, Vec3i res) {
-        return res.set(max(v.x, i), max(v.y, i), max(v.z, i));
+    public static Vec2ul max_(Vec2ul v, long s) {
+        return max(v, s, new Vec2ul());
     }
 
-    public static Vec3 max_(Vec3 a, Vec3 b) {
-        return max(a, b, new Vec3());
+    public static Vec2ul max(Vec2ul v, long s, Vec2ul res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec3 max(Vec3 a, Vec3 b, Vec3 res) {
-        return res.set(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z));
+    public static Vec2us max_(Vec2us v, short s) {
+        return max(v, s, new Vec2us());
     }
 
-    public static Vec3d max_(Vec3d a, Vec3d b) {
-        return max(a, b, new Vec3d());
+    public static Vec2us max(Vec2us v, short s, Vec2us res) {
+        return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec3d max(Vec3d a, Vec3d b, Vec3d res) {
-        return res.set(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z));
+    // max(vec2, vec2) ---------------------------------------------------------
+    public static Vec2 max_(Vec2 vA, Vec2 vB) {
+        return max(vA, vB, new Vec2());
     }
 
-    public static Vec3i max_(Vec3i a, Vec3i b) {
-        return max(a, b, new Vec3i());
+    public static Vec2 max(Vec2 vA, Vec2 vB, Vec2 res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y));
     }
 
-    public static Vec3i max(Vec3i a, Vec3i b, Vec3i res) {
-        return res.set(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z));
+    public static Vec2b max_(Vec2b vA, Vec2b vB) {
+        return max(vA, vB, new Vec2b());
     }
 
-    public static Vec4 max_(Vec4 v, float f) {
-        return max(v, f, new Vec4());
+    public static Vec2b max(Vec2b va, Vec2b vB, Vec2b res) {
+        return res.set(max(va.x, vB.x), max(va.y, vB.y));
     }
 
-    public static Vec4 max(Vec4 v, float f, Vec4 res) {
-        return res.set(max(v.x, f), max(v.y, f), max(v.z, f), max(v.w, f));
+    public static Vec2d max_(Vec2d vA, Vec2d vB) {
+        return max(vA, vB, new Vec2d());
     }
 
-    public static Vec4d max_(Vec4d v, double d) {
-        return max(v, d, new Vec4d());
+    public static Vec2d max(Vec2d vA, Vec2d vB, Vec2d res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y));
     }
 
-    public static Vec4d max(Vec4d v, double d, Vec4d res) {
-        return res.set(max(v.x, d), max(v.y, d), max(v.z, d), max(v.w, d));
+    public static Vec2i max_(Vec2i vA, Vec2i vB) {
+        return max(vA, vB, new Vec2i());
     }
 
-    public static Vec4i max_(Vec4i v, int i) {
-        return max(v, i, new Vec4i());
+    public static Vec2i max(Vec2i vA, Vec2i vB, Vec2i res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y));
     }
 
-    public static Vec4i max(Vec4i v, int i, Vec4i res) {
-        return res.set(max(v.x, i), max(v.y, i), max(v.z, i), max(v.w, i));
+    public static Vec2l max_(Vec2l vA, Vec2l vB) {
+        return max(vA, vB, new Vec2l());
     }
 
-    public static Vec4 max_(Vec4 a, Vec4 b) {
-        return max(a, b, new Vec4());
+    public static Vec2l max(Vec2l vA, Vec2l vB, Vec2l res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y));
     }
 
-    public static Vec4 max(Vec4 a, Vec4 b, Vec4 res) {
-        return res.set(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z), max(a.w, b.w));
+    public static Vec2s max_(Vec2s vA, Vec2s vB) {
+        return max(vA, vB, new Vec2s());
     }
 
-    public static Vec4d max_(Vec4d a, Vec4d b) {
-        return max(a, b, new Vec4d());
+    public static Vec2s max(Vec2s vA, Vec2s vB, Vec2s res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y));
     }
 
-    public static Vec4d max(Vec4d a, Vec4d b, Vec4d res) {
-        return res.set(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z), max(a.w, b.w));
+    public static Vec2ub max_(Vec2ub vA, Vec2ub vB) {
+        return max(vA, vB, new Vec2ub());
     }
 
-    public static Vec4i max_(Vec4i a, Vec4i b) {
-        return max(a, b, new Vec4i());
+    public static Vec2ub max(Vec2ub vA, Vec2ub vB, Vec2ub res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y));
     }
 
-    public static Vec4i max(Vec4i a, Vec4i b, Vec4i res) {
-        return res.set(max(a.x, b.x), max(a.y, b.y), max(a.z, b.z), max(a.w, b.w));
+    public static Vec2ui max_(Vec2ui vA, Vec2ui vB) {
+        return max(vA, vB, new Vec2ui());
     }
 
-    // min ---------------------------------------------------------------------
-    public static float min(float x, float y) {
-        return Math.min(x, y);
+    public static Vec2ui max(Vec2ui vA, Vec2ui vB, Vec2ui res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y));
     }
 
-    public static double min(double x, double y) {
-        return Math.min(x, y);
+    public static Vec2ul max_(Vec2ul vA, Vec2ul vB) {
+        return max(vA, vB, new Vec2ul());
     }
 
-    public static int min(int x, int y) {
-        return Math.min(x, y);
+    public static Vec2ul max(Vec2ul vA, Vec2ul vB, Vec2ul res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y));
     }
 
-    public static Vec2 min_(Vec2 v, float f) {
-        return min(v, f, new Vec2());
+    public static Vec2us max_(Vec2us vA, Vec2us vB) {
+        return max(vA, vB, new Vec2us());
     }
 
-    public static Vec2 min(Vec2 v, float f, Vec2 res) {
-        return res.set(min(v.x, f), min(v.y, f));
+    public static Vec2us max(Vec2us vA, Vec2us vB, Vec2us res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y));
     }
 
-    public static Vec2d min_(Vec2d v, double d) {
-        return min(v, d, new Vec2d());
+    // max(vec3, scalar) -------------------------------------------------------
+    public static Vec3 max_(Vec3 v, float s) {
+        return max(v, s, new Vec3());
     }
 
-    public static Vec2d min(Vec2d v, double d, Vec2d res) {
-        return res.set(min(v.x, d), min(v.y, d));
+    public static Vec3 max(Vec3 v, float s, Vec3 res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec2i min_(Vec2i v, int i) {
-        return min(v, i, new Vec2i());
+    public static Vec3b max_(Vec3b v, byte s) {
+        return max(v, s, new Vec3b());
     }
 
-    public static Vec2i min(Vec2i v, int i, Vec2i res) {
-        return res.set(min(v.x, i), min(v.y, i));
+    public static Vec3b max(Vec3b v, byte s, Vec3b res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec2 min_(Vec2 a, Vec2 b) {
-        return min(a, b, new Vec2());
+    public static Vec3d max_(Vec3d v, double s) {
+        return max(v, s, new Vec3d());
     }
 
-    public static Vec2 min(Vec2 a, Vec2 b, Vec2 res) {
-        return res.set(min(a.x, b.x), min(a.y, b.y));
+    public static Vec3d max(Vec3d v, double s, Vec3d res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec2d min_(Vec2d a, Vec2d b) {
-        return min(a, b, new Vec2d());
+    public static Vec3i max_(Vec3i v, int s) {
+        return max(v, s, new Vec3i());
     }
 
-    public static Vec2d min(Vec2d a, Vec2d b, Vec2d res) {
-        return res.set(min(a.x, b.x), min(a.y, b.y));
+    public static Vec3i max(Vec3i v, int s, Vec3i res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec2i min_(Vec2i a, Vec2i b) {
-        return min(a, b, new Vec2i());
+    public static Vec3l max_(Vec3l v, long s) {
+        return max(v, s, new Vec3l());
     }
 
-    public static Vec2i min(Vec2i a, Vec2i b, Vec2i res) {
-        return res.set(min(a.x, b.x), min(a.y, b.y));
+    public static Vec3l max(Vec3l v, long s, Vec3l res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3 min_(Vec3 v, float f) {
-        return min(v, f, new Vec3());
+    public static Vec3s max_(Vec3s v, short s) {
+        return max(v, s, new Vec3s());
     }
 
-    public static Vec3 min(Vec3 v, float f, Vec3 res) {
-        return res.set(min(v.x, f), min(v.y, f), min(v.z, f));
+    public static Vec3s max(Vec3s v, short s, Vec3s res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3d min_(Vec3d v, double d) {
-        return min(v, d, new Vec3d());
+    public static Vec3ub max_(Vec3ub v, byte s) {
+        return max(v, s, new Vec3ub());
     }
 
-    public static Vec3d min(Vec3d v, double d, Vec3d res) {
-        return res.set(min(v.x, d), min(v.y, d), min(v.z, d));
+    public static Vec3ub max(Vec3ub v, byte s, Vec3ub res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3i min_(Vec3i v, int i) {
-        return min(v, i, new Vec3i());
+    public static Vec3ui max_(Vec3ui v, int s) {
+        return max(v, s, new Vec3ui());
     }
 
-    public static Vec3i min(Vec3i v, int i, Vec3i res) {
-        return res.set(min(v.x, i), min(v.y, i), min(v.z, i));
+    public static Vec3ui max(Vec3ui v, int s, Vec3ui res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3 min_(Vec3 a, Vec3 b) {
-        return min(a, b, new Vec3());
+    public static Vec3ul max_(Vec3ul v, long s) {
+        return max(v, s, new Vec3ul());
     }
 
-    public static Vec3 min(Vec3 a, Vec3 b, Vec3 res) {
-        return res.set(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z));
+    public static Vec3ul max(Vec3ul v, long s, Vec3ul res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3d min_(Vec3d a, Vec3d b) {
-        return min(a, b, new Vec3d());
+    public static Vec3us max_(Vec3us v, short s) {
+        return max(v, s, new Vec3us());
     }
 
-    public static Vec3d min(Vec3d a, Vec3d b, Vec3d res) {
-        return res.set(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z));
+    public static Vec3us max(Vec3us v, short s, Vec3us res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3i min_(Vec3i a, Vec3i b) {
-        return min(a, b, new Vec3i());
+    // max(vec3, vec3) ---------------------------------------------------------
+    public static Vec3 max_(Vec3 vA, Vec3 vB) {
+        return max(vA, vB, new Vec3());
     }
 
-    public static Vec3i min(Vec3i a, Vec3i b, Vec3i res) {
-        return res.set(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z));
+    public static Vec3 max(Vec3 vA, Vec3 vB, Vec3 res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
     }
 
-    public static Vec4 min_(Vec4 v, float f) {
-        return min(v, f, new Vec4());
+    public static Vec3b max_(Vec3b vA, Vec3b vB) {
+        return max(vA, vB, new Vec3b());
     }
 
-    public static Vec4 min(Vec4 v, float f, Vec4 res) {
-        return res.set(min(v.x, f), min(v.y, f), min(v.z, f), min(v.w, f));
+    public static Vec3b max(Vec3b vA, Vec3b vB, Vec3b res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
     }
 
-    public static Vec4d min_(Vec4d v, double d) {
-        return min(v, d, new Vec4d());
+    public static Vec3d max_(Vec3d vA, Vec3d vB) {
+        return max(vA, vB, new Vec3d());
     }
 
-    public static Vec4d min(Vec4d v, double d, Vec4d res) {
-        return res.set(min(v.x, d), min(v.y, d), min(v.z, d), min(v.w, d));
+    public static Vec3d max(Vec3d vA, Vec3d vB, Vec3d res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
     }
 
-    public static Vec4i min_(Vec4i v, int i) {
-        return min(v, i, new Vec4i());
+    public static Vec3i max_(Vec3i vA, Vec3i vB) {
+        return max(vA, vB, new Vec3i());
     }
 
-    public static Vec4i min(Vec4i v, int i, Vec4i res) {
-        return res.set(min(v.x, i), min(v.y, i), min(v.z, i), min(v.w, i));
+    public static Vec3i max(Vec3i vA, Vec3i vB, Vec3i res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
     }
 
-    public static Vec4 min_(Vec4 a, Vec4 b) {
-        return min(a, b, new Vec4());
+    public static Vec3l max_(Vec3l vA, Vec3l vB) {
+        return max(vA, vB, new Vec3l());
     }
 
-    public static Vec4 min(Vec4 a, Vec4 b, Vec4 res) {
-        return res.set(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z), min(a.w, b.w));
+    public static Vec3l max(Vec3l vA, Vec3l vB, Vec3l res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
     }
 
-    public static Vec4d min_(Vec4d a, Vec4d b) {
-        return min(a, b, new Vec4d());
+    public static Vec3s max_(Vec3s vA, Vec3s vB) {
+        return max(vA, vB, new Vec3s());
     }
 
-    public static Vec4d min(Vec4d a, Vec4d b, Vec4d res) {
-        return res.set(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z), min(a.w, b.w));
+    public static Vec3s max(Vec3s vA, Vec3s vB, Vec3s res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
     }
 
-    public static Vec4i min_(Vec4i a, Vec4i b) {
-        return min(a, b, new Vec4i());
+    public static Vec3ub max_(Vec3ub vA, Vec3ub vB) {
+        return max(vA, vB, new Vec3ub());
     }
 
-    public static Vec4i min(Vec4i a, Vec4i b, Vec4i res) {
-        return res.set(min(a.x, b.x), min(a.y, b.y), min(a.z, b.z), min(a.w, b.w));
+    public static Vec3ub max(Vec3ub vA, Vec3ub vB, Vec3ub res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
+    }
+
+    public static Vec3ui max_(Vec3ui vA, Vec3ui vB) {
+        return max(vA, vB, new Vec3ui());
+    }
+
+    public static Vec3ui max(Vec3ui vA, Vec3ui vB, Vec3ui res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
+    }
+
+    public static Vec3ul max_(Vec3ul vA, Vec3ul vB) {
+        return max(vA, vB, new Vec3ul());
+    }
+
+    public static Vec3ul max(Vec3ul vA, Vec3ul vB, Vec3ul res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
+    }
+
+    public static Vec3us max_(Vec3us vA, Vec3us vB) {
+        return max(vA, vB, new Vec3us());
+    }
+
+    public static Vec3us max(Vec3us vA, Vec3us vB, Vec3us res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z));
+    }
+
+    // max(vec4, scalar) -------------------------------------------------------
+    public static Vec4 max_(Vec4 v, float s) {
+        return max(v, s, new Vec4());
+    }
+
+    public static Vec4 max(Vec4 v, float s, Vec4 res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    public static Vec4b max_(Vec4b v, byte s) {
+        return max(v, s, new Vec4b());
+    }
+
+    public static Vec4b max(Vec4b v, byte s, Vec4b res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    public static Vec4d max_(Vec4d v, double s) {
+        return max(v, s, new Vec4d());
+    }
+
+    public static Vec4d max(Vec4d v, double s, Vec4d res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    public static Vec4i max_(Vec4i v, int s) {
+        return max(v, s, new Vec4i());
+    }
+
+    public static Vec4i max(Vec4i v, int s, Vec4i res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    public static Vec4l max_(Vec4l v, long s) {
+        return max(v, s, new Vec4l());
+    }
+
+    public static Vec4l max(Vec4l v, long s, Vec4l res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    public static Vec4s max_(Vec4s v, short s) {
+        return max(v, s, new Vec4s());
+    }
+
+    public static Vec4s max(Vec4s v, short s, Vec4s res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    public static Vec4ub max_(Vec4ub v, byte s) {
+        return max(v, s, new Vec4ub());
+    }
+
+    public static Vec4ub max(Vec4ub v, byte s, Vec4ub res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    public static Vec4ui max_(Vec4ui v, int s) {
+        return max(v, s, new Vec4ui());
+    }
+
+    public static Vec4ui max(Vec4ui v, int s, Vec4ui res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    public static Vec4ul max_(Vec4ul v, long s) {
+        return max(v, s, new Vec4ul());
+    }
+
+    public static Vec4ul max(Vec4ul v, long s, Vec4ul res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    public static Vec4us max_(Vec4us v, short s) {
+        return max(v, s, new Vec4us());
+    }
+
+    public static Vec4us max(Vec4us v, short s, Vec4us res) {
+        return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
+    }
+
+    // max(vec4, vec4) ---------------------------------------------------------
+    public static Vec4 max_(Vec4 vA, Vec4 vB) {
+        return max(vA, vB, new Vec4());
+    }
+
+    public static Vec4 max(Vec4 vA, Vec4 vB, Vec4 res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    public static Vec4b max_(Vec4b vA, Vec4b vB) {
+        return max(vA, vB, new Vec4b());
+    }
+
+    public static Vec4b max(Vec4b vA, Vec4b vB, Vec4b res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    public static Vec4d max_(Vec4d vA, Vec4d vB) {
+        return max(vA, vB, new Vec4d());
+    }
+
+    public static Vec4d max(Vec4d vA, Vec4d vB, Vec4d res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    public static Vec4i max_(Vec4i vA, Vec4i vB) {
+        return max(vA, vB, new Vec4i());
+    }
+
+    public static Vec4i max(Vec4i vA, Vec4i vB, Vec4i res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    public static Vec4l max_(Vec4l vA, Vec4l vB) {
+        return max(vA, vB, new Vec4l());
+    }
+
+    public static Vec4l max(Vec4l vA, Vec4l vB, Vec4l res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    public static Vec4s max_(Vec4s vA, Vec4s vB) {
+        return max(vA, vB, new Vec4s());
+    }
+
+    public static Vec4s max(Vec4s vA, Vec4s vB, Vec4s res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    public static Vec4ub max_(Vec4ub vA, Vec4ub vB) {
+        return max(vA, vB, new Vec4ub());
+    }
+
+    public static Vec4ub max(Vec4ub vA, Vec4ub vB, Vec4ub res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    public static Vec4ui max_(Vec4ui vA, Vec4ui vB) {
+        return max(vA, vB, new Vec4ui());
+    }
+
+    public static Vec4ui max(Vec4ui vA, Vec4ui vB, Vec4ui res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    public static Vec4ul max_(Vec4ul vA, Vec4ul vB) {
+        return max(vA, vB, new Vec4ul());
+    }
+
+    public static Vec4ul max(Vec4ul vA, Vec4ul vB, Vec4ul res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    public static Vec4us max_(Vec4us vA, Vec4us vB) {
+        return max(vA, vB, new Vec4us());
+    }
+
+    public static Vec4us max(Vec4us vA, Vec4us vB, Vec4us res) {
+        return res.set(max(vA.x, vB.x), max(vA.y, vB.y), max(vA.z, vB.z), max(vA.w, vB.w));
+    }
+
+    // min ----------------------------------------------------------------------------------------------------------
+    public static float min(float sA, float sB) {
+        return Math.min(sA, sB);
+    }
+
+    public static double min(double sA, double sB) {
+        return Math.min(sA, sB);
+    }
+
+    public static int min(int sA, int sB) {
+        return Math.min(sA, sB);
+    }
+
+    public static long min(long sA, long sB) {
+        return Math.min(sA, sB);
+    }
+
+    // min(vec2, scalar) -------------------------------------------------------
+    public static Vec2 min_(Vec2 v, float s) {
+        return min(v, s, new Vec2());
+    }
+
+    public static Vec2 min(Vec2 v, float s, Vec2 res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    public static Vec2b min_(Vec2b v, byte s) {
+        return min(v, s, new Vec2b());
+    }
+
+    public static Vec2b min(Vec2b v, byte s, Vec2b res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    public static Vec2d min_(Vec2d v, double s) {
+        return min(v, s, new Vec2d());
+    }
+
+    public static Vec2d min(Vec2d v, double s, Vec2d res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    public static Vec2i min_(Vec2i v, int s) {
+        return min(v, s, new Vec2i());
+    }
+
+    public static Vec2i min(Vec2i v, int s, Vec2i res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    public static Vec2l min_(Vec2l v, long s) {
+        return min(v, s, new Vec2l());
+    }
+
+    public static Vec2l min(Vec2l v, long s, Vec2l res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    public static Vec2s min_(Vec2s v, short s) {
+        return min(v, s, new Vec2s());
+    }
+
+    public static Vec2s min(Vec2s v, short s, Vec2s res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    public static Vec2ub min_(Vec2ub v, byte s) {
+        return min(v, s, new Vec2ub());
+    }
+
+    public static Vec2ub min(Vec2ub v, byte s, Vec2ub res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    public static Vec2ui min_(Vec2ui v, int s) {
+        return min(v, s, new Vec2ui());
+    }
+
+    public static Vec2ui min(Vec2ui v, int s, Vec2ui res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    public static Vec2ul min_(Vec2ul v, long s) {
+        return min(v, s, new Vec2ul());
+    }
+
+    public static Vec2ul min(Vec2ul v, long s, Vec2ul res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    public static Vec2us min_(Vec2us v, short s) {
+        return min(v, s, new Vec2us());
+    }
+
+    public static Vec2us min(Vec2us v, short s, Vec2us res) {
+        return res.set(min(v.x, s), min(v.y, s));
+    }
+
+    // min(vec2, vec2) ---------------------------------------------------------
+    public static Vec2 min_(Vec2 vA, Vec2 vB) {
+        return min(vA, vB, new Vec2());
+    }
+
+    public static Vec2 min(Vec2 vA, Vec2 vB, Vec2 res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y));
+    }
+
+    public static Vec2b min_(Vec2b vA, Vec2b vB) {
+        return min(vA, vB, new Vec2b());
+    }
+
+    public static Vec2b min(Vec2b va, Vec2b vB, Vec2b res) {
+        return res.set(max(va.x, vB.x), max(va.y, vB.y));
+    }
+
+    public static Vec2d min_(Vec2d vA, Vec2d vB) {
+        return min(vA, vB, new Vec2d());
+    }
+
+    public static Vec2d min(Vec2d vA, Vec2d vB, Vec2d res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y));
+    }
+
+    public static Vec2i min_(Vec2i vA, Vec2i vB) {
+        return min(vA, vB, new Vec2i());
+    }
+
+    public static Vec2i min(Vec2i vA, Vec2i vB, Vec2i res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y));
+    }
+
+    public static Vec2l min_(Vec2l vA, Vec2l vB) {
+        return min(vA, vB, new Vec2l());
+    }
+
+    public static Vec2l min(Vec2l vA, Vec2l vB, Vec2l res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y));
+    }
+
+    public static Vec2s min_(Vec2s vA, Vec2s vB) {
+        return min(vA, vB, new Vec2s());
+    }
+
+    public static Vec2s min(Vec2s vA, Vec2s vB, Vec2s res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y));
+    }
+
+    public static Vec2ub min_(Vec2ub vA, Vec2ub vB) {
+        return min(vA, vB, new Vec2ub());
+    }
+
+    public static Vec2ub min(Vec2ub vA, Vec2ub vB, Vec2ub res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y));
+    }
+
+    public static Vec2ui min_(Vec2ui vA, Vec2ui vB) {
+        return min(vA, vB, new Vec2ui());
+    }
+
+    public static Vec2ui min(Vec2ui vA, Vec2ui vB, Vec2ui res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y));
+    }
+
+    public static Vec2ul min_(Vec2ul vA, Vec2ul vB) {
+        return min(vA, vB, new Vec2ul());
+    }
+
+    public static Vec2ul min(Vec2ul vA, Vec2ul vB, Vec2ul res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y));
+    }
+
+    public static Vec2us min_(Vec2us vA, Vec2us vB) {
+        return min(vA, vB, new Vec2us());
+    }
+
+    public static Vec2us min(Vec2us vA, Vec2us vB, Vec2us res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y));
+    }
+
+    // min(vec3, scalar) -------------------------------------------------------
+    public static Vec3 min_(Vec3 v, float s) {
+        return min(v, s, new Vec3());
+    }
+
+    public static Vec3 min(Vec3 v, float s, Vec3 res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    public static Vec3b min_(Vec3b v, byte s) {
+        return min(v, s, new Vec3b());
+    }
+
+    public static Vec3b min(Vec3b v, byte s, Vec3b res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    public static Vec3d min_(Vec3d v, double s) {
+        return min(v, s, new Vec3d());
+    }
+
+    public static Vec3d min(Vec3d v, double s, Vec3d res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    public static Vec3i min_(Vec3i v, int s) {
+        return min(v, s, new Vec3i());
+    }
+
+    public static Vec3i min(Vec3i v, int s, Vec3i res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    public static Vec3l min_(Vec3l v, long s) {
+        return min(v, s, new Vec3l());
+    }
+
+    public static Vec3l min(Vec3l v, long s, Vec3l res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    public static Vec3s min_(Vec3s v, short s) {
+        return min(v, s, new Vec3s());
+    }
+
+    public static Vec3s min(Vec3s v, short s, Vec3s res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    public static Vec3ub min_(Vec3ub v, byte s) {
+        return min(v, s, new Vec3ub());
+    }
+
+    public static Vec3ub min(Vec3ub v, byte s, Vec3ub res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    public static Vec3ui min_(Vec3ui v, int s) {
+        return min(v, s, new Vec3ui());
+    }
+
+    public static Vec3ui min(Vec3ui v, int s, Vec3ui res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    public static Vec3ul min_(Vec3ul v, long s) {
+        return min(v, s, new Vec3ul());
+    }
+
+    public static Vec3ul min(Vec3ul v, long s, Vec3ul res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    public static Vec3us min_(Vec3us v, short s) {
+        return min(v, s, new Vec3us());
+    }
+
+    public static Vec3us min(Vec3us v, short s, Vec3us res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
+    }
+
+    // min(vec3, vec3) ---------------------------------------------------------
+    public static Vec3 min_(Vec3 vA, Vec3 vB) {
+        return min(vA, vB, new Vec3());
+    }
+
+    public static Vec3 min(Vec3 vA, Vec3 vB, Vec3 res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    public static Vec3b min_(Vec3b vA, Vec3b vB) {
+        return min(vA, vB, new Vec3b());
+    }
+
+    public static Vec3b min(Vec3b vA, Vec3b vB, Vec3b res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    public static Vec3d min_(Vec3d vA, Vec3d vB) {
+        return min(vA, vB, new Vec3d());
+    }
+
+    public static Vec3d min(Vec3d vA, Vec3d vB, Vec3d res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    public static Vec3i min_(Vec3i vA, Vec3i vB) {
+        return min(vA, vB, new Vec3i());
+    }
+
+    public static Vec3i min(Vec3i vA, Vec3i vB, Vec3i res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    public static Vec3l min_(Vec3l vA, Vec3l vB) {
+        return min(vA, vB, new Vec3l());
+    }
+
+    public static Vec3l min(Vec3l vA, Vec3l vB, Vec3l res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    public static Vec3s min_(Vec3s vA, Vec3s vB) {
+        return min(vA, vB, new Vec3s());
+    }
+
+    public static Vec3s min(Vec3s vA, Vec3s vB, Vec3s res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    public static Vec3ub min_(Vec3ub vA, Vec3ub vB) {
+        return min(vA, vB, new Vec3ub());
+    }
+
+    public static Vec3ub min(Vec3ub vA, Vec3ub vB, Vec3ub res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    public static Vec3ui min_(Vec3ui vA, Vec3ui vB) {
+        return min(vA, vB, new Vec3ui());
+    }
+
+    public static Vec3ui min(Vec3ui vA, Vec3ui vB, Vec3ui res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    public static Vec3ul min_(Vec3ul vA, Vec3ul vB) {
+        return min(vA, vB, new Vec3ul());
+    }
+
+    public static Vec3ul min(Vec3ul vA, Vec3ul vB, Vec3ul res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    public static Vec3us min_(Vec3us vA, Vec3us vB) {
+        return min(vA, vB, new Vec3us());
+    }
+
+    public static Vec3us min(Vec3us vA, Vec3us vB, Vec3us res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z));
+    }
+
+    // min(vec4, scalar) -------------------------------------------------------
+    public static Vec4 min_(Vec4 v, float s) {
+        return min(v, s, new Vec4());
+    }
+
+    public static Vec4 min(Vec4 v, float s, Vec4 res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    public static Vec4b min_(Vec4b v, byte s) {
+        return min(v, s, new Vec4b());
+    }
+
+    public static Vec4b min(Vec4b v, byte s, Vec4b res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    public static Vec4d min_(Vec4d v, double s) {
+        return min(v, s, new Vec4d());
+    }
+
+    public static Vec4d min(Vec4d v, double s, Vec4d res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    public static Vec4i min_(Vec4i v, int s) {
+        return min(v, s, new Vec4i());
+    }
+
+    public static Vec4i min(Vec4i v, int s, Vec4i res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    public static Vec4l min_(Vec4l v, long s) {
+        return min(v, s, new Vec4l());
+    }
+
+    public static Vec4l min(Vec4l v, long s, Vec4l res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    public static Vec4s min_(Vec4s v, short s) {
+        return min(v, s, new Vec4s());
+    }
+
+    public static Vec4s min(Vec4s v, short s, Vec4s res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    public static Vec4ub min_(Vec4ub v, byte s) {
+        return min(v, s, new Vec4ub());
+    }
+
+    public static Vec4ub min(Vec4ub v, byte s, Vec4ub res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    public static Vec4ui min_(Vec4ui v, int s) {
+        return min(v, s, new Vec4ui());
+    }
+
+    public static Vec4ui min(Vec4ui v, int s, Vec4ui res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    public static Vec4ul min_(Vec4ul v, long s) {
+        return min(v, s, new Vec4ul());
+    }
+
+    public static Vec4ul min(Vec4ul v, long s, Vec4ul res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    public static Vec4us min_(Vec4us v, short s) {
+        return min(v, s, new Vec4us());
+    }
+
+    public static Vec4us min(Vec4us v, short s, Vec4us res) {
+        return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
+    }
+
+    // min(vec4, vec4) ---------------------------------------------------------
+    public static Vec4 min_(Vec4 vA, Vec4 vB) {
+        return min(vA, vB, new Vec4());
+    }
+
+    public static Vec4 min(Vec4 vA, Vec4 vB, Vec4 res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
+    }
+
+    public static Vec4b min_(Vec4b vA, Vec4b vB) {
+        return min(vA, vB, new Vec4b());
+    }
+
+    public static Vec4b min(Vec4b vA, Vec4b vB, Vec4b res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
+    }
+
+    public static Vec4d min_(Vec4d vA, Vec4d vB) {
+        return min(vA, vB, new Vec4d());
+    }
+
+    public static Vec4d min(Vec4d vA, Vec4d vB, Vec4d res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
+    }
+
+    public static Vec4i min_(Vec4i vA, Vec4i vB) {
+        return min(vA, vB, new Vec4i());
+    }
+
+    public static Vec4i min(Vec4i vA, Vec4i vB, Vec4i res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
+    }
+
+    public static Vec4l min_(Vec4l vA, Vec4l vB) {
+        return min(vA, vB, new Vec4l());
+    }
+
+    public static Vec4l min(Vec4l vA, Vec4l vB, Vec4l res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
+    }
+
+    public static Vec4s min_(Vec4s vA, Vec4s vB) {
+        return min(vA, vB, new Vec4s());
+    }
+
+    public static Vec4s min(Vec4s vA, Vec4s vB, Vec4s res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
+    }
+
+    public static Vec4ub min_(Vec4ub vA, Vec4ub vB) {
+        return min(vA, vB, new Vec4ub());
+    }
+
+    public static Vec4ub min(Vec4ub vA, Vec4ub vB, Vec4ub res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
+    }
+
+    public static Vec4ui min_(Vec4ui vA, Vec4ui vB) {
+        return min(vA, vB, new Vec4ui());
+    }
+
+    public static Vec4ui min(Vec4ui vA, Vec4ui vB, Vec4ui res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
+    }
+
+    public static Vec4ul min_(Vec4ul vA, Vec4ul vB) {
+        return min(vA, vB, new Vec4ul());
+    }
+
+    public static Vec4ul min(Vec4ul vA, Vec4ul vB, Vec4ul res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
+    }
+
+    public static Vec4us min_(Vec4us vA, Vec4us vB) {
+        return min(vA, vB, new Vec4us());
+    }
+
+    public static Vec4us min(Vec4us vA, Vec4us vB, Vec4us res) {
+        return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
     }
 
     public static float mix(float x, float y, boolean a) {

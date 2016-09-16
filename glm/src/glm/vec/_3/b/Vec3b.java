@@ -37,4 +37,14 @@ public class Vec3b extends operator{
         this.z = (byte) z;
     }
 
+    public Vec3b set(int x, int y, int z) {
+        return set((byte) x, (byte) y, (byte) z);
+    }
+
+    public Vec3b set(byte x, byte y, byte z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        return this;
+    }
 }
