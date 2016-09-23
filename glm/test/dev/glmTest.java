@@ -5,7 +5,7 @@
  */
 package dev;
 
-import glm.Glm;
+import glm.GlmTest;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,11 +15,4 @@ import org.junit.Test;
  */
 public class glmTest {
 
-    @Test
-    public void test_ceilMultiple_a() {
-        System.out.println("ceilMultiple_a");
-        int result = Glm.ceilMultiple(60, 256);
-        int expResult = 256;
-        Assert.assertEquals(result, expResult);
-    }
 }

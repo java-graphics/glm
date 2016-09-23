@@ -5,20 +5,16 @@
  */
 package glm.vec._2;
 
-import dev.Vec2bool;
 import glm.vec._2.i.Vec2i;
 import glm.Glm;
+import glm.vec._2.bool.Vec2bool;
 
 /**
  * TODO ldexp, frexp, modf, roundEven, trunc
  *
  * @author GBarbieri
  */
-abstract class funcCommon {
-
-    public static final int SIZE = 2 * Float.BYTES;
-
-    public float x, y;
+abstract class funcCommon extends ArithmeticOperators {
 
     public Vec2 abs() {
         return abs((Vec2) this);

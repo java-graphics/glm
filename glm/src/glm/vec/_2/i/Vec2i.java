@@ -13,7 +13,7 @@ import java.nio.IntBuffer;
  *
  * @author GBarbieri
  */
-public class Vec2i extends operator {
+public class Vec2i extends FuncRelational {
 
     public Vec2i() {
         x = 0;

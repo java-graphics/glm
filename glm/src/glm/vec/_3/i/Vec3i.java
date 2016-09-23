@@ -16,7 +16,7 @@ import java.nio.IntBuffer;
  *
  * @author GBarbieri
  */
-public class Vec3i extends operator {
+public class Vec3i extends FuncRelational {
 
     public Vec3i() {
         x = 0;

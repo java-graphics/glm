@@ -9,11 +9,23 @@ package glm.vec._3.s;
  *
  * @author GBarbieri
  */
-public class Vec3s {
+public class Vec3s extends FuncRelational {
 
-    public static final int SIZE = 3 * Short.BYTES;
+    public Vec3s() {
+        x = 0;
+        y = 0;
+        z = 0;
+    }
 
-    public short x, y, z;
+    public Vec3s(int x, int y, int z) {
+        this((short) x, (short) y, (short) z);
+    }
+
+    public Vec3s(short x, short y, short z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
 
     public Vec3s set(int x, int y, int z) {
         return set((short) x, (short) y, (short) z);

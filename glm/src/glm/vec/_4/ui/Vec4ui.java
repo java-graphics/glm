@@ -12,17 +12,13 @@ import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
-import joou.UInteger;
+import joou.UInt;
 
 /**
  *
  * @author GBarbieri
  */
-public class Vec4ui {
-
-    public final int SIZE = 4 * Integer.BYTES;
-
-    public UInteger x, y, z, w;
+public class Vec4ui extends FuncRelational {
 
     public Vec4ui() {
         this(0);
@@ -93,11 +89,18 @@ public class Vec4ui {
         this((int) x, (int) y, (int) z, (int) w);
     }
 
+    public Vec4ui(UInt x, UInt y, UInt z, UInt w) {
+        this.x.value = x.value;
+        this.y.value = y.value;
+        this.z.value = z.value;
+        this.w.value = w.value;
+    }
+
     public Vec4ui(int x, int y, int z, int w) {
-        this.x = x;
-        this.y = y;
-        this.z = z;
-        this.w = w;
+        this.x.value = x;
+        this.y.value = y;
+        this.z.value = z;
+        this.w.value = w;
     }
 
     public Vec4ui set() {
@@ -165,10 +168,18 @@ public class Vec4ui {
 //        return set(v.x, v.y, f0, f1);
 //    }
     public Vec4ui set(long x, long y, long z, long w) {
-//        return set((int) x, (int) y, (int) z, (int) w);
+        return set((int) x, (int) y, (int) z, (int) w);
     }
 
-    public Vec4ui set(UInteger x, UInteger y, UInteger z, UInteger w) {
+    public Vec4ui set(int x, int y, int z, int w) {
+        this.x.value = x;
+        this.y.value = y;
+        this.z.value = z;
+        this.w.value = w;
+        return this;
+    }
+
+    public Vec4ui set(UInt x, UInt y, UInt z, UInt w) {
         this.x = x;
         this.y = y;
         this.z = z;
@@ -183,27 +194,15 @@ public class Vec4ui {
 //    public Vec3 toVec3(Vec3 res) {
 //        return res.set(x, y, z);
 //    }
-    public Vec4b equal_(Vec4ui v) {
-        return equal(v, new Vec4b());
-    }
-
-    public Vec4b equal(Vec4ui v, Vec4b res) {
-        res.x = (byte) (x == v.x ? 1 : 0);
-        res.y = (byte) (y == v.y ? 1 : 0);
-        res.z = (byte) (z == v.z ? 1 : 0);
-        res.w = (byte) (w == v.w ? 1 : 0);
-        return res;
-    }
-
     public int[] toIa_() {
         return toIa(new int[4]);
     }
 
     public int[] toIa(int[] ia) {
-        ia[0] = x;
-        ia[1] = y;
-        ia[2] = z;
-        ia[3] = w;
+        ia[0] = (int) x.value;
+        ia[1] = (int) y.value;
+        ia[2] = (int) z.value;
+        ia[3] = (int) w.value;
         return ia;
     }
 
@@ -217,10 +216,10 @@ public class Vec4ui {
 
     public IntBuffer toDib(IntBuffer ib, int index) {
         return ib
-                .put(index + 0, x)
-                .put(index + 1, y)
-                .put(index + 2, z)
-                .put(index + 3, w);
+                .put(index + 0, (int) x.value)
+                .put(index + 1, (int) y.value)
+                .put(index + 2, (int) z.value)
+                .put(index + 3, (int) w.value);
     }
 
     public ByteBuffer toDbb_() {
@@ -233,10 +232,10 @@ public class Vec4ui {
 
     public ByteBuffer toDbb(ByteBuffer bb, int index) {
         return bb
-                .putFloat(index + 0 * Float.BYTES, x)
-                .putFloat(index + 1 * Float.BYTES, y)
-                .putFloat(index + 2 * Float.BYTES, z)
-                .putFloat(index + 3 * Float.BYTES, w);
+                .putInt(index + 0 * Float.BYTES, (int) x.value)
+                .putInt(index + 1 * Float.BYTES, (int) y.value)
+                .putInt(index + 2 * Float.BYTES, (int) z.value)
+                .putInt(index + 3 * Float.BYTES, (int) w.value);
     }
 
     @Override

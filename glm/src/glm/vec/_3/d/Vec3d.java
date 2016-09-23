@@ -9,11 +9,22 @@ package glm.vec._3.d;
  *
  * @author GBarbieri
  */
-public class Vec3d {
+public class Vec3d extends FuncRelational {
 
-    public final static int SIZE = 3 * Double.BYTES;
+    public Vec3d() {
+        x = 0;
+        y = 0;
+    }
 
-    public double x, y, z;
+    public Vec3d(int x, int y, int z) {
+        this((double) x, y, z);
+    }
+
+    public Vec3d(double x, double y, double z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
 
     public Vec3d set(double x, double y, double z) {
         this.x = x;

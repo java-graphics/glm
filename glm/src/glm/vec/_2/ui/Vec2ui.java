@@ -11,27 +11,27 @@ import glm.vec._4.Vec4;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.IntBuffer;
-import joou.UInteger;
+import joou.UInt;
 
 /**
  *
  * @author GBarbieri
  */
-public class Vec2ui extends operator {
+public class Vec2ui extends FuncRelational {
 
     public Vec2ui() {
-        x = 0;
-        y = 0;
+        x.value = 0;
+        y.value = 0;
     }
 
     public Vec2ui(int i) {
-        x = i;
-        y = i;
+        x.value = i;
+        y.value = i;
     }
 
     public Vec2ui(int x, int y) {
-        this.x = x;
-        this.y = y;
+        this.x.value = x;
+        this.y.value = y;
     }
 
     public Vec2ui(Vec2ui v) {
@@ -40,41 +40,41 @@ public class Vec2ui extends operator {
     }
 
     public Vec2ui(Vec2i v) {
-        x = v.x;
-        y = v.y;
+        x.value = v.x;
+        y.value = v.y;
     }
 
     public Vec2ui(Vec3 v) {
-        x = (int) v.x;
-        y = (int) v.y;
+        x.value =  (int) v.x;
+        y.value = (int) v.y;
     }
 
     public Vec2ui(Vec4 v) {
-        x = (int) v.x;
-        y = (int) v.y;
+        x.value = (int) v.x;
+        y.value = (int) v.y;;
     }
 
     public Vec2ui set(int i) {
-        x = i;
-        y = i;
+        x.value = i;
+        y.value = i;
         return this;
     }
 
-    public Vec2ui set(UInteger x, UInteger y) {
+    public Vec2ui set(UInt x, UInt y) {
         this.x = x;
         this.y = y;
         return this;
     }
 
     public Vec2ui set(float x, float y) {
-        this.x = (int) x;
-        this.y = (int) y;
+        this.x.value = (int) x;
+        this.y.value = (int) y;
         return this;
     }
 
     public Vec2ui set(int[] ia) {
-        x = ia[0];
-        y = ia[1];
+        x.value = ia[0];
+        y.value = ia[1];
         return this;
     }
 
@@ -83,8 +83,8 @@ public class Vec2ui extends operator {
     }
 
     public float[] toIa(float[] fa) {
-        fa[0] = x;
-        fa[1] = y;
+        fa[0] = x.value;
+        fa[1] = y.value;
         return fa;
     }
 
@@ -98,8 +98,8 @@ public class Vec2ui extends operator {
 
     public IntBuffer toDib(IntBuffer ib, int index) {
         return ib
-                .put(index + 0, x)
-                .put(index + 1, y);
+                .put(index + 0, (int) x.value)
+                .put(index + 1, (int) y.value);
     }
 
     public ByteBuffer toDbb_() {
@@ -112,8 +112,8 @@ public class Vec2ui extends operator {
 
     public ByteBuffer toDbb(ByteBuffer bb, int index) {
         return bb
-                .putInt(index + 0 * Integer.BYTES, x)
-                .putInt(index + 1 * Integer.BYTES, y);
+                .putInt(index + 0 * Integer.BYTES, (int) x.value)
+                .putInt(index + 1 * Integer.BYTES, (int) y.value);
     }
 
     @Override

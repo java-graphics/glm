@@ -11,14 +11,24 @@ import joou.UShort;
  *
  * @author GBarbieri
  */
-public class Vec4us {
+public class Vec4us extends FuncRelational {
 
-    public static final int SIZE = 4 * Short.BYTES;
+    public Vec4us() {
+        x.value = 0;
+        y.value = 0;
+        z.value = 0;
+        w.value = 0;
+    }
 
-    public UShort x, y, z, w;
+    public Vec4us(int x, int y, int z, int w) {
+        this((short) x, (short) y, (short) z, (short) w);
+    }
 
-    public Vec4us set(int x, int y, int z, int w) {
-        return set(UShort.valueOf(x), UShort.valueOf(y), UShort.valueOf(z), UShort.valueOf(w));
+    public Vec4us(short x, short y, short z, short w) {
+        this.x.value = x;
+        this.y.value = y;
+        this.z.value = z;
+        this.w.value = w;
     }
 
     public Vec4us set(UShort x, UShort y, UShort z, UShort w) {

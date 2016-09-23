@@ -35,66 +35,20 @@ public final class UByte extends UNumber implements Comparable<UByte> {
      * A constant holding the minimum value an <code>unsigned byte</code> can
      * have, 0.
      */
-    public static final short MIN_VALUE = 0x00;
+    public static final int MIN_VALUE = 0x00;
 
     /**
      * A constant holding the maximum value an <code>unsigned byte</code> can
      * have, 2<sup>8</sup>-1.
      */
-    public static final short MAX_VALUE = 0xff;
-
-    /**
-     * A constant holding the minimum value an <code>unsigned byte</code> can
-     * have as UByte, 0.
-     */
-    public static final UByte MIN = new UByte(0x00);
-
-    /**
-     * A constant holding the maximum value an <code>unsigned byte</code> can
-     * have as UByte, 2<sup>8</sup>-1.
-     */
-    public static final UByte MAX = new UByte(0xff);
-
+    public static final int MAX_VALUE = 0xff;
     /**
      * The value modelling the content of this <code>unsigned byte</code>
      */
-    public short value;
+    public byte value;
 
-    public UByte() throws NumberFormatException {
-        value = MIN_VALUE;
-    }
-
-    /**
-     * Create an <code>unsigned byte</code>
-     *
-     * @param value
-     * @throws NumberFormatException If <code>value</code> is not in the range
-     * of an <code>unsigned byte</code>
-     */
-    public UByte(long value) throws NumberFormatException {
-        this.value = rangeCheck(value);
-    }
-
-    /**
-     * Create an <code>unsigned byte</code>
-     *
-     * @param value
-     * @throws NumberFormatException If <code>value</code> is not in the range
-     * of an <code>unsigned byte</code>
-     */
-    public UByte(int value) throws NumberFormatException {
-        this.value = rangeCheck(value);
-    }
-
-    /**
-     * Create an <code>unsigned byte</code>
-     *
-     * @param value
-     * @throws NumberFormatException If <code>value</code> is not in the range
-     * of an <code>unsigned byte</code>
-     */
-    public UByte(short value) throws NumberFormatException {
-        this.value = rangeCheck(value);
+    public UByte() {
+        value = 0;
     }
 
     /**
@@ -104,70 +58,56 @@ public final class UByte extends UNumber implements Comparable<UByte> {
      * @param value
      */
     public UByte(byte value) {
-        this.value = (short) (value & MAX_VALUE);
+        this.value = value;
     }
 
     /**
      * Create an <code>unsigned byte</code>
      *
      * @param value
-     * @throws NumberFormatException If <code>value</code> does not contain a
-     * parsable <code>unsigned byte</code>.
      */
-    public UByte(String value) throws NumberFormatException {
-        this.value = rangeCheck(Short.parseShort(value));
+    public UByte(short value) {
+        this.value = (byte) value;
     }
 
     /**
-     * Throw exception if value out of range (short version)
+     * Create an <code>unsigned byte</code>
      *
-     * @param value Value to check
-     * @return value if it is in range
-     * @throws NumberFormatException if value is out of range
+     * @param value
      */
-    private static short rangeCheck(short value) throws NumberFormatException {
-        if (value < MIN_VALUE || value > MAX_VALUE) {
-            throw new NumberFormatException("Value is out of range : " + value);
-        }
-        return value;
+    public UByte(int value) {
+        this.value = (byte) value;
     }
 
     /**
-     * Throw exception if value out of range (int version)
+     * Create an <code>unsigned byte</code>
      *
-     * @param value Value to check
-     * @return value if it is in range
-     * @throws NumberFormatException if value is out of range
+     * @param value
      */
-    private static short rangeCheck(int value) throws NumberFormatException {
-        if (value < MIN_VALUE || value > MAX_VALUE) {
-            throw new NumberFormatException("Value is out of range : " + value);
-        }
-        return (short) value;
+    public UByte(long value) {
+        this.value = (byte) value;
     }
 
     /**
-     * Throw exception if value out of range (long version)
+     * Create an <code>unsigned byte</code>
      *
-     * @param value Value to check
-     * @return value if it is in range
-     * @throws NumberFormatException if value is out of range
+     * @param value
      */
-    private static short rangeCheck(long value) throws NumberFormatException {
-        if (value < MIN_VALUE || value > MAX_VALUE) {
-            throw new NumberFormatException("Value is out of range : " + value);
-        }
-        return (short) value;
+    public UByte(BigInteger value) {
+        this.value = value.byteValue();
     }
 
-    public UByte set(short value) {
-        this.value = rangeCheck(value);
-        return this;
+    /**
+     * Create an <code>unsigned byte</code>
+     *
+     * @param value
+     */
+    public UByte(String value) {
+        this.value = Byte.parseByte(value);
     }
 
-    public UByte clear() {
-        value = MIN_VALUE;
-        return this;
+    public UByte(UByte uByte) {
+        this.value = uByte.value;
     }
 
     @Override
@@ -177,13 +117,9 @@ public final class UByte extends UNumber implements Comparable<UByte> {
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj instanceof UByte) {
             return value == ((UByte) obj).value;
         }
-
         return false;
     }
 
@@ -194,75 +130,167 @@ public final class UByte extends UNumber implements Comparable<UByte> {
 
     @Override
     public int compareTo(UByte o) {
-        return (value < o.value ? -1 : (value == o.value ? 0 : 1));
+        int a = value & 0xff, b = o.value & 0xff;
+        return a < b ? -1 : (a == b ? 0 : 1);
+    }
+    
+    public short shortValue() {
+        return (short) (value & 0xff);
+    }
+    
+    public int intValue() {
+        return value & 0xff;
+    }
+    
+    public long longValue() {
+        return value & 0xff;
     }
 
-    @Override
-    public BigInteger toBigInteger() {
-        return BigInteger.valueOf(value);
+    /**
+     * Throw exception if value out of range (short version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static byte checkSigned(byte value) throws ArithmeticException {
+        if (value < 0) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return value;
     }
 
-    public UByte add_(UByte b) throws NumberFormatException {
-        return new UByte(value + b.value);
+    /**
+     * Throw exception if value out of range (short version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static byte checkSigned(short value) throws ArithmeticException {
+        if (value < 0 || value > MAX_VALUE) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return (byte) value;
     }
 
-    public UByte add_(int s) throws NumberFormatException {
-        return new UByte(value + (s & MAX_VALUE));
+    /**
+     * Throw exception if value out of range (int version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static byte checkSigned(int value) throws ArithmeticException {
+        if (value < 0 || value > MAX_VALUE) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return (byte) value;
     }
 
-    public UByte add(UByte b) throws NumberFormatException {
-        return add(b.value);
+    /**
+     * Throw exception if value out of range (long version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static byte checkSigned(long value) throws ArithmeticException {
+        if (value < 0 || value > MAX_VALUE) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return (byte) value;
     }
 
-    public UByte add(int s) throws NumberFormatException {
-        return set((short) (value + (s & MAX_VALUE)));
+    /**
+     * Throw exception if value out of range (long version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static byte checkSigned(BigInteger value) throws ArithmeticException {
+        if (value.compareTo(BigInteger.ZERO) < 0 || value.intValue() > MAX_VALUE) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return value.byteValue();
     }
 
-    public UByte div_(UByte b) throws NumberFormatException {
-        return new UByte(value / b.value);
+    /**
+     * Throw exception if value out of range (long version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static byte checkSigned(String value) throws ArithmeticException {
+        if (value.startsWith("-")) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return Byte.parseByte(value);
     }
 
-    public UByte div_(int s) throws NumberFormatException {
-        return new UByte(value / (s & MAX_VALUE));
-    }
-
-    public UByte div(UByte b) throws NumberFormatException {
-        return div(b.value);
-    }
-
-    public UByte div(int s) throws NumberFormatException {
-        return set((short) (value / (s & MAX_VALUE)));
-    }
-
-    public UByte mul_(UByte b) throws NumberFormatException {
-        return new UByte(value * b.value);
-    }
-
-    public UByte mul_(int s) throws NumberFormatException {
-        return set((short) (value * (s & MAX_VALUE)));
-    }
-
-    public UByte mul(UByte b) throws NumberFormatException {
-        return mul(b.value);
-    }
-
-    public UByte mul(int s) throws NumberFormatException {
-        return set((short) (value * (s & MAX_VALUE)));
-    }
-
-    public UByte sub_(UByte b) throws NumberFormatException {
-        return new UByte(b.value);
-    }
-
-    public UByte sub_(int s) throws NumberFormatException {
-        return new UByte((short) (value - (s & MAX_VALUE)));
-    }
-
-    public UByte sub(UByte b) throws NumberFormatException {
-        return sub(b.value);
-    }
-
-    public UByte sub(int s) throws NumberFormatException {
-        return set((short) (value - (s & MAX_VALUE)));
-    }
+//    public UByte add_(UByte b) throws NumberFormatException {
+//        return new UByte(value + b.value);
+//    }
+//
+//    public UByte add_(int s) throws NumberFormatException {
+//        return new UByte(value + (s & MAX_VALUE));
+//    }
+//
+//    public UByte add(UByte b) throws NumberFormatException {
+//        return add(b.value);
+//    }
+//
+//    public UByte add(int s) throws NumberFormatException {
+//        return set((short) (value + (s & MAX_VALUE)));
+//    }
+//
+//    public UByte div_(UByte b) throws NumberFormatException {
+//        return new UByte(value / b.value);
+//    }
+//
+//    public UByte div_(int s) throws NumberFormatException {
+//        return new UByte(value / (s & MAX_VALUE));
+//    }
+//
+//    public UByte div(UByte b) throws NumberFormatException {
+//        return div(b.value);
+//    }
+//
+//    public UByte div(int s) throws NumberFormatException {
+//        return set((short) (value / (s & MAX_VALUE)));
+//    }
+//
+//    public UByte mul_(UByte b) throws NumberFormatException {
+//        return new UByte(value * b.value);
+//    }
+//
+//    public UByte mul_(int s) throws NumberFormatException {
+//        return set((short) (value * (s & MAX_VALUE)));
+//    }
+//
+//    public UByte mul(UByte b) throws NumberFormatException {
+//        return mul(b.value);
+//    }
+//
+//    public UByte mul(int s) throws NumberFormatException {
+//        return set((short) (value * (s & MAX_VALUE)));
+//    }
+//
+//    public UByte sub_(UByte b) throws NumberFormatException {
+//        return new UByte(b.value);
+//    }
+//
+//    public UByte sub_(int s) throws NumberFormatException {
+//        return new UByte((short) (value - (s & MAX_VALUE)));
+//    }
+//
+//    public UByte sub(UByte b) throws NumberFormatException {
+//        return sub(b.value);
+//    }
+//
+//    public UByte sub(int s) throws NumberFormatException {
+//        return set((short) (value - (s & MAX_VALUE)));
+//    }
 }

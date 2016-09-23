@@ -9,14 +9,28 @@ package glm.vec._4.s;
  *
  * @author GBarbieri
  */
-public class Vec4s {
+public class Vec4s extends FuncRelational {
 
-    public static final int SIZE = 4 * Short.BYTES;
+    public Vec4s() {
+        x = 0;
+        y = 0;
+        z = 0;
+        w = 0;
+    }
 
-    public short x, y, z, w;
+    public Vec4s(int x, int y, int z, int w) {
+        this((short) x, (short) y, (short) z, (short) w);
+    }
+
+    public Vec4s(short x, short y, short z, short w) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+        this.w = w;
+    }
 
     public Vec4s set(int x, int y, int z, int w) {
-        return set((short) x, (short) y, (short) z);
+        return set((short) x, (short) y, (short) z, (short) w);
     }
 
     public Vec4s set(short x, short y, short z, short w) {

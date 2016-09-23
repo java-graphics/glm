@@ -5,19 +5,30 @@
  */
 package glm.vec._3.ui;
 
-import joou.UInteger;
+import joou.UInt;
 
 /**
  *
  * @author elect
  */
-public class Vec3ui {
-    
-    public static final int SIZE = 3 * Integer.BYTES;
+public class Vec3ui extends FuncRelational {
 
-    public UInteger x, y, z;
+    public Vec3ui() {
+        x.value = 0;
+        y.value = 0;
+    }
 
-    public Vec3ui set(UInteger x, UInteger y, UInteger z) {
+    public Vec3ui(int x, int y, int z) {
+        this(new UInt(x), new UInt(y), new UInt(z));
+    }
+
+    public Vec3ui(UInt x, UInt y, UInt z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
+    public Vec3ui set(UInt x, UInt y, UInt z) {
         this.x = x;
         this.y = y;
         this.z = z;

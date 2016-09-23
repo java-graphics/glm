@@ -8,6 +8,7 @@ package glm;
 import glm.vec._3.d.Vec3d;
 import glm.vec._2.Vec2;
 import glm.vec._2.b.Vec2b;
+import glm.vec._2.bool.Vec2bool;
 import glm.vec._2.d.Vec2d;
 import glm.vec._2.i.Vec2i;
 import glm.vec._2.l.Vec2l;
@@ -18,6 +19,7 @@ import glm.vec._2.ul.Vec2ul;
 import glm.vec._2.us.Vec2us;
 import glm.vec._3.Vec3;
 import glm.vec._3.b.Vec3b;
+import glm.vec._3.bool.Vec3bool;
 import glm.vec._3.i.Vec3i;
 import glm.vec._3.l.Vec3l;
 import glm.vec._3.s.Vec3s;
@@ -27,6 +29,7 @@ import glm.vec._3.ul.Vec3ul;
 import glm.vec._3.us.Vec3us;
 import glm.vec._4.Vec4;
 import glm.vec._4.b.Vec4b;
+import glm.vec._4.bool.Vec4bool;
 import glm.vec._4.d.Vec4d;
 import glm.vec._4.i.Vec4i;
 import glm.vec._4.l.Vec4l;
@@ -35,17 +38,18 @@ import glm.vec._4.ub.Vec4ub;
 import glm.vec._4.ui.Vec4ui;
 import glm.vec._4.ul.Vec4ul;
 import glm.vec._4.us.Vec4us;
+import java.math.BigInteger;
 import joou.UByte;
-import joou.UInteger;
+import joou.UInt;
 import joou.ULong;
 import joou.UShort;
 
 /**
- * TODO frexp, ldexp, modf, roundEven, trunc
+ * TODO frexp, ldexp, modf,
  *
  * @author elect
  */
-abstract class FuncCommon {
+abstract class FuncCommon extends FuncRelational {
 
     public static int MAX_ULPS = 2;
 
@@ -212,7 +216,7 @@ abstract class FuncCommon {
         return min(max(s, min), max);
     }
 
-    public static UInteger clamp(UInteger s, UInteger min, UInteger max) {
+    public static UInt clamp(UInt s, UInt min, UInt max) {
         return min(max(s, min), max);
     }
 
@@ -281,11 +285,11 @@ abstract class FuncCommon {
         return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
     }
 
-    public static Vec2ui clamp_(Vec2ui v, UInteger min, UInteger max) {
+    public static Vec2ui clamp_(Vec2ui v, UInt min, UInt max) {
         return clamp(v, min, max, new Vec2ui());
     }
 
-    public static Vec2ui clamp(Vec2ui v, UInteger min, UInteger max, Vec2ui res) {
+    public static Vec2ui clamp(Vec2ui v, UInt min, UInt max, Vec2ui res) {
         return res.set(clamp(v.x, min, max), clamp(v.y, min, max));
     }
 
@@ -443,11 +447,11 @@ abstract class FuncCommon {
         return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
     }
 
-    public static Vec3ui clamp_(Vec3ui v, UInteger min, UInteger max) {
+    public static Vec3ui clamp_(Vec3ui v, UInt min, UInt max) {
         return clamp(v, min, max, new Vec3ui());
     }
 
-    public static Vec3ui clamp(Vec3ui v, UInteger min, UInteger max, Vec3ui res) {
+    public static Vec3ui clamp(Vec3ui v, UInt min, UInt max, Vec3ui res) {
         return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max));
     }
 
@@ -605,11 +609,11 @@ abstract class FuncCommon {
         return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
     }
 
-    public static Vec4ui clamp_(Vec4ui v, UInteger min, UInteger max) {
+    public static Vec4ui clamp_(Vec4ui v, UInt min, UInt max) {
         return clamp(v, min, max, new Vec4ui());
     }
 
-    public static Vec4ui clamp(Vec4ui v, UInteger min, UInteger max, Vec4ui res) {
+    public static Vec4ui clamp(Vec4ui v, UInt min, UInt max, Vec4ui res) {
         return res.set(clamp(v.x, min, max), clamp(v.y, min, max), clamp(v.z, min, max), clamp(v.w, min, max));
     }
 
@@ -710,8 +714,168 @@ abstract class FuncCommon {
         return res.set(clamp(v.x, min.x, max.x), clamp(v.y, min.y, max.y), clamp(v.z, min.z, max.z), clamp(v.w, min.w, max.w));
     }
 
-    public static int floatToIntBits(float x) {
-        return Float.floatToIntBits(x);
+    // floatBitsToInt -----------------------------------------------------------------------------------------------
+    public static int floatBitsToInt(float s) {
+        return Float.floatToIntBits(s);
+    }
+
+    public static Vec2i floatBitsToInt_(Vec2 v) {
+        return floatBitsToInt(v, new Vec2i());
+    }
+
+    public static Vec2i floatBitsToInt(Vec2 v, Vec2i res) {
+        res.x = Float.floatToIntBits(v.x);
+        res.y = Float.floatToIntBits(v.y);
+        return res;
+    }
+
+    public static Vec3i floatBitsToInt_(Vec3 v) {
+        return floatBitsToInt(v, new Vec3i());
+    }
+
+    public static Vec3i floatBitsToInt(Vec3 v, Vec3i res) {
+        res.x = Float.floatToIntBits(v.x);
+        res.y = Float.floatToIntBits(v.y);
+        res.z = Float.floatToIntBits(v.z);
+        return res;
+    }
+
+    public static Vec4i floatBitsToInt_(Vec4 v) {
+        return floatBitsToInt(v, new Vec4i());
+    }
+
+    public static Vec4i floatBitsToInt(Vec4 v, Vec4i res) {
+        res.x = Float.floatToIntBits(v.x);
+        res.y = Float.floatToIntBits(v.y);
+        res.z = Float.floatToIntBits(v.z);
+        res.w = Float.floatToIntBits(v.w);
+        return res;
+    }
+
+    // floatBitsToUInt -----------------------------------------------------------------------------------------------
+    public static int floatBitsToUInt(float s) {
+        if (s < 0) {
+            throw new NumberFormatException("Value is out of range : " + s);
+        }
+        return (int) (Double.doubleToLongBits(s) & UInt.MAX_VALUE);
+    }
+
+    public static Vec2i floatBitsToUInt_(Vec2 v) {
+        return floatBitsToUInt(v, new Vec2i());
+    }
+
+    public static Vec2i floatBitsToUInt(Vec2 v, Vec2i res) {
+        if (v.x < 0 || v.y < 0) {
+            throw new NumberFormatException("Value is out of range : "); //TODO print
+        }
+        res.x = (int) (Double.doubleToLongBits(v.x) & UInt.MAX_VALUE);
+        res.y = (int) (Double.doubleToLongBits(v.y) & UInt.MAX_VALUE);
+        return res;
+    }
+
+    public static Vec3i floatBitsToUInt_(Vec3 v) {
+        return floatBitsToUInt(v, new Vec3i());
+    }
+
+    public static Vec3i floatBitsToUInt(Vec3 v, Vec3i res) {
+        if (v.x < 0 || v.y < 0 || v.z < 0) {
+            throw new NumberFormatException("Value is out of range : "); //TODO print
+        }
+        res.x = (int) (Double.doubleToLongBits(v.x) & UInt.MAX_VALUE);
+        res.y = (int) (Double.doubleToLongBits(v.y) & UInt.MAX_VALUE);
+        res.z = (int) (Double.doubleToLongBits(v.z) & UInt.MAX_VALUE);
+        return res;
+    }
+
+    public static Vec4i floatBitsToUInt_(Vec4 v) {
+        return floatBitsToUInt(v, new Vec4i());
+    }
+
+    public static Vec4i floatBitsToUInt(Vec4 v, Vec4i res) {
+        if (v.x < 0 || v.y < 0 || v.z < 0 || v.w < 0) {
+            throw new NumberFormatException("Value is out of range : "); //TODO print
+        }
+        res.x = (int) (Double.doubleToLongBits(v.x) & UInt.MAX_VALUE);
+        res.y = (int) (Double.doubleToLongBits(v.y) & UInt.MAX_VALUE);
+        res.z = (int) (Double.doubleToLongBits(v.z) & UInt.MAX_VALUE);
+        res.w = (int) (Double.doubleToLongBits(v.w) & UInt.MAX_VALUE);
+        return res;
+    }
+
+    // intBitsToFloat -----------------------------------------------------------------------------------------------
+    public static float intBitsToFloat(int s) {
+        return Float.intBitsToFloat(s);
+    }
+
+    public static Vec2 intBitsToFloat_(Vec2i v) {
+        return intBitsToFloat(v, new Vec2());
+    }
+
+    public static Vec2 intBitsToFloat(Vec2i v, Vec2 res) {
+        res.x = Float.intBitsToFloat(v.x);
+        res.y = Float.intBitsToFloat(v.y);
+        return res;
+    }
+
+    public static Vec3 intBitsToFloat_(Vec3i v) {
+        return intBitsToFloat(v, new Vec3());
+    }
+
+    public static Vec3 intBitsToFloat(Vec3i v, Vec3 res) {
+        res.x = Float.intBitsToFloat(v.x);
+        res.y = Float.intBitsToFloat(v.y);
+        res.z = Float.intBitsToFloat(v.z);
+        return res;
+    }
+
+    public static Vec4 intBitsToFloat_(Vec4i v) {
+        return intBitsToFloat(v, new Vec4());
+    }
+
+    public static Vec4 intBitsToFloat(Vec4i v, Vec4 res) {
+        res.x = Float.intBitsToFloat(v.x);
+        res.y = Float.intBitsToFloat(v.y);
+        res.z = Float.intBitsToFloat(v.z);
+        res.w = Float.intBitsToFloat(v.w);
+        return res;
+    }
+
+    // uintBitsToFloat ----------------------------------------------------------------------------------------------
+    public static float uintBitsToFloat(UInt s) {
+        return (float) Double.longBitsToDouble(s.value);
+    }
+
+    public static Vec2 uintBitsToFloat_(Vec2ui v) {
+        return uintBitsToFloat(v, new Vec2());
+    }
+
+    public static Vec2 uintBitsToFloat(Vec2ui v, Vec2 res) {
+        res.x = (float) Double.longBitsToDouble(v.x.value);
+        res.y = (float) Double.longBitsToDouble(v.y.value);
+        return res;
+    }
+
+    public static Vec3 uintBitsToFloat_(Vec3ui v) {
+        return uintBitsToFloat(v, new Vec3());
+    }
+
+    public static Vec3 uintBitsToFloat(Vec3ui v, Vec3 res) {
+        res.x = (float) Double.longBitsToDouble(v.x.value);
+        res.y = (float) Double.longBitsToDouble(v.y.value);
+        res.z = (float) Double.longBitsToDouble(v.z.value);
+        return res;
+    }
+
+    public static Vec4 uintBitsToFloat_(Vec4ui v) {
+        return uintBitsToFloat(v, new Vec4());
+    }
+
+    public static Vec4 uintBitsToFloat(Vec4ui v, Vec4 res) {
+        res.x = (float) Double.longBitsToDouble(v.x.value);
+        res.y = (float) Double.longBitsToDouble(v.y.value);
+        res.z = (float) Double.longBitsToDouble(v.z.value);
+        res.w = (float) Double.longBitsToDouble(v.w.value);
+        return res;
     }
 
     // floor --------------------------------------------------------------------------------------------------------
@@ -771,12 +935,79 @@ abstract class FuncCommon {
         return res.set(floor(v.x), floor(v.y), floor(v.z), floor(v.w));
     }
 
+    // fma ----------------------------------------------------------------------------------------------------------
     public static float fma(float a, float b, float c) {
         return a * b + c;
     }
 
-    public static int fma(int a, int b, int c) {
+    public static double fma(double a, double b, double c) {
         return a * b + c;
+    }
+
+    public static Vec2 fma_(Vec2 a, Vec2 b, Vec2 c) {
+        return fma(a, b, c, new Vec2());
+    }
+
+    public static Vec2 fma(Vec2 a, Vec2 b, Vec2 c, Vec2 res) {
+        res.x = a.x * b.x + c.x;
+        res.y = a.y * b.y + c.y;
+        return res;
+    }
+
+    public static Vec2d fma_(Vec2d a, Vec2d b, Vec2d c) {
+        return fma(a, b, c, new Vec2d());
+    }
+
+    public static Vec2d fma(Vec2d a, Vec2d b, Vec2d c, Vec2d res) {
+        res.x = a.x * b.x + c.x;
+        res.y = a.y * b.y + c.y;
+        return res;
+    }
+
+    public static Vec3 fma_(Vec3 a, Vec3 b, Vec3 c) {
+        return fma(a, b, c, new Vec3());
+    }
+
+    public static Vec3 fma(Vec3 a, Vec3 b, Vec3 c, Vec3 res) {
+        res.x = a.x * b.x + c.x;
+        res.y = a.y * b.y + c.y;
+        res.z = a.z * b.z + c.z;
+        return res;
+    }
+
+    public static Vec3d fma_(Vec3d a, Vec3d b, Vec3d c) {
+        return fma(a, b, c, new Vec3d());
+    }
+
+    public static Vec3d fma(Vec3d a, Vec3d b, Vec3d c, Vec3d res) {
+        res.x = a.x * b.x + c.x;
+        res.y = a.y * b.y + c.y;
+        res.z = a.z * b.z + c.z;
+        return res;
+    }
+
+    public static Vec4 fma_(Vec4 a, Vec4 b, Vec4 c) {
+        return fma(a, b, c, new Vec4());
+    }
+
+    public static Vec4 fma(Vec4 a, Vec4 b, Vec4 c, Vec4 res) {
+        res.x = a.x * b.x + c.x;
+        res.y = a.y * b.y + c.y;
+        res.z = a.z * b.z + c.z;
+        res.w = a.w * b.w + c.w;
+        return res;
+    }
+
+    public static Vec4d fma_(Vec4d a, Vec4d b, Vec4d c) {
+        return fma(a, b, c, new Vec4d());
+    }
+
+    public static Vec4d fma(Vec4d a, Vec4d b, Vec4d c, Vec4d res) {
+        res.x = a.x * b.x + c.x;
+        res.y = a.y * b.y + c.y;
+        res.z = a.z * b.z + c.z;
+        res.w = a.w * b.w + c.w;
+        return res;
     }
 
     // fract --------------------------------------------------------------------------------------------------------
@@ -836,16 +1067,154 @@ abstract class FuncCommon {
         return res.set(fract(v.x), fract(v.y), fract(v.z), fract(v.w));
     }
 
-    public static float intBitsToFloat(int value) {
-        return Float.intBitsToFloat(value);
+    // isInf --------------------------------------------------------------------------------------------------------
+    public static boolean isInf(double s) {
+        return Double.isInfinite(s);
     }
 
-    public static boolean isInf(float f) {
-        return Float.isInfinite(f);
+    public static boolean isInf(float s) {
+        return Float.isInfinite(s);
     }
 
-    public static boolean isNan(float f) {
-        return Float.isNaN(f);
+    public static Vec2bool isInf(Vec2d v) {
+        return isInf(v, new Vec2bool());
+    }
+
+    public static Vec2bool isInf(Vec2d v, Vec2bool res) {
+        res.x = Double.isInfinite(v.x);
+        res.y = Double.isInfinite(v.y);
+        return res;
+    }
+
+    public static Vec2bool isInf(Vec2 v) {
+        return isInf(v, new Vec2bool());
+    }
+
+    public static Vec2bool isInf(Vec2 v, Vec2bool res) {
+        res.x = Float.isInfinite(v.x);
+        res.y = Float.isInfinite(v.y);
+        return res;
+    }
+
+    public static Vec3bool isInf(Vec3d v) {
+        return isInf(v, new Vec3bool());
+    }
+
+    public static Vec3bool isInf(Vec3d v, Vec3bool res) {
+        res.x = Double.isInfinite(v.x);
+        res.y = Double.isInfinite(v.y);
+        res.z = Double.isInfinite(v.z);
+        return res;
+    }
+
+    public static Vec3bool isInf(Vec3 v) {
+        return isInf(v, new Vec3bool());
+    }
+
+    public static Vec3bool isInf(Vec3 v, Vec3bool res) {
+        res.x = Float.isInfinite(v.x);
+        res.y = Float.isInfinite(v.y);
+        res.z = Float.isInfinite(v.z);
+        return res;
+    }
+
+    public static Vec4bool isInf(Vec4d v) {
+        return isInf(v, new Vec4bool());
+    }
+
+    public static Vec4bool isInf(Vec4d v, Vec4bool res) {
+        res.x = Double.isInfinite(v.x);
+        res.y = Double.isInfinite(v.y);
+        res.z = Double.isInfinite(v.z);
+        res.w = Double.isInfinite(v.w);
+        return res;
+    }
+
+    public static Vec4bool isInf(Vec4 v) {
+        return isInf(v, new Vec4bool());
+    }
+
+    public static Vec4bool isInf(Vec4 v, Vec4bool res) {
+        res.x = Float.isInfinite(v.x);
+        res.y = Float.isInfinite(v.y);
+        res.z = Float.isInfinite(v.z);
+        res.w = Float.isInfinite(v.w);
+        return res;
+    }
+
+    // isNan --------------------------------------------------------------------------------------------------------
+    public static boolean isNan(double s) {
+        return Double.isNaN(s);
+    }
+
+    public static boolean isNan(float s) {
+        return Float.isNaN(s);
+    }
+
+    public static Vec2bool isNan(Vec2d v) {
+        return isNan(v, new Vec2bool());
+    }
+
+    public static Vec2bool isNan(Vec2d v, Vec2bool res) {
+        res.x = Double.isNaN(v.x);
+        res.y = Double.isNaN(v.y);
+        return res;
+    }
+
+    public static Vec2bool isNan(Vec2 v) {
+        return isNan(v, new Vec2bool());
+    }
+
+    public static Vec2bool isNan(Vec2 v, Vec2bool res) {
+        res.x = Float.isNaN(v.x);
+        res.y = Float.isNaN(v.y);
+        return res;
+    }
+
+    public static Vec3bool isNan(Vec3d v) {
+        return isNan(v, new Vec3bool());
+    }
+
+    public static Vec3bool isNan(Vec3d v, Vec3bool res) {
+        res.x = Double.isNaN(v.x);
+        res.y = Double.isNaN(v.y);
+        res.z = Double.isNaN(v.z);
+        return res;
+    }
+
+    public static Vec3bool isNan(Vec3 v) {
+        return isNan(v, new Vec3bool());
+    }
+
+    public static Vec3bool isNan(Vec3 v, Vec3bool res) {
+        res.x = Float.isNaN(v.x);
+        res.y = Float.isNaN(v.y);
+        res.z = Float.isNaN(v.z);
+        return res;
+    }
+
+    public static Vec4bool isNan(Vec4d v) {
+        return isNan(v, new Vec4bool());
+    }
+
+    public static Vec4bool isNan(Vec4d v, Vec4bool res) {
+        res.x = Double.isNaN(v.x);
+        res.y = Double.isNaN(v.y);
+        res.z = Double.isNaN(v.z);
+        res.w = Double.isNaN(v.w);
+        return res;
+    }
+
+    public static Vec4bool isNan(Vec4 v) {
+        return isNan(v, new Vec4bool());
+    }
+
+    public static Vec4bool isNan(Vec4 v, Vec4bool res) {
+        res.x = Float.isNaN(v.x);
+        res.y = Float.isNaN(v.y);
+        res.z = Float.isNaN(v.z);
+        res.w = Float.isNaN(v.w);
+        return res;
     }
 
     // max ----------------------------------------------------------------------------------------------------------
@@ -869,7 +1238,7 @@ abstract class FuncCommon {
         return UMath.max(sA, sB);
     }
 
-    public static UInteger max(UInteger sA, UInteger sB) {
+    public static UInt max(UInt sA, UInt sB) {
         return UMath.max(sA, sB);
     }
 
@@ -938,11 +1307,11 @@ abstract class FuncCommon {
         return res.set(max(v.x, s), max(v.y, s));
     }
 
-    public static Vec2ui max_(Vec2ui v, UInteger s) {
+    public static Vec2ui max_(Vec2ui v, UInt s) {
         return max(v, s, new Vec2ui());
     }
 
-    public static Vec2ui max(Vec2ui v, UInteger s, Vec2ui res) {
+    public static Vec2ui max(Vec2ui v, UInt s, Vec2ui res) {
         return res.set(max(v.x, s), max(v.y, s));
     }
 
@@ -1100,11 +1469,11 @@ abstract class FuncCommon {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
-    public static Vec3ui max_(Vec3ui v, UInteger s) {
+    public static Vec3ui max_(Vec3ui v, UInt s) {
         return max(v, s, new Vec3ui());
     }
 
-    public static Vec3ui max(Vec3ui v, UInteger s, Vec3ui res) {
+    public static Vec3ui max(Vec3ui v, UInt s, Vec3ui res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s));
     }
 
@@ -1262,11 +1631,11 @@ abstract class FuncCommon {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
     }
 
-    public static Vec4ui max_(Vec4ui v, UInteger s) {
+    public static Vec4ui max_(Vec4ui v, UInt s) {
         return max(v, s, new Vec4ui());
     }
 
-    public static Vec4ui max(Vec4ui v, UInteger s, Vec4ui res) {
+    public static Vec4ui max(Vec4ui v, UInt s, Vec4ui res) {
         return res.set(max(v.x, s), max(v.y, s), max(v.z, s), max(v.w, s));
     }
 
@@ -1388,7 +1757,7 @@ abstract class FuncCommon {
         return UMath.min(sA, sB);
     }
 
-    public static UInteger min(UInteger sA, UInteger sB) {
+    public static UInt min(UInt sA, UInt sB) {
         return UMath.min(sA, sB);
     }
 
@@ -1457,11 +1826,11 @@ abstract class FuncCommon {
         return res.set(min(v.x, s), min(v.y, s));
     }
 
-    public static Vec2ui min_(Vec2ui v, UInteger s) {
+    public static Vec2ui min_(Vec2ui v, UInt s) {
         return min(v, s, new Vec2ui());
     }
 
-    public static Vec2ui min(Vec2ui v, UInteger s, Vec2ui res) {
+    public static Vec2ui min(Vec2ui v, UInt s, Vec2ui res) {
         return res.set(min(v.x, s), min(v.y, s));
     }
 
@@ -1619,11 +1988,11 @@ abstract class FuncCommon {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
     }
 
-    public static Vec3ui min_(Vec3ui v, UInteger s) {
+    public static Vec3ui min_(Vec3ui v, UInt s) {
         return min(v, s, new Vec3ui());
     }
 
-    public static Vec3ui min(Vec3ui v, UInteger s, Vec3ui res) {
+    public static Vec3ui min(Vec3ui v, UInt s, Vec3ui res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s));
     }
 
@@ -1781,11 +2150,11 @@ abstract class FuncCommon {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
     }
 
-    public static Vec4ui min_(Vec4ui v, UInteger s) {
+    public static Vec4ui min_(Vec4ui v, UInt s) {
         return min(v, s, new Vec4ui());
     }
 
-    public static Vec4ui min(Vec4ui v, UInteger s, Vec4ui res) {
+    public static Vec4ui min(Vec4ui v, UInt s, Vec4ui res) {
         return res.set(min(v.x, s), min(v.y, s), min(v.z, s), min(v.w, s));
     }
 
@@ -1886,61 +2255,303 @@ abstract class FuncCommon {
         return res.set(min(vA.x, vB.x), min(vA.y, vB.y), min(vA.z, vB.z), min(vA.w, vB.w));
     }
 
-    // mix ----------------------------------------------------------------------------------------------------------
-    public static float mix(float s, float a, float b) {
+    // mix (scalar - scalar) ----------------------------------------------------------------------------------------
+    public static float mix(float a, float b, float s) {
         return a + s * (b - a);
     }
 
-    public static double mix(double s, double a, double b) {
+    public static float mix(float a, float b, boolean bool) {
+        return bool ? a : b;
+    }
+
+    public static double mix(double a, double b, double s) {
         return a + s * (b - a);
     }
 
-    public static int mix(int s, int a, int b) {
+    public static double mix(double a, double b, boolean bool) {
+        return bool ? a : b;
+    }
+
+    public static int mix(int a, int b, int s) {
         return a + s * (b - a);
     }
 
-    public static long mix(long s, long a, long b) {
+    public static int mix(int a, int b, boolean bool) {
+        return bool ? a : b;
+    }
+
+    public static long mix(long a, long b, long s) {
         return a + s * (b - a);
     }
 
-    public static UByte mix(UByte s, UByte a, UByte b) {
-        return a.add(s.mul(b.sub(b)));
-    }
-    
-    public static UInteger clamp(UInteger s, UInteger min, UInteger max) {
-        return min(max(s, min), max);
+    public static long mix(long a, long b, boolean bool) {
+        return bool ? a : b;
     }
 
-    public static ULong clamp(ULong s, ULong min, ULong max) {
-        return min(max(s, min), max);
+    // mix (vec - scalar) ------------------------------------------------------
+    public static Vec2 mix_(Vec2 a, Vec2 b, float s) {
+        return mix(a, b, s, new Vec2());
     }
 
-    public static UShort clamp(UShort s, UShort min, UShort max) {
-        return min(max(s, min), max);
+    public static Vec2 mix(Vec2 a, Vec2 b, float s, Vec2 res) {
+        res.x = mix(a.x, b.x, s);
+        res.y = mix(a.y, b.y, s);
+        return res;
     }
 
-    public static float mix(float x, float y, boolean a) {
-        return a ? y : x;
+    public static Vec2 mix_(Vec2 a, Vec2 b, boolean bool) {
+        return mix(a, b, bool, new Vec2());
     }
 
-    public static int mix(int x, int y, boolean a) {
-        return a ? y : x;
+    public static Vec2 mix(Vec2 a, Vec2 b, boolean bool, Vec2 res) {
+        res.x = mix(a.x, b.x, bool);
+        res.y = mix(a.y, b.y, bool);
+        return res;
     }
 
-    public static Vec4 mix_(Vec4 x, Vec4 y, float a) {
-        return mix(x, y, a, new Vec4());
+    public static Vec2d mix_(Vec2d a, Vec2d b, double s) {
+        return mix(a, b, s, new Vec2d());
     }
 
-    public static Vec4 mix(Vec4 x, Vec4 y, float a, Vec4 res) {
-        return Vec4.mix(x, y, a, res);
+    public static Vec2d mix(Vec2d a, Vec2d b, double s, Vec2d res) {
+        res.x = mix(a.x, b.x, s);
+        res.y = mix(a.y, b.y, s);
+        return res;
     }
 
-    public static Vec4 mix_(Vec4 x, Vec4 y, Vec4 a) {
-        return mix(x, y, a, new Vec4());
+    public static Vec2d mix_(Vec2d a, Vec2d b, boolean bool) {
+        return mix(a, b, bool, new Vec2d());
     }
 
-    public static Vec4 mix(Vec4 x, Vec4 y, Vec4 a, Vec4 res) {
-        return Vec4.mix(x, y, a, res);
+    public static Vec2d mix(Vec2d a, Vec2d b, boolean bool, Vec2d res) {
+        res.x = mix(a.x, b.x, bool);
+        res.y = mix(a.y, b.y, bool);
+        return res;
+    }
+
+    public static Vec3 mix_(Vec3 a, Vec3 b, float s) {
+        return mix(a, b, s, new Vec3());
+    }
+
+    public static Vec3 mix(Vec3 a, Vec3 b, float s, Vec3 res) {
+        res.x = mix(a.x, b.x, s);
+        res.y = mix(a.y, b.y, s);
+        res.z = mix(a.z, b.z, s);
+        return res;
+    }
+
+    public static Vec3 mix_(Vec3 a, Vec3 b, boolean bool) {
+        return mix(a, b, bool, new Vec3());
+    }
+
+    public static Vec3 mix(Vec3 a, Vec3 b, boolean bool, Vec3 res) {
+        res.x = mix(a.x, b.x, bool);
+        res.y = mix(a.y, b.y, bool);
+        res.z = mix(a.z, b.z, bool);
+        return res;
+    }
+
+    public static Vec3d mix_(Vec3d a, Vec3d b, double s) {
+        return mix(a, b, s, new Vec3d());
+    }
+
+    public static Vec3d mix(Vec3d a, Vec3d b, double s, Vec3d res) {
+        res.x = mix(a.x, b.x, s);
+        res.y = mix(a.y, b.y, s);
+        res.z = mix(a.z, b.z, s);
+        return res;
+    }
+
+    public static Vec3d mix_(Vec3d a, Vec3d b, boolean bool) {
+        return mix(a, b, bool, new Vec3d());
+    }
+
+    public static Vec3d mix(Vec3d a, Vec3d b, boolean bool, Vec3d res) {
+        res.x = mix(a.x, b.x, bool);
+        res.y = mix(a.y, b.y, bool);
+        res.z = mix(a.z, b.z, bool);
+        return res;
+    }
+
+    public static Vec4 mix_(Vec4 a, Vec4 b, float s) {
+        return mix(a, b, s, new Vec4());
+    }
+
+    public static Vec4 mix(Vec4 a, Vec4 b, float s, Vec4 res) {
+        res.x = mix(a.x, b.x, s);
+        res.y = mix(a.y, b.y, s);
+        res.z = mix(a.z, b.z, s);
+        res.w = mix(a.w, b.w, s);
+        return res;
+    }
+
+    public static Vec4 mix_(Vec4 a, Vec4 b, boolean bool) {
+        return mix(a, b, bool, new Vec4());
+    }
+
+    public static Vec4 mix(Vec4 a, Vec4 b, boolean bool, Vec4 res) {
+        res.x = mix(a.x, b.x, bool);
+        res.y = mix(a.y, b.y, bool);
+        res.z = mix(a.z, b.z, bool);
+        res.w = mix(a.w, b.w, bool);
+        return res;
+    }
+
+    public static Vec4d mix_(Vec4d a, Vec4d b, double s) {
+        return mix(a, b, s, new Vec4d());
+    }
+
+    public static Vec4d mix(Vec4d a, Vec4d b, double s, Vec4d res) {
+        res.x = mix(a.x, b.x, s);
+        res.y = mix(a.y, b.y, s);
+        res.z = mix(a.z, b.z, s);
+        res.w = mix(a.w, b.w, s);
+        return res;
+    }
+
+    public static Vec4d mix_(Vec4d a, Vec4d b, boolean bool) {
+        return mix(a, b, bool, new Vec4d());
+    }
+
+    public static Vec4d mix(Vec4d a, Vec4d b, boolean bool, Vec4d res) {
+        res.x = mix(a.x, b.x, bool);
+        res.y = mix(a.y, b.y, bool);
+        res.z = mix(a.z, b.z, bool);
+        res.w = mix(a.w, b.w, bool);
+        return res;
+    }
+
+    // mix (vec - vec) ---------------------------------------------------------
+    public static Vec2 mix_(Vec2 a, Vec2 b, Vec2 v) {
+        return mix(a, b, v, new Vec2());
+    }
+
+    public static Vec2 mix(Vec2 a, Vec2 b, Vec2 v, Vec2 res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        return res;
+    }
+
+    public static Vec2 mix_(Vec2 a, Vec2 b, Vec2bool v) {
+        return mix(a, b, v, new Vec2());
+    }
+
+    public static Vec2 mix(Vec2 a, Vec2 b, Vec2bool v, Vec2 res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        return res;
+    }
+
+    public static Vec2d mix_(Vec2d a, Vec2d b, Vec2d v) {
+        return mix(a, b, v, new Vec2d());
+    }
+
+    public static Vec2d mix(Vec2d a, Vec2d b, Vec2d v, Vec2d res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        return res;
+    }
+
+    public static Vec2d mix_(Vec2d a, Vec2d b, Vec2bool v) {
+        return mix(a, b, v, new Vec2d());
+    }
+
+    public static Vec2d mix(Vec2d a, Vec2d b, Vec2bool v, Vec2d res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        return res;
+    }
+
+    public static Vec3 mix_(Vec3 a, Vec3 b, Vec3 v) {
+        return mix(a, b, v, new Vec3());
+    }
+
+    public static Vec3 mix(Vec3 a, Vec3 b, Vec3 v, Vec3 res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        res.z = mix(a.z, b.z, v.z);
+        return res;
+    }
+
+    public static Vec3 mix_(Vec3 a, Vec3 b, Vec3bool v) {
+        return mix(a, b, v, new Vec3());
+    }
+
+    public static Vec3 mix(Vec3 a, Vec3 b, Vec3bool v, Vec3 res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        res.z = mix(a.z, b.z, v.z);
+        return res;
+    }
+
+    public static Vec3d mix_(Vec3d a, Vec3d b, Vec3d v) {
+        return mix(a, b, v, new Vec3d());
+    }
+
+    public static Vec3d mix(Vec3d a, Vec3d b, Vec3d v, Vec3d res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        res.z = mix(a.z, b.z, v.z);
+        return res;
+    }
+
+    public static Vec3d mix_(Vec3d a, Vec3d b, Vec3bool v) {
+        return mix(a, b, v, new Vec3d());
+    }
+
+    public static Vec3d mix(Vec3d a, Vec3d b, Vec3bool v, Vec3d res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        res.z = mix(a.z, b.z, v.z);
+        return res;
+    }
+
+    public static Vec4 mix_(Vec4 a, Vec4 b, Vec4 v) {
+        return mix(a, b, v, new Vec4());
+    }
+
+    public static Vec4 mix(Vec4 a, Vec4 b, Vec4 v, Vec4 res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        res.z = mix(a.z, b.z, v.z);
+        res.w = mix(a.w, b.w, v.w);
+        return res;
+    }
+
+    public static Vec4 mix_(Vec4 a, Vec4 b, Vec4bool v) {
+        return mix(a, b, v, new Vec4());
+    }
+
+    public static Vec4 mix(Vec4 a, Vec4 b, Vec4bool v, Vec4 res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        res.z = mix(a.z, b.z, v.z);
+        res.w = mix(a.w, b.w, v.w);
+        return res;
+    }
+
+    public static Vec4d mix_(Vec4d a, Vec4d b, Vec4d v) {
+        return mix(a, b, v, new Vec4d());
+    }
+
+    public static Vec4d mix(Vec4d a, Vec4d b, Vec4d v, Vec4d res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        res.z = mix(a.z, b.z, v.z);
+        res.w = mix(a.w, b.w, v.w);
+        return res;
+    }
+
+    public static Vec4d mix_(Vec4d a, Vec4d b, Vec4bool v) {
+        return mix(a, b, v, new Vec4d());
+    }
+
+    public static Vec4d mix(Vec4d a, Vec4d b, Vec4bool v, Vec4d res) {
+        res.x = mix(a.x, b.x, v.x);
+        res.y = mix(a.y, b.y, v.y);
+        res.z = mix(a.z, b.z, v.z);
+        res.w = mix(a.w, b.w, v.w);
+        return res;
     }
 
     // mod ---------------------------------------------------------------------
@@ -2267,13 +2878,788 @@ abstract class FuncCommon {
         return res.set(sign(v.x), sign(v.y), sign(v.z), sign(v.w));
     }
 
-    public static float smoothstep(float edge0, float edge1, float x) {
-        float tmp = clamp((x - edge0) / (edge1 - edge0), 0, 1);
-        return tmp * tmp * (3 - 2 * tmp);
+    // smoothstep ---------------------------------------------------------------------------------------------------
+    public static double smoothstep(double edge0, double edge1, double s) {
+        double t = clamp((s - edge0) / (edge1 - edge0), 0, 1);
+        return t * t * (3 - 2 * t);
     }
 
-    public static float step(float edge, float x) {
-        return x < edge ? 0f : 1f;
+    public static float smoothstep(float edge0, float edge1, float s) {
+        float t = clamp((s - edge0) / (edge1 - edge0), 0, 1);
+        return t * t * (3 - 2 * t);
+    }
+
+    public static Vec2d smoothstep_(double edge0, double edge1, Vec2d s) {
+        return smoothstep(edge0, edge1, s, new Vec2d());
+    }
+
+    public static Vec2d smoothstep(double edge0, double edge1, Vec2d s, Vec2d res) {
+        double tX = clamp((s.x - edge0) / (edge1 - edge0), 0, 1);
+        double tY = clamp((s.y - edge0) / (edge1 - edge0), 0, 1);
+        res.x = tX * tX * (3 - 2 * tX);
+        res.y = tY * tY * (3 - 2 * tY);
+        return res;
+    }
+
+    public static Vec2 smoothstep_(float edge0, float edge1, Vec2 s) {
+        return smoothstep(edge0, edge1, s, new Vec2());
+    }
+
+    public static Vec2 smoothstep(float edge0, float edge1, Vec2 s, Vec2 res) {
+        float tX = clamp((s.x - edge0) / (edge1 - edge0), 0, 1);
+        float tY = clamp((s.y - edge0) / (edge1 - edge0), 0, 1);
+        res.x = tX * tX * (3 - 2 * tX);
+        res.y = tY * tY * (3 - 2 * tY);
+        return res;
+    }
+
+    public static Vec3d smoothstep_(double edge0, double edge1, Vec3d s) {
+        return smoothstep(edge0, edge1, s, new Vec3d());
+    }
+
+    public static Vec3d smoothstep(double edge0, double edge1, Vec3d s, Vec3d res) {
+        double tX = clamp((s.x - edge0) / (edge1 - edge0), 0, 1);
+        double tY = clamp((s.y - edge0) / (edge1 - edge0), 0, 1);
+        double tZ = clamp((s.z - edge0) / (edge1 - edge0), 0, 1);
+        res.x = tX * tX * (3 - 2 * tX);
+        res.y = tY * tY * (3 - 2 * tY);
+        res.z = tZ * tZ * (3 - 2 * tZ);
+        return res;
+    }
+
+    public static Vec3 smoothstep_(float edge0, float edge1, Vec3 s) {
+        return smoothstep(edge0, edge1, s, new Vec3());
+    }
+
+    public static Vec3 smoothstep(float edge0, float edge1, Vec3 s, Vec3 res) {
+        float tX = clamp((s.x - edge0) / (edge1 - edge0), 0, 1);
+        float tY = clamp((s.y - edge0) / (edge1 - edge0), 0, 1);
+        float tZ = clamp((s.z - edge0) / (edge1 - edge0), 0, 1);
+        res.x = tX * tX * (3 - 2 * tX);
+        res.y = tY * tY * (3 - 2 * tY);
+        res.z = tZ * tZ * (3 - 2 * tZ);
+        return res;
+    }
+
+    public static Vec4d smoothstep_(double edge0, double edge1, Vec4d s) {
+        return smoothstep(edge0, edge1, s, new Vec4d());
+    }
+
+    public static Vec4d smoothstep(double edge0, double edge1, Vec4d s, Vec4d res) {
+        double tX = clamp((s.x - edge0) / (edge1 - edge0), 0, 1);
+        double tY = clamp((s.y - edge0) / (edge1 - edge0), 0, 1);
+        double tZ = clamp((s.z - edge0) / (edge1 - edge0), 0, 1);
+        double tW = clamp((s.w - edge0) / (edge1 - edge0), 0, 1);
+        res.x = tX * tX * (3 - 2 * tX);
+        res.y = tY * tY * (3 - 2 * tY);
+        res.z = tZ * tZ * (3 - 2 * tZ);
+        res.w = tW * tW * (3 - 2 * tW);
+        return res;
+    }
+
+    public static Vec4 smoothstep_(float edge0, float edge1, Vec4 s) {
+        return smoothstep(edge0, edge1, s, new Vec4());
+    }
+
+    public static Vec4 smoothstep(float edge0, float edge1, Vec4 s, Vec4 res) {
+        float tX = clamp((s.x - edge0) / (edge1 - edge0), 0, 1);
+        float tY = clamp((s.y - edge0) / (edge1 - edge0), 0, 1);
+        float tZ = clamp((s.z - edge0) / (edge1 - edge0), 0, 1);
+        float tW = clamp((s.w - edge0) / (edge1 - edge0), 0, 1);
+        res.x = tX * tX * (3 - 2 * tX);
+        res.y = tY * tY * (3 - 2 * tY);
+        res.z = tZ * tZ * (3 - 2 * tZ);
+        res.w = tW * tW * (3 - 2 * tW);
+        return res;
+    }
+
+    // step ---------------------------------------------------------------------------------------------------------
+    public static float step(byte edge, byte s) {
+        return s < edge ? 0 : 1;
+    }
+
+    public static float step(double edge, double s) {
+        return s < edge ? 0 : 1;
+    }
+
+    public static float step(float edge, float s) {
+        return s < edge ? 0 : 1;
+    }
+
+    public static float step(int edge, int s) {
+        return s < edge ? 0 : 1;
+    }
+
+    public static float step(long edge, long s) {
+        return s < edge ? 0 : 1;
+    }
+
+    public static float step(short edge, short s) {
+        return s < edge ? 0 : 1;
+    }
+
+    // step (scalar, vec2) -----------------------------------------------------
+    public static Vec2b step_(byte edge, Vec2b v) {
+        return step(edge, v, new Vec2b());
+    }
+
+    public static Vec2b step(byte edge, Vec2b v, Vec2b res) {
+        res.x = v.x < edge ? (byte) 0 : (byte) 1;
+        res.y = v.y < edge ? (byte) 0 : (byte) 1;
+        return res;
+    }
+
+    public static Vec2d step_(double edge, Vec2d v) {
+        return step(edge, v, new Vec2d());
+    }
+
+    public static Vec2d step(double edge, Vec2d v, Vec2d res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2 step_(float edge, Vec2 v) {
+        return step(edge, v, new Vec2());
+    }
+
+    public static Vec2 step(float edge, Vec2 v, Vec2 res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2i step_(int edge, Vec2i v) {
+        return step(edge, v, new Vec2i());
+    }
+
+    public static Vec2i step(int edge, Vec2i v, Vec2i res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2l step_(long edge, Vec2l v) {
+        return step(edge, v, new Vec2l());
+    }
+
+    public static Vec2l step(long edge, Vec2l v, Vec2l res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2s step_(short edge, Vec2s v) {
+        return step(edge, v, new Vec2s());
+    }
+
+    public static Vec2s step(short edge, Vec2s v, Vec2s res) {
+        res.x = v.x < edge ? (short) 0 : (short) 1;
+        res.y = v.y < edge ? (short) 0 : (short) 1;
+        return res;
+    }
+
+    public static Vec2ub step_(UByte edge, Vec2ub v) {
+        return step(edge, v, new Vec2ub());
+    }
+
+    public static Vec2ub step(UByte edge, Vec2ub v, Vec2ub res) {
+        res.x.value = (byte) (v.x.compareTo(edge) < 0 ? 0 : 1);
+        res.y.value = (byte) (v.y.compareTo(edge) < 0 ? 0 : 1);
+        return res;
+    }
+
+    public static Vec2ui step_(UInt edge, Vec2ui v) {
+        return step(edge, v, new Vec2ui());
+    }
+
+    public static Vec2ui step(UInt edge, Vec2ui v, Vec2ui res) {
+        res.x.value = v.x.compareTo(edge) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2ul step_(ULong edge, Vec2ul v) {
+        return step(edge, v, new Vec2ul());
+    }
+
+    public static Vec2ul step(ULong edge, Vec2ul v, Vec2ul res) {
+        res.x.value = v.x.compareTo(edge) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2us step_(UShort edge, Vec2us v) {
+        return step(edge, v, new Vec2us());
+    }
+
+    public static Vec2us step(UShort edge, Vec2us v, Vec2us res) {
+        res.x.value = (short) (v.x.compareTo(edge) < 0 ? 0 : 1);
+        res.y.value = (short) (v.y.compareTo(edge) < 0 ? 0 : 1);
+        return res;
+    }
+
+    // step (scalar, vec3) -----------------------------------------------------
+    public static Vec3b step_(byte edge, Vec3b v) {
+        return step(edge, v, new Vec3b());
+    }
+
+    public static Vec3b step(byte edge, Vec3b v, Vec3b res) {
+        res.x = v.x < edge ? (byte) 0 : (byte) 1;
+        res.y = v.y < edge ? (byte) 0 : (byte) 1;
+        res.z = v.z < edge ? (byte) 0 : (byte) 1;
+        return res;
+    }
+
+    public static Vec3d step_(double edge, Vec3d v) {
+        return step(edge, v, new Vec3d());
+    }
+
+    public static Vec3d step(double edge, Vec3d v, Vec3d res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        res.z = v.z < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3 step_(float edge, Vec3 v) {
+        return step(edge, v, new Vec3());
+    }
+
+    public static Vec3 step(float edge, Vec3 v, Vec3 res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        res.z = v.z < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3i step_(int edge, Vec3i v) {
+        return step(edge, v, new Vec3i());
+    }
+
+    public static Vec3i step(int edge, Vec3i v, Vec3i res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        res.z = v.z < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3l step_(long edge, Vec3l v) {
+        return step(edge, v, new Vec3l());
+    }
+
+    public static Vec3l step(long edge, Vec3l v, Vec3l res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        res.z = v.z < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3s step_(short edge, Vec3s v) {
+        return step(edge, v, new Vec3s());
+    }
+
+    public static Vec3s step(short edge, Vec3s v, Vec3s res) {
+        res.x = v.x < edge ? (short) 0 : (short) 1;
+        res.y = v.y < edge ? (short) 0 : (short) 1;
+        res.z = v.z < edge ? (short) 0 : (short) 1;
+        return res;
+    }
+
+    public static Vec3ub step_(UByte edge, Vec3ub v) {
+        return step(edge, v, new Vec3ub());
+    }
+
+    public static Vec3ub step(UByte edge, Vec3ub v, Vec3ub res) {
+        res.x.value = (byte) (v.x.compareTo(edge) < 0 ? 0 : 1);
+        res.y.value = (byte) (v.y.compareTo(edge) < 0 ? 0 : 1);
+        res.z.value = (byte) (v.z.compareTo(edge) < 0 ? 0 : 1);
+        return res;
+    }
+
+    public static Vec3ui step_(UInt edge, Vec3ui v) {
+        return step(edge, v, new Vec3ui());
+    }
+
+    public static Vec3ui step(UInt edge, Vec3ui v, Vec3ui res) {
+        res.x.value = v.x.compareTo(edge) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge) < 0 ? 0 : 1;
+        res.z.value = v.z.compareTo(edge) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3ul step_(ULong edge, Vec3ul v) {
+        return step(edge, v, new Vec3ul());
+    }
+
+    public static Vec3ul step(ULong edge, Vec3ul v, Vec3ul res) {
+        res.x.value = v.x.compareTo(edge) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge) < 0 ? 0 : 1;
+        res.z.value = v.z.compareTo(edge) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3us step_(UShort edge, Vec3us v) {
+        return step(edge, v, new Vec3us());
+    }
+
+    public static Vec3us step(UShort edge, Vec3us v, Vec3us res) {
+        res.x.value = (short) (v.x.compareTo(edge) < 0 ? 0 : 1);
+        res.y.value = (short) (v.y.compareTo(edge) < 0 ? 0 : 1);
+        res.z.value = (short) (v.z.compareTo(edge) < 0 ? 0 : 1);
+        return res;
+    }
+
+    // step (scalara, vec4) ----------------------------------------------------
+    public static Vec4b step_(byte edge, Vec4b v) {
+        return step(edge, v, new Vec4b());
+    }
+
+    public static Vec4b step(byte edge, Vec4b v, Vec4b res) {
+        res.x = v.x < edge ? (byte) 0 : (byte) 1;
+        res.y = v.y < edge ? (byte) 0 : (byte) 1;
+        res.z = v.z < edge ? (byte) 0 : (byte) 1;
+        return res;
+    }
+
+    public static Vec4d step_(double edge, Vec4d v) {
+        return step(edge, v, new Vec4d());
+    }
+
+    public static Vec4d step(double edge, Vec4d v, Vec4d res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        res.z = v.z < edge ? 0 : 1;
+        res.w = v.w < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4 step_(float edge, Vec4 v) {
+        return step(edge, v, new Vec4());
+    }
+
+    public static Vec4 step(float edge, Vec4 v, Vec4 res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        res.z = v.z < edge ? 0 : 1;
+        res.w = v.w < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4i step_(int edge, Vec4i v) {
+        return step(edge, v, new Vec4i());
+    }
+
+    public static Vec4i step(int edge, Vec4i v, Vec4i res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        res.z = v.z < edge ? 0 : 1;
+        res.w = v.w < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4l step_(long edge, Vec4l v) {
+        return step(edge, v, new Vec4l());
+    }
+
+    public static Vec4l step(long edge, Vec4l v, Vec4l res) {
+        res.x = v.x < edge ? 0 : 1;
+        res.y = v.y < edge ? 0 : 1;
+        res.z = v.z < edge ? 0 : 1;
+        res.w = v.w < edge ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4s step_(short edge, Vec4s v) {
+        return step(edge, v, new Vec4s());
+    }
+
+    public static Vec4s step(short edge, Vec4s v, Vec4s res) {
+        res.x = v.x < edge ? (short) 0 : (short) 1;
+        res.y = v.y < edge ? (short) 0 : (short) 1;
+        res.z = v.z < edge ? (short) 0 : (short) 1;
+        res.w = v.w < edge ? (short) 0 : (short) 1;
+        return res;
+    }
+
+    public static Vec4ub step_(UByte edge, Vec4ub v) {
+        return step(edge, v, new Vec4ub());
+    }
+
+    public static Vec4ub step(UByte edge, Vec4ub v, Vec4ub res) {
+        res.x.value = (byte) (v.x.compareTo(edge) < 0 ? 0 : 1);
+        res.y.value = (byte) (v.y.compareTo(edge) < 0 ? 0 : 1);
+        res.z.value = (byte) (v.z.compareTo(edge) < 0 ? 0 : 1);
+        return res;
+    }
+
+    public static Vec4ui step_(UInt edge, Vec4ui v) {
+        return step(edge, v, new Vec4ui());
+    }
+
+    public static Vec4ui step(UInt edge, Vec4ui v, Vec4ui res) {
+        res.x.value = v.x.compareTo(edge) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge) < 0 ? 0 : 1;
+        res.z.value = v.z.compareTo(edge) < 0 ? 0 : 1;
+        res.w.value = v.w.compareTo(edge) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4ul step_(ULong edge, Vec4ul v) {
+        return step(edge, v, new Vec4ul());
+    }
+
+    public static Vec4ul step(ULong edge, Vec4ul v, Vec4ul res) {
+        res.x.value = v.x.compareTo(edge) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge) < 0 ? 0 : 1;
+        res.z.value = v.z.compareTo(edge) < 0 ? 0 : 1;
+        res.w.value = v.w.compareTo(edge) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4us step_(UShort edge, Vec4us v) {
+        return step(edge, v, new Vec4us());
+    }
+
+    public static Vec4us step(UShort edge, Vec4us v, Vec4us res) {
+        res.x.value = (short) (v.x.compareTo(edge) < 0 ? 0 : 1);
+        res.y.value = (short) (v.y.compareTo(edge) < 0 ? 0 : 1);
+        res.z.value = (short) (v.z.compareTo(edge) < 0 ? 0 : 1);
+        res.w.value = (short) (v.w.compareTo(edge) < 0 ? 0 : 1);
+        return res;
+    }
+
+    // step (vec2, vec2) -----------------------------------------------------
+    public static Vec2b step_(Vec2b edge, Vec2b v) {
+        return step(edge, v, new Vec2b());
+    }
+
+    public static Vec2b step(Vec2b edge, Vec2b v, Vec2b res) {
+        res.x = v.x < edge.x ? (byte) 0 : (byte) 1;
+        res.y = v.y < edge.y ? (byte) 0 : (byte) 1;
+        return res;
+    }
+
+    public static Vec2d step_(Vec2d edge, Vec2d v) {
+        return step(edge, v, new Vec2d());
+    }
+
+    public static Vec2d step(Vec2d edge, Vec2d v, Vec2d res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2 step_(Vec2 edge, Vec2 v) {
+        return step(edge, v, new Vec2());
+    }
+
+    public static Vec2 step(Vec2 edge, Vec2 v, Vec2 res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2i step_(Vec2i edge, Vec2i v) {
+        return step(edge, v, new Vec2i());
+    }
+
+    public static Vec2i step(Vec2i edge, Vec2i v, Vec2i res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2l step_(Vec2l edge, Vec2l v) {
+        return step(edge, v, new Vec2l());
+    }
+
+    public static Vec2l step(Vec2l edge, Vec2l v, Vec2l res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2s step_(Vec2s edge, Vec2s v) {
+        return step(edge, v, new Vec2s());
+    }
+
+    public static Vec2s step(Vec2s edge, Vec2s v, Vec2s res) {
+        res.x = v.x < edge.x ? (short) 0 : (short) 1;
+        res.y = v.y < edge.y ? (short) 0 : (short) 1;
+        return res;
+    }
+
+    public static Vec2ub step_(Vec2ub edge, Vec2ub v) {
+        return step(edge, v, new Vec2ub());
+    }
+
+    public static Vec2ub step(Vec2ub edge, Vec2ub v, Vec2ub res) {
+        res.x.value = (byte) (v.x.compareTo(edge.x) < 0 ? 0 : 1);
+        res.y.value = (byte) (v.y.compareTo(edge.x) < 0 ? 0 : 1);
+        return res;
+    }
+
+    public static Vec2ui step_(Vec2ui edge, Vec2ui v) {
+        return step(edge, v, new Vec2ui());
+    }
+
+    public static Vec2ui step(Vec2ui edge, Vec2ui v, Vec2ui res) {
+        res.x.value = v.x.compareTo(edge.x) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge.y) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2ul step_(Vec2ul edge, Vec2ul v) {
+        return step(edge, v, new Vec2ul());
+    }
+
+    public static Vec2ul step(Vec2ul edge, Vec2ul v, Vec2ul res) {
+        res.x.value = v.x.compareTo(edge.x) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge.y) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec2us step_(Vec2us edge, Vec2us v) {
+        return step(edge, v, new Vec2us());
+    }
+
+    public static Vec2us step(Vec2us edge, Vec2us v, Vec2us res) {
+        res.x.value = (short) (v.x.compareTo(edge.x) < 0 ? 0 : 1);
+        res.y.value = (short) (v.y.compareTo(edge.y) < 0 ? 0 : 1);
+        return res;
+    }
+
+    // step (vec3, vec3) -------------------------------------------------------
+    public static Vec3b step_(Vec3b edge, Vec3b v) {
+        return step(edge, v, new Vec3b());
+    }
+
+    public static Vec3b step(Vec3b edge, Vec3b v, Vec3b res) {
+        res.x = v.x < edge.x ? (byte) 0 : (byte) 1;
+        res.y = v.y < edge.y ? (byte) 0 : (byte) 1;
+        res.z = v.z < edge.z ? (byte) 0 : (byte) 1;
+        return res;
+    }
+
+    public static Vec3d step_(Vec3d edge, Vec3d v) {
+        return step(edge, v, new Vec3d());
+    }
+
+    public static Vec3d step(Vec3d edge, Vec3d v, Vec3d res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        res.z = v.z < edge.z ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3 step_(Vec3 edge, Vec3 v) {
+        return step(edge, v, new Vec3());
+    }
+
+    public static Vec3 step(Vec3 edge, Vec3 v, Vec3 res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        res.z = v.z < edge.z ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3i step_(Vec3i edge, Vec3i v) {
+        return step(edge, v, new Vec3i());
+    }
+
+    public static Vec3i step(Vec3i edge, Vec3i v, Vec3i res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        res.z = v.z < edge.z ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3l step_(Vec3l edge, Vec3l v) {
+        return step(edge, v, new Vec3l());
+    }
+
+    public static Vec3l step(Vec3l edge, Vec3l v, Vec3l res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        res.z = v.z < edge.z ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3s step_(Vec3s edge, Vec3s v) {
+        return step(edge, v, new Vec3s());
+    }
+
+    public static Vec3s step(Vec3s edge, Vec3s v, Vec3s res) {
+        res.x = v.x < edge.x ? (short) 0 : (short) 1;
+        res.y = v.y < edge.y ? (short) 0 : (short) 1;
+        res.z = v.z < edge.z ? (short) 0 : (short) 1;
+        return res;
+    }
+
+    public static Vec3ub step_(Vec3ub edge, Vec3ub v) {
+        return step(edge, v, new Vec3ub());
+    }
+
+    public static Vec3ub step(Vec3ub edge, Vec3ub v, Vec3ub res) {
+        res.x.value = (byte) (v.x.compareTo(edge.x) < 0 ? 0 : 1);
+        res.y.value = (byte) (v.y.compareTo(edge.y) < 0 ? 0 : 1);
+        res.z.value = (byte) (v.z.compareTo(edge.z) < 0 ? 0 : 1);
+        return res;
+    }
+
+    public static Vec3ui step_(Vec3ui edge, Vec3ui v) {
+        return step(edge, v, new Vec3ui());
+    }
+
+    public static Vec3ui step(Vec3ui edge, Vec3ui v, Vec3ui res) {
+        res.x.value = v.x.compareTo(edge.x) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge.y) < 0 ? 0 : 1;
+        res.z.value = v.z.compareTo(edge.z) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3ul step_(Vec3ul edge, Vec3ul v) {
+        return step(edge, v, new Vec3ul());
+    }
+
+    public static Vec3ul step(Vec3ul edge, Vec3ul v, Vec3ul res) {
+        res.x.value = v.x.compareTo(edge.x) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge.y) < 0 ? 0 : 1;
+        res.z.value = v.z.compareTo(edge.z) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec3us step_(Vec3us edge, Vec3us v) {
+        return step(edge, v, new Vec3us());
+    }
+
+    public static Vec3us step(Vec3us edge, Vec3us v, Vec3us res) {
+        res.x.value = (short) (v.x.compareTo(edge.x) < 0 ? 0 : 1);
+        res.y.value = (short) (v.y.compareTo(edge.y) < 0 ? 0 : 1);
+        res.z.value = (short) (v.z.compareTo(edge.z) < 0 ? 0 : 1);
+        return res;
+    }
+
+    // step (vec4, vec4) -------------------------------------------------------
+    public static Vec4b step_(Vec4b edge, Vec4b v) {
+        return step(edge, v, new Vec4b());
+    }
+
+    public static Vec4b step(Vec4b edge, Vec4b v, Vec4b res) {
+        res.x = v.x < edge.x ? (byte) 0 : (byte) 1;
+        res.y = v.y < edge.y ? (byte) 0 : (byte) 1;
+        res.z = v.z < edge.z ? (byte) 0 : (byte) 1;
+        res.w = v.w < edge.w ? (byte) 0 : (byte) 1;
+        return res;
+    }
+
+    public static Vec4d step_(Vec4d edge, Vec4d v) {
+        return step(edge, v, new Vec4d());
+    }
+
+    public static Vec4d step(Vec4d edge, Vec4d v, Vec4d res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        res.z = v.z < edge.z ? 0 : 1;
+        res.w = v.w < edge.w ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4 step_(Vec4 edge, Vec4 v) {
+        return step(edge, v, new Vec4());
+    }
+
+    public static Vec4 step(Vec4 edge, Vec4 v, Vec4 res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        res.z = v.z < edge.z ? 0 : 1;
+        res.w = v.w < edge.w ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4i step_(Vec4i edge, Vec4i v) {
+        return step(edge, v, new Vec4i());
+    }
+
+    public static Vec4i step(Vec4i edge, Vec4i v, Vec4i res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        res.z = v.z < edge.z ? 0 : 1;
+        res.w = v.w < edge.w ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4l step_(Vec4l edge, Vec4l v) {
+        return step(edge, v, new Vec4l());
+    }
+
+    public static Vec4l step(Vec4l edge, Vec4l v, Vec4l res) {
+        res.x = v.x < edge.x ? 0 : 1;
+        res.y = v.y < edge.y ? 0 : 1;
+        res.z = v.z < edge.z ? 0 : 1;
+        res.w = v.w < edge.w ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4s step_(Vec4s edge, Vec4s v) {
+        return step(edge, v, new Vec4s());
+    }
+
+    public static Vec4s step(Vec4s edge, Vec4s v, Vec4s res) {
+        res.x = v.x < edge.x ? (short) 0 : (short) 1;
+        res.y = v.y < edge.y ? (short) 0 : (short) 1;
+        res.z = v.z < edge.z ? (short) 0 : (short) 1;
+        res.w = v.w < edge.w ? (short) 0 : (short) 1;
+        return res;
+    }
+
+    public static Vec4ub step_(Vec4ub edge, Vec4ub v) {
+        return step(edge, v, new Vec4ub());
+    }
+
+    public static Vec4ub step(Vec4ub edge, Vec4ub v, Vec4ub res) {
+        res.x.value = (byte) (v.x.compareTo(edge.x) < 0 ? 0 : 1);
+        res.y.value = (byte) (v.y.compareTo(edge.y) < 0 ? 0 : 1);
+        res.z.value = (byte) (v.z.compareTo(edge.z) < 0 ? 0 : 1);
+        res.w.value = (byte) (v.w.compareTo(edge.w) < 0 ? 0 : 1);
+        return res;
+    }
+
+    public static Vec4ui step_(Vec4ui edge, Vec4ui v) {
+        return step(edge, v, new Vec4ui());
+    }
+
+    public static Vec4ui step(Vec4ui edge, Vec4ui v, Vec4ui res) {
+        res.x.value = v.x.compareTo(edge.x) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge.y) < 0 ? 0 : 1;
+        res.z.value = v.z.compareTo(edge.z) < 0 ? 0 : 1;
+        res.w.value = v.w.compareTo(edge.w) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4ul step_(Vec4ul edge, Vec4ul v) {
+        return step(edge, v, new Vec4ul());
+    }
+
+    public static Vec4ul step(Vec4ul edge, Vec4ul v, Vec4ul res) {
+        res.x.value = v.x.compareTo(edge.x) < 0 ? 0 : 1;
+        res.y.value = v.y.compareTo(edge.y) < 0 ? 0 : 1;
+        res.z.value = v.z.compareTo(edge.z) < 0 ? 0 : 1;
+        res.w.value = v.w.compareTo(edge.w) < 0 ? 0 : 1;
+        return res;
+    }
+
+    public static Vec4us step_(Vec4us edge, Vec4us v) {
+        return step(edge, v, new Vec4us());
+    }
+
+    public static Vec4us step(Vec4us edge, Vec4us v, Vec4us res) {
+        res.x.value = (short) (v.x.compareTo(edge.x) < 0 ? 0 : 1);
+        res.y.value = (short) (v.y.compareTo(edge.y) < 0 ? 0 : 1);
+        res.z.value = (short) (v.z.compareTo(edge.z) < 0 ? 0 : 1);
+        res.w.value = (short) (v.w.compareTo(edge.w) < 0 ? 0 : 1);
+        return res;
     }
 
     // trunc -------------------------------------------------------------------

@@ -11,11 +11,21 @@ import joou.ULong;
  *
  * @author GBarbieri
  */
-public class Vec2ul {
+public class Vec2ul extends FuncRelational {
 
-    public static final int SIZE = 2 * Long.BYTES;
+    public Vec2ul() {
+        x.value = 0;
+        y.value = 0;
+    }
 
-    public ULong x, y;
+    public Vec2ul(int x, int y) {
+        this((long) x, y);
+    }
+
+    public Vec2ul(long x, long y) {
+        this.x.value = x;
+        this.y.value = y;
+    }
 
     public Vec2ul set(ULong x, ULong y) {
         this.x = x;

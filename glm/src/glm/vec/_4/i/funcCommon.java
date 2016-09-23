@@ -12,11 +12,7 @@ import glm.vec._4.b.Vec4b;
  *
  * @author fschaefers
  */
-abstract class funcCommon {
-
-    public static final int SIZE = 4 * Float.BYTES;
-
-    public int x, y, z, w;
+abstract class funcCommon extends ArithmeticOperators {
 
     public Vec4i abs() {
         return abs((Vec4i) this);

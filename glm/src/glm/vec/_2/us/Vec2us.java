@@ -11,14 +11,20 @@ import joou.UShort;
  *
  * @author GBarbieri
  */
-public class Vec2us {
+public class Vec2us extends FuncRelational {
 
-    public static final int SIZE = 2 * Short.BYTES;
+    public Vec2us() {
+        x.value = 0;
+        y.value = 0;
+    }
 
-    public UShort x, y;
+    public Vec2us(int x, int y) {
+        this((short) x, (short) y);
+    }
 
-    public Vec2us set(int x, int y) {
-        return set(UShort.valueOf(x), UShort.valueOf(y));
+    public Vec2us(short x, short y) {
+        this.x.value = x;
+        this.y.value = y;
     }
 
     public Vec2us set(UShort x, UShort y) {

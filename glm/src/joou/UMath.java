@@ -15,7 +15,7 @@ public class UMath {
         return a.compareTo(b) > 0 ? a : b;
     }
 
-    public static UInteger max(UInteger a, UInteger b) {
+    public static UInt max(UInt a, UInt b) {
         return a.compareTo(b) > 0 ? a : b;
     }
 
@@ -31,7 +31,7 @@ public class UMath {
         return a.compareTo(b) < 0 ? a : b;
     }
 
-    public static UInteger min(UInteger a, UInteger b) {
+    public static UInt min(UInt a, UInt b) {
         return a.compareTo(b) < 0 ? a : b;
     }
 

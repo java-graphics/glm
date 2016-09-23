@@ -16,7 +16,7 @@ import java.nio.FloatBuffer;
  *
  * @author GBarbieri
  */
-public class Vec3 extends operator {
+public class Vec3 extends funcRelational {
 
     public Vec3() {
         x = 0f;

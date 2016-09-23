@@ -13,10 +13,7 @@ import glm.vec._3.i.Vec3i;
  *
  * @author elect
  */
-abstract class funcCommon {
-
-    public float x, y, z;
-    public static final int SIZE = 3 * Float.BYTES;
+abstract class funcCommon extends ArithmeticOperators {
 
     public Vec3 abs() {
         return abs((Vec3) this);

@@ -11,14 +11,20 @@ import joou.UByte;
  *
  * @author elect
  */
-public class Vec2ub {
+public class Vec2ub extends FuncRelational {
 
-    public static final int SIZE = 2 * Byte.BYTES;
+    public Vec2ub() {
+        x.value = 0;
+        y.value = 0;
+    }
 
-    public UByte x, y;
+    public Vec2ub(int x, int y) {
+        this((byte) x, (byte) y);
+    }
 
-    public Vec2ub set(int x, int y) {
-        return set(UByte.of(x), UByte.of(y));
+    public Vec2ub(byte x, byte y) {
+        this.x.value = x;
+        this.y.value = y;
     }
 
     public Vec2ub set(UByte x, UByte y) {

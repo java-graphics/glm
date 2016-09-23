@@ -5,9 +5,9 @@
  */
 package dev;
 
+import glm.Glm;
 import glm.vec._3.Vec3;
 import glm.mat._4.Mat4;
-import glm.Glm;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;

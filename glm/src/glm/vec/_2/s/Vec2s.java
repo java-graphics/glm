@@ -9,11 +9,21 @@ package glm.vec._2.s;
  *
  * @author GBarbieri
  */
-public class Vec2s {
+public class Vec2s extends FuncRelational {
 
-    public static final int SIZE = 2 * Short.BYTES;
+    public Vec2s() {
+        x = 0;
+        y = 0;
+    }
 
-    public short x, y;
+    public Vec2s(int x, int y) {
+        this((short) x, (short) y);
+    }
+
+    public Vec2s(short x, short y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public Vec2s set(int x, int y) {
         return set((short) x, (short) y);

@@ -9,7 +9,7 @@ package glm.vec._3.b;
  *
  * @author elect
  */
-public class Vec3b extends operator{
+public class Vec3b extends FuncRelational{
 
     
 

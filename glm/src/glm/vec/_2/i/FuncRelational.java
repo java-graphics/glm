@@ -6,161 +6,147 @@
 package glm.vec._2.i;
 
 import glm.Glm;
+import glm.vec._2.bool.Vec2bool;
 
 /**
  *
  * @author fschaefers
  */
-abstract class funcRelational extends funcCommon {
-
-    public Vec2i lessThan(Vec2i y) {
-        return lessThan((Vec2i) this, y, (Vec2i) this);
-    }
-
-    public Vec2i lessThan_(Vec2i y) {
-        return lessThan((Vec2i) this, y, new Vec2i());
-    }
-
-    public Vec2i lessThan(Vec2i y, Vec2i result) {
-        return lessThan((Vec2i) this, y, result);
-    }
-
-    public static Vec2i lessThan(Vec2i x, Vec2i y, Vec2i result) {
-        result.x = x.x < y.x ? 1 : 0;
-        result.y = x.y < y.y ? 1 : 0;
-        return result;
-    }
-
-    public Vec2i lessThanEqual(Vec2i y) {
-        return lessThan((Vec2i) this, y, (Vec2i) this);
-    }
-
-    public Vec2i lessThanEqual_(Vec2i y) {
-        return lessThanEqual((Vec2i) this, y, new Vec2i());
-    }
-
-    public Vec2i lessThanEqual(Vec2i y, Vec2i result) {
-        return lessThanEqual((Vec2i) this, y, result);
-    }
-
-    public static Vec2i lessThanEqual(Vec2i x, Vec2i y, Vec2i result) {
-        result.x = x.x <= y.x ? 1 : 0;
-        result.y = x.y <= y.y ? 1 : 0;
-        return result;
-    }
-
-    public Vec2i greaterThan(Vec2i y) {
-        return greaterThan((Vec2i) this, y, (Vec2i) this);
-    }
-
-    public Vec2i greaterThan_(Vec2i y) {
-        return greaterThan((Vec2i) this, y, new Vec2i());
-    }
-
-    public Vec2i greaterThan(Vec2i y, Vec2i result) {
-        return greaterThan((Vec2i) this, y, result);
-    }
-
-    public static Vec2i greaterThan(Vec2i x, Vec2i y, Vec2i result) {
-        result.x = x.x > y.x ? 1 : 0;
-        result.y = x.y > y.y ? 1 : 0;
-        return result;
-    }
-
-    public Vec2i greaterThanEqual(Vec2i y) {
-        return greaterThanEqual((Vec2i) this, y, (Vec2i) this);
-    }
-
-    public Vec2i greaterThanEqual_(Vec2i y) {
-        return greaterThanEqual((Vec2i) this, y, new Vec2i());
-    }
-
-    public Vec2i greaterThanEqual(Vec2i y, Vec2i result) {
-        return greaterThanEqual((Vec2i) this, y, result);
-    }
-
-    public static Vec2i greaterThanEqual(Vec2i x, Vec2i y, Vec2i result) {
-        result.x = x.x >= y.x ? 1 : 0;
-        result.y = x.y >= y.y ? 1 : 0;
-        return result;
-    }
-
-    public Vec2i equal(Vec2i y) {
-        return equal((Vec2i) this, y, (Vec2i) this);
-    }
-
-    public Vec2i equal_(Vec2i y) {
-        return equal((Vec2i) this, y, new Vec2i());
-    }
-
-    public Vec2i equal(Vec2i y, Vec2i result) {
-        return equal((Vec2i) this, y, result);
-    }
-
-    public static Vec2i equal(Vec2i x, Vec2i y, Vec2i result) {
-        result.x = (x.x == y.x) ? 1 : 0;
-        result.y = (x.y == y.y) ? 1 : 0;
-        return result;
-    }
-
-    public boolean isEqual(Vec2i y) {
-
-        return Glm.compareFloatEquals(this.x, y.x)
-                && Glm.compareFloatEquals(this.y, y.y);
-
-    }
-
-    public Vec2i notEqual(Vec2i y) {
-        return notEqual((Vec2i) this, y, (Vec2i) this);
-    }
-
-    public Vec2i notEqual_(Vec2i y) {
-        return notEqual((Vec2i) this, y, new Vec2i());
-    }
-
-    public Vec2i notEqual(Vec2i y, Vec2i result) {
-        return notEqual((Vec2i) this, y, result);
-    }
-
-    public static Vec2i notEqual(Vec2i x, Vec2i y, Vec2i result) {
-        result.x = (x.x != y.x) ? 1 : 0;
-        result.y = (x.y != y.y) ? 1 : 0;
-        return result;
-    }
+abstract class FuncRelational extends ArithmeticOperators {
 
     public boolean any() {
-        return any((Vec2i) this);
-    }
-
-    public static boolean any(Vec2i v) {
-        boolean result = false;
-        result = result || (v.x != 0);
-        result = result || (v.y != 0);
-        return result;
+        return Glm.any((Vec2i) this);
     }
 
     public boolean all() {
-        return all((Vec2i) this);
+        return Glm.all((Vec2i) this);
     }
 
-    public static boolean all(Vec2i v) {
-        boolean result = true;
-        result = result && (v.x != 0);
-        result = result && (v.y != 0);
-        return result;
+    public Vec2i not_() {
+        return Glm.not((Vec2i) this, new Vec2i());
     }
 
-    public Vec2i not_(Vec2i y) {
-        return not((Vec2i) this, new Vec2i());
+    public Vec2i not() {
+        return Glm.not((Vec2i) this, (Vec2i) this);
     }
 
-    public Vec2i not(Vec2i result) {
-        return not((Vec2i) this, result);
+    public Vec2bool lessThan__(Vec2i b) {
+        return Glm.lessThan((Vec2i) this, b, new Vec2bool());
     }
 
-    public static Vec2i not(Vec2i v, Vec2i result) {
-        result.x = v.x == 0 ? 1 : 0;
-        result.y = v.y == 0 ? 1 : 0;
-        return result;
+    public Vec2bool lessThan(Vec2i b, Vec2bool res) {
+        return Glm.lessThan((Vec2i) this, b, res);
+    }
+
+    public Vec2bool lessThanEqual__(Vec2i b) {
+        return Glm.lessThanEqual((Vec2i) this, b, new Vec2bool());
+    }
+
+    public Vec2bool lessThanEqual(Vec2i b, Vec2bool res) {
+        return Glm.lessThanEqual((Vec2i) this, b, res);
+    }
+
+    public Vec2bool greaterThan__(Vec2i b) {
+        return Glm.greaterThan((Vec2i) this, b, new Vec2bool());
+    }
+
+    public Vec2bool greaterThan(Vec2i b, Vec2bool res) {
+        return Glm.greaterThan((Vec2i) this, b, res);
+    }
+
+    public Vec2bool greaterThanEqual__(Vec2i b) {
+        return Glm.greaterThanEqual((Vec2i) this, b, new Vec2bool());
+    }
+
+    public Vec2bool greaterThanEqual(Vec2i b, Vec2bool res) {
+        return Glm.greaterThanEqual((Vec2i) this, b, res);
+    }
+
+    public Vec2bool equal__(Vec2i b) {
+        return Glm.equal((Vec2i) this, b, new Vec2bool());
+    }
+
+    public Vec2bool equal(Vec2i b, Vec2bool res) {
+        return Glm.equal((Vec2i) this, b, res);
+    }
+
+    public Vec2bool notEqual__(Vec2i b) {
+        return Glm.notEqual((Vec2i) this, b, new Vec2bool());
+    }
+
+    public Vec2bool notEqual(Vec2i b, Vec2bool res) {
+        return Glm.notEqual((Vec2i) this, b, res);
+    }
+
+    public Vec2i lessThan(Vec2i b) {
+        return Glm.lessThan((Vec2i) this, b, (Vec2i) this);
+    }
+
+    public Vec2i lessThan_(Vec2i b) {
+        return Glm.lessThan((Vec2i) this, b, new Vec2i());
+    }
+
+    public Vec2i lessThan(Vec2i b, Vec2i res) {
+        return Glm.lessThan((Vec2i) this, b, res);
+    }
+
+    public Vec2i lessThanEqual(Vec2i b) {
+        return Glm.lessThanEqual((Vec2i) this, b, (Vec2i) this);
+    }
+
+    public Vec2i lessThanEqual_(Vec2i b) {
+        return Glm.lessThanEqual((Vec2i) this, b, new Vec2i());
+    }
+
+    public Vec2i lessThanEqual(Vec2i b, Vec2i res) {
+        return Glm.lessThanEqual((Vec2i) this, b, res);
+    }
+
+    public Vec2i greaterThan(Vec2i b) {
+        return Glm.greaterThan((Vec2i) this, b, (Vec2i) this);
+    }
+
+    public Vec2i greaterThan_(Vec2i b) {
+        return Glm.greaterThan((Vec2i) this, b, new Vec2i());
+    }
+
+    public Vec2i greaterThan(Vec2i b, Vec2i res) {
+        return Glm.greaterThan((Vec2i) this, b, res);
+    }
+
+    public Vec2i greaterThanEqual(Vec2i b) {
+        return Glm.greaterThanEqual((Vec2i) this, b, (Vec2i) this);
+    }
+
+    public Vec2i greaterThanEqual_(Vec2i b) {
+        return Glm.greaterThanEqual((Vec2i) this, b, new Vec2i());
+    }
+
+    public Vec2i greaterThanEqual(Vec2i b, Vec2i res) {
+        return Glm.greaterThanEqual((Vec2i) this, b, res);
+    }
+
+    public Vec2i equal(Vec2i b) {
+        return Glm.equal((Vec2i) this, b, (Vec2i) this);
+    }
+
+    public Vec2i equal_(Vec2i b) {
+        return Glm.equal((Vec2i) this, b, new Vec2i());
+    }
+
+    public Vec2i equal(Vec2i b, Vec2i res) {
+        return Glm.equal((Vec2i) this, b, res);
+    }
+
+    public Vec2i notEqual(Vec2i b) {
+        return Glm.notEqual((Vec2i) this, b, (Vec2i) this);
+    }
+
+    public Vec2i notEqual_(Vec2i b) {
+        return Glm.notEqual((Vec2i) this, b, new Vec2i());
+    }
+
+    public Vec2i notEqual(Vec2i b, Vec2i res) {
+        return Glm.notEqual((Vec2i) this, b, res);
     }
 }

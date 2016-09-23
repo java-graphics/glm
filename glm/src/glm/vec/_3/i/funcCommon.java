@@ -12,10 +12,7 @@ import glm.vec._3.b.Vec3b;
  *
  * @author fschaefers
  */
-abstract class funcCommon {
-
-    public static final int SIZE = 3 * Integer.BYTES;
-    public int x, y, z;
+abstract class funcCommon extends ArithmeticOperators {
 
     public Vec3i abs() {
         return abs((Vec3i) this);
@@ -264,7 +261,7 @@ abstract class funcCommon {
     public Vec3i mod(Vec3i y, Vec3i result) {
         return mod((Vec3i) this, y, result);
     }
-    
+
     // TODO check floor return type
     public static Vec3i mod(Vec3i x, Vec3i y, Vec3i result) {
         result.x = (int) (x.x - y.x * Glm.floor(x.x / y.x));

@@ -9,12 +9,23 @@ package glm.vec._3.l;
  *
  * @author GBarbieri
  */
-public class Vec3l {
-    
-    public static final int SIZE = 3 * Long.BYTES;
-    
-    public long x, y, z;
-    
+public class Vec3l extends FuncRelational {
+
+    public Vec3l() {
+        x = 0;
+        y = 0;
+    }
+
+    public Vec3l(int x, int y, int z) {
+        this((long) x, y, z);
+    }
+
+    public Vec3l(long x, long y, long z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
     public Vec3l set(long x, long y, long z) {
         this.x = x;
         this.y = y;

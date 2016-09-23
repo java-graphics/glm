@@ -9,11 +9,21 @@ package glm.vec._2.b;
  *
  * @author elect
  */
-public class Vec2b {
+public class Vec2b extends FuncRelational {
 
-    public static final int SIZE = 2 * Byte.BYTES;
+    public Vec2b() {
+        x = 0;
+        y = 0;
+    }
 
-    public byte x, y;
+    public Vec2b(int x, int y) {
+        this((byte) x, (byte) y);
+    }
+
+    public Vec2b(byte x, byte y) {
+        this.x = x;
+        this.y = y;
+    }
 
     public Vec2b set(int x, int y) {
         return set((byte) x, (byte) y);

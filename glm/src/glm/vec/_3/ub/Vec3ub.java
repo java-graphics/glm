@@ -11,16 +11,28 @@ import joou.UByte;
  *
  * @author elect
  */
-public class Vec3ub {
-    
-    public static final int SIZE = 3 * Byte.BYTES;
+public class Vec3ub extends FuncRelational {
 
-    public UByte x, y, z;
-
-    public Vec3ub set(int x, int y, int z) {
-        return set(UByte.of(x), UByte.of(y), UByte.of(z));
+    public Vec3ub() {
+        x.value = 0;
+        y.value = 0;
+        z.value = 0;
     }
-    
+
+    public Vec3ub(int x, int y, int z) {
+        this((byte) x, (byte) y, (byte) z);
+    }
+
+    public Vec3ub(byte x, byte y, byte z) {
+        this(new UByte(x), new UByte(y), new UByte(z));
+    }
+
+    public Vec3ub(UByte x, UByte y, UByte z) {
+        this.x = x;
+        this.y = y;
+        this.z = z;
+    }
+
     public Vec3ub set(UByte x, UByte y, UByte z) {
         this.x = x;
         this.y = y;

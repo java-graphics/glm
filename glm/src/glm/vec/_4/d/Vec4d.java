@@ -9,16 +9,12 @@ package glm.vec._4.d;
  *
  * @author elect
  */
-public class Vec4d {
-
-    public static final int SIZE = 4 * Double.BYTES;
-
-    public double x, y, z, w;
+public class Vec4d extends FuncRelational {
 
     public Vec4d() {
-        
+
     }
-    
+
     public Vec4d(double x, double y, double z, double w) {
         this.x = x;
         this.y = y;

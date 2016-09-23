@@ -15,6 +15,8 @@
  */
 package joou;
 
+import java.math.BigInteger;
+
 /**
  * The <code>unsigned short</code> type
  *
@@ -28,10 +30,6 @@ public final class UShort extends UNumber implements Comparable<UShort> {
      */
     private static final long serialVersionUID = -6821055240959745390L;
 
-    /**
-     * A constant holding the minimum value an <code>unsigned short</code> can
-     * have, 0.
-     */
     public static final int MIN_VALUE = 0x0000;
 
     /**
@@ -41,51 +39,69 @@ public final class UShort extends UNumber implements Comparable<UShort> {
     public static final int MAX_VALUE = 0xffff;
 
     /**
-     * A constant holding the minimum value an <code>unsigned short</code> can
-     * have as UShort, 0.
-     */
-    public static final UShort MIN = new UShort(MIN_VALUE);
-
-    /**
-     * A constant holding the maximum value an <code>unsigned short</code> can
-     * have as UShort, 2<sup>16</sup>-1.
-     */
-    public static final UShort MAX = new UShort(MAX_VALUE);
-
-    /**
      * The value modelling the content of this <code>unsigned short</code>
      */
-    public int value;
+    public short value;
 
     public UShort() {
-        value = MIN_VALUE;
+        value = 0;
     }
 
     /**
      * Create an <code>unsigned short</code>
      *
-     * @throws NumberFormatException If <code>value</code> is not in the range
-     * of an <code>unsigned short</code>
+     * @param value
      */
-    public UShort(int value) throws NumberFormatException {
-        this.value = rangeCheck(value);
+    public UShort(byte value) {
+        this.value = value;
     }
 
     /**
      * Create an <code>unsigned short</code>
      *
-     * @throws NumberFormatException If <code>value</code> does not contain a
-     * parsable <code>unsigned short</code>.
+     * @param value
      */
-    private UShort(String value) throws NumberFormatException {
-        this.value = rangeCheck(Integer.parseInt(value));
+    public UShort(short value) {
+        this.value = value;
     }
 
-    private int rangeCheck(int value) throws NumberFormatException {
-        if (value < MIN_VALUE || value > MAX_VALUE) {
-            throw new NumberFormatException("Value is out of range : " + value);
-        }
-        return value;
+    /**
+     * Create an <code>unsigned short</code>
+     *
+     * @param value
+     */
+    public UShort(int value) {
+        this.value = (short) value;
+    }
+
+    /**
+     * Create an <code>unsigned short</code>
+     *
+     * @param value
+     */
+    public UShort(long value) {
+        this.value = (short) value;
+    }
+
+    /**
+     * Create an <code>unsigned short</code>
+     *
+     * @param value
+     */
+    public UShort(BigInteger value) {
+        this.value = value.shortValue();
+    }
+
+    /**
+     * Create an <code>unsigned short</code>
+     *
+     */
+    private UShort(String value) {
+        this.value = Short.parseShort(value);
+    }
+
+    public UShort(UShort uShort) {
+        this.value = uShort.value;
     }
 
     @Override
@@ -108,80 +124,99 @@ public final class UShort extends UNumber implements Comparable<UShort> {
 
     @Override
     public int compareTo(UShort o) {
-        return (value < o.value ? -1 : (value == o.value ? 0 : 1));
+        int a = value, b = o.value;
+        return a < b ? -1 : (a == b ? 0 : 1);
+    }
+    
+    public int intValue() {
+        return value & 0xffff;
+    }
+    
+    public long longValue() {
+        return value & 0xffff;
     }
 
-    public UShort set(int value) {
-        this.value = rangeCheck(value);
-        return this;
+    /**
+     * Throw exception if value out of range (short version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static short checkSigned(byte value) throws ArithmeticException {
+        if (value < 0) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return value;
     }
 
-    public UShort clear() {
-        value = MIN_VALUE;
-        return this;
+    /**
+     * Throw exception if value out of range (short version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static short checkSigned(short value) throws ArithmeticException {
+        if (value < 0) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return value;
     }
 
-    public UShort add_(UShort b) throws NumberFormatException {
-        return new UShort(value + b.value);
+    /**
+     * Throw exception if value out of range (int version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static short checkSigned(int value) throws ArithmeticException {
+        if (value < 0 || value > MAX_VALUE) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return (short) value;
     }
 
-    public UShort add_(int s) throws NumberFormatException {
-        return new UShort(value + (s & MAX_VALUE));
+    /**
+     * Throw exception if value out of range (long version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static short checkSigned(long value) throws ArithmeticException {
+        if (value < 0 || value > MAX_VALUE) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return (short) value;
     }
 
-    public UShort add(UShort b) throws NumberFormatException {
-        return add(b.value);
+    /**
+     * Throw exception if value out of range (long version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static short checkSigned(BigInteger value) throws ArithmeticException {
+        if (value.compareTo(BigInteger.ZERO) < 0 || value.intValue() > MAX_VALUE) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return value.shortValue();
     }
 
-    public UShort add(int s) throws NumberFormatException {
-        return set((short) (value + (s & MAX_VALUE)));
-    }
-
-    public UShort div_(UShort b) throws NumberFormatException {
-        return new UShort(value / b.value);
-    }
-
-    public UShort div_(int s) throws NumberFormatException {
-        return new UShort(value / (s & MAX_VALUE));
-    }
-
-    public UShort div(UShort b) throws NumberFormatException {
-        return div(b.value);
-    }
-
-    public UShort div(int s) throws NumberFormatException {
-        return set((short) (value / (s & MAX_VALUE)));
-    }
-
-    public UShort mul_(UShort b) throws NumberFormatException {
-        return new UShort(value * b.value);
-    }
-
-    public UShort mul_(int s) throws NumberFormatException {
-        return set((short) (value * (s & MAX_VALUE)));
-    }
-
-    public UShort mul(UShort b) throws NumberFormatException {
-        return mul(b.value);
-    }
-
-    public UShort mul(int s) throws NumberFormatException {
-        return set((short) (value * (s & MAX_VALUE)));
-    }
-
-    public UShort sub_(UShort b) throws NumberFormatException {
-        return new UShort(b.value);
-    }
-
-    public UShort sub_(int s) throws NumberFormatException {
-        return new UShort((short) (value - (s & MAX_VALUE)));
-    }
-
-    public UShort sub(UShort b) throws NumberFormatException {
-        return sub(b.value);
-    }
-
-    public UShort sub(int s) throws NumberFormatException {
-        return set((short) (value - (s & MAX_VALUE)));
+    /**
+     * Throw exception if value out of range (long version)
+     *
+     * @param value Value to check
+     * @return value if it is in range
+     * @throws ArithmeticException if value is out of range
+     */
+    public static short checkSigned(String value) throws ArithmeticException {
+        if (value.startsWith("-")) {
+            throw new ArithmeticException("Value is out of range : " + value);
+        }
+        return Short.parseShort(value);
     }
 }

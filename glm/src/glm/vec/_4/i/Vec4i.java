@@ -16,7 +16,7 @@ import java.nio.IntBuffer;
  *
  * @author GBarbieri
  */
-public class Vec4i extends operator{
+public class Vec4i extends FuncRelational {
 
     public Vec4i(Vec4i v) {
         this(v.x, v.y, v.z, v.w);
@@ -76,8 +76,8 @@ public class Vec4i extends operator{
     public Vec4i(long x, long y, long z, long w) {
         this((int) x, (int) y, (int) z, (int) w);
     }
-    
-     public Vec4i set() {
+
+    public Vec4i set() {
         return set(0);
     }
 
