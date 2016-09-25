@@ -5,8 +5,6 @@
  */
 package glm.vec._2.i;
 
-import glm.Glm;
-
 /**
  *
  * @author fschaefers

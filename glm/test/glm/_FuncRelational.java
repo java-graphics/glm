@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package glm.relational;
+package glm;
 
+import glm.Glm;
 import glm.Glm;
 import glm.vec._2.Vec2;
 import glm.vec._2.b.Vec2b;
@@ -39,7 +40,6 @@ import glm.vec._4.ub.Vec4ub;
 import glm.vec._4.ui.Vec4ui;
 import glm.vec._4.ul.Vec4ul;
 import glm.vec._4.us.Vec4us;
-import java.math.BigInteger;
 import joou.UByte;
 import joou.UInt;
 import joou.ULong;
@@ -51,7 +51,7 @@ import org.junit.Test;
  *
  * @author GBarbieri
  */
-public class FuncRelational {
+public class _FuncRelational {
 
     @Test
     public void lessThan_Scalar() {

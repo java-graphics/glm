@@ -18,100 +18,244 @@ abstract class ArithmeticOperators {
 
     public UInt x = new UInt(), y = new UInt();
 
-    public Vec2ui add_(byte b) {
-        return Glm.add_((Vec2ui) this, b);
+    public Vec2ui add_(UInt b) {
+        return Glm.add(new Vec2ui(), (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui add_(int b) {
+        return Glm.add(new Vec2ui(), (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui add_(UInt bX, UInt bY) {
+        return Glm.add(new Vec2ui(), (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui add_(int bX, int bY) {
+        return Glm.add(new Vec2ui(), (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui add_(Vec2ui b) {
-        return Glm.add_((Vec2ui) this, b);
+        return Glm.add(new Vec2ui(), (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui add(byte b) {
-        return Glm.add((Vec2ui) this, (Vec2ui) this, b);
+    public Vec2ui add(UInt b) {
+        return Glm.add((Vec2ui) this, (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui add(int b) {
+        return Glm.add((Vec2ui) this, (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui add(UInt bX, UInt bY) {
+        return Glm.add((Vec2ui) this, (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui add(int bX, int bY) {
+        return Glm.add((Vec2ui) this, (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui add(Vec2ui b) {
-        return Glm.add((Vec2ui) this, (Vec2ui) this, b);
+        return Glm.add((Vec2ui) this, (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui add(byte b, Vec2ui res) {
-        return Glm.add(res, (Vec2ui) this, b);
+    public Vec2ui add(UInt b, Vec2ui res) {
+        return Glm.add(res, (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui add(int b, Vec2ui res) {
+        return Glm.add(res, (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui add(UInt bX, UInt bY, Vec2ui res) {
+        return Glm.add(res, (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui add(int bX, int bY, Vec2ui res) {
+        return Glm.add(res, (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui add(Vec2ui b, Vec2ui res) {
-        return Glm.add(res, (Vec2ui) this, b);
+        return Glm.add(res, (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui sub_(byte b) {
-        return Glm.sub_((Vec2ui) this, b);
+    public Vec2ui sub_(UInt b) {
+        return Glm.sub(new Vec2ui(), (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui sub_(int b) {
+        return Glm.sub(new Vec2ui(), (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui sub_(UInt bX, UInt bY) {
+        return Glm.sub(new Vec2ui(), (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui sub_(int bX, int bY) {
+        return Glm.sub(new Vec2ui(), (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui sub_(Vec2ui b) {
-        return Glm.sub_((Vec2ui) this, b);
+        return Glm.sub(new Vec2ui(), (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui sub(byte b) {
-        return Glm.sub((Vec2ui) this, (Vec2ui) this, b);
+    public Vec2ui sub(UInt b) {
+        return Glm.sub((Vec2ui) this, (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui sub(int b) {
+        return Glm.sub((Vec2ui) this, (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui sub(UInt bX, UInt bY) {
+        return Glm.sub((Vec2ui) this, (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui sub(int bX, int bY) {
+        return Glm.sub((Vec2ui) this, (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui sub(Vec2ui b) {
-        return Glm.sub((Vec2ui) this, (Vec2ui) this, b);
+        return Glm.sub((Vec2ui) this, (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui sub(byte b, Vec2ui res) {
-        return Glm.sub(res, (Vec2ui) this, b);
+    public Vec2ui sub(UInt b, Vec2ui res) {
+        return Glm.sub(res, (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui sub(int b, Vec2ui res) {
+        return Glm.sub(res, (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui sub(UInt bX, UInt bY, Vec2ui res) {
+        return Glm.sub(res, (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui sub(int bX, int bY, Vec2ui res) {
+        return Glm.sub(res, (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui sub(Vec2ui b, Vec2ui res) {
-        return Glm.sub(res, (Vec2ui) this, b);
+        return Glm.sub(res, (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui mul_(byte b) {
-        return Glm.mul_((Vec2ui) this, b);
+    public Vec2ui mul_(UInt b) {
+        return Glm.mul(new Vec2ui(), (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui mul_(int b) {
+        return Glm.mul(new Vec2ui(), (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui mul_(UInt bX, UInt bY) {
+        return Glm.mul(new Vec2ui(), (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui mul_(int bX, int bY) {
+        return Glm.mul(new Vec2ui(), (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui mul_(Vec2ui b) {
-        return Glm.mul_((Vec2ui) this, b);
+        return Glm.mul(new Vec2ui(), (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui mul(byte b) {
-        return Glm.mul((Vec2ui) this, (Vec2ui) this, b);
+    public Vec2ui mul(UInt b) {
+        return Glm.mul((Vec2ui) this, (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui mul(int b) {
+        return Glm.mul((Vec2ui) this, (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui mul(UInt bX, UInt bY) {
+        return Glm.mul((Vec2ui) this, (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui mul(int bX, int bY) {
+        return Glm.mul((Vec2ui) this, (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui mul(Vec2ui b) {
-        return Glm.mul((Vec2ui) this, (Vec2ui) this, b);
+        return Glm.mul((Vec2ui) this, (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui mul(byte b, Vec2ui res) {
-        return Glm.mul(res, (Vec2ui) this, b);
+    public Vec2ui mul(UInt b, Vec2ui res) {
+        return Glm.mul(res, (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui mul(int b, Vec2ui res) {
+        return Glm.mul(res, (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui mul(UInt bX, UInt bY, Vec2ui res) {
+        return Glm.mul(res, (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui mul(int bX, int bY, Vec2ui res) {
+        return Glm.mul(res, (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui mul(Vec2ui b, Vec2ui res) {
-        return Glm.mul(res, (Vec2ui) this, b);
+        return Glm.mul(res, (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui div_(byte b) {
-        return Glm.div_((Vec2ui) this, b);
+    public Vec2ui div_(UInt b) {
+        return Glm.div(new Vec2ui(), (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui div_(int b) {
+        return Glm.div(new Vec2ui(), (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui div_(UInt bX, UInt bY) {
+        return Glm.div(new Vec2ui(), (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui div_(int bX, int bY) {
+        return Glm.div(new Vec2ui(), (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui div_(Vec2ui b) {
-        return Glm.div_((Vec2ui) this, b);
+        return Glm.div(new Vec2ui(), (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui div(byte b) {
-        return Glm.div((Vec2ui) this, (Vec2ui) this, b);
+    public Vec2ui div(UInt b) {
+        return Glm.div((Vec2ui) this, (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui div(int b) {
+        return Glm.div((Vec2ui) this, (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui div(UInt bX, UInt bY) {
+        return Glm.div((Vec2ui) this, (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui div(int bX, int bY) {
+        return Glm.div((Vec2ui) this, (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui div(Vec2ui b) {
-        return Glm.div((Vec2ui) this, (Vec2ui) this, b);
+        return Glm.div((Vec2ui) this, (Vec2ui) this, b.x.value, b.y.value);
     }
 
-    public Vec2ui div(byte b, Vec2ui res) {
-        return Glm.div(res, (Vec2ui) this, b);
+    public Vec2ui div(UInt b, Vec2ui res) {
+        return Glm.div(res, (Vec2ui) this, b.value, b.value);
+    }
+
+    public Vec2ui div(int b, Vec2ui res) {
+        return Glm.div(res, (Vec2ui) this, b, b);
+    }
+
+    public Vec2ui div(UInt bX, UInt bY, Vec2ui res) {
+        return Glm.div(res, (Vec2ui) this, bX.value, bY.value);
+    }
+
+    public Vec2ui div(int bX, int bY, Vec2ui res) {
+        return Glm.div(res, (Vec2ui) this, bX, bY);
     }
 
     public Vec2ui div(Vec2ui b, Vec2ui res) {
-        return Glm.div(res, (Vec2ui) this, b);
+        return Glm.div(res, (Vec2ui) this, b.x.value, b.y.value);
     }
 
     public Vec2ui incr_() {

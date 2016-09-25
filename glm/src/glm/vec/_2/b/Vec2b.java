@@ -16,6 +16,10 @@ public class Vec2b extends FuncRelational {
         y = 0;
     }
 
+    public Vec2b(int s) {
+        this((byte) s, (byte) s);
+    }
+
     public Vec2b(int x, int y) {
         this((byte) x, (byte) y);
     }
