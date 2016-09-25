@@ -4,34 +4,31 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-
-    <parent>
-        <groupId>org.gilmour.fork</groupId>
-        <artifactId>fork-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
-    </parent>
-
-
+    <groupId>org.gilmour.fork</groupId>
     <artifactId>glm</artifactId>
+    <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/org.jooq/joou -->
+
+        <!-- 3rd part dependencies -->
         <dependency>
             <groupId>org.jooq</groupId>
             <artifactId>joou</artifactId>
             <version>0.9.1</version>
         </dependency>
         <dependency>
-            <groupId>org.gilmour.fork</groupId>
-            <artifactId>openvr</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
+        </dependency>
+
+        <!-- Gilmour dependencies -->
+        <dependency>
+            <groupId>org.gilmour.fork</groupId>
+            <artifactId>openvr</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
 
     </dependencies>
