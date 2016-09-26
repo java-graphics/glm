@@ -17,100 +17,148 @@ abstract class ArithmeticOperators {
 
     public double x, y, z;
 
-    public Vec3d add_(byte b) {
-        return Glm.add_((Vec3d) this, b);
+    public Vec3d add_(double b) {
+        return Glm.add(new Vec3d(), (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d add_(double bX, double bY, double bZ) {
+        return Glm.add(new Vec3d(), (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d add_(Vec3d b) {
-        return Glm.add_((Vec3d) this, b);
+        return Glm.add(new Vec3d(), (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d add(byte b) {
-        return Glm.add((Vec3d) this, (Vec3d) this, b);
+    public Vec3d add(double b) {
+        return Glm.add((Vec3d) this, (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d add(double bX, double bY, double bZ) {
+        return Glm.add((Vec3d) this, (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d add(Vec3d b) {
-        return Glm.add((Vec3d) this, (Vec3d) this, b);
+        return Glm.add((Vec3d) this, (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d add(byte b, Vec3d res) {
-        return Glm.add(res, (Vec3d) this, b);
+    public Vec3d add(double b, Vec3d res) {
+        return Glm.add(res, (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d add(double bX, double bY, double bZ, Vec3d res) {
+        return Glm.add(res, (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d add(Vec3d b, Vec3d res) {
-        return Glm.add(res, (Vec3d) this, b);
+        return Glm.add(res, (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d sub_(byte b) {
-        return Glm.sub_((Vec3d) this, b);
+    public Vec3d sub_(double b) {
+        return Glm.sub(new Vec3d(), (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d sub_(double bX, double bY, double bZ) {
+        return Glm.sub(new Vec3d(), (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d sub_(Vec3d b) {
-        return Glm.sub_((Vec3d) this, b);
+        return Glm.sub(new Vec3d(), (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d sub(byte b) {
-        return Glm.sub((Vec3d) this, (Vec3d) this, b);
+    public Vec3d sub(double b) {
+        return Glm.sub((Vec3d) this, (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d sub(double bX, double bY, double bZ) {
+        return Glm.sub((Vec3d) this, (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d sub(Vec3d b) {
-        return Glm.sub((Vec3d) this, (Vec3d) this, b);
+        return Glm.sub((Vec3d) this, (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d sub(byte b, Vec3d res) {
-        return Glm.sub(res, (Vec3d) this, b);
+    public Vec3d sub(double b, Vec3d res) {
+        return Glm.sub(res, (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d sub(double bX, double bY, double bZ, Vec3d res) {
+        return Glm.sub(res, (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d sub(Vec3d b, Vec3d res) {
-        return Glm.sub(res, (Vec3d) this, b);
+        return Glm.sub(res, (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d mul_(byte b) {
-        return Glm.mul_((Vec3d) this, b);
+    public Vec3d mul_(double b) {
+        return Glm.mul(new Vec3d(), (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d mul_(double bX, double bY, double bZ) {
+        return Glm.mul(new Vec3d(), (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d mul_(Vec3d b) {
-        return Glm.mul_((Vec3d) this, b);
+        return Glm.mul(new Vec3d(), (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d mul(byte b) {
-        return Glm.mul((Vec3d) this, (Vec3d) this, b);
+    public Vec3d mul(double b) {
+        return Glm.mul((Vec3d) this, (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d mul(double bX, double bY, double bZ) {
+        return Glm.mul((Vec3d) this, (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d mul(Vec3d b) {
-        return Glm.mul((Vec3d) this, (Vec3d) this, b);
+        return Glm.mul((Vec3d) this, (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d mul(byte b, Vec3d res) {
-        return Glm.mul(res, (Vec3d) this, b);
+    public Vec3d mul(double b, Vec3d res) {
+        return Glm.mul(res, (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d mul(double bX, double bY, double bZ, Vec3d res) {
+        return Glm.mul(res, (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d mul(Vec3d b, Vec3d res) {
-        return Glm.mul(res, (Vec3d) this, b);
+        return Glm.mul(res, (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d div_(byte b) {
-        return Glm.div_((Vec3d) this, b);
+    public Vec3d div_(double b) {
+        return Glm.div(new Vec3d(), (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d div_(double bX, double bY, double bZ) {
+        return Glm.div(new Vec3d(), (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d div_(Vec3d b) {
-        return Glm.div_((Vec3d) this, b);
+        return Glm.div(new Vec3d(), (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d div(byte b) {
-        return Glm.div((Vec3d) this, (Vec3d) this, b);
+    public Vec3d div(double b) {
+        return Glm.div((Vec3d) this, (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d div(double bX, double bY, double bZ) {
+        return Glm.div((Vec3d) this, (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d div(Vec3d b) {
-        return Glm.div((Vec3d) this, (Vec3d) this, b);
+        return Glm.div((Vec3d) this, (Vec3d) this, b.x, b.y, b.z);
     }
 
-    public Vec3d div(byte b, Vec3d res) {
-        return Glm.div(res, (Vec3d) this, b);
+    public Vec3d div(double b, Vec3d res) {
+        return Glm.div(res, (Vec3d) this, b, b, b);
+    }
+
+    public Vec3d div(double bX, double bY, double bZ, Vec3d res) {
+        return Glm.div(res, (Vec3d) this, bX, bY, bZ);
     }
 
     public Vec3d div(Vec3d b, Vec3d res) {
-        return Glm.div(res, (Vec3d) this, b);
+        return Glm.div(res, (Vec3d) this, b.x, b.y, b.z);
     }
 
     public Vec3d incr_() {

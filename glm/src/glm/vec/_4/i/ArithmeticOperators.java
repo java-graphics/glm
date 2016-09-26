@@ -11,106 +11,154 @@ import glm.Glm;
  *
  * @author GBarbieri
  */
-public class ArithmeticOperators {
+abstract class ArithmeticOperators {
 
     public static final int SIZE = 4 * Float.BYTES;
 
     public int x, y, z, w;
 
-    public Vec4i add_(byte b) {
-        return Glm.add_((Vec4i) this, b);
+    public Vec4i add_(int b) {
+        return Glm.add(new Vec4i(), (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i add_(int bX, int bY, int bZ, int bW) {
+        return Glm.add(new Vec4i(), (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i add_(Vec4i b) {
-        return Glm.add_((Vec4i) this, b);
+        return Glm.add(new Vec4i(), (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i add(byte b) {
-        return Glm.add((Vec4i) this, (Vec4i) this, b);
+    public Vec4i add(int b) {
+        return Glm.add((Vec4i) this, (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i add(int bX, int bY, int bZ, int bW) {
+        return Glm.add((Vec4i) this, (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i add(Vec4i b) {
-        return Glm.add((Vec4i) this, (Vec4i) this, b);
+        return Glm.add((Vec4i) this, (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i add(byte b, Vec4i res) {
-        return Glm.add(res, (Vec4i) this, b);
+    public Vec4i add(int b, Vec4i res) {
+        return Glm.add(res, (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i add(int bX, int bY, int bZ, int bW, Vec4i res) {
+        return Glm.add(res, (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i add(Vec4i b, Vec4i res) {
-        return Glm.add(res, (Vec4i) this, b);
+        return Glm.add(res, (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i sub_(byte b) {
-        return Glm.sub_((Vec4i) this, b);
+    public Vec4i sub_(int b) {
+        return Glm.sub(new Vec4i(), (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i sub_(int bX, int bY, int bZ, int bW) {
+        return Glm.sub(new Vec4i(), (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i sub_(Vec4i b) {
-        return Glm.sub_((Vec4i) this, b);
+        return Glm.sub(new Vec4i(), (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i sub(byte b) {
-        return Glm.sub((Vec4i) this, (Vec4i) this, b);
+    public Vec4i sub(int b) {
+        return Glm.sub((Vec4i) this, (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i sub(int bX, int bY, int bZ, int bW) {
+        return Glm.sub((Vec4i) this, (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i sub(Vec4i b) {
-        return Glm.sub((Vec4i) this, (Vec4i) this, b);
+        return Glm.sub((Vec4i) this, (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i sub(byte b, Vec4i res) {
-        return Glm.sub(res, (Vec4i) this, b);
+    public Vec4i sub(int b, Vec4i res) {
+        return Glm.sub(res, (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i sub(int bX, int bY, int bZ, int bW, Vec4i res) {
+        return Glm.sub(res, (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i sub(Vec4i b, Vec4i res) {
-        return Glm.sub(res, (Vec4i) this, b);
+        return Glm.sub(res, (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i mul_(byte b) {
-        return Glm.mul_((Vec4i) this, b);
+    public Vec4i mul_(int b) {
+        return Glm.mul(new Vec4i(), (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i mul_(int bX, int bY, int bZ, int bW) {
+        return Glm.mul(new Vec4i(), (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i mul_(Vec4i b) {
-        return Glm.mul_((Vec4i) this, b);
+        return Glm.mul(new Vec4i(), (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i mul(byte b) {
-        return Glm.mul((Vec4i) this, (Vec4i) this, b);
+    public Vec4i mul(int b) {
+        return Glm.mul((Vec4i) this, (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i mul(int bX, int bY, int bZ, int bW) {
+        return Glm.mul((Vec4i) this, (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i mul(Vec4i b) {
-        return Glm.mul((Vec4i) this, (Vec4i) this, b);
+        return Glm.mul((Vec4i) this, (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i mul(byte b, Vec4i res) {
-        return Glm.mul(res, (Vec4i) this, b);
+    public Vec4i mul(int b, Vec4i res) {
+        return Glm.mul(res, (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i mul(int bX, int bY, int bZ, int bW, Vec4i res) {
+        return Glm.mul(res, (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i mul(Vec4i b, Vec4i res) {
-        return Glm.mul(res, (Vec4i) this, b);
+        return Glm.mul(res, (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i div_(byte b) {
-        return Glm.div_((Vec4i) this, b);
+    public Vec4i div_(int b) {
+        return Glm.div(new Vec4i(), (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i div_(int bX, int bY, int bZ, int bW) {
+        return Glm.div(new Vec4i(), (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i div_(Vec4i b) {
-        return Glm.div_((Vec4i) this, b);
+        return Glm.div(new Vec4i(), (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i div(byte b) {
-        return Glm.div((Vec4i) this, (Vec4i) this, b);
+    public Vec4i div(int b) {
+        return Glm.div((Vec4i) this, (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i div(int bX, int bY, int bZ, int bW) {
+        return Glm.div((Vec4i) this, (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i div(Vec4i b) {
-        return Glm.div((Vec4i) this, (Vec4i) this, b);
+        return Glm.div((Vec4i) this, (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4i div(byte b, Vec4i res) {
-        return Glm.div(res, (Vec4i) this, b);
+    public Vec4i div(int b, Vec4i res) {
+        return Glm.div(res, (Vec4i) this, b, b, b, b);
+    }
+
+    public Vec4i div(int bX, int bY, int bZ, int bW, Vec4i res) {
+        return Glm.div(res, (Vec4i) this, bX, bY, bZ, bW);
     }
 
     public Vec4i div(Vec4i b, Vec4i res) {
-        return Glm.div(res, (Vec4i) this, b);
+        return Glm.div(res, (Vec4i) this, b.x, b.y, b.z, b.w);
     }
 
     public Vec4i incr_() {
