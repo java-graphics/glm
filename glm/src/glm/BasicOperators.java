@@ -44,7 +44,7 @@ import joou.UShort;
  *
  * @author GBarbieri
  */
-abstract class ArithmeticOperators extends BooleansOperators {
+abstract class BasicOperators extends SpecialOperators {
 
     public static Vec2 add_(Vec2 a, float b) {
         return add(new Vec2(), a, b, b);

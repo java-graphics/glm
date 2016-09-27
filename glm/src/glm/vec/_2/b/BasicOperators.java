@@ -12,7 +12,7 @@ import glm.Glm;
  *
  * @author GBarbieri
  */
-abstract class ArithmeticOperators {
+abstract class BasicOperators {
 
     public static final int SIZE = 2 * Byte.BYTES;
 

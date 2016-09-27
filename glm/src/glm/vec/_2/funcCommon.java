@@ -14,7 +14,7 @@ import glm.vec._2.bool.Vec2bool;
  *
  * @author GBarbieri
  */
-abstract class funcCommon extends ArithmeticOperators {
+abstract class funcCommon extends BooleanOperators {
 
     public Vec2 abs() {
         return abs((Vec2) this);
