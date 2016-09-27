@@ -19,11 +19,11 @@ abstract class ArithmeticOperators {
     public UByte x = new UByte(), y = new UByte();
 
     public Vec2ub add_(UByte b) {
-        return Glm.add(new Vec2ub(), (Vec2ub) this, (int) b.value, b.value);
+        return Glm.add(new Vec2ub(), (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub add_(byte b) {
-        return Glm.add(new Vec2ub(), (Vec2ub) this, (int) b, b);
+        return Glm.add(new Vec2ub(), (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub add_(int b) {
@@ -31,11 +31,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub add_(UByte bX, UByte bY) {
-        return Glm.add(new Vec2ub(), (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.add(new Vec2ub(), (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub add_(byte bX, byte bY) {
-        return Glm.add(new Vec2ub(), (Vec2ub) this, (int) bX, bY);
+        return Glm.add(new Vec2ub(), (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub add_(int bX, int bY) {
@@ -43,15 +43,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub add_(Vec2ub b) {
-        return Glm.add(new Vec2ub(), (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.add(new Vec2ub(), (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub add(UByte b) {
-        return Glm.add((Vec2ub) this, (Vec2ub) this, (int) b.value, b.value);
+        return Glm.add((Vec2ub) this, (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub add(byte b) {
-        return Glm.add((Vec2ub) this, (Vec2ub) this, (int) b, b);
+        return Glm.add((Vec2ub) this, (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub add(int b) {
@@ -59,11 +59,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub add(UByte bX, UByte bY) {
-        return Glm.add((Vec2ub) this, (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.add((Vec2ub) this, (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub add(byte bX, byte bY) {
-        return Glm.add((Vec2ub) this, (Vec2ub) this, (int) bX, bY);
+        return Glm.add((Vec2ub) this, (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub add(int bX, int bY) {
@@ -71,15 +71,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub add(Vec2ub b) {
-        return Glm.add((Vec2ub) this, (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.add((Vec2ub) this, (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub add(UByte b, Vec2ub res) {
-        return Glm.add(res, (Vec2ub) this, (int) b.value, b.value);
+        return Glm.add(res, (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub add(byte b, Vec2ub res) {
-        return Glm.add(res, (Vec2ub) this, (int) b, b);
+        return Glm.add(res, (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub add(int b, Vec2ub res) {
@@ -87,11 +87,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub add(UByte bX, UByte bY, Vec2ub res) {
-        return Glm.add(res, (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.add(res, (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub add(byte bX, byte bY, Vec2ub res) {
-        return Glm.add(res, (Vec2ub) this, (int) bX, bY);
+        return Glm.add(res, (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub add(int bX, int bY, Vec2ub res) {
@@ -99,15 +99,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub add(Vec2ub b, Vec2ub res) {
-        return Glm.add(res, (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.add(res, (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub sub_(UByte b) {
-        return Glm.sub(new Vec2ub(), (Vec2ub) this, (int) b.value, b.value);
+        return Glm.sub(new Vec2ub(), (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub sub_(byte b) {
-        return Glm.sub(new Vec2ub(), (Vec2ub) this, (int) b, b);
+        return Glm.sub(new Vec2ub(), (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub sub_(int b) {
@@ -115,11 +115,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub sub_(UByte bX, UByte bY) {
-        return Glm.sub(new Vec2ub(), (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.sub(new Vec2ub(), (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub sub_(byte bX, byte bY) {
-        return Glm.sub(new Vec2ub(), (Vec2ub) this, (int) bX, bY);
+        return Glm.sub(new Vec2ub(), (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub sub_(int bX, int bY) {
@@ -127,15 +127,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub sub_(Vec2ub b) {
-        return Glm.sub(new Vec2ub(), (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.sub(new Vec2ub(), (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub sub(UByte b) {
-        return Glm.sub((Vec2ub) this, (Vec2ub) this, (int) b.value, b.value);
+        return Glm.sub((Vec2ub) this, (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub sub(byte b) {
-        return Glm.sub((Vec2ub) this, (Vec2ub) this, (int) b, b);
+        return Glm.sub((Vec2ub) this, (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub sub(int b) {
@@ -143,11 +143,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub sub(UByte bX, UByte bY) {
-        return Glm.sub((Vec2ub) this, (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.sub((Vec2ub) this, (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub sub(byte bX, byte bY) {
-        return Glm.sub((Vec2ub) this, (Vec2ub) this, (int) bX, bY);
+        return Glm.sub((Vec2ub) this, (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub sub(int bX, int bY) {
@@ -155,15 +155,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub sub(Vec2ub b) {
-        return Glm.sub((Vec2ub) this, (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.sub((Vec2ub) this, (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub sub(UByte b, Vec2ub res) {
-        return Glm.sub(res, (Vec2ub) this, (int) b.value, b.value);
+        return Glm.sub(res, (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub sub(byte b, Vec2ub res) {
-        return Glm.sub(res, (Vec2ub) this, (int) b, b);
+        return Glm.sub(res, (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub sub(int b, Vec2ub res) {
@@ -171,11 +171,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub sub(UByte bX, UByte bY, Vec2ub res) {
-        return Glm.sub(res, (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.sub(res, (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub sub(byte bX, byte bY, Vec2ub res) {
-        return Glm.sub(res, (Vec2ub) this, (int) bX, bY);
+        return Glm.sub(res, (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub sub(int bX, int bY, Vec2ub res) {
@@ -183,15 +183,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub sub(Vec2ub b, Vec2ub res) {
-        return Glm.sub(res, (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.sub(res, (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub mul_(UByte b) {
-        return Glm.mul(new Vec2ub(), (Vec2ub) this, (int) b.value, b.value);
+        return Glm.mul(new Vec2ub(), (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub mul_(byte b) {
-        return Glm.mul(new Vec2ub(), (Vec2ub) this, (int) b, b);
+        return Glm.mul(new Vec2ub(), (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub mul_(int b) {
@@ -199,11 +199,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub mul_(UByte bX, UByte bY) {
-        return Glm.mul(new Vec2ub(), (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.mul(new Vec2ub(), (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub mul_(byte bX, byte bY) {
-        return Glm.mul(new Vec2ub(), (Vec2ub) this, (int) bX, bY);
+        return Glm.mul(new Vec2ub(), (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub mul_(int bX, int bY) {
@@ -211,15 +211,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub mul_(Vec2ub b) {
-        return Glm.mul(new Vec2ub(), (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.mul(new Vec2ub(), (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub mul(UByte b) {
-        return Glm.mul((Vec2ub) this, (Vec2ub) this, (int) b.value, b.value);
+        return Glm.mul((Vec2ub) this, (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub mul(byte b) {
-        return Glm.mul((Vec2ub) this, (Vec2ub) this, (int) b, b);
+        return Glm.mul((Vec2ub) this, (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub mul(int b) {
@@ -227,11 +227,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub mul(UByte bX, UByte bY) {
-        return Glm.mul((Vec2ub) this, (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.mul((Vec2ub) this, (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub mul(byte bX, byte bY) {
-        return Glm.mul((Vec2ub) this, (Vec2ub) this, (int) bX, bY);
+        return Glm.mul((Vec2ub) this, (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub mul(int bX, int bY) {
@@ -239,15 +239,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub mul(Vec2ub b) {
-        return Glm.mul((Vec2ub) this, (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.mul((Vec2ub) this, (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub mul(UByte b, Vec2ub res) {
-        return Glm.mul(res, (Vec2ub) this, (int) b.value, b.value);
+        return Glm.mul(res, (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub mul(byte b, Vec2ub res) {
-        return Glm.mul(res, (Vec2ub) this, (int) b, b);
+        return Glm.mul(res, (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub mul(int b, Vec2ub res) {
@@ -255,11 +255,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub mul(UByte bX, UByte bY, Vec2ub res) {
-        return Glm.mul(res, (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.mul(res, (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub mul(byte bX, byte bY, Vec2ub res) {
-        return Glm.mul(res, (Vec2ub) this, (int) bX, bY);
+        return Glm.mul(res, (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub mul(int bX, int bY, Vec2ub res) {
@@ -267,15 +267,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub mul(Vec2ub b, Vec2ub res) {
-        return Glm.mul(res, (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.mul(res, (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub div_(UByte b) {
-        return Glm.div(new Vec2ub(), (Vec2ub) this, (int) b.value, b.value);
+        return Glm.div(new Vec2ub(), (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub div_(byte b) {
-        return Glm.div(new Vec2ub(), (Vec2ub) this, (int) b, b);
+        return Glm.div(new Vec2ub(), (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub div_(int b) {
@@ -283,11 +283,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub div_(UByte bX, UByte bY) {
-        return Glm.div(new Vec2ub(), (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.div(new Vec2ub(), (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub div_(byte bX, byte bY) {
-        return Glm.div(new Vec2ub(), (Vec2ub) this, (int) bX, bY);
+        return Glm.div(new Vec2ub(), (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub div_(int bX, int bY) {
@@ -295,15 +295,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub div_(Vec2ub b) {
-        return Glm.div(new Vec2ub(), (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.div(new Vec2ub(), (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub div(UByte b) {
-        return Glm.div((Vec2ub) this, (Vec2ub) this, (int) b.value, b.value);
+        return Glm.div((Vec2ub) this, (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub div(byte b) {
-        return Glm.div((Vec2ub) this, (Vec2ub) this, (int) b, b);
+        return Glm.div((Vec2ub) this, (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub div(int b) {
@@ -311,11 +311,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub div(UByte bX, UByte bY) {
-        return Glm.div((Vec2ub) this, (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.div((Vec2ub) this, (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub div(byte bX, byte bY) {
-        return Glm.div((Vec2ub) this, (Vec2ub) this, (int) bX, bY);
+        return Glm.div((Vec2ub) this, (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub div(int bX, int bY) {
@@ -323,15 +323,15 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub div(Vec2ub b) {
-        return Glm.div((Vec2ub) this, (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.div((Vec2ub) this, (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub div(UByte b, Vec2ub res) {
-        return Glm.div(res, (Vec2ub) this, (int) b.value, b.value);
+        return Glm.div(res, (Vec2ub) this, b.value & 0xff, b.value& 0xff);
     }
 
     public Vec2ub div(byte b, Vec2ub res) {
-        return Glm.div(res, (Vec2ub) this, (int) b, b);
+        return Glm.div(res, (Vec2ub) this, b & 0xff, b & 0xff);
     }
 
     public Vec2ub div(int b, Vec2ub res) {
@@ -339,11 +339,11 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub div(UByte bX, UByte bY, Vec2ub res) {
-        return Glm.div(res, (Vec2ub) this, (int) bX.value, bY.value);
+        return Glm.div(res, (Vec2ub) this, bX.value & 0xff, bY.value & 0xff);
     }
 
     public Vec2ub div(byte bX, byte bY, Vec2ub res) {
-        return Glm.div(res, (Vec2ub) this, (int) bX, bY);
+        return Glm.div(res, (Vec2ub) this, bX & 0xff, bY & 0xff);
     }
 
     public Vec2ub div(int bX, int bY, Vec2ub res) {
@@ -351,7 +351,7 @@ abstract class ArithmeticOperators {
     }
 
     public Vec2ub div(Vec2ub b, Vec2ub res) {
-        return Glm.div(res, (Vec2ub) this, (int) b.x.value, b.y.value);
+        return Glm.div(res, (Vec2ub) this, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public Vec2ub incr_() {
