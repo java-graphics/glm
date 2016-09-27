@@ -58,7 +58,7 @@ public class _ArithmeticOperators {
         a.div(b);
         assertTrue(a.equals(new Vec2b(1)));
         assertTrue(a.equals(c));
-
+        
         a = new Vec2b(1, 2);
         b = new Vec2b(4, 5);
         

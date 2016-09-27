@@ -275,7 +275,7 @@ is divided into following sections:
               <include name="*"/> 
             </dirset> 
           </src>  
-          <withKotlin/>
+          <!--<withKotlin/>-->
           <classpath> 
             <path path="@{classpath}"/> 
           </classpath>  

@@ -45,7 +45,7 @@ import joou.UShort;
  * @author GBarbieri
  */
 abstract class ArithmeticOperators extends BooleansOperators {
-    
+
     public static Vec2 add_(Vec2 a, float b) {
         return add(new Vec2(), a, b, b);
     }
@@ -77,7 +77,7 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2b add_(Vec2b a, byte b) {
-        return add(new Vec2b(), a, b, b);
+        return add(new Vec2b(), a, (int) b, b);
     }
 
     public static Vec2b add_(Vec2b a, int b) {
@@ -85,11 +85,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2b add_(Vec2b a, Vec2b b) {
-        return add(new Vec2b(), a, b.x, b.y);
+        return add(new Vec2b(), a, (int) b.x, b.y);
     }
 
     public static Vec2b add(Vec2b a, byte b) {
-        return add(a, a, b, b);
+        return add(a, a, (int) b, b);
     }
 
     public static Vec2b add(Vec2b a, int b) {
@@ -97,11 +97,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2b add(Vec2b a, Vec2b b) {
-        return add(a, a, b.x, b.y);
+        return add(a, a, (int) b.x, b.y);
     }
 
     public static Vec2b add(Vec2b res, Vec2b a, byte b) {
-        return add(res, a, b, b);
+        return add(res, a, (int) b, b);
     }
 
     public static Vec2b add(Vec2b res, Vec2b a, int b) {
@@ -109,7 +109,7 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2b add(Vec2b res, Vec2b a, Vec2b b) {
-        return add(res, a, b.x, b.y);
+        return add(res, a, (int) b.x, b.y);
     }
 
     public static Vec2b add(Vec2b res, Vec2b a, byte bX, byte bY) {
@@ -213,7 +213,7 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2s add_(Vec2s a, short b) {
-        return add(new Vec2s(), a, b, b);
+        return add(new Vec2s(), a, (int) b, b);
     }
 
     public static Vec2s add_(Vec2s a, int b) {
@@ -221,11 +221,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2s add_(Vec2s a, Vec2s b) {
-        return add(new Vec2s(), a, b.x, b.y);
+        return add(new Vec2s(), a, (int) b.x, b.y);
     }
 
     public static Vec2s add(Vec2s a, short b) {
-        return add(a, a, b, b);
+        return add(a, a, (int) b, b);
     }
 
     public static Vec2s add(Vec2s a, int b) {
@@ -233,11 +233,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2s add(Vec2s a, Vec2s b) {
-        return add(a, a, b.x, b.y);
+        return add(a, a, (int) b.x, b.y);
     }
 
     public static Vec2s add(Vec2s res, Vec2s a, short b) {
-        return add(res, a, b, b);
+        return add(res, a, (int) b, b);
     }
 
     public static Vec2s add(Vec2s res, Vec2s a, int b) {
@@ -245,7 +245,7 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2s add(Vec2s res, Vec2s a, Vec2s b) {
-        return add(res, a, b.x, b.y);
+        return add(res, a, (int) b.x, b.y);
     }
 
     public static Vec2s add(Vec2s res, Vec2s a, short bX, short bY) {
@@ -259,11 +259,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub add_(Vec2ub a, UByte b) {
-        return add(new Vec2ub(), a, b.value, b.value);
+        return add(new Vec2ub(), a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub add_(Vec2ub a, byte b) {
-        return add(new Vec2ub(), a, b, b);
+        return add(new Vec2ub(), a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub add_(Vec2ub a, int b) {
@@ -271,15 +271,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub add_(Vec2ub a, Vec2ub b) {
-        return add(new Vec2ub(), a, b.x.value, b.y.value);
+        return add(new Vec2ub(), a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub add(Vec2ub a, UByte b) {
-        return add(a, a, b.value, b.value);
+        return add(a, a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub add(Vec2ub a, byte b) {
-        return add(a, a, b, b);
+        return add(a, a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub add(Vec2ub a, int b) {
@@ -287,15 +287,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub add(Vec2ub a, Vec2ub b) {
-        return add(a, a, b.x.value, b.y.value);
+        return add(a, a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub add(Vec2ub res, Vec2ub a, UByte b) {
-        return add(res, a, b.value, b.value);
+        return add(res, a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub add(Vec2ub res, Vec2ub a, byte b) {
-        return add(res, a, b, b);
+        return add(res, a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub add(Vec2ub res, Vec2ub a, int b) {
@@ -303,20 +303,20 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub add(Vec2ub res, Vec2ub a, Vec2ub b) {
-        return add(res, a, b.x.value, b.y.value);
+        return add(res, a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub add(Vec2ub res, Vec2ub a, UByte bX, UByte bY) {
-        return add(res, a, bX.value, bY.value);
+        return add(res, a, bX.value & 0xff, bY.value & 0xff);
     }
 
     public static Vec2ub add(Vec2ub res, Vec2ub a, byte bX, byte bY) {
-        return add(res, a, (int) bX, bY);
+        return add(res, a, bX & 0xff, bY & 0xff);
     }
 
     public static Vec2ub add(Vec2ub res, Vec2ub a, int bX, int bY) {
-        res.x.value = (byte) (a.x.value + bX);
-        res.y.value = (byte) (a.y.value + bY);
+        res.x.value = (byte) ((a.x.value & 0xff) + bX);
+        res.y.value = (byte) ((a.y.value & 0xff) + bY);
         return res;
     }
 
@@ -413,11 +413,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us add_(Vec2us a, UShort b) {
-        return add(new Vec2us(), a, b.value, b.value);
+        return add(new Vec2us(), a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us add_(Vec2us a, short b) {
-        return add(new Vec2us(), a, b, b);
+        return add(new Vec2us(), a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us add_(Vec2us a, int b) {
@@ -425,15 +425,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us add_(Vec2us a, Vec2us b) {
-        return add(new Vec2us(), a, b.x.value, b.y.value);
+        return add(new Vec2us(), a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us add(Vec2us a, UShort b) {
-        return add(a, a, b.value, b.value);
+        return add(a, a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us add(Vec2us a, short b) {
-        return add(a, a, b, b);
+        return add(a, a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us add(Vec2us a, int b) {
@@ -441,15 +441,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us add(Vec2us a, Vec2us b) {
-        return add(a, a, b.x.value, b.y.value);
+        return add(a, a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us add(Vec2us res, Vec2us a, UShort b) {
-        return add(res, a, b.value, b.value);
+        return add(res, a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us add(Vec2us res, Vec2us a, short b) {
-        return add(res, a, b, b);
+        return add(res, a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us add(Vec2us res, Vec2us a, int b) {
@@ -457,20 +457,20 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us add(Vec2us res, Vec2us a, Vec2us b) {
-        return add(res, a, b.x.value, b.y.value);
+        return add(res, a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us add(Vec2us res, Vec2us a, UShort bX, UShort bY) {
-        return add(res, a, bX.value, bY.value);
+        return add(res, a, bX.value & 0xffff, bY.value & 0xffff);
     }
 
     public static Vec2us add(Vec2us res, Vec2us a, short bX, short bY) {
-        return add(res, a, (int) bX, bY);
+        return add(res, a, bX & 0xffff, bY & 0xffff);
     }
 
     public static Vec2us add(Vec2us res, Vec2us a, int bX, int bY) {
-        res.x.value = (short) (a.x.value + bX);
-        res.y.value = (short) (a.y.value + bY);
+        res.x.value = (short) ((a.x.value & 0xffff) + bX);
+        res.y.value = (short) ((a.y.value & 0xffff) + bY);
         return res;
     }
 
@@ -693,11 +693,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub add_(Vec3ub a, UByte b) {
-        return add(new Vec3ub(), a, b.value, b.value, b.value);
+        return add(new Vec3ub(), a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub add_(Vec3ub a, byte b) {
-        return add(new Vec3ub(), a, b, b, b);
+        return add(new Vec3ub(), a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub add_(Vec3ub a, int b) {
@@ -705,15 +705,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub add_(Vec3ub a, Vec3ub b) {
-        return add(new Vec3ub(), a, b.x.value, b.y.value, b.z.value);
+        return add(new Vec3ub(), a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub add(Vec3ub a, UByte b) {
-        return add(a, a, b.value, b.value, b.value);
+        return add(a, a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub add(Vec3ub a, byte b) {
-        return add(a, a, b, b, b);
+        return add(a, a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub add(Vec3ub a, int b) {
@@ -721,15 +721,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub add(Vec3ub a, Vec3ub b) {
-        return add(a, a, b.x.value, b.y.value, b.z.value);
+        return add(a, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub add(Vec3ub res, Vec3ub a, UByte b) {
-        return add(res, a, b.value, b.value, b.value);
+        return add(res, a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub add(Vec3ub res, Vec3ub a, byte b) {
-        return add(res, a, b, b, b);
+        return add(res, a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub add(Vec3ub res, Vec3ub a, int b) {
@@ -737,21 +737,21 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub add(Vec3ub res, Vec3ub a, Vec3ub b) {
-        return add(res, a, b.x.value, b.y.value, b.z.value);
+        return add(res, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub add(Vec3ub res, Vec3ub a, UByte bX, UByte bY, UByte bZ) {
-        return add(res, a, bX.value, bY.value, bZ.value);
+        return add(res, a, bX.value & 0xff, bY.value & 0xff, bZ.value & 0xff);
     }
 
     public static Vec3ub add(Vec3ub res, Vec3ub a, byte bX, byte bY, byte bZ) {
-        return add(res, a, (int) bX, bY, bZ);
+        return add(res, a, bX & 0xff, bY & 0xff, bZ & 0xff);
     }
 
     public static Vec3ub add(Vec3ub res, Vec3ub a, int bX, int bY, int bZ) {
-        res.x.value = (byte) (a.x.value + bX);
-        res.y.value = (byte) (a.y.value + bY);
-        res.z.value = (byte) (a.z.value + bZ);
+        res.x.value = (byte) ((a.x.value & 0xff) + bX);
+        res.y.value = (byte) ((a.y.value & 0xff) + bY);
+        res.z.value = (byte) ((a.z.value & 0xff) + bZ);
         return res;
     }
 
@@ -850,11 +850,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us add_(Vec3us a, UShort b) {
-        return add(new Vec3us(), a, b.value, b.value, b.value);
+        return add(new Vec3us(), a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us add_(Vec3us a, short b) {
-        return add(new Vec3us(), a, b, b, b);
+        return add(new Vec3us(), a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us add_(Vec3us a, int b) {
@@ -862,15 +862,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us add_(Vec3us a, Vec3us b) {
-        return add(new Vec3us(), a, b.x.value, b.y.value, b.z.value);
+        return add(new Vec3us(), a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us add(Vec3us a, UShort b) {
-        return add(a, a, b.value, b.value, b.value);
+        return add(a, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us add(Vec3us a, short b) {
-        return add(a, a, b, b, b);
+        return add(a, a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us add(Vec3us a, int b) {
@@ -878,15 +878,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us add(Vec3us a, Vec3us b) {
-        return add(a, a, b.x.value, b.y.value, b.z.value);
+        return add(a, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us add(Vec3us res, Vec3us a, UShort b) {
-        return add(res, a, b.value, b.value, b.value);
+        return add(res, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us add(Vec3us res, Vec3us a, short b) {
-        return add(res, a, b, b, b);
+        return add(res, a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us add(Vec3us res, Vec3us a, int b) {
@@ -894,21 +894,21 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us add(Vec3us res, Vec3us a, Vec3us b) {
-        return add(res, a, b.x.value, b.y.value, b.z.value);
+        return add(res, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us add(Vec3us res, Vec3us a, UShort bX, UShort bY, UShort bZ) {
-        return add(res, a, bX.value, bY.value, bZ.value);
+        return add(res, a, bX.value & 0xffff, bY.value & 0xffff, bZ.value & 0xffff);
     }
 
     public static Vec3us add(Vec3us res, Vec3us a, short bX, short bY, short bZ) {
-        return add(res, a, (int) bX, bY, bZ);
+        return add(res, a, bX & 0xffff, bY & 0xffff, bZ & 0xffff);
     }
 
     public static Vec3us add(Vec3us res, Vec3us a, int bX, int bY, int bZ) {
-        res.x.value = (short) (a.x.value + bX);
-        res.y.value = (short) (a.y.value + bY);
-        res.z.value = (short) (a.z.value + bZ);
+        res.x.value = (short) ((a.x.value & 0xffff) + bX);
+        res.y.value = (short) ((a.y.value & 0xffff) + bY);
+        res.z.value = (short) ((a.z.value & 0xffff) + bZ);
         return res;
     }
 
@@ -1137,11 +1137,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub add_(Vec4ub a, UByte b) {
-        return add(new Vec4ub(), a, b.value, b.value, b.value, b.value);
+        return add(new Vec4ub(), a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub add_(Vec4ub a, byte b) {
-        return add(new Vec4ub(), a, b, b, b, b);
+        return add(new Vec4ub(), a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub add_(Vec4ub a, int b) {
@@ -1149,15 +1149,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub add_(Vec4ub a, Vec4ub b) {
-        return add(new Vec4ub(), a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return add(new Vec4ub(), a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub add(Vec4ub a, UByte b) {
-        return add(a, a, b.value, b.value, b.value, b.value);
+        return add(a, a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub add(Vec4ub a, byte b) {
-        return add(a, a, b, b, b, b);
+        return add(a, a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub add(Vec4ub a, int b) {
@@ -1165,15 +1165,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub add(Vec4ub a, Vec4ub b) {
-        return add(a, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return add(a, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub add(Vec4ub res, Vec4ub a, UByte b) {
-        return add(res, a, b.value, b.value, b.value, b.value);
+        return add(res, a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub add(Vec4ub res, Vec4ub a, byte b) {
-        return add(res, a, b, b, b, b);
+        return add(res, a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub add(Vec4ub res, Vec4ub a, int b) {
@@ -1181,22 +1181,22 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub add(Vec4ub res, Vec4ub a, Vec4ub b) {
-        return add(res, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return add(res, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub add(Vec4ub res, Vec4ub a, UByte bX, UByte bY, UByte bZ, UByte bW) {
-        return add(res, a, bX.value, bY.value, bZ.value, bZ.value);
+        return add(res, a, bX.value & 0xff, bY.value & 0xff, bZ.value & 0xff, bZ.value & 0xff);
     }
 
     public static Vec4ub add(Vec4ub res, Vec4ub a, byte bX, byte bY, byte bZ, byte bW) {
-        return add(res, a, (int) bX, bY, bZ, bW);
+        return add(res, a, bX & 0xff, bY & 0xff, bZ & 0xff, bW & 0xff);
     }
 
     public static Vec4ub add(Vec4ub res, Vec4ub a, int bX, int bY, int bZ, int bW) {
-        res.x.value = (byte) (a.x.value + bX);
-        res.y.value = (byte) (a.y.value + bY);
-        res.z.value = (byte) (a.z.value + bZ);
-        res.w.value = (byte) (a.w.value + bW);
+        res.x.value = (byte) ((a.x.value & 0xff) + bX);
+        res.y.value = (byte) ((a.y.value & 0xff) + bY);
+        res.z.value = (byte) ((a.z.value & 0xff) + bZ);
+        res.w.value = (byte) ((a.w.value & 0xff) + bW);
         return res;
     }
 
@@ -1297,11 +1297,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us add_(Vec4us a, UShort b) {
-        return add(new Vec4us(), a, b.value, b.value, b.value, b.value);
+        return add(new Vec4us(), a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us add_(Vec4us a, short b) {
-        return add(new Vec4us(), a, b, b, b, b);
+        return add(new Vec4us(), a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us add_(Vec4us a, int b) {
@@ -1309,15 +1309,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us add_(Vec4us a, Vec4us b) {
-        return add(new Vec4us(), a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return add(new Vec4us(), a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us add(Vec4us a, UShort b) {
-        return add(a, a, b.value, b.value, b.value, b.value);
+        return add(a, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us add(Vec4us a, short b) {
-        return add(a, a, b, b, b, b);
+        return add(a, a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us add(Vec4us a, int b) {
@@ -1325,15 +1325,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us add(Vec4us a, Vec4us b) {
-        return add(a, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return add(a, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us add(Vec4us res, Vec4us a, UShort b) {
-        return add(res, a, b.value, b.value, b.value, b.value);
+        return add(res, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us add(Vec4us res, Vec4us a, short b) {
-        return add(res, a, b, b, b, b);
+        return add(res, a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us add(Vec4us res, Vec4us a, int b) {
@@ -1341,22 +1341,22 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us add(Vec4us res, Vec4us a, Vec4us b) {
-        return add(res, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return add(res, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us add(Vec4us res, Vec4us a, UShort bX, UShort bY, UShort bZ, UShort bW) {
-        return add(res, a, bX.value, bY.value, bZ.value, bW.value);
+        return add(res, a, bX.value & 0xffff, bY.value & 0xffff, bZ.value & 0xffff, bW.value & 0xffff);
     }
 
     public static Vec4us add(Vec4us res, Vec4us a, short bX, short bY, short bZ, short bW) {
-        return add(res, a, (int) bX, bY, bZ, bW);
+        return add(res, a, bX & 0xffff, bY & 0xffff, bZ & 0xffff, bW & 0xffff);
     }
 
     public static Vec4us add(Vec4us res, Vec4us a, int bX, int bY, int bZ, int bW) {
-        res.x.value = (short) (a.x.value + bX);
-        res.y.value = (short) (a.y.value + bY);
-        res.z.value = (short) (a.z.value + bZ);
-        res.w.value = (short) (a.w.value + bW);
+        res.x.value = (short) ((a.x.value & 0xffff) + bX);
+        res.y.value = (short) ((a.y.value & 0xffff) + bY);
+        res.z.value = (short) ((a.z.value & 0xffff) + bZ);
+        res.w.value = (short) ((a.w.value & 0xffff) + bW);
         return res;
     }
 
@@ -1573,11 +1573,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub sub_(Vec2ub a, UByte b) {
-        return sub(new Vec2ub(), a, b.value, b.value);
+        return sub(new Vec2ub(), a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub sub_(Vec2ub a, byte b) {
-        return sub(new Vec2ub(), a, b, b);
+        return sub(new Vec2ub(), a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub sub_(Vec2ub a, int b) {
@@ -1585,15 +1585,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub sub_(Vec2ub a, Vec2ub b) {
-        return sub(new Vec2ub(), a, b.x.value, b.y.value);
+        return sub(new Vec2ub(), a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub sub(Vec2ub a, UByte b) {
-        return sub(a, a, b.value, b.value);
+        return sub(a, a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub sub(Vec2ub a, byte b) {
-        return sub(a, a, b, b);
+        return sub(a, a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub sub(Vec2ub a, int b) {
@@ -1601,15 +1601,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub sub(Vec2ub a, Vec2ub b) {
-        return sub(a, a, b.x.value, b.y.value);
+        return sub(a, a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub sub(Vec2ub res, Vec2ub a, UByte b) {
-        return sub(res, a, b.value, b.value);
+        return sub(res, a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub sub(Vec2ub res, Vec2ub a, byte b) {
-        return sub(res, a, b, b);
+        return sub(res, a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub sub(Vec2ub res, Vec2ub a, int b) {
@@ -1617,20 +1617,20 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub sub(Vec2ub res, Vec2ub a, Vec2ub b) {
-        return sub(res, a, b.x.value, b.y.value);
+        return sub(res, a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub sub(Vec2ub res, Vec2ub a, UByte bX, UByte bY) {
-        return sub(res, a, bX.value, bY.value);
+        return sub(res, a, bX.value & 0xff, bY.value & 0xff);
     }
 
     public static Vec2ub sub(Vec2ub res, Vec2ub a, byte bX, byte bY) {
-        return sub(res, a, (int) bX, bY);
+        return sub(res, a, bX & 0xff, bY & 0xff);
     }
 
     public static Vec2ub sub(Vec2ub res, Vec2ub a, int bX, int bY) {
-        res.x.value = (byte) (a.x.value - bX);
-        res.y.value = (byte) (a.y.value - bY);
+        res.x.value = (byte) ((a.x.value & 0xff) - bX);
+        res.y.value = (byte) ((a.y.value & 0xff) - bY);
         return res;
     }
 
@@ -1727,11 +1727,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us sub_(Vec2us a, UShort b) {
-        return sub(new Vec2us(), a, b.value, b.value);
+        return sub(new Vec2us(), a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us sub_(Vec2us a, short b) {
-        return sub(new Vec2us(), a, b, b);
+        return sub(new Vec2us(), a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us sub_(Vec2us a, int b) {
@@ -1739,15 +1739,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us sub_(Vec2us a, Vec2us b) {
-        return sub(new Vec2us(), a, b.x.value, b.y.value);
+        return sub(new Vec2us(), a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us sub(Vec2us a, UShort b) {
-        return sub(a, a, b.value, b.value);
+        return sub(a, a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us sub(Vec2us a, short b) {
-        return sub(a, a, b, b);
+        return sub(a, a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us sub(Vec2us a, int b) {
@@ -1755,15 +1755,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us sub(Vec2us a, Vec2us b) {
-        return sub(a, a, b.x.value, b.y.value);
+        return sub(a, a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us sub(Vec2us res, Vec2us a, UShort b) {
-        return sub(res, a, b.value, b.value);
+        return sub(res, a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us sub(Vec2us res, Vec2us a, short b) {
-        return sub(res, a, b, b);
+        return sub(res, a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us sub(Vec2us res, Vec2us a, int b) {
@@ -1771,20 +1771,20 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us sub(Vec2us res, Vec2us a, Vec2us b) {
-        return sub(res, a, b.x.value, b.y.value);
+        return sub(res, a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us sub(Vec2us res, Vec2us a, UShort bX, UShort bY) {
-        return sub(res, a, bX.value, bY.value);
+        return sub(res, a, bX.value & 0xffff, bY.value & 0xffff);
     }
 
     public static Vec2us sub(Vec2us res, Vec2us a, short bX, short bY) {
-        return sub(res, a, (int) bX, bY);
+        return sub(res, a, bX & 0xffff, bY & 0xffff);
     }
 
     public static Vec2us sub(Vec2us res, Vec2us a, int bX, int bY) {
-        res.x.value = (short) (a.x.value - bX);
-        res.y.value = (short) (a.y.value - bY);
+        res.x.value = (short) ((a.x.value & 0xffff) - bX);
+        res.y.value = (short) ((a.y.value & 0xffff) - bY);
         return res;
     }
 
@@ -2007,11 +2007,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub sub_(Vec3ub a, UByte b) {
-        return sub(new Vec3ub(), a, b.value, b.value, b.value);
+        return sub(new Vec3ub(), a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub sub_(Vec3ub a, byte b) {
-        return sub(new Vec3ub(), a, b, b, b);
+        return sub(new Vec3ub(), a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub sub_(Vec3ub a, int b) {
@@ -2019,15 +2019,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub sub_(Vec3ub a, Vec3ub b) {
-        return sub(new Vec3ub(), a, b.x.value, b.y.value, b.z.value);
+        return sub(new Vec3ub(), a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub sub(Vec3ub a, UByte b) {
-        return sub(a, a, b.value, b.value, b.value);
+        return sub(a, a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub sub(Vec3ub a, byte b) {
-        return sub(a, a, b, b, b);
+        return sub(a, a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub sub(Vec3ub a, int b) {
@@ -2035,15 +2035,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub sub(Vec3ub a, Vec3ub b) {
-        return sub(a, a, b.x.value, b.y.value, b.z.value);
+        return sub(a, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub sub(Vec3ub res, Vec3ub a, UByte b) {
-        return sub(res, a, b.value, b.value, b.value);
+        return sub(res, a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub sub(Vec3ub res, Vec3ub a, byte b) {
-        return sub(res, a, b, b, b);
+        return sub(res, a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub sub(Vec3ub res, Vec3ub a, int b) {
@@ -2051,21 +2051,21 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub sub(Vec3ub res, Vec3ub a, Vec3ub b) {
-        return sub(res, a, b.x.value, b.y.value, b.z.value);
+        return sub(res, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub sub(Vec3ub res, Vec3ub a, UByte bX, UByte bY, UByte bZ) {
-        return sub(res, a, bX.value, bY.value, bZ.value);
+        return sub(res, a, bX.value & 0xff, bY.value & 0xff, bZ.value & 0xff);
     }
 
     public static Vec3ub sub(Vec3ub res, Vec3ub a, byte bX, byte bY, byte bZ) {
-        return sub(res, a, (int) bX, bY, bZ);
+        return sub(res, a, bX & 0xff, bY & 0xff, bZ & 0xff);
     }
 
     public static Vec3ub sub(Vec3ub res, Vec3ub a, int bX, int bY, int bZ) {
-        res.x.value = (byte) (a.x.value - bX);
-        res.y.value = (byte) (a.y.value - bY);
-        res.z.value = (byte) (a.z.value - bZ);
+        res.x.value = (byte) ((a.x.value & 0xff) - bX);
+        res.y.value = (byte) ((a.y.value & 0xff) - bY);
+        res.z.value = (byte) ((a.z.value & 0xff) - bZ);
         return res;
     }
 
@@ -2164,11 +2164,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us sub_(Vec3us a, UShort b) {
-        return sub(new Vec3us(), a, b.value, b.value, b.value);
+        return sub(new Vec3us(), a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us sub_(Vec3us a, short b) {
-        return sub(new Vec3us(), a, b, b, b);
+        return sub(new Vec3us(), a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us sub_(Vec3us a, int b) {
@@ -2176,15 +2176,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us sub_(Vec3us a, Vec3us b) {
-        return sub(new Vec3us(), a, b.x.value, b.y.value, b.z.value);
+        return sub(new Vec3us(), a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us sub(Vec3us a, UShort b) {
-        return sub(a, a, b.value, b.value, b.value);
+        return sub(a, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us sub(Vec3us a, short b) {
-        return sub(a, a, b, b, b);
+        return sub(a, a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us sub(Vec3us a, int b) {
@@ -2192,15 +2192,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us sub(Vec3us a, Vec3us b) {
-        return sub(a, a, b.x.value, b.y.value, b.z.value);
+        return sub(a, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us sub(Vec3us res, Vec3us a, UShort b) {
-        return sub(res, a, b.value, b.value, b.value);
+        return sub(res, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us sub(Vec3us res, Vec3us a, short b) {
-        return sub(res, a, b, b, b);
+        return sub(res, a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us sub(Vec3us res, Vec3us a, int b) {
@@ -2208,21 +2208,21 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us sub(Vec3us res, Vec3us a, Vec3us b) {
-        return sub(res, a, b.x.value, b.y.value, b.z.value);
+        return sub(res, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us sub(Vec3us res, Vec3us a, UShort bX, UShort bY, UShort bZ) {
-        return sub(res, a, bX.value, bY.value, bZ.value);
+        return sub(res, a, bX.value & 0xffff, bY.value & 0xffff, bZ.value & 0xffff);
     }
 
     public static Vec3us sub(Vec3us res, Vec3us a, short bX, short bY, short bZ) {
-        return sub(res, a, (int) bX, bY, bZ);
+        return sub(res, a, bX & 0xffff, bY & 0xffff, bZ & 0xffff);
     }
 
     public static Vec3us sub(Vec3us res, Vec3us a, int bX, int bY, int bZ) {
-        res.x.value = (short) (a.x.value - bX);
-        res.y.value = (short) (a.y.value - bY);
-        res.z.value = (short) (a.z.value - bZ);
+        res.x.value = (short) ((a.x.value & 0xffff) - bX);
+        res.y.value = (short) ((a.y.value & 0xffff) - bY);
+        res.z.value = (short) ((a.z.value & 0xffff) - bZ);
         return res;
     }
 
@@ -2451,11 +2451,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub sub_(Vec4ub a, UByte b) {
-        return sub(new Vec4ub(), a, b.value, b.value, b.value, b.value);
+        return sub(new Vec4ub(), a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub sub_(Vec4ub a, byte b) {
-        return sub(new Vec4ub(), a, b, b, b, b);
+        return sub(new Vec4ub(), a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub sub_(Vec4ub a, int b) {
@@ -2463,15 +2463,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub sub_(Vec4ub a, Vec4ub b) {
-        return sub(new Vec4ub(), a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return sub(new Vec4ub(), a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub sub(Vec4ub a, UByte b) {
-        return sub(a, a, b.value, b.value, b.value, b.value);
+        return sub(a, a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub sub(Vec4ub a, byte b) {
-        return sub(a, a, b, b, b, b);
+        return sub(a, a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub sub(Vec4ub a, int b) {
@@ -2479,15 +2479,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub sub(Vec4ub a, Vec4ub b) {
-        return sub(a, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return sub(a, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub sub(Vec4ub res, Vec4ub a, UByte b) {
-        return sub(res, a, b.value, b.value, b.value, b.value);
+        return sub(res, a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub sub(Vec4ub res, Vec4ub a, byte b) {
-        return sub(res, a, b, b, b, b);
+        return sub(res, a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub sub(Vec4ub res, Vec4ub a, int b) {
@@ -2495,22 +2495,22 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub sub(Vec4ub res, Vec4ub a, Vec4ub b) {
-        return sub(res, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return sub(res, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub sub(Vec4ub res, Vec4ub a, UByte bX, UByte bY, UByte bZ, UByte bW) {
-        return sub(res, a, bX.value, bY.value, bZ.value, bZ.value);
+        return sub(res, a, bX.value & 0xff, bY.value & 0xff, bZ.value & 0xff, bZ.value & 0xff);
     }
 
     public static Vec4ub sub(Vec4ub res, Vec4ub a, byte bX, byte bY, byte bZ, byte bW) {
-        return sub(res, a, (int) bX, bY, bZ, bW);
+        return sub(res, a, bX & 0xff, bY & 0xff, bZ & 0xff, bW & 0xff);
     }
 
     public static Vec4ub sub(Vec4ub res, Vec4ub a, int bX, int bY, int bZ, int bW) {
-        res.x.value = (byte) (a.x.value - bX);
-        res.y.value = (byte) (a.y.value - bY);
-        res.z.value = (byte) (a.z.value - bZ);
-        res.w.value = (byte) (a.w.value - bW);
+        res.x.value = (byte) ((a.x.value & 0xff) - bX);
+        res.y.value = (byte) ((a.y.value & 0xff) - bY);
+        res.z.value = (byte) ((a.z.value & 0xff) - bZ);
+        res.w.value = (byte) ((a.w.value & 0xff) - bW);
         return res;
     }
 
@@ -2611,43 +2611,43 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us sub_(Vec4us a, UShort b) {
-        return sub(new Vec4us(), a, b.value, b.value, b.value, b.value);
+        return sub(new Vec4us(), a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us sub_(Vec4us a, short b) {
-        return sub(new Vec4us(), a, b, b, b, b);
+        return sub(new Vec4us(), a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us sub_(Vec4us a, int b) {
-        return sub(new Vec4us(), a, b, b, b, b);
+        return sub(new Vec4us(), a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us sub_(Vec4us a, Vec4us b) {
-        return sub(new Vec4us(), a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return sub(new Vec4us(), a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us sub(Vec4us a, UShort b) {
-        return sub(a, a, b.value, b.value, b.value, b.value);
+        return sub(a, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us sub(Vec4us a, short b) {
-        return sub(a, a, b, b, b, b);
+        return sub(a, a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us sub(Vec4us a, int b) {
-        return sub(a, a, b, b, b, b);
+        return sub(a, a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us sub(Vec4us a, Vec4us b) {
-        return sub(a, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return sub(a, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us sub(Vec4us res, Vec4us a, UShort b) {
-        return sub(res, a, b.value, b.value, b.value, b.value);
+        return sub(res, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us sub(Vec4us res, Vec4us a, short b) {
-        return sub(res, a, b, b, b, b);
+        return sub(res, a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us sub(Vec4us res, Vec4us a, int b) {
@@ -2655,22 +2655,22 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us sub(Vec4us res, Vec4us a, Vec4us b) {
-        return sub(res, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return sub(res, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us sub(Vec4us res, Vec4us a, UShort bX, UShort bY, UShort bZ, UShort bW) {
-        return sub(res, a, bX.value, bY.value, bZ.value, bW.value);
+        return sub(res, a, bX.value & 0xffff, bY.value & 0xffff, bZ.value & 0xffff, bW.value & 0xffff);
     }
 
     public static Vec4us sub(Vec4us res, Vec4us a, short bX, short bY, short bZ, short bW) {
-        return sub(res, a, (int) bX, bY, bZ, bW);
+        return sub(res, a, bX & 0xffff, bY & 0xffff, bZ & 0xffff, bW & 0xffff);
     }
 
     public static Vec4us sub(Vec4us res, Vec4us a, int bX, int bY, int bZ, int bW) {
-        res.x.value = (short) (a.x.value - bX);
-        res.y.value = (short) (a.y.value - bY);
-        res.z.value = (short) (a.z.value - bZ);
-        res.w.value = (short) (a.w.value - bW);
+        res.x.value = (short) ((a.x.value & 0xffff) - bX);
+        res.y.value = (short) ((a.y.value & 0xffff) - bY);
+        res.z.value = (short) ((a.z.value & 0xffff) - bZ);
+        res.w.value = (short) ((a.w.value & 0xffff) - bW);
         return res;
     }
 
@@ -2887,11 +2887,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub mul_(Vec2ub a, UByte b) {
-        return mul(new Vec2ub(), a, b.value, b.value);
+        return mul(new Vec2ub(), a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub mul_(Vec2ub a, byte b) {
-        return mul(new Vec2ub(), a, b, b);
+        return mul(new Vec2ub(), a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub mul_(Vec2ub a, int b) {
@@ -2899,15 +2899,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub mul_(Vec2ub a, Vec2ub b) {
-        return mul(new Vec2ub(), a, b.x.value, b.y.value);
+        return mul(new Vec2ub(), a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub mul(Vec2ub a, UByte b) {
-        return mul(a, a, b.value, b.value);
+        return mul(a, a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub mul(Vec2ub a, byte b) {
-        return mul(a, a, b, b);
+        return mul(a, a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub mul(Vec2ub a, int b) {
@@ -2915,15 +2915,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub mul(Vec2ub a, Vec2ub b) {
-        return mul(a, a, b.x.value, b.y.value);
+        return mul(a, a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub mul(Vec2ub res, Vec2ub a, UByte b) {
-        return mul(res, a, b.value, b.value);
+        return mul(res, a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub mul(Vec2ub res, Vec2ub a, byte b) {
-        return mul(res, a, b, b);
+        return mul(res, a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub mul(Vec2ub res, Vec2ub a, int b) {
@@ -2931,20 +2931,20 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub mul(Vec2ub res, Vec2ub a, Vec2ub b) {
-        return mul(res, a, b.x.value, b.y.value);
+        return mul(res, a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub mul(Vec2ub res, Vec2ub a, UByte bX, UByte bY) {
-        return mul(res, a, bX.value, bY.value);
+        return mul(res, a, bX.value & 0xff, bY.value & 0xff);
     }
 
     public static Vec2ub mul(Vec2ub res, Vec2ub a, byte bX, byte bY) {
-        return mul(res, a, (int) bX, bY);
+        return mul(res, a, bX & 0xff, bY & 0xff);
     }
 
     public static Vec2ub mul(Vec2ub res, Vec2ub a, int bX, int bY) {
-        res.x.value = (byte) (a.x.value * bX);
-        res.y.value = (byte) (a.y.value * bY);
+        res.x.value = (byte) ((a.x.value & 0xff) * bX);
+        res.y.value = (byte) ((a.y.value & 0xff) * bY);
         return res;
     }
 
@@ -3041,11 +3041,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us mul_(Vec2us a, UShort b) {
-        return mul(new Vec2us(), a, b.value, b.value);
+        return mul(new Vec2us(), a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us mul_(Vec2us a, short b) {
-        return mul(new Vec2us(), a, b, b);
+        return mul(new Vec2us(), a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us mul_(Vec2us a, int b) {
@@ -3053,15 +3053,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us mul_(Vec2us a, Vec2us b) {
-        return mul(new Vec2us(), a, b.x.value, b.y.value);
+        return mul(new Vec2us(), a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us mul(Vec2us a, UShort b) {
-        return mul(a, a, b.value, b.value);
+        return mul(a, a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us mul(Vec2us a, short b) {
-        return mul(a, a, b, b);
+        return mul(a, a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us mul(Vec2us a, int b) {
@@ -3069,15 +3069,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us mul(Vec2us a, Vec2us b) {
-        return mul(a, a, b.x.value, b.y.value);
+        return mul(a, a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us mul(Vec2us res, Vec2us a, UShort b) {
-        return mul(res, a, b.value, b.value);
+        return mul(res, a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us mul(Vec2us res, Vec2us a, short b) {
-        return mul(res, a, b, b);
+        return mul(res, a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us mul(Vec2us res, Vec2us a, int b) {
@@ -3085,20 +3085,20 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us mul(Vec2us res, Vec2us a, Vec2us b) {
-        return mul(res, a, b.x.value, b.y.value);
+        return mul(res, a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us mul(Vec2us res, Vec2us a, UShort bX, UShort bY) {
-        return mul(res, a, bX.value, bY.value);
+        return mul(res, a, bX.value & 0xffff, bY.value & 0xffff);
     }
 
     public static Vec2us mul(Vec2us res, Vec2us a, short bX, short bY) {
-        return mul(res, a, (int) bX, bY);
+        return mul(res, a, bX & 0xffff, bY & 0xffff);
     }
 
     public static Vec2us mul(Vec2us res, Vec2us a, int bX, int bY) {
-        res.x.value = (short) (a.x.value * bX);
-        res.y.value = (short) (a.y.value * bY);
+        res.x.value = (short) ((a.x.value & 0xffff) * bX);
+        res.y.value = (short) ((a.y.value & 0xffff) * bY);
         return res;
     }
 
@@ -3321,11 +3321,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub mul_(Vec3ub a, UByte b) {
-        return mul(new Vec3ub(), a, b.value, b.value, b.value);
+        return mul(new Vec3ub(), a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub mul_(Vec3ub a, byte b) {
-        return mul(new Vec3ub(), a, b, b, b);
+        return mul(new Vec3ub(), a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub mul_(Vec3ub a, int b) {
@@ -3333,15 +3333,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub mul_(Vec3ub a, Vec3ub b) {
-        return mul(new Vec3ub(), a, b.x.value, b.y.value, b.z.value);
+        return mul(new Vec3ub(), a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub mul(Vec3ub a, UByte b) {
-        return mul(a, a, b.value, b.value, b.value);
+        return mul(a, a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub mul(Vec3ub a, byte b) {
-        return mul(a, a, b, b, b);
+        return mul(a, a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub mul(Vec3ub a, int b) {
@@ -3349,15 +3349,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub mul(Vec3ub a, Vec3ub b) {
-        return mul(a, a, b.x.value, b.y.value, b.z.value);
+        return mul(a, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub mul(Vec3ub res, Vec3ub a, UByte b) {
-        return mul(res, a, b.value, b.value, b.value);
+        return mul(res, a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub mul(Vec3ub res, Vec3ub a, byte b) {
-        return mul(res, a, b, b, b);
+        return mul(res, a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub mul(Vec3ub res, Vec3ub a, int b) {
@@ -3365,21 +3365,21 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub mul(Vec3ub res, Vec3ub a, Vec3ub b) {
-        return mul(res, a, b.x.value, b.y.value, b.z.value);
+        return mul(res, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub mul(Vec3ub res, Vec3ub a, UByte bX, UByte bY, UByte bZ) {
-        return mul(res, a, bX.value, bY.value, bZ.value);
+        return mul(res, a, bX.value & 0xff, bY.value & 0xff, bZ.value & 0xff);
     }
 
     public static Vec3ub mul(Vec3ub res, Vec3ub a, byte bX, byte bY, byte bZ) {
-        return mul(res, a, (int) bX, bY, bZ);
+        return mul(res, a, bX & 0xff, bY & 0xff, bZ & 0xff);
     }
 
     public static Vec3ub mul(Vec3ub res, Vec3ub a, int bX, int bY, int bZ) {
-        res.x.value = (byte) (a.x.value * bX);
-        res.y.value = (byte) (a.y.value * bY);
-        res.z.value = (byte) (a.z.value * bZ);
+        res.x.value = (byte) ((a.x.value & 0xff) * bX);
+        res.y.value = (byte) ((a.y.value & 0xff) * bY);
+        res.z.value = (byte) ((a.z.value & 0xff) * bZ);
         return res;
     }
 
@@ -3478,11 +3478,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us mul_(Vec3us a, UShort b) {
-        return mul(new Vec3us(), a, b.value, b.value, b.value);
+        return mul(new Vec3us(), a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us mul_(Vec3us a, short b) {
-        return mul(new Vec3us(), a, b, b, b);
+        return mul(new Vec3us(), a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us mul_(Vec3us a, int b) {
@@ -3490,15 +3490,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us mul_(Vec3us a, Vec3us b) {
-        return mul(new Vec3us(), a, b.x.value, b.y.value, b.z.value);
+        return mul(new Vec3us(), a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us mul(Vec3us a, UShort b) {
-        return mul(a, a, b.value, b.value, b.value);
+        return mul(a, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us mul(Vec3us a, short b) {
-        return mul(a, a, b, b, b);
+        return mul(a, a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us mul(Vec3us a, int b) {
@@ -3506,15 +3506,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us mul(Vec3us a, Vec3us b) {
-        return mul(a, a, b.x.value, b.y.value, b.z.value);
+        return mul(a, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us mul(Vec3us res, Vec3us a, UShort b) {
-        return mul(res, a, b.value, b.value, b.value);
+        return mul(res, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us mul(Vec3us res, Vec3us a, short b) {
-        return mul(res, a, b, b, b);
+        return mul(res, a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us mul(Vec3us res, Vec3us a, int b) {
@@ -3522,21 +3522,21 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us mul(Vec3us res, Vec3us a, Vec3us b) {
-        return mul(res, a, b.x.value, b.y.value, b.z.value);
+        return mul(res, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us mul(Vec3us res, Vec3us a, UShort bX, UShort bY, UShort bZ) {
-        return mul(res, a, bX.value, bY.value, bZ.value);
+        return mul(res, a, bX.value & 0xffff, bY.value & 0xffff, bZ.value & 0xffff);
     }
 
     public static Vec3us mul(Vec3us res, Vec3us a, short bX, short bY, short bZ) {
-        return mul(res, a, (int) bX, bY, bZ);
+        return mul(res, a, bX & 0xffff, bY & 0xffff, bZ & 0xffff);
     }
 
     public static Vec3us mul(Vec3us res, Vec3us a, int bX, int bY, int bZ) {
-        res.x.value = (short) (a.x.value * bX);
-        res.y.value = (short) (a.y.value * bY);
-        res.z.value = (short) (a.z.value * bZ);
+        res.x.value = (short) ((a.x.value & 0xffff) * bX);
+        res.y.value = (short) ((a.y.value & 0xffff) * bY);
+        res.z.value = (short) ((a.z.value & 0xffff) * bZ);
         return res;
     }
 
@@ -3765,11 +3765,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub mul_(Vec4ub a, UByte b) {
-        return mul(new Vec4ub(), a, b.value, b.value, b.value, b.value);
+        return mul(new Vec4ub(), a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub mul_(Vec4ub a, byte b) {
-        return mul(new Vec4ub(), a, b, b, b, b);
+        return mul(new Vec4ub(), a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub mul_(Vec4ub a, int b) {
@@ -3777,15 +3777,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub mul_(Vec4ub a, Vec4ub b) {
-        return mul(new Vec4ub(), a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return mul(new Vec4ub(), a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub mul(Vec4ub a, UByte b) {
-        return mul(a, a, b.value, b.value, b.value, b.value);
+        return mul(a, a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub mul(Vec4ub a, byte b) {
-        return mul(a, a, b, b, b, b);
+        return mul(a, a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub mul(Vec4ub a, int b) {
@@ -3793,15 +3793,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub mul(Vec4ub a, Vec4ub b) {
-        return mul(a, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return mul(a, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub mul(Vec4ub res, Vec4ub a, UByte b) {
-        return mul(res, a, b.value, b.value, b.value, b.value);
+        return mul(res, a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub mul(Vec4ub res, Vec4ub a, byte b) {
-        return mul(res, a, b, b, b, b);
+        return mul(res, a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub mul(Vec4ub res, Vec4ub a, int b) {
@@ -3809,22 +3809,22 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub mul(Vec4ub res, Vec4ub a, Vec4ub b) {
-        return mul(res, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return mul(res, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub mul(Vec4ub res, Vec4ub a, UByte bX, UByte bY, UByte bZ, UByte bW) {
-        return mul(res, a, bX.value, bY.value, bZ.value, bZ.value);
+        return mul(res, a, bX.value & 0xff, bY.value & 0xff, bZ.value & 0xff, bZ.value & 0xff);
     }
 
     public static Vec4ub mul(Vec4ub res, Vec4ub a, byte bX, byte bY, byte bZ, byte bW) {
-        return mul(res, a, (int) bX, bY, bZ, bW);
+        return mul(res, a, bX & 0xff, bY & 0xff, bZ & 0xff, bW & 0xff);
     }
 
     public static Vec4ub mul(Vec4ub res, Vec4ub a, int bX, int bY, int bZ, int bW) {
-        res.x.value = (byte) (a.x.value * bX);
-        res.y.value = (byte) (a.y.value * bY);
-        res.z.value = (byte) (a.z.value * bZ);
-        res.w.value = (byte) (a.w.value * bW);
+        res.x.value = (byte) ((a.x.value & 0xff) * bX);
+        res.y.value = (byte) ((a.y.value & 0xff) * bY);
+        res.z.value = (byte) ((a.z.value & 0xff) * bZ);
+        res.w.value = (byte) ((a.w.value & 0xff) * bW);
         return res;
     }
 
@@ -3925,11 +3925,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us mul_(Vec4us a, UShort b) {
-        return mul(new Vec4us(), a, b.value, b.value, b.value, b.value);
+        return mul(new Vec4us(), a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us mul_(Vec4us a, short b) {
-        return mul(new Vec4us(), a, b, b, b, b);
+        return mul(new Vec4us(), a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us mul_(Vec4us a, int b) {
@@ -3937,15 +3937,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us mul_(Vec4us a, Vec4us b) {
-        return mul(new Vec4us(), a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return mul(new Vec4us(), a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us mul(Vec4us a, UShort b) {
-        return mul(a, a, b.value, b.value, b.value, b.value);
+        return mul(a, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us mul(Vec4us a, short b) {
-        return mul(a, a, b, b, b, b);
+        return mul(a, a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us mul(Vec4us a, int b) {
@@ -3953,15 +3953,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us mul(Vec4us a, Vec4us b) {
-        return mul(a, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return mul(a, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us mul(Vec4us res, Vec4us a, UShort b) {
-        return mul(res, a, b.value, b.value, b.value, b.value);
+        return mul(res, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us mul(Vec4us res, Vec4us a, short b) {
-        return mul(res, a, b, b, b, b);
+        return mul(res, a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us mul(Vec4us res, Vec4us a, int b) {
@@ -3969,22 +3969,22 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us mul(Vec4us res, Vec4us a, Vec4us b) {
-        return mul(res, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return mul(res, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us mul(Vec4us res, Vec4us a, UShort bX, UShort bY, UShort bZ, UShort bW) {
-        return mul(res, a, bX.value, bY.value, bZ.value, bW.value);
+        return mul(res, a, bX.value & 0xffff, bY.value & 0xffff, bZ.value & 0xffff, bW.value & 0xffff);
     }
 
     public static Vec4us mul(Vec4us res, Vec4us a, short bX, short bY, short bZ, short bW) {
-        return mul(res, a, (int) bX, bY, bZ, bW);
+        return mul(res, a, bX & 0xffff, bY & 0xffff, bZ & 0xffff, bW & 0xffff);
     }
 
     public static Vec4us mul(Vec4us res, Vec4us a, int bX, int bY, int bZ, int bW) {
-        res.x.value = (short) (a.x.value * bX);
-        res.y.value = (short) (a.y.value * bY);
-        res.z.value = (short) (a.z.value * bZ);
-        res.w.value = (short) (a.w.value * bW);
+        res.x.value = (short) ((a.x.value & 0xffff) * bX);
+        res.y.value = (short) ((a.y.value & 0xffff) * bY);
+        res.z.value = (short) ((a.z.value & 0xffff) * bZ);
+        res.w.value = (short) ((a.w.value & 0xffff) * bW);
         return res;
     }
 
@@ -4201,11 +4201,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub div_(Vec2ub a, UByte b) {
-        return div(new Vec2ub(), a, b.value, b.value);
+        return div(new Vec2ub(), a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub div_(Vec2ub a, byte b) {
-        return div(new Vec2ub(), a, b, b);
+        return div(new Vec2ub(), a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub div_(Vec2ub a, int b) {
@@ -4213,15 +4213,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub div_(Vec2ub a, Vec2ub b) {
-        return div(new Vec2ub(), a, b.x.value, b.y.value);
+        return div(new Vec2ub(), a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub div(Vec2ub a, UByte b) {
-        return div(a, a, b.value, b.value);
+        return div(a, a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub div(Vec2ub a, byte b) {
-        return div(a, a, b, b);
+        return div(a, a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub div(Vec2ub a, int b) {
@@ -4229,15 +4229,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub div(Vec2ub a, Vec2ub b) {
-        return div(a, a, b.x.value, b.y.value);
+        return div(a, a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub div(Vec2ub res, Vec2ub a, UByte b) {
-        return div(res, a, b.value, b.value);
+        return div(res, a, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec2ub div(Vec2ub res, Vec2ub a, byte b) {
-        return div(res, a, b, b);
+        return div(res, a, b & 0xff, b & 0xff);
     }
 
     public static Vec2ub div(Vec2ub res, Vec2ub a, int b) {
@@ -4245,20 +4245,20 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub div(Vec2ub res, Vec2ub a, Vec2ub b) {
-        return div(res, a, b.x.value, b.y.value);
+        return div(res, a, b.x.value & 0xff, b.y.value & 0xff);
     }
 
     public static Vec2ub div(Vec2ub res, Vec2ub a, UByte bX, UByte bY) {
-        return div(res, a, bX.value, bY.value);
+        return div(res, a, bX.value & 0xff, bY.value & 0xff);
     }
 
     public static Vec2ub div(Vec2ub res, Vec2ub a, byte bX, byte bY) {
-        return div(res, a, (int) bX, bY);
+        return div(res, a, bX & 0xff, bY & 0xff);
     }
 
     public static Vec2ub div(Vec2ub res, Vec2ub a, int bX, int bY) {
-        res.x.value = (byte) Integer.divideUnsigned(a.x.value, bX);
-        res.y.value = (byte) Integer.divideUnsigned(a.y.value, bY);
+        res.x.value = (byte) Integer.divideUnsigned(a.x.value & 0xff, bX);
+        res.y.value = (byte) Integer.divideUnsigned(a.y.value & 0xff, bY);
         return res;
     }
 
@@ -4355,11 +4355,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us div_(Vec2us a, UShort b) {
-        return div(new Vec2us(), a, b.value, b.value);
+        return div(new Vec2us(), a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us div_(Vec2us a, short b) {
-        return div(new Vec2us(), a, b, b);
+        return div(new Vec2us(), a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us div_(Vec2us a, int b) {
@@ -4367,15 +4367,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us div_(Vec2us a, Vec2us b) {
-        return div(new Vec2us(), a, b.x.value, b.y.value);
+        return div(new Vec2us(), a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us div(Vec2us a, UShort b) {
-        return div(a, a, b.value, b.value);
+        return div(a, a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us div(Vec2us a, short b) {
-        return div(a, a, b, b);
+        return div(a, a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us div(Vec2us a, int b) {
@@ -4383,15 +4383,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us div(Vec2us a, Vec2us b) {
-        return div(a, a, b.x.value, b.y.value);
+        return div(a, a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us div(Vec2us res, Vec2us a, UShort b) {
-        return div(res, a, b.value, b.value);
+        return div(res, a, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec2us div(Vec2us res, Vec2us a, short b) {
-        return div(res, a, b, b);
+        return div(res, a, b & 0xffff, b & 0xffff);
     }
 
     public static Vec2us div(Vec2us res, Vec2us a, int b) {
@@ -4399,20 +4399,20 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us div(Vec2us res, Vec2us a, Vec2us b) {
-        return div(res, a, b.x.value, b.y.value);
+        return div(res, a, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public static Vec2us div(Vec2us res, Vec2us a, UShort bX, UShort bY) {
-        return div(res, a, bX.value, bY.value);
+        return div(res, a, bX.value & 0xffff, bY.value & 0xffff);
     }
 
     public static Vec2us div(Vec2us res, Vec2us a, short bX, short bY) {
-        return div(res, a, (int) bX, bY);
+        return div(res, a, bX & 0xffff, bY & 0xffff);
     }
 
     public static Vec2us div(Vec2us res, Vec2us a, int bX, int bY) {
-        res.x.value = (short) Integer.divideUnsigned(a.x.value, bX);
-        res.y.value = (short) Integer.divideUnsigned(a.y.value, bY);
+        res.x.value = (short) Integer.divideUnsigned(a.x.value & 0xffff, bX);
+        res.y.value = (short) Integer.divideUnsigned(a.y.value & 0xffff, bY);
         return res;
     }
 
@@ -4635,11 +4635,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub div_(Vec3ub a, UByte b) {
-        return div(new Vec3ub(), a, b.value, b.value, b.value);
+        return div(new Vec3ub(), a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub div_(Vec3ub a, byte b) {
-        return div(new Vec3ub(), a, b, b, b);
+        return div(new Vec3ub(), a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub div_(Vec3ub a, int b) {
@@ -4647,15 +4647,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub div_(Vec3ub a, Vec3ub b) {
-        return div(new Vec3ub(), a, b.x.value, b.y.value, b.z.value);
+        return div(new Vec3ub(), a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub div(Vec3ub a, UByte b) {
-        return div(a, a, b.value, b.value, b.value);
+        return div(a, a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub div(Vec3ub a, byte b) {
-        return div(a, a, b, b, b);
+        return div(a, a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub div(Vec3ub a, int b) {
@@ -4663,15 +4663,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub div(Vec3ub a, Vec3ub b) {
-        return div(a, a, b.x.value, b.y.value, b.z.value);
+        return div(a, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub div(Vec3ub res, Vec3ub a, UByte b) {
-        return div(res, a, b.value, b.value, b.value);
+        return div(res, a, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec3ub div(Vec3ub res, Vec3ub a, byte b) {
-        return div(res, a, b, b, b);
+        return div(res, a, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec3ub div(Vec3ub res, Vec3ub a, int b) {
@@ -4679,21 +4679,21 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub div(Vec3ub res, Vec3ub a, Vec3ub b) {
-        return div(res, a, b.x.value, b.y.value, b.z.value);
+        return div(res, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff);
     }
 
     public static Vec3ub div(Vec3ub res, Vec3ub a, UByte bX, UByte bY, UByte bZ) {
-        return div(res, a, bX.value, bY.value, bZ.value);
+        return div(res, a, bX.value & 0xff, bY.value & 0xff, bZ.value & 0xff);
     }
 
     public static Vec3ub div(Vec3ub res, Vec3ub a, byte bX, byte bY, byte bZ) {
-        return div(res, a, (int) bX, bY, bZ);
+        return div(res, a, bX & 0xff, bY & 0xff, bZ & 0xff);
     }
 
     public static Vec3ub div(Vec3ub res, Vec3ub a, int bX, int bY, int bZ) {
-        res.x.value = (byte) Integer.divideUnsigned(a.x.value, bX);
-        res.y.value = (byte) Integer.divideUnsigned(a.y.value, bY);
-        res.z.value = (byte) Integer.divideUnsigned(a.z.value, bZ);
+        res.x.value = (byte) Integer.divideUnsigned(a.x.value & 0xff, bX);
+        res.y.value = (byte) Integer.divideUnsigned(a.y.value & 0xff, bY);
+        res.z.value = (byte) Integer.divideUnsigned(a.z.value & 0xff, bZ);
         return res;
     }
 
@@ -4792,11 +4792,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us div_(Vec3us a, UShort b) {
-        return div(new Vec3us(), a, b.value, b.value, b.value);
+        return div(new Vec3us(), a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us div_(Vec3us a, short b) {
-        return div(new Vec3us(), a, b, b, b);
+        return div(new Vec3us(), a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us div_(Vec3us a, int b) {
@@ -4804,15 +4804,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us div_(Vec3us a, Vec3us b) {
-        return div(new Vec3us(), a, b.x.value, b.y.value, b.z.value);
+        return div(new Vec3us(), a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us div(Vec3us a, UShort b) {
-        return div(a, a, b.value, b.value, b.value);
+        return div(a, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us div(Vec3us a, short b) {
-        return div(a, a, b, b, b);
+        return div(a, a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us div(Vec3us a, int b) {
@@ -4820,15 +4820,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us div(Vec3us a, Vec3us b) {
-        return div(a, a, b.x.value, b.y.value, b.z.value);
+        return div(a, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us div(Vec3us res, Vec3us a, UShort b) {
-        return div(res, a, b.value, b.value, b.value);
+        return div(res, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec3us div(Vec3us res, Vec3us a, short b) {
-        return div(res, a, b, b, b);
+        return div(res, a, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec3us div(Vec3us res, Vec3us a, int b) {
@@ -4836,21 +4836,21 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us div(Vec3us res, Vec3us a, Vec3us b) {
-        return div(res, a, b.x.value, b.y.value, b.z.value);
+        return div(res, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff);
     }
 
     public static Vec3us div(Vec3us res, Vec3us a, UShort bX, UShort bY, UShort bZ) {
-        return div(res, a, bX.value, bY.value, bZ.value);
+        return div(res, a, bX.value & 0xffff, bY.value & 0xffff, bZ.value & 0xffff);
     }
 
     public static Vec3us div(Vec3us res, Vec3us a, short bX, short bY, short bZ) {
-        return div(res, a, (int) bX, bY, bZ);
+        return div(res, a, bX & 0xffff, bY & 0xffff, bZ & 0xffff);
     }
 
     public static Vec3us div(Vec3us res, Vec3us a, int bX, int bY, int bZ) {
-        res.x.value = (short) Integer.divideUnsigned(a.x.value, bX);
-        res.y.value = (short) Integer.divideUnsigned(a.y.value, bY);
-        res.z.value = (short) Integer.divideUnsigned(a.z.value, bZ);
+        res.x.value = (short) Integer.divideUnsigned(a.x.value & 0xffff, bX);
+        res.y.value = (short) Integer.divideUnsigned(a.y.value & 0xffff, bY);
+        res.z.value = (short) Integer.divideUnsigned(a.z.value & 0xffff, bZ);
         return res;
     }
 
@@ -5079,11 +5079,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub div_(Vec4ub a, UByte b) {
-        return div(new Vec4ub(), a, b.value, b.value, b.value, b.value);
+        return div(new Vec4ub(), a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub div_(Vec4ub a, byte b) {
-        return div(new Vec4ub(), a, b, b, b, b);
+        return div(new Vec4ub(), a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub div_(Vec4ub a, int b) {
@@ -5091,15 +5091,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub div_(Vec4ub a, Vec4ub b) {
-        return div(new Vec4ub(), a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return div(new Vec4ub(), a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub div(Vec4ub a, UByte b) {
-        return div(a, a, b.value, b.value, b.value, b.value);
+        return div(a, a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub div(Vec4ub a, byte b) {
-        return div(a, a, b, b, b, b);
+        return div(a, a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub div(Vec4ub a, int b) {
@@ -5107,15 +5107,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub div(Vec4ub a, Vec4ub b) {
-        return div(a, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return div(a, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub div(Vec4ub res, Vec4ub a, UByte b) {
-        return div(res, a, b.value, b.value, b.value, b.value);
+        return div(res, a, b.value & 0xff, b.value & 0xff, b.value & 0xff, b.value & 0xff);
     }
 
     public static Vec4ub div(Vec4ub res, Vec4ub a, byte b) {
-        return div(res, a, b, b, b, b);
+        return div(res, a, b & 0xff, b & 0xff, b & 0xff, b & 0xff);
     }
 
     public static Vec4ub div(Vec4ub res, Vec4ub a, int b) {
@@ -5123,22 +5123,22 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub div(Vec4ub res, Vec4ub a, Vec4ub b) {
-        return div(res, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return div(res, a, b.x.value & 0xff, b.y.value & 0xff, b.z.value & 0xff, b.w.value & 0xff);
     }
 
     public static Vec4ub div(Vec4ub res, Vec4ub a, UByte bX, UByte bY, UByte bZ, UByte bW) {
-        return div(res, a, bX.value, bY.value, bZ.value, bZ.value);
+        return div(res, a, bX.value & 0xff, bY.value & 0xff, bZ.value & 0xff, bZ.value & 0xff);
     }
 
     public static Vec4ub div(Vec4ub res, Vec4ub a, byte bX, byte bY, byte bZ, byte bW) {
-        return div(res, a, (int) bX, bY, bZ, bW);
+        return div(res, a, bX & 0xff, bY & 0xff, bZ & 0xff, bW & 0xff);
     }
 
     public static Vec4ub div(Vec4ub res, Vec4ub a, int bX, int bY, int bZ, int bW) {
-        res.x.value = (byte) Integer.divideUnsigned(a.x.value, bX);
-        res.y.value = (byte) Integer.divideUnsigned(a.y.value, bY);
-        res.z.value = (byte) Integer.divideUnsigned(a.z.value, bZ);
-        res.w.value = (byte) Integer.divideUnsigned(a.w.value, bW);
+        res.x.value = (byte) Integer.divideUnsigned(a.x.value & 0xff, bX);
+        res.y.value = (byte) Integer.divideUnsigned(a.y.value & 0xff, bY);
+        res.z.value = (byte) Integer.divideUnsigned(a.z.value & 0xff, bZ);
+        res.w.value = (byte) Integer.divideUnsigned(a.w.value & 0xff, bW);
         return res;
     }
 
@@ -5239,11 +5239,11 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us div_(Vec4us a, UShort b) {
-        return div(new Vec4us(), a, b.value, b.value, b.value, b.value);
+        return div(new Vec4us(), a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us div_(Vec4us a, short b) {
-        return div(new Vec4us(), a, b, b, b, b);
+        return div(new Vec4us(), a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us div_(Vec4us a, int b) {
@@ -5251,15 +5251,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us div_(Vec4us a, Vec4us b) {
-        return div(new Vec4us(), a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return div(new Vec4us(), a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us div(Vec4us a, UShort b) {
-        return div(a, a, b.value, b.value, b.value, b.value);
+        return div(a, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us div(Vec4us a, short b) {
-        return div(a, a, b, b, b, b);
+        return div(a, a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us div(Vec4us a, int b) {
@@ -5267,15 +5267,15 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us div(Vec4us a, Vec4us b) {
-        return div(a, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return div(a, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us div(Vec4us res, Vec4us a, UShort b) {
-        return div(res, a, b.value, b.value, b.value, b.value);
+        return div(res, a, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff, b.value & 0xffff);
     }
 
     public static Vec4us div(Vec4us res, Vec4us a, short b) {
-        return div(res, a, b, b, b, b);
+        return div(res, a, b & 0xffff, b & 0xffff, b & 0xffff, b & 0xffff);
     }
 
     public static Vec4us div(Vec4us res, Vec4us a, int b) {
@@ -5283,22 +5283,22 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us div(Vec4us res, Vec4us a, Vec4us b) {
-        return div(res, a, b.x.value, b.y.value, b.z.value, b.w.value);
+        return div(res, a, b.x.value & 0xffff, b.y.value & 0xffff, b.z.value & 0xffff, b.w.value & 0xffff);
     }
 
     public static Vec4us div(Vec4us res, Vec4us a, UShort bX, UShort bY, UShort bZ, UShort bW) {
-        return div(res, a, bX.value, bY.value, bZ.value, bW.value);
+        return div(res, a, bX.value & 0xffff, bY.value & 0xffff, bZ.value & 0xffff, bW.value & 0xffff);
     }
 
     public static Vec4us div(Vec4us res, Vec4us a, short bX, short bY, short bZ, short bW) {
-        return div(res, a, (int) bX, bY, bZ, bW);
+        return div(res, a, bX & 0xffff, bY & 0xffff, bZ & 0xffff, bW & 0xffff);
     }
 
     public static Vec4us div(Vec4us res, Vec4us a, int bX, int bY, int bZ, int bW) {
-        res.x.value = (short) Integer.divideUnsigned(a.x.value, bX);
-        res.y.value = (short) Integer.divideUnsigned(a.y.value, bY);
-        res.z.value = (short) Integer.divideUnsigned(a.z.value, bZ);
-        res.w.value = (short) Integer.divideUnsigned(a.w.value, bW);
+        res.x.value = (short) Integer.divideUnsigned(a.x.value & 0xffff, bX);
+        res.y.value = (short) Integer.divideUnsigned(a.y.value & 0xffff, bY);
+        res.z.value = (short) Integer.divideUnsigned(a.z.value & 0xffff, bZ);
+        res.w.value = (short) Integer.divideUnsigned(a.w.value & 0xffff, bW);
         return res;
     }
 
@@ -5315,7 +5315,7 @@ abstract class ArithmeticOperators extends BooleansOperators {
         res.y = a.y + 1;
         return res;
     }
-    
+
     public static Vec2b incr_(Vec2b v) {
         return incr(new Vec2b(), v);
     }
@@ -5395,8 +5395,8 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub incr(Vec2ub res, Vec2ub a) {
-        res.x.value = (byte) (a.x.value + 1);
-        res.y.value = (byte) (a.y.value + 1);
+        res.x.value = (byte) ((a.x.value & 0xff) + 1);
+        res.y.value = (byte) ((a.y.value & 0xff) + 1);
         return res;
     }
 
@@ -5437,8 +5437,8 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us incr(Vec2us res, Vec2us a) {
-        res.x.value = (short) (a.x.value + 1);
-        res.y.value = (short) (a.y.value + 1);
+        res.x.value = (short) ((a.x.value & 0xffff) + 1);
+        res.y.value = (short) ((a.y.value & 0xffff) + 1);
         return res;
     }
 
@@ -5541,9 +5541,9 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub incr(Vec3ub res, Vec3ub a) {
-        res.x.value = (byte) (a.x.value + 1);
-        res.y.value = (byte) (a.y.value + 1);
-        res.z.value = (byte) (a.z.value + 1);
+        res.x.value = (byte) ((a.x.value & 0xff) + 1);
+        res.y.value = (byte) ((a.y.value & 0xff) + 1);
+        res.z.value = (byte) ((a.z.value & 0xff) + 1);
         return res;
     }
 
@@ -5586,9 +5586,9 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us incr(Vec3us res, Vec3us a) {
-        res.x.value = (short) (a.x.value + 1);
-        res.y.value = (short) (a.y.value + 1);
-        res.z.value = (short) (a.z.value + 1);
+        res.x.value = (short) ((a.x.value & 0xffff) + 1);
+        res.y.value = (short) ((a.y.value & 0xffff) + 1);
+        res.z.value = (short) ((a.z.value & 0xffff) + 1);
         return res;
     }
 
@@ -5697,10 +5697,10 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub incr(Vec4ub res, Vec4ub a) {
-        res.x.value = (byte) (a.x.value + 1);
-        res.y.value = (byte) (a.y.value + 1);
-        res.z.value = (byte) (a.z.value + 1);
-        res.w.value = (byte) (a.w.value + 1);
+        res.x.value = (byte) ((a.x.value & 0xff) + 1);
+        res.y.value = (byte) ((a.y.value & 0xff) + 1);
+        res.z.value = (byte) ((a.z.value & 0xff) + 1);
+        res.w.value = (byte) ((a.w.value & 0xff) + 1);
         return res;
     }
 
@@ -5745,10 +5745,10 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us incr(Vec4us res, Vec4us a) {
-        res.x.value = (short) (a.x.value + 1);
-        res.y.value = (short) (a.y.value + 1);
-        res.z.value = (short) (a.z.value + 1);
-        res.w.value = (short) (a.w.value + 1);
+        res.x.value = (short) ((a.x.value & 0xffff) + 1);
+        res.y.value = (short) ((a.y.value & 0xffff) + 1);
+        res.z.value = (short) ((a.z.value & 0xffff) + 1);
+        res.w.value = (short) ((a.w.value & 0xffff) + 1);
         return res;
     }
 
@@ -5845,8 +5845,8 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2ub decr(Vec2ub res, Vec2ub a) {
-        res.x.value = (byte) (a.x.value - 1);
-        res.y.value = (byte) (a.y.value - 1);
+        res.x.value = (byte) ((a.x.value & 0xff) - 1);
+        res.y.value = (byte) ((a.y.value & 0xff) - 1);
         return res;
     }
 
@@ -5887,8 +5887,8 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec2us decr(Vec2us res, Vec2us a) {
-        res.x.value = (short) (a.x.value - 1);
-        res.y.value = (short) (a.y.value - 1);
+        res.x.value = (short) ((a.x.value & 0xffff) - 1);
+        res.y.value = (short) ((a.y.value & 0xffff) - 1);
         return res;
     }
 
@@ -5991,9 +5991,9 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3ub decr(Vec3ub res, Vec3ub a) {
-        res.x.value = (byte) (a.x.value - 1);
-        res.y.value = (byte) (a.y.value - 1);
-        res.z.value = (byte) (a.z.value - 1);
+        res.x.value = (byte) ((a.x.value & 0xff) - 1);
+        res.y.value = (byte) ((a.y.value & 0xff) - 1);
+        res.z.value = (byte) ((a.z.value & 0xff) - 1);
         return res;
     }
 
@@ -6036,9 +6036,9 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec3us decr(Vec3us res, Vec3us a) {
-        res.x.value = (short) (a.x.value - 1);
-        res.y.value = (short) (a.y.value - 1);
-        res.z.value = (short) (a.z.value - 1);
+        res.x.value = (short) ((a.x.value & 0xffff) - 1);
+        res.y.value = (short) ((a.y.value & 0xffff) - 1);
+        res.z.value = (short) ((a.z.value & 0xffff) - 1);
         return res;
     }
 
@@ -6147,10 +6147,10 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4ub decr(Vec4ub res, Vec4ub a) {
-        res.x.value = (byte) (a.x.value - 1);
-        res.y.value = (byte) (a.y.value - 1);
-        res.z.value = (byte) (a.z.value - 1);
-        res.w.value = (byte) (a.w.value - 1);
+        res.x.value = (byte) ((a.x.value & 0xff) - 1);
+        res.y.value = (byte) ((a.y.value & 0xff) - 1);
+        res.z.value = (byte) ((a.z.value & 0xff) - 1);
+        res.w.value = (byte) ((a.w.value & 0xff) - 1);
         return res;
     }
 
@@ -6195,10 +6195,10 @@ abstract class ArithmeticOperators extends BooleansOperators {
     }
 
     public static Vec4us decr(Vec4us res, Vec4us a) {
-        res.x.value = (short) (a.x.value - 1);
-        res.y.value = (short) (a.y.value - 1);
-        res.z.value = (short) (a.z.value - 1);
-        res.w.value = (short) (a.w.value - 1);
+        res.x.value = (short) ((a.x.value & 0xffff) - 1);
+        res.y.value = (short) ((a.y.value & 0xffff) - 1);
+        res.z.value = (short) ((a.z.value & 0xffff) - 1);
+        res.w.value = (short) ((a.w.value & 0xffff) - 1);
         return res;
     }
 }

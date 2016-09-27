@@ -15,7 +15,7 @@ import glm.vec._4.Vec4;
  */
 public class Glm extends noise {
 
-    public static int ceilMultiple(int source, int multiple) {        
+    public static int ceilMultiple(int source, int multiple) {
         if (source > 0) {
             float tmp = source - 1;
             return (int) (tmp + (multiple - (tmp % multiple)));
