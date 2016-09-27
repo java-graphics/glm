@@ -70,6 +70,8 @@ The `Glm` class contains all the possible calls. However to improve usability, e
 
 Therefore, similarly, if we have a `Vec2 v` and we want to add `2`, we simply call `v.add(2)` if we want the result to be saved on v, like `v+= 2`, otherwise `Vec2 a = v.add_(2)` and we save the result in `a`.
 
+However, binary operations involving a scalar in the first place can, off course, only be called by `Glm`, so if you want do `1.0f - v`, you shall call `Glm.sub(1.0f, v)`.
+
 Since java transform `byte` and `short` value to `int` before doing any operation, we provide the same for classes involving those type, signed or unsigned.
 
 
