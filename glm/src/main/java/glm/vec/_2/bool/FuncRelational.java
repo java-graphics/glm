@@ -11,11 +11,7 @@ import glm.Glm;
  *
  * @author GBarbieri
  */
-abstract class FuncRelational {
-
-    public static final int SIZE = 2 * Byte.BYTES;
-
-    public boolean x, y;
+abstract class FuncRelational extends BooleanOperators {
 
     public boolean any() {
         return Glm.any((Vec2bool) this);

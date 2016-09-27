@@ -18,100 +18,244 @@ abstract class ArithmeticOperators {
 
     public ULong x = new ULong(), y = new ULong(), z = new ULong();
 
-    public Vec3ul add_(byte b) {
-        return Glm.add_((Vec3ul) this, b);
+    public Vec3ul add_(ULong b) {
+        return Glm.add(new Vec3ul(), (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul add_(long b) {
+        return Glm.add(new Vec3ul(), (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul add_(ULong bX, ULong bY, ULong bZ) {
+        return Glm.add(new Vec3ul(), (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul add_(long bX, long bY, long bZ) {
+        return Glm.add(new Vec3ul(), (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul add_(Vec3ul b) {
-        return Glm.add_((Vec3ul) this, b);
+        return Glm.add(new Vec3ul(), (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul add(byte b) {
-        return Glm.add((Vec3ul) this, (Vec3ul) this, b);
+    public Vec3ul add(ULong b) {
+        return Glm.add((Vec3ul) this, (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul add(long b) {
+        return Glm.add((Vec3ul) this, (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul add(ULong bX, ULong bY, ULong bZ) {
+        return Glm.add((Vec3ul) this, (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul add(long bX, long bY, long bZ) {
+        return Glm.add((Vec3ul) this, (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul add(Vec3ul b) {
-        return Glm.add((Vec3ul) this, (Vec3ul) this, b);
+        return Glm.add((Vec3ul) this, (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul add(byte b, Vec3ul res) {
-        return Glm.add(res, (Vec3ul) this, b);
+    public Vec3ul add(ULong b, Vec3ul res) {
+        return Glm.add(res, (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul add(long b, Vec3ul res) {
+        return Glm.add(res, (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul add(ULong bX, ULong bY, ULong bZ, Vec3ul res) {
+        return Glm.add(res, (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul add(long bX, long bY, long bZ, Vec3ul res) {
+        return Glm.add(res, (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul add(Vec3ul b, Vec3ul res) {
-        return Glm.add(res, (Vec3ul) this, b);
+        return Glm.add(res, (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul sub_(byte b) {
-        return Glm.sub_((Vec3ul) this, b);
+    public Vec3ul sub_(ULong b) {
+        return Glm.sub(new Vec3ul(), (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul sub_(long b) {
+        return Glm.sub(new Vec3ul(), (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul sub_(ULong bX, ULong bY, ULong bZ) {
+        return Glm.sub(new Vec3ul(), (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul sub_(long bX, long bY, long bZ) {
+        return Glm.sub(new Vec3ul(), (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul sub_(Vec3ul b) {
-        return Glm.sub_((Vec3ul) this, b);
+        return Glm.sub(new Vec3ul(), (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul sub(byte b) {
-        return Glm.sub((Vec3ul) this, (Vec3ul) this, b);
+    public Vec3ul sub(ULong b) {
+        return Glm.sub((Vec3ul) this, (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul sub(long b) {
+        return Glm.sub((Vec3ul) this, (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul sub(ULong bX, ULong bY, ULong bZ) {
+        return Glm.sub((Vec3ul) this, (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul sub(long bX, long bY, long bZ) {
+        return Glm.sub((Vec3ul) this, (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul sub(Vec3ul b) {
-        return Glm.sub((Vec3ul) this, (Vec3ul) this, b);
+        return Glm.sub((Vec3ul) this, (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul sub(byte b, Vec3ul res) {
-        return Glm.sub(res, (Vec3ul) this, b);
+    public Vec3ul sub(ULong b, Vec3ul res) {
+        return Glm.sub(res, (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul sub(long b, Vec3ul res) {
+        return Glm.sub(res, (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul sub(ULong bX, ULong bY, ULong bZ, Vec3ul res) {
+        return Glm.sub(res, (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul sub(long bX, long bY, long bZ, Vec3ul res) {
+        return Glm.sub(res, (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul sub(Vec3ul b, Vec3ul res) {
-        return Glm.sub(res, (Vec3ul) this, b);
+        return Glm.sub(res, (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul mul_(byte b) {
-        return Glm.mul_((Vec3ul) this, b);
+    public Vec3ul mul_(ULong b) {
+        return Glm.mul(new Vec3ul(), (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul mul_(long b) {
+        return Glm.mul(new Vec3ul(), (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul mul_(ULong bX, ULong bY, ULong bZ) {
+        return Glm.mul(new Vec3ul(), (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul mul_(long bX, long bY, long bZ) {
+        return Glm.mul(new Vec3ul(), (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul mul_(Vec3ul b) {
-        return Glm.mul_((Vec3ul) this, b);
+        return Glm.mul(new Vec3ul(), (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul mul(byte b) {
-        return Glm.mul((Vec3ul) this, (Vec3ul) this, b);
+    public Vec3ul mul(ULong b) {
+        return Glm.mul((Vec3ul) this, (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul mul(long b) {
+        return Glm.mul((Vec3ul) this, (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul mul(ULong bX, ULong bY, ULong bZ) {
+        return Glm.mul((Vec3ul) this, (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul mul(long bX, long bY, long bZ) {
+        return Glm.mul((Vec3ul) this, (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul mul(Vec3ul b) {
-        return Glm.mul((Vec3ul) this, (Vec3ul) this, b);
+        return Glm.mul((Vec3ul) this, (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul mul(byte b, Vec3ul res) {
-        return Glm.mul(res, (Vec3ul) this, b);
+    public Vec3ul mul(ULong b, Vec3ul res) {
+        return Glm.mul(res, (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul mul(long b, Vec3ul res) {
+        return Glm.mul(res, (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul mul(ULong bX, ULong bY, ULong bZ, Vec3ul res) {
+        return Glm.mul(res, (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul mul(long bX, long bY, long bZ, Vec3ul res) {
+        return Glm.mul(res, (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul mul(Vec3ul b, Vec3ul res) {
-        return Glm.mul(res, (Vec3ul) this, b);
+        return Glm.mul(res, (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul div_(byte b) {
-        return Glm.div_((Vec3ul) this, b);
+    public Vec3ul div_(ULong b) {
+        return Glm.div(new Vec3ul(), (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul div_(long b) {
+        return Glm.div(new Vec3ul(), (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul div_(ULong bX, ULong bY, ULong bZ) {
+        return Glm.div(new Vec3ul(), (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul div_(long bX, long bY, long bZ) {
+        return Glm.div(new Vec3ul(), (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul div_(Vec3ul b) {
-        return Glm.div_((Vec3ul) this, b);
+        return Glm.div(new Vec3ul(), (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul div(byte b) {
-        return Glm.div((Vec3ul) this, (Vec3ul) this, b);
+    public Vec3ul div(ULong b) {
+        return Glm.div((Vec3ul) this, (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul div(long b) {
+        return Glm.div((Vec3ul) this, (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul div(ULong bX, ULong bY, ULong bZ) {
+        return Glm.div((Vec3ul) this, (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul div(long bX, long bY, long bZ) {
+        return Glm.div((Vec3ul) this, (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul div(Vec3ul b) {
-        return Glm.div((Vec3ul) this, (Vec3ul) this, b);
+        return Glm.div((Vec3ul) this, (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
-    public Vec3ul div(byte b, Vec3ul res) {
-        return Glm.div(res, (Vec3ul) this, b);
+    public Vec3ul div(ULong b, Vec3ul res) {
+        return Glm.div(res, (Vec3ul) this, b.value, b.value, b.value);
+    }
+
+    public Vec3ul div(long b, Vec3ul res) {
+        return Glm.div(res, (Vec3ul) this, b, b, b);
+    }
+
+    public Vec3ul div(ULong bX, ULong bY, ULong bZ, Vec3ul res) {
+        return Glm.div(res, (Vec3ul) this, bX.value, bY.value, bZ.value);
+    }
+
+    public Vec3ul div(long bX, long bY, long bZ, Vec3ul res) {
+        return Glm.div(res, (Vec3ul) this, bX, bY, bZ);
     }
 
     public Vec3ul div(Vec3ul b, Vec3ul res) {
-        return Glm.div(res, (Vec3ul) this, b);
+        return Glm.div(res, (Vec3ul) this, b.x.value, b.y.value, b.z.value);
     }
 
     public Vec3ul incr_() {

@@ -17,100 +17,148 @@ abstract class ArithmeticOperators {
 
     public float x, y, z, w;
 
-    public Vec4 add_(byte b) {
-        return Glm.add_((Vec4) this, b);
+    public Vec4 add_(float b) {
+        return Glm.add(new Vec4(), (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 add_(float bX, float bY, float bZ, float bW) {
+        return Glm.add(new Vec4(), (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 add_(Vec4 b) {
-        return Glm.add_((Vec4) this, b);
+        return Glm.add(new Vec4(), (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 add(byte b) {
-        return Glm.add((Vec4) this, (Vec4) this, b);
+    public Vec4 add(float b) {
+        return Glm.add((Vec4) this, (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 add(float bX, float bY, float bZ, float bW) {
+        return Glm.add((Vec4) this, (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 add(Vec4 b) {
-        return Glm.add((Vec4) this, (Vec4) this, b);
+        return Glm.add((Vec4) this, (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 add(byte b, Vec4 res) {
-        return Glm.add(res, (Vec4) this, b);
+    public Vec4 add(float b, Vec4 res) {
+        return Glm.add(res, (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 add(float bX, float bY, float bZ, float bW, Vec4 res) {
+        return Glm.add(res, (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 add(Vec4 b, Vec4 res) {
-        return Glm.add(res, (Vec4) this, b);
+        return Glm.add(res, (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 sub_(byte b) {
-        return Glm.sub_((Vec4) this, b);
+    public Vec4 sub_(float b) {
+        return Glm.sub(new Vec4(), (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 sub_(float bX, float bY, float bZ, float bW) {
+        return Glm.sub(new Vec4(), (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 sub_(Vec4 b) {
-        return Glm.sub_((Vec4) this, b);
+        return Glm.sub(new Vec4(), (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 sub(byte b) {
-        return Glm.sub((Vec4) this, (Vec4) this, b);
+    public Vec4 sub(float b) {
+        return Glm.sub((Vec4) this, (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 sub(float bX, float bY, float bZ, float bW) {
+        return Glm.sub((Vec4) this, (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 sub(Vec4 b) {
-        return Glm.sub((Vec4) this, (Vec4) this, b);
+        return Glm.sub((Vec4) this, (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 sub(byte b, Vec4 res) {
-        return Glm.sub(res, (Vec4) this, b);
+    public Vec4 sub(float b, Vec4 res) {
+        return Glm.sub(res, (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 sub(float bX, float bY, float bZ, float bW, Vec4 res) {
+        return Glm.sub(res, (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 sub(Vec4 b, Vec4 res) {
-        return Glm.sub(res, (Vec4) this, b);
+        return Glm.sub(res, (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 mul_(byte b) {
-        return Glm.mul_((Vec4) this, b);
+    public Vec4 mul_(float b) {
+        return Glm.mul(new Vec4(), (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 mul_(float bX, float bY, float bZ, float bW) {
+        return Glm.mul(new Vec4(), (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 mul_(Vec4 b) {
-        return Glm.mul_((Vec4) this, b);
+        return Glm.mul(new Vec4(), (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 mul(byte b) {
-        return Glm.mul((Vec4) this, (Vec4) this, b);
+    public Vec4 mul(float b) {
+        return Glm.mul((Vec4) this, (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 mul(float bX, float bY, float bZ, float bW) {
+        return Glm.mul((Vec4) this, (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 mul(Vec4 b) {
-        return Glm.mul((Vec4) this, (Vec4) this, b);
+        return Glm.mul((Vec4) this, (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 mul(byte b, Vec4 res) {
-        return Glm.mul(res, (Vec4) this, b);
+    public Vec4 mul(float b, Vec4 res) {
+        return Glm.mul(res, (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 mul(float bX, float bY, float bZ, float bW, Vec4 res) {
+        return Glm.mul(res, (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 mul(Vec4 b, Vec4 res) {
-        return Glm.mul(res, (Vec4) this, b);
+        return Glm.mul(res, (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 div_(byte b) {
-        return Glm.div_((Vec4) this, b);
+    public Vec4 div_(float b) {
+        return Glm.div(new Vec4(), (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 div_(float bX, float bY, float bZ, float bW) {
+        return Glm.div(new Vec4(), (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 div_(Vec4 b) {
-        return Glm.div_((Vec4) this, b);
+        return Glm.div(new Vec4(), (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 div(byte b) {
-        return Glm.div((Vec4) this, (Vec4) this, b);
+    public Vec4 div(float b) {
+        return Glm.div((Vec4) this, (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 div(float bX, float bY, float bZ, float bW) {
+        return Glm.div((Vec4) this, (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 div(Vec4 b) {
-        return Glm.div((Vec4) this, (Vec4) this, b);
+        return Glm.div((Vec4) this, (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4 div(byte b, Vec4 res) {
-        return Glm.div(res, (Vec4) this, b);
+    public Vec4 div(float b, Vec4 res) {
+        return Glm.div(res, (Vec4) this, b, b, b, b);
+    }
+
+    public Vec4 div(float bX, float bY, float bZ, float bW, Vec4 res) {
+        return Glm.div(res, (Vec4) this, bX, bY, bZ, bW);
     }
 
     public Vec4 div(Vec4 b, Vec4 res) {
-        return Glm.div(res, (Vec4) this, b);
+        return Glm.div(res, (Vec4) this, b.x, b.y, b.z, b.w);
     }
 
     public Vec4 incr_() {

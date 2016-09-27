@@ -38,7 +38,6 @@ import glm.vec._4.ub.Vec4ub;
 import glm.vec._4.ui.Vec4ui;
 import glm.vec._4.ul.Vec4ul;
 import glm.vec._4.us.Vec4us;
-import java.math.BigInteger;
 import joou.UByte;
 import joou.UInt;
 import joou.ULong;

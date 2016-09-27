@@ -13,38 +13,8 @@ import glm.vec._2.i.Vec2i;
  *
  * @author GBarbieri
  */
-public class BinaryOperators {
+abstract class BinaryOperators {
 
-    public static Vec2 add_(Vec2 a, float b) {
-        return add(new Vec2(), a.x, a.y, b, b);
-    }
-
-    public static Vec2 add_(Vec2 a, Vec2 b) {
-        return add(new Vec2(), a.x, a.y, b.x, b.y);
-    }
-
-    public static Vec2 add(Vec2 a, float b) {
-        return add(a, a.x, a.y, b, b);
-    }
-
-    public static Vec2 add(Vec2 a, Vec2 b) {
-        return add(a, a.x, a.y, b.x, b.y);
-    }
-
-    public static Vec2 add(Vec2 res, Vec2 a, float b) {
-        return add(res, a.x, a.y, b, b);
-    }
-
-    public static Vec2 add(Vec2 res, Vec2 a, Vec2 b) {
-        return add(res, a.x, a.y, b.x, b.y);
-    }
-
-    public static Vec2 add(Vec2 res, float aX, float aY, float bX, float bY) {
-        res.x = aX + bX;
-        res.y = aY + bY;
-        return res;
-    }
-    
     public static Vec2 mod(Vec2 res, Vec2 a, float bX, float bY) {
         res.x = a.x % bX;
         res.y = a.y % bY;
@@ -56,7 +26,7 @@ public class BinaryOperators {
         res.y = a.y % b;
         return res;
     }
-    
+
     public static Vec2b and_(Vec2b a, Vec2b b) {
         return and(new Vec2b(), a, b);
     }

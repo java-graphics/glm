@@ -44,7 +44,6 @@ import joou.ULong;
 import joou.UShort;
 
 /**
- * TODO notEqual equal on vec bool?
  *
  * @author GBarbieri
  */

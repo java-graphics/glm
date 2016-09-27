@@ -17,100 +17,148 @@ abstract class ArithmeticOperators {
 
     public double x, y, z, w;
 
-    public Vec4d add_(byte b) {
-        return Glm.add_((Vec4d) this, b);
+    public Vec4d add_(double b) {
+        return Glm.add(new Vec4d(), (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d add_(double bX, double bY, double bZ, double bW) {
+        return Glm.add(new Vec4d(), (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d add_(Vec4d b) {
-        return Glm.add_((Vec4d) this, b);
+        return Glm.add(new Vec4d(), (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d add(byte b) {
-        return Glm.add((Vec4d) this, (Vec4d) this, b);
+    public Vec4d add(double b) {
+        return Glm.add((Vec4d) this, (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d add(double bX, double bY, double bZ, double bW) {
+        return Glm.add((Vec4d) this, (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d add(Vec4d b) {
-        return Glm.add((Vec4d) this, (Vec4d) this, b);
+        return Glm.add((Vec4d) this, (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d add(byte b, Vec4d res) {
-        return Glm.add(res, (Vec4d) this, b);
+    public Vec4d add(double b, Vec4d res) {
+        return Glm.add(res, (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d add(double bX, double bY, double bZ, double bW, Vec4d res) {
+        return Glm.add(res, (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d add(Vec4d b, Vec4d res) {
-        return Glm.add(res, (Vec4d) this, b);
+        return Glm.add(res, (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d sub_(byte b) {
-        return Glm.sub_((Vec4d) this, b);
+    public Vec4d sub_(double b) {
+        return Glm.sub(new Vec4d(), (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d sub_(double bX, double bY, double bZ, double bW) {
+        return Glm.sub(new Vec4d(), (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d sub_(Vec4d b) {
-        return Glm.sub_((Vec4d) this, b);
+        return Glm.sub(new Vec4d(), (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d sub(byte b) {
-        return Glm.sub((Vec4d) this, (Vec4d) this, b);
+    public Vec4d sub(double b) {
+        return Glm.sub((Vec4d) this, (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d sub(double bX, double bY, double bZ, double bW) {
+        return Glm.sub((Vec4d) this, (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d sub(Vec4d b) {
-        return Glm.sub((Vec4d) this, (Vec4d) this, b);
+        return Glm.sub((Vec4d) this, (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d sub(byte b, Vec4d res) {
-        return Glm.sub(res, (Vec4d) this, b);
+    public Vec4d sub(double b, Vec4d res) {
+        return Glm.sub(res, (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d sub(double bX, double bY, double bZ, double bW, Vec4d res) {
+        return Glm.sub(res, (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d sub(Vec4d b, Vec4d res) {
-        return Glm.sub(res, (Vec4d) this, b);
+        return Glm.sub(res, (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d mul_(byte b) {
-        return Glm.mul_((Vec4d) this, b);
+    public Vec4d mul_(double b) {
+        return Glm.mul(new Vec4d(), (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d mul_(double bX, double bY, double bZ, double bW) {
+        return Glm.mul(new Vec4d(), (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d mul_(Vec4d b) {
-        return Glm.mul_((Vec4d) this, b);
+        return Glm.mul(new Vec4d(), (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d mul(byte b) {
-        return Glm.mul((Vec4d) this, (Vec4d) this, b);
+    public Vec4d mul(double b) {
+        return Glm.mul((Vec4d) this, (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d mul(double bX, double bY, double bZ, double bW) {
+        return Glm.mul((Vec4d) this, (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d mul(Vec4d b) {
-        return Glm.mul((Vec4d) this, (Vec4d) this, b);
+        return Glm.mul((Vec4d) this, (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d mul(byte b, Vec4d res) {
-        return Glm.mul(res, (Vec4d) this, b);
+    public Vec4d mul(double b, Vec4d res) {
+        return Glm.mul(res, (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d mul(double bX, double bY, double bZ, double bW, Vec4d res) {
+        return Glm.mul(res, (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d mul(Vec4d b, Vec4d res) {
-        return Glm.mul(res, (Vec4d) this, b);
+        return Glm.mul(res, (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d div_(byte b) {
-        return Glm.div_((Vec4d) this, b);
+    public Vec4d div_(double b) {
+        return Glm.div(new Vec4d(), (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d div_(double bX, double bY, double bZ, double bW) {
+        return Glm.div(new Vec4d(), (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d div_(Vec4d b) {
-        return Glm.div_((Vec4d) this, b);
+        return Glm.div(new Vec4d(), (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d div(byte b) {
-        return Glm.div((Vec4d) this, (Vec4d) this, b);
+    public Vec4d div(double b) {
+        return Glm.div((Vec4d) this, (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d div(double bX, double bY, double bZ, double bW) {
+        return Glm.div((Vec4d) this, (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d div(Vec4d b) {
-        return Glm.div((Vec4d) this, (Vec4d) this, b);
+        return Glm.div((Vec4d) this, (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4d div(byte b, Vec4d res) {
-        return Glm.div(res, (Vec4d) this, b);
+    public Vec4d div(double b, Vec4d res) {
+        return Glm.div(res, (Vec4d) this, b, b, b, b);
+    }
+
+    public Vec4d div(double bX, double bY, double bZ, double bW, Vec4d res) {
+        return Glm.div(res, (Vec4d) this, bX, bY, bZ, bW);
     }
 
     public Vec4d div(Vec4d b, Vec4d res) {
-        return Glm.div(res, (Vec4d) this, b);
+        return Glm.div(res, (Vec4d) this, b.x, b.y, b.z, b.w);
     }
 
     public Vec4d incr_() {

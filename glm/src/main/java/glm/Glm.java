@@ -75,5 +75,4 @@ public class Glm extends noise {
         tmpY = tmpY * viewport.w + viewport.y;
         return res.set(tmpX, tmpY, tmpZ);
     }
-
 }

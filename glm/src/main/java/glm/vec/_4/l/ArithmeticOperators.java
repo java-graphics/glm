@@ -17,100 +17,148 @@ abstract class ArithmeticOperators {
 
     public long x, y, z, w;
 
-    public Vec4l add_(byte b) {
-        return Glm.add_((Vec4l) this, b);
+    public Vec4l add_(long b) {
+        return Glm.add(new Vec4l(), (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l add_(long bX, long bY, long bZ, long bW) {
+        return Glm.add(new Vec4l(), (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l add_(Vec4l b) {
-        return Glm.add_((Vec4l) this, b);
+        return Glm.add(new Vec4l(), (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l add(byte b) {
-        return Glm.add((Vec4l) this, (Vec4l) this, b);
+    public Vec4l add(long b) {
+        return Glm.add((Vec4l) this, (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l add(long bX, long bY, long bZ, long bW) {
+        return Glm.add((Vec4l) this, (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l add(Vec4l b) {
-        return Glm.add((Vec4l) this, (Vec4l) this, b);
+        return Glm.add((Vec4l) this, (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l add(byte b, Vec4l res) {
-        return Glm.add(res, (Vec4l) this, b);
+    public Vec4l add(long b, Vec4l res) {
+        return Glm.add(res, (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l add(long bX, long bY, long bZ, long bW, Vec4l res) {
+        return Glm.add(res, (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l add(Vec4l b, Vec4l res) {
-        return Glm.add(res, (Vec4l) this, b);
+        return Glm.add(res, (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l sub_(byte b) {
-        return Glm.sub_((Vec4l) this, b);
+    public Vec4l sub_(long b) {
+        return Glm.sub(new Vec4l(), (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l sub_(long bX, long bY, long bZ, long bW) {
+        return Glm.sub(new Vec4l(), (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l sub_(Vec4l b) {
-        return Glm.sub_((Vec4l) this, b);
+        return Glm.sub(new Vec4l(), (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l sub(byte b) {
-        return Glm.sub((Vec4l) this, (Vec4l) this, b);
+    public Vec4l sub(long b) {
+        return Glm.sub((Vec4l) this, (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l sub(long bX, long bY, long bZ, long bW) {
+        return Glm.sub((Vec4l) this, (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l sub(Vec4l b) {
-        return Glm.sub((Vec4l) this, (Vec4l) this, b);
+        return Glm.sub((Vec4l) this, (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l sub(byte b, Vec4l res) {
-        return Glm.sub(res, (Vec4l) this, b);
+    public Vec4l sub(long b, Vec4l res) {
+        return Glm.sub(res, (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l sub(long bX, long bY, long bZ, long bW, Vec4l res) {
+        return Glm.sub(res, (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l sub(Vec4l b, Vec4l res) {
-        return Glm.sub(res, (Vec4l) this, b);
+        return Glm.sub(res, (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l mul_(byte b) {
-        return Glm.mul_((Vec4l) this, b);
+    public Vec4l mul_(long b) {
+        return Glm.mul(new Vec4l(), (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l mul_(long bX, long bY, long bZ, long bW) {
+        return Glm.mul(new Vec4l(), (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l mul_(Vec4l b) {
-        return Glm.mul_((Vec4l) this, b);
+        return Glm.mul(new Vec4l(), (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l mul(byte b) {
-        return Glm.mul((Vec4l) this, (Vec4l) this, b);
+    public Vec4l mul(long b) {
+        return Glm.mul((Vec4l) this, (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l mul(long bX, long bY, long bZ, long bW) {
+        return Glm.mul((Vec4l) this, (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l mul(Vec4l b) {
-        return Glm.mul((Vec4l) this, (Vec4l) this, b);
+        return Glm.mul((Vec4l) this, (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l mul(byte b, Vec4l res) {
-        return Glm.mul(res, (Vec4l) this, b);
+    public Vec4l mul(long b, Vec4l res) {
+        return Glm.mul(res, (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l mul(long bX, long bY, long bZ, long bW, Vec4l res) {
+        return Glm.mul(res, (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l mul(Vec4l b, Vec4l res) {
-        return Glm.mul(res, (Vec4l) this, b);
+        return Glm.mul(res, (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l div_(byte b) {
-        return Glm.div_((Vec4l) this, b);
+    public Vec4l div_(long b) {
+        return Glm.div(new Vec4l(), (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l div_(long bX, long bY, long bZ, long bW) {
+        return Glm.div(new Vec4l(), (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l div_(Vec4l b) {
-        return Glm.div_((Vec4l) this, b);
+        return Glm.div(new Vec4l(), (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l div(byte b) {
-        return Glm.div((Vec4l) this, (Vec4l) this, b);
+    public Vec4l div(long b) {
+        return Glm.div((Vec4l) this, (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l div(long bX, long bY, long bZ, long bW) {
+        return Glm.div((Vec4l) this, (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l div(Vec4l b) {
-        return Glm.div((Vec4l) this, (Vec4l) this, b);
+        return Glm.div((Vec4l) this, (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
-    public Vec4l div(byte b, Vec4l res) {
-        return Glm.div(res, (Vec4l) this, b);
+    public Vec4l div(long b, Vec4l res) {
+        return Glm.div(res, (Vec4l) this, b, b, b, b);
+    }
+
+    public Vec4l div(long bX, long bY, long bZ, long bW, Vec4l res) {
+        return Glm.div(res, (Vec4l) this, bX, bY, bZ, bW);
     }
 
     public Vec4l div(Vec4l b, Vec4l res) {
-        return Glm.div(res, (Vec4l) this, b);
+        return Glm.div(res, (Vec4l) this, b.x, b.y, b.z, b.w);
     }
 
     public Vec4l incr_() {

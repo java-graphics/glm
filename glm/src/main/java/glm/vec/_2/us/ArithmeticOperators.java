@@ -18,100 +18,340 @@ abstract class ArithmeticOperators {
 
     public UShort x = new UShort(), y = new UShort();
 
-    public Vec2us add_(byte b) {
-        return Glm.add_((Vec2us) this, b);
+    public Vec2us add_(UShort b) {
+        return Glm.add(new Vec2us(), (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us add_(short b) {
+        return Glm.add(new Vec2us(), (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us add_(int b) {
+        return Glm.add(new Vec2us(), (Vec2us) this, b, b);
+    }
+
+    public Vec2us add_(UShort bX, UShort bY) {
+        return Glm.add(new Vec2us(), (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us add_(short bX, short bY) {
+        return Glm.add(new Vec2us(), (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us add_(int bX, int bY) {
+        return Glm.add(new Vec2us(), (Vec2us) this, bX, bY);
     }
 
     public Vec2us add_(Vec2us b) {
-        return Glm.add_((Vec2us) this, b);
+        return Glm.add(new Vec2us(), (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us add(byte b) {
-        return Glm.add((Vec2us) this, (Vec2us) this, b);
+    public Vec2us add(UShort b) {
+        return Glm.add((Vec2us) this, (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us add(short b) {
+        return Glm.add((Vec2us) this, (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us add(int b) {
+        return Glm.add((Vec2us) this, (Vec2us) this, b, b);
+    }
+
+    public Vec2us add(UShort bX, UShort bY) {
+        return Glm.add((Vec2us) this, (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us add(short bX, short bY) {
+        return Glm.add((Vec2us) this, (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us add(int bX, int bY) {
+        return Glm.add((Vec2us) this, (Vec2us) this, bX, bY);
     }
 
     public Vec2us add(Vec2us b) {
-        return Glm.add((Vec2us) this, (Vec2us) this, b);
+        return Glm.add((Vec2us) this, (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us add(byte b, Vec2us res) {
-        return Glm.add(res, (Vec2us) this, b);
+    public Vec2us add(UShort b, Vec2us res) {
+        return Glm.add(res, (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us add(short b, Vec2us res) {
+        return Glm.add(res, (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us add(int b, Vec2us res) {
+        return Glm.add(res, (Vec2us) this, b, b);
+    }
+
+    public Vec2us add(UShort bX, UShort bY, Vec2us res) {
+        return Glm.add(res, (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us add(short bX, short bY, Vec2us res) {
+        return Glm.add(res, (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us add(int bX, int bY, Vec2us res) {
+        return Glm.add(res, (Vec2us) this, bX, bY);
     }
 
     public Vec2us add(Vec2us b, Vec2us res) {
-        return Glm.add(res, (Vec2us) this, b);
+        return Glm.add(res, (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us sub_(byte b) {
-        return Glm.sub_((Vec2us) this, b);
+    public Vec2us sub_(UShort b) {
+        return Glm.sub(new Vec2us(), (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us sub_(short b) {
+        return Glm.sub(new Vec2us(), (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us sub_(int b) {
+        return Glm.sub(new Vec2us(), (Vec2us) this, b, b);
+    }
+
+    public Vec2us sub_(UShort bX, UShort bY) {
+        return Glm.sub(new Vec2us(), (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us sub_(short bX, short bY) {
+        return Glm.sub(new Vec2us(), (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us sub_(int bX, int bY) {
+        return Glm.sub(new Vec2us(), (Vec2us) this, bX, bY);
     }
 
     public Vec2us sub_(Vec2us b) {
-        return Glm.sub_((Vec2us) this, b);
+        return Glm.sub(new Vec2us(), (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us sub(byte b) {
-        return Glm.sub((Vec2us) this, (Vec2us) this, b);
+    public Vec2us sub(UShort b) {
+        return Glm.sub((Vec2us) this, (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us sub(short b) {
+        return Glm.sub((Vec2us) this, (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us sub(int b) {
+        return Glm.sub((Vec2us) this, (Vec2us) this, b, b);
+    }
+
+    public Vec2us sub(UShort bX, UShort bY) {
+        return Glm.sub((Vec2us) this, (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us sub(short bX, short bY) {
+        return Glm.sub((Vec2us) this, (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us sub(int bX, int bY) {
+        return Glm.sub((Vec2us) this, (Vec2us) this, bX, bY);
     }
 
     public Vec2us sub(Vec2us b) {
-        return Glm.sub((Vec2us) this, (Vec2us) this, b);
+        return Glm.sub((Vec2us) this, (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us sub(byte b, Vec2us res) {
-        return Glm.sub(res, (Vec2us) this, b);
+    public Vec2us sub(UShort b, Vec2us res) {
+        return Glm.sub(res, (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us sub(short b, Vec2us res) {
+        return Glm.sub(res, (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us sub(int b, Vec2us res) {
+        return Glm.sub(res, (Vec2us) this, b, b);
+    }
+
+    public Vec2us sub(UShort bX, UShort bY, Vec2us res) {
+        return Glm.sub(res, (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us sub(short bX, short bY, Vec2us res) {
+        return Glm.sub(res, (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us sub(int bX, int bY, Vec2us res) {
+        return Glm.sub(res, (Vec2us) this, bX, bY);
     }
 
     public Vec2us sub(Vec2us b, Vec2us res) {
-        return Glm.sub(res, (Vec2us) this, b);
+        return Glm.sub(res, (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us mul_(byte b) {
-        return Glm.mul_((Vec2us) this, b);
+    public Vec2us mul_(UShort b) {
+        return Glm.mul(new Vec2us(), (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us mul_(short b) {
+        return Glm.mul(new Vec2us(), (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us mul_(int b) {
+        return Glm.mul(new Vec2us(), (Vec2us) this, b, b);
+    }
+
+    public Vec2us mul_(UShort bX, UShort bY) {
+        return Glm.mul(new Vec2us(), (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us mul_(short bX, short bY) {
+        return Glm.mul(new Vec2us(), (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us mul_(int bX, int bY) {
+        return Glm.mul(new Vec2us(), (Vec2us) this, bX, bY);
     }
 
     public Vec2us mul_(Vec2us b) {
-        return Glm.mul_((Vec2us) this, b);
+        return Glm.mul(new Vec2us(), (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us mul(byte b) {
-        return Glm.mul((Vec2us) this, (Vec2us) this, b);
+    public Vec2us mul(UShort b) {
+        return Glm.mul((Vec2us) this, (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us mul(short b) {
+        return Glm.mul((Vec2us) this, (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us mul(int b) {
+        return Glm.mul((Vec2us) this, (Vec2us) this, b, b);
+    }
+
+    public Vec2us mul(UShort bX, UShort bY) {
+        return Glm.mul((Vec2us) this, (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us mul(short bX, short bY) {
+        return Glm.mul((Vec2us) this, (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us mul(int bX, int bY) {
+        return Glm.mul((Vec2us) this, (Vec2us) this, bX, bY);
     }
 
     public Vec2us mul(Vec2us b) {
-        return Glm.mul((Vec2us) this, (Vec2us) this, b);
+        return Glm.mul((Vec2us) this, (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us mul(byte b, Vec2us res) {
-        return Glm.mul(res, (Vec2us) this, b);
+    public Vec2us mul(UShort b, Vec2us res) {
+        return Glm.mul(res, (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us mul(short b, Vec2us res) {
+        return Glm.mul(res, (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us mul(int b, Vec2us res) {
+        return Glm.mul(res, (Vec2us) this, b, b);
+    }
+
+    public Vec2us mul(UShort bX, UShort bY, Vec2us res) {
+        return Glm.mul(res, (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us mul(short bX, short bY, Vec2us res) {
+        return Glm.mul(res, (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us mul(int bX, int bY, Vec2us res) {
+        return Glm.mul(res, (Vec2us) this, bX, bY);
     }
 
     public Vec2us mul(Vec2us b, Vec2us res) {
-        return Glm.mul(res, (Vec2us) this, b);
+        return Glm.mul(res, (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us div_(byte b) {
-        return Glm.div_((Vec2us) this, b);
+    public Vec2us div_(UShort b) {
+        return Glm.div(new Vec2us(), (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us div_(short b) {
+        return Glm.div(new Vec2us(), (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us div_(int b) {
+        return Glm.div(new Vec2us(), (Vec2us) this, b, b);
+    }
+
+    public Vec2us div_(UShort bX, UShort bY) {
+        return Glm.div(new Vec2us(), (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us div_(short bX, short bY) {
+        return Glm.div(new Vec2us(), (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us div_(int bX, int bY) {
+        return Glm.div(new Vec2us(), (Vec2us) this, bX, bY);
     }
 
     public Vec2us div_(Vec2us b) {
-        return Glm.div_((Vec2us) this, b);
+        return Glm.div(new Vec2us(), (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us div(byte b) {
-        return Glm.div((Vec2us) this, (Vec2us) this, b);
+    public Vec2us div(UShort b) {
+        return Glm.div((Vec2us) this, (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us div(short b) {
+        return Glm.div((Vec2us) this, (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us div(int b) {
+        return Glm.div((Vec2us) this, (Vec2us) this, b, b);
+    }
+
+    public Vec2us div(UShort bX, UShort bY) {
+        return Glm.div((Vec2us) this, (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us div(short bX, short bY) {
+        return Glm.div((Vec2us) this, (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us div(int bX, int bY) {
+        return Glm.div((Vec2us) this, (Vec2us) this, bX, bY);
     }
 
     public Vec2us div(Vec2us b) {
-        return Glm.div((Vec2us) this, (Vec2us) this, b);
+        return Glm.div((Vec2us) this, (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
-    public Vec2us div(byte b, Vec2us res) {
-        return Glm.div(res, (Vec2us) this, b);
+    public Vec2us div(UShort b, Vec2us res) {
+        return Glm.div(res, (Vec2us) this, b.value & 0xffff, b.value & 0xffff);
+    }
+
+    public Vec2us div(short b, Vec2us res) {
+        return Glm.div(res, (Vec2us) this, b & 0xffff, b & 0xffff);
+    }
+
+    public Vec2us div(int b, Vec2us res) {
+        return Glm.div(res, (Vec2us) this, b, b);
+    }
+
+    public Vec2us div(UShort bX, UShort bY, Vec2us res) {
+        return Glm.div(res, (Vec2us) this, bX.value & 0xffff, bY.value & 0xdd);
+    }
+
+    public Vec2us div(short bX, short bY, Vec2us res) {
+        return Glm.div(res, (Vec2us) this, bX & 0xffff, bY & 0xffff);
+    }
+
+    public Vec2us div(int bX, int bY, Vec2us res) {
+        return Glm.div(res, (Vec2us) this, bX, bY);
     }
 
     public Vec2us div(Vec2us b, Vec2us res) {
-        return Glm.div(res, (Vec2us) this, b);
+        return Glm.div(res, (Vec2us) this, b.x.value & 0xffff, b.y.value & 0xffff);
     }
 
     public Vec2us incr_() {
