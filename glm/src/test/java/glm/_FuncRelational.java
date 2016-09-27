@@ -5,8 +5,9 @@
  */
 package glm;
 
-import glm.Glm;
-import glm.Glm;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import glm.vec._2.Vec2;
 import glm.vec._2.b.Vec2b;
 import glm.vec._2.bool.Vec2bool;
@@ -44,7 +45,6 @@ import joou.UByte;
 import joou.UInt;
 import joou.ULong;
 import joou.UShort;
-import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**

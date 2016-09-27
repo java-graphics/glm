@@ -5,8 +5,8 @@
  */
 package glm;
 
+import static org.junit.Assert.assertTrue;
 import glm.vec._2.b.Vec2b;
-import static org.junit.Assert.*;
 import org.junit.Test;
 
 /**
