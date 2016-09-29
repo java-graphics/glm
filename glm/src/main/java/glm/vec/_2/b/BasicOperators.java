@@ -6,183 +6,279 @@
 package glm.vec._2.b;
 
 import glm.Glm;
-import glm.vec._2.Vec2;
 
 /**
+ * TODO public Vec2b add_(int b) also in Glm?
  *
  * @author GBarbieri
  */
 abstract class BasicOperators {
 
-    public static final int SIZE = 2 * Float.BYTES;
+    public static final int SIZE = 2 * Byte.BYTES;
 
-    public float x, y;
+    public byte x, y;
 
-    public Vec2 add_(float b) {
-        return Glm.add(new Vec2(), (Vec2) this, b, b);
+    public Vec2b add_(byte b) {
+        return Glm.add(new Vec2b(), (Vec2b) this, (int) b, b);
     }
 
-    public Vec2 add_(float bX, float bY) {
-        return Glm.add(new Vec2(), (Vec2) this, bX, bY);
+    public Vec2b add_(int b) {
+        return Glm.add(new Vec2b(), (Vec2b) this, b, b);
     }
 
-    public Vec2 add_(Vec2 b) {
-        return Glm.add(new Vec2(), (Vec2) this, b.x, b.y);
+    public Vec2b add_(byte bX, byte bY) {
+        return Glm.add(new Vec2b(), (Vec2b) this, (int) bX, bY);
     }
 
-    public Vec2 add(float b) {
-        return Glm.add((Vec2) this, (Vec2) this, b, b);
+    public Vec2b add_(int bX, int bY) {
+        return Glm.add(new Vec2b(), (Vec2b) this, bX, bY);
     }
 
-    public Vec2 add(float bX, float bY) {
-        return Glm.add((Vec2) this, (Vec2) this, bX, bY);
+    public Vec2b add_(Vec2b b) {
+        return Glm.add(new Vec2b(), (Vec2b) this, (int) b.x, b.y);
     }
 
-    public Vec2 add(Vec2 b) {
-        return Glm.add((Vec2) this, (Vec2) this, b.x, b.y);
+    public Vec2b add(byte b) {
+        return Glm.add((Vec2b) this, (Vec2b) this, (int) b, b);
     }
 
-    public Vec2 add(float b, Vec2 res) {
-        return Glm.add(res, (Vec2) this, b, b);
+    public Vec2b add(int b) {
+        return Glm.add((Vec2b) this, (Vec2b) this, b, b);
     }
 
-    public Vec2 add(float bX, float bY, Vec2 res) {
-        return Glm.add(res, (Vec2) this, bX, bY);
+    public Vec2b add(byte bX, byte bY) {
+        return Glm.add((Vec2b) this, (Vec2b) this, (int) bX, bY);
     }
 
-    public Vec2 add(Vec2 b, Vec2 res) {
-        return Glm.add(res, (Vec2) this, b.x, b.y);
+    public Vec2b add(int bX, int bY) {
+        return Glm.add((Vec2b) this, (Vec2b) this, bX, bY);
     }
 
-    public Vec2 sub_(float b) {
-        return Glm.sub(new Vec2(), (Vec2) this, b, b);
+    public Vec2b add(Vec2b b) {
+        return Glm.add((Vec2b) this, (Vec2b) this, (int) b.x, b.y);
     }
 
-    public Vec2 sub_(float bX, float bY) {
-        return Glm.sub(new Vec2(), (Vec2) this, bX, bY);
+    public Vec2b add(byte b, Vec2b res) {
+        return Glm.add(res, (Vec2b) this, (int) b, b);
     }
 
-    public Vec2 sub_(Vec2 b) {
-        return Glm.sub(new Vec2(), (Vec2) this, b.x, b.y);
+    public Vec2b add(int b, Vec2b res) {
+        return Glm.add(res, (Vec2b) this, b, b);
     }
 
-    public Vec2 sub(float b) {
-        return Glm.sub((Vec2) this, (Vec2) this, b, b);
+    public Vec2b add(byte bX, byte bY, Vec2b res) {
+        return Glm.add(res, (Vec2b) this, (int) bX, bY);
     }
 
-    public Vec2 sub(float bX, float bY) {
-        return Glm.sub((Vec2) this, (Vec2) this, bX, bY);
+    public Vec2b add(int bX, int bY, Vec2b res) {
+        return Glm.add(res, (Vec2b) this, bX, bY);
     }
 
-    public Vec2 sub(Vec2 b) {
-        return Glm.sub((Vec2) this, (Vec2) this, b.x, b.y);
+    public Vec2b add(Vec2b b, Vec2b res) {
+        return Glm.add(res, (Vec2b) this, (int) b.x, b.y);
     }
 
-    public Vec2 sub(float b, Vec2 res) {
-        return Glm.sub(res, (Vec2) this, b, b);
+    public Vec2b sub_(byte b) {
+        return Glm.sub(new Vec2b(), (Vec2b) this, (int) b, b);
     }
 
-    public Vec2 sub(float bX, float bY, Vec2 res) {
-        return Glm.sub(res, (Vec2) this, bX, bY);
+    public Vec2b sub_(int b) {
+        return Glm.sub(new Vec2b(), (Vec2b) this, b, b);
     }
 
-    public Vec2 sub(Vec2 b, Vec2 res) {
-        return Glm.sub(res, (Vec2) this, b.x, b.y);
+    public Vec2b sub_(byte bX, byte bY) {
+        return Glm.sub(new Vec2b(), (Vec2b) this, (int) bX, bY);
     }
 
-    public Vec2 mul_(float b) {
-        return Glm.mul(new Vec2(), (Vec2) this, b, b);
+    public Vec2b sub_(int bX, int bY) {
+        return Glm.sub(new Vec2b(), (Vec2b) this, bX, bY);
     }
 
-    public Vec2 mul_(float bX, float bY) {
-        return Glm.mul(new Vec2(), (Vec2) this, bX, bY);
+    public Vec2b sub_(Vec2b b) {
+        return Glm.sub(new Vec2b(), (Vec2b) this, (int) b.x, b.y);
     }
 
-    public Vec2 mul_(Vec2 b) {
-        return Glm.mul(new Vec2(), (Vec2) this, b.x, b.y);
+    public Vec2b sub(byte b) {
+        return Glm.sub((Vec2b) this, (Vec2b) this, (int) b, b);
     }
 
-    public Vec2 mul(float b) {
-        return Glm.mul((Vec2) this, (Vec2) this, b, b);
+    public Vec2b sub(int b) {
+        return Glm.sub((Vec2b) this, (Vec2b) this, b, b);
     }
 
-    public Vec2 mul(float bX, float bY) {
-        return Glm.mul((Vec2) this, (Vec2) this, bX, bY);
+    public Vec2b sub(byte bX, byte bY) {
+        return Glm.sub((Vec2b) this, (Vec2b) this, (int) bX, bY);
     }
 
-    public Vec2 mul(Vec2 b) {
-        return Glm.mul((Vec2) this, (Vec2) this, b.x, b.y);
+    public Vec2b sub(int bX, int bY) {
+        return Glm.sub((Vec2b) this, (Vec2b) this, bX, bY);
     }
 
-    public Vec2 mul(float b, Vec2 res) {
-        return Glm.mul(res, (Vec2) this, b, b);
+    public Vec2b sub(Vec2b b) {
+        return Glm.sub((Vec2b) this, (Vec2b) this, (int) b.x, b.y);
     }
 
-    public Vec2 mul(float bX, float bY, Vec2 res) {
-        return Glm.mul(res, (Vec2) this, bX, bY);
+    public Vec2b sub(byte b, Vec2b res) {
+        return Glm.sub(res, (Vec2b) this, (int) b, b);
     }
 
-    public Vec2 mul(Vec2 b, Vec2 res) {
-        return Glm.mul(res, (Vec2) this, b.x, b.y);
+    public Vec2b sub(int b, Vec2b res) {
+        return Glm.sub(res, (Vec2b) this, b, b);
     }
 
-    public Vec2 div_(float b) {
-        return Glm.div(new Vec2(), (Vec2) this, b, b);
+    public Vec2b sub(byte bX, byte bY, Vec2b res) {
+        return Glm.sub(res, (Vec2b) this, (int) bX, bY);
     }
 
-    public Vec2 div_(float bX, float bY) {
-        return Glm.div(new Vec2(), (Vec2) this, bX, bY);
+    public Vec2b sub(int bX, int bY, Vec2b res) {
+        return Glm.sub(res, (Vec2b) this, bX, bY);
     }
 
-    public Vec2 div_(Vec2 b) {
-        return Glm.div(new Vec2(), (Vec2) this, b.x, b.y);
+    public Vec2b sub(Vec2b b, Vec2b res) {
+        return Glm.sub(res, (Vec2b) this, (int) b.x, b.y);
+    }
+    
+    public Vec2b mul_(byte b) {
+        return Glm.mul(new Vec2b(), (Vec2b) this, (int) b, b);
     }
 
-    public Vec2 div(float b) {
-        return Glm.div((Vec2) this, (Vec2) this, b, b);
+    public Vec2b mul_(int b) {
+        return Glm.mul(new Vec2b(), (Vec2b) this, b, b);
     }
 
-    public Vec2 div(float bX, float bY) {
-        return Glm.div((Vec2) this, (Vec2) this, bX, bY);
+    public Vec2b mul_(byte bX, byte bY) {
+        return Glm.mul(new Vec2b(), (Vec2b) this, (int) bX, bY);
     }
 
-    public Vec2 div(Vec2 b) {
-        return Glm.div((Vec2) this, (Vec2) this, b.x, b.y);
+    public Vec2b mul_(int bX, int bY) {
+        return Glm.mul(new Vec2b(), (Vec2b) this, bX, bY);
     }
 
-    public Vec2 div(float b, Vec2 res) {
-        return Glm.div(res, (Vec2) this, b, b);
+    public Vec2b mul_(Vec2b b) {
+        return Glm.mul(new Vec2b(), (Vec2b) this, (int) b.x, b.y);
     }
 
-    public Vec2 div(float bX, float bY, Vec2 res) {
-        return Glm.div(res, (Vec2) this, bX, bY);
+    public Vec2b mul(byte b) {
+        return Glm.mul((Vec2b) this, (Vec2b) this, (int) b, b);
     }
 
-    public Vec2 div(Vec2 b, Vec2 res) {
-        return Glm.div(res, (Vec2) this, b.x, b.y);
+    public Vec2b mul(int b) {
+        return Glm.mul((Vec2b) this, (Vec2b) this, b, b);
     }
 
-    public Vec2 incr_() {
-        return Glm.incr_((Vec2) this);
+    public Vec2b mul(byte bX, byte bY) {
+        return Glm.mul((Vec2b) this, (Vec2b) this, (int) bX, bY);
     }
 
-    public Vec2 incr() {
-        return Glm.incr((Vec2) this);
+    public Vec2b mul(int bX, int bY) {
+        return Glm.mul((Vec2b) this, (Vec2b) this, bX, bY);
     }
 
-    public Vec2 incr(Vec2 res) {
-        return Glm.incr(res, (Vec2) this);
+    public Vec2b mul(Vec2b b) {
+        return Glm.mul((Vec2b) this, (Vec2b) this, (int) b.x, b.y);
     }
 
-    public Vec2 decr_() {
-        return Glm.decr_((Vec2) this);
+    public Vec2b mul(byte b, Vec2b res) {
+        return Glm.mul(res, (Vec2b) this, (int) b, b);
     }
 
-    public Vec2 decr() {
-        return Glm.decr((Vec2) this);
+    public Vec2b mul(int b, Vec2b res) {
+        return Glm.mul(res, (Vec2b) this, b, b);
     }
 
-    public Vec2 decr(Vec2 res) {
-        return Glm.decr(res, (Vec2) this);
+    public Vec2b mul(byte bX, byte bY, Vec2b res) {
+        return Glm.mul(res, (Vec2b) this, (int) bX, bY);
+    }
+
+    public Vec2b mul(int bX, int bY, Vec2b res) {
+        return Glm.mul(res, (Vec2b) this, bX, bY);
+    }
+
+    public Vec2b mul(Vec2b b, Vec2b res) {
+        return Glm.mul(res, (Vec2b) this, (int) b.x, b.y);
+    }
+    
+    public Vec2b div_(byte b) {
+        return Glm.div(new Vec2b(), (Vec2b) this, (int) b, b);
+    }
+
+    public Vec2b div_(int b) {
+        return Glm.div(new Vec2b(), (Vec2b) this, b, b);
+    }
+
+    public Vec2b div_(byte bX, byte bY) {
+        return Glm.div(new Vec2b(), (Vec2b) this, (int) bX, bY);
+    }
+
+    public Vec2b div_(int bX, int bY) {
+        return Glm.div(new Vec2b(), (Vec2b) this, bX, bY);
+    }
+
+    public Vec2b div_(Vec2b b) {
+        return Glm.div(new Vec2b(), (Vec2b) this, (int) b.x, b.y);
+    }
+
+    public Vec2b div(byte b) {
+        return Glm.div((Vec2b) this, (Vec2b) this, (int) b, b);
+    }
+
+    public Vec2b div(int b) {
+        return Glm.div((Vec2b) this, (Vec2b) this, b, b);
+    }
+
+    public Vec2b div(byte bX, byte bY) {
+        return Glm.div((Vec2b) this, (Vec2b) this, (int) bX, bY);
+    }
+
+    public Vec2b div(int bX, int bY) {
+        return Glm.div((Vec2b) this, (Vec2b) this, bX, bY);
+    }
+
+    public Vec2b div(Vec2b b) {
+        return Glm.div((Vec2b) this, (Vec2b) this, (int) b.x, b.y);
+    }
+
+    public Vec2b div(byte b, Vec2b res) {
+        return Glm.div(res, (Vec2b) this, (int) b, b);
+    }
+
+    public Vec2b div(int b, Vec2b res) {
+        return Glm.div(res, (Vec2b) this, b, b);
+    }
+
+    public Vec2b div(byte bX, byte bY, Vec2b res) {
+        return Glm.div(res, (Vec2b) this, (int) bX, bY);
+    }
+
+    public Vec2b div(int bX, int bY, Vec2b res) {
+        return Glm.div(res, (Vec2b) this, bX, bY);
+    }
+
+    public Vec2b div(Vec2b b, Vec2b res) {
+        return Glm.div(res, (Vec2b) this, (int) b.x, b.y);
+    }
+
+    public Vec2b incr_() {
+        return Glm.incr_((Vec2b) this);
+    }
+
+    public Vec2b incr() {
+        return Glm.incr((Vec2b) this);
+    }
+
+    public Vec2b incr(Vec2b res) {
+        return Glm.incr(res, (Vec2b) this);
+    }
+
+    public Vec2b decr_() {
+        return Glm.decr_((Vec2b) this);
+    }
+
+    public Vec2b decr() {
+        return Glm.decr((Vec2b) this);
+    }
+
+    public Vec2b decr(Vec2b res) {
+        return Glm.decr(res, (Vec2b) this);
     }
 }
