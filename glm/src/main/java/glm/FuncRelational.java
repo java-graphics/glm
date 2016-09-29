@@ -47,7 +47,7 @@ import joou.UShort;
  *
  * @author GBarbieri
  */
-abstract class FuncRelational extends ArithmeticOperators {
+abstract class FuncRelational extends BasicOperatorsScalarFirst {
 
     // any ----------------------------------------------------------------------------------------------------------
     public static boolean any(Vec2 v) {

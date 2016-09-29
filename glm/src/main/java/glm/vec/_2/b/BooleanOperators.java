@@ -5,17 +5,19 @@
  */
 package glm.vec._2.b;
 
+import glm.vec._2.Vec2;
+
 /**
  *
  * @author elect
  */
-abstract class BooleanOperators extends ArithmeticOperators {
+abstract class BooleanOperators extends BasicOperators {
 
-    public boolean equals(Vec2b b) {
-        return x == b.x & y == b.y;
+    public boolean equals(Vec2 b) {
+        return glm.Glm.equals((Vec2) this, b);
     }
 
-    public boolean notEquals(Vec2b b) {
-        return x != b.x | y != b.y;
+    public boolean notEquals(Vec2 b) {
+        return glm.Glm.notEquals((Vec2) this, b);
     }
 }
