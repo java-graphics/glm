@@ -501,7 +501,7 @@ abstract class BasicOperators extends SpecialOperators {
     public static Vec3 add(Vec3 res, Vec3 a, float bX, float bY, float bZ) {
         res.x = a.x + bX;
         res.y = a.y + bY;
-        res.y = a.z + bZ;
+        res.z = a.z + bZ;
         return res;
     }
 
@@ -939,7 +939,7 @@ abstract class BasicOperators extends SpecialOperators {
     public static Vec4 add(Vec4 res, Vec4 a, float bX, float bY, float bZ, float bW) {
         res.x = a.x + bX;
         res.y = a.y + bY;
-        res.y = a.z + bZ;
+        res.z = a.z + bZ;
         res.w = a.w + bW;
         return res;
     }
@@ -1815,7 +1815,7 @@ abstract class BasicOperators extends SpecialOperators {
     public static Vec3 sub(Vec3 res, Vec3 a, float bX, float bY, float bZ) {
         res.x = a.x - bX;
         res.y = a.y - bY;
-        res.y = a.z - bZ;
+        res.z = a.z - bZ;
         return res;
     }
 
@@ -2253,7 +2253,7 @@ abstract class BasicOperators extends SpecialOperators {
     public static Vec4 sub(Vec4 res, Vec4 a, float bX, float bY, float bZ, float bW) {
         res.x = a.x - bX;
         res.y = a.y - bY;
-        res.y = a.z - bZ;
+        res.z = a.z - bZ;
         res.w = a.w - bW;
         return res;
     }
@@ -3129,7 +3129,7 @@ abstract class BasicOperators extends SpecialOperators {
     public static Vec3 mul(Vec3 res, Vec3 a, float bX, float bY, float bZ) {
         res.x = a.x * bX;
         res.y = a.y * bY;
-        res.y = a.z * bZ;
+        res.z = a.z * bZ;
         return res;
     }
 
@@ -3567,7 +3567,7 @@ abstract class BasicOperators extends SpecialOperators {
     public static Vec4 mul(Vec4 res, Vec4 a, float bX, float bY, float bZ, float bW) {
         res.x = a.x * bX;
         res.y = a.y * bY;
-        res.y = a.z * bZ;
+        res.z = a.z * bZ;
         res.w = a.w * bW;
         return res;
     }
@@ -4443,7 +4443,7 @@ abstract class BasicOperators extends SpecialOperators {
     public static Vec3 div(Vec3 res, Vec3 a, float bX, float bY, float bZ) {
         res.x = a.x / bX;
         res.y = a.y / bY;
-        res.y = a.z / bZ;
+        res.z = a.z / bZ;
         return res;
     }
 
@@ -4881,7 +4881,7 @@ abstract class BasicOperators extends SpecialOperators {
     public static Vec4 div(Vec4 res, Vec4 a, float bX, float bY, float bZ, float bW) {
         res.x = a.x / bX;
         res.y = a.y / bY;
-        res.y = a.z / bZ;
+        res.z = a.z / bZ;
         res.w = a.w / bW;
         return res;
     }
