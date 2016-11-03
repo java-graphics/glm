@@ -104,17 +104,6 @@ public class Vec3 extends funcRelational {
         return res;
     }
 
-    public static Vec3 mix(Vec3 start, Vec3 end, float lerp) {
-
-        Vec3 result = end.min(start);
-
-        result = result.mul_(lerp);
-
-        result = start.add(result);
-
-        return result;
-    }
-
     public Vec3 negate() {
         return negate(this);
     }
