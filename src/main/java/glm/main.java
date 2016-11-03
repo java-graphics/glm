@@ -5,6 +5,7 @@
  */
 package glm;
 
+import glm.mat._4.Mat4;
 import glm.vec._2.Vec2;
 import glm.vec._2.i.Vec2i;
 import glm.vec._3.Vec3;
@@ -32,7 +33,9 @@ public class main {
         Vec3i modVeci = vec3i_2.mod_(vec3i_1);
         modVec.print("modVec");
         modVeci.print("modVec");
-
+        
+        Vec4 v = new Vec4(0,1,3,4);
+        v.mul(new Mat4());
 //          vec2F_2.
     }
 }
