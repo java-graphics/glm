@@ -64,7 +64,7 @@ All functions with any underscore `_` at the end involv implicitly an internal i
 
 This means `Glm.add_(Vec2 a, float b)` does not modify `a` because it instantiates a new `Vec2` internally. On contrary, `Glm.add(Vec2 a, float b)` saves the result on `a`, while `Glm.add(Vec2 res, Vec2 a, float b)` saves the result on `res`.
 
-All of them return the result object (`Vec2` in this case) in order to give you the possibility to concatenate multiple operations in cascade, we have to thanks JOML for the inspiration about this :)
+All of them return the result object (`Vec2` in this case) in order to give you the possibility to concatenate multiple operations in cascade
 
 The `Glm` class contains all the possible calls. However to improve usability, each vec/mat class have in its own some additional functions (they will refer always to the `Glm` ones though).
 
@@ -85,5 +85,5 @@ Enhances:
 
 
 Credits:
-- [JOML](https://github.com/JOML-CI/JOML), by [Kai Burjack](https://github.com/httpdigest) for `Mat4/d.inverse()`, `Mat4/d.invTransp/3()`, `Mat4.det3()`, `Mat4.scale()` and return the object itself in order to concatenate operations.
+- [JOML](https://github.com/JOML-CI/JOML), by [Kai Burjack](https://github.com/httpdigest) for `Mat4/d.inverse()`, `Mat4/d.invTransp/3()`, `Mat4.det3()`, `Mat4.scale()`
 - [jOOU](https://github.com/jOOQ/jOOU), for the unsigned version for the four Java integer types (`byte`, `short`, `int` and `long`).
