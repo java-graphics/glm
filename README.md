@@ -60,19 +60,19 @@ Since `i32vec2` would have been `I32vec2` because java requires always first let
 
 ###Instantiation
 
-All functions with any underscore `_` at the end involv implicitly an internal instantiation. They are useful for case scenario when you want the most readable and compact code.
+All functions with any underscore `_` at the end involve implicitly an internal instantiation. They are useful for case scenario when you want the most readable and compact code.
 
 This means `Glm.add_(Vec2 a, float b)` does not modify `a` because it instantiates a new `Vec2` internally. On contrary, `Glm.add(Vec2 a, float b)` saves the result on `a`, while `Glm.add(Vec2 res, Vec2 a, float b)` saves the result on `res`.
 
-All of them return the result object (`Vec2` in this case) in order to give you the possibility to concatenate multiple operations in cascade
+All of them return the result object (`Vec2` in this case) in order to give you the possibility to concatenate multiple operations in cascade.
 
 The `Glm` class contains all the possible calls. However to improve usability, each vec/mat class have in its own some additional functions (they will refer always to the `Glm` ones though).
 
-Therefore, similarly, if we have a `Vec2 v` and we want to add `2`, we simply call `v.add(2)` if we want the result to be saved on v, like `v+= 2`, otherwise `Vec2 a = v.add_(2)` and we save the result in `a`.
+Therefore, similarly, if we have a `Vec2 v` and if we want to add `2`, we simply call `v.add(2)`. If we want the result to be saved on v, like `v+= 2`, otherwise `Vec2 a = v.add_(2)` and we save the result in `a`.
 
 However, binary operations involving a scalar in the first place can, off course, only be called by `Glm`, so if you want do `1.0f - v`, you shall call `Glm.sub(1.0f, v)`.
 
-Since java transform `byte` and `short` value to `int` before doing any operation, we provide the same for classes involving those type, signed or unsigned.
+Since java transforms `byte` and `short` value to `int` before doing any operation, we provide the same for classes involving those type, signed or unsigned.
 
 
 Steps:
