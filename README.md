@@ -1,3 +1,7 @@
+This project isn't being worked anymore, use [this](https://github.com/kotlin-graphics/glm) instead.
+
+If you would like to continue it, let me know
+
 glm
 ====
 
