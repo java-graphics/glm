@@ -40,7 +40,7 @@ public class Class {
 
 About the porting.
 
-###Naming
+### Naming
 
 Since `i32vec2` would have been `I32vec2` because java requires always first letter capital, it has been decided to move the type part at the right and changing the bit lenght directly with the primitive data type (`Vec2i32` would have been confusing), so we simply have `Vec2i`. 
 
@@ -62,7 +62,7 @@ Since `i32vec2` would have been `I32vec2` because java requires always first let
 
 `*` means 1, 2, 3 or 4 for c++, but on java only 2, 3 and 4 because we didn't port any `*vec1` for the moment since there is no apparent reason.
 
-###Instantiation
+### Instantiation
 
 All functions with any underscore `_` at the end involve implicitly an internal instantiation. They are useful for case scenario when you want the most readable and compact code.
 
